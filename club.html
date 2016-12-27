@@ -1,0 +1,135 @@
+<!doctype html>
+<!-- Registrering -->
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Klubben | Velg klubb</title>
+    <meta name="description" content="My Parse App">
+    <meta name="viewport" content="width=device-width">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.parsecdn.com/js/parse-latest.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="stylesheet" type="text/css" href="./clubStyle.css" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="./font-awesome-4.6.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet"> 
+    <link rel="icon" type="image/png" href="./img/blackfavicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="./img/blackfavicon-16x16.png" sizes="16x16" />
+
+
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <div class="imac">
+        <img src="./img/imac.png" alt="Image not found. Check internet connection.">
+    </div>
+
+    <img class="klubbFor" src="./img/ball.png">
+        
+    <div class="klubb" id="benefits1">
+        <div class="klubbValg">
+             <h3>Velg lag:</h3>
+            <div class="posts">
+                <ul id="list-posts">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+
+        function checkLogin() {
+            if (Parse.User.current) {
+                $("#brukernavn").html(Parse.User.current().get("name"));
+            } else {
+                $("#brukernavn").html("");
+                location.href = "registration.html";
+            }
+        }
+
+        var currentUser = Parse.User.current();
+
+        function logOut() {
+            Parse.User.logOut(
+                console.log("Logger ut"));
+
+        }
+    </script>
+
+    <script type="text/javascript">
+        Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+        
+        function chooseClub(team, id){
+            
+            console.log(team);
+            console.log(id);
+            
+            var Club = Parse.Object.extend("data_" + id + "_Members");
+
+            console.log("heisann");
+
+            var currentUser = Parse.User.current();
+            var bruker = Parse.User.current().id;
+            console.log(currentUser);
+            console.log(bruker);
+            
+            var club = new Club();
+            club.set("user", currentUser)
+            club.set("accepted", false);
+            
+            club.save(null, {
+                            success: function(club) {
+                                console.log("Fantastisk");
+                                location.href = "noteam.html";
+                            },
+                            error: function(club, error) {
+                                console.log("Error:" + error.message);
+                            }
+                        });
+            
+        }
+
+        var Teams = Parse.Object.extend("Teams");
+
+        function getTeams() {
+            var query = new Parse.Query(Teams);
+            query.find({
+
+                    success: function(results) {
+                        var output = "";
+                        for (var i in results) {
+                            var teams = results[i].get("Name");
+                            var teamId = results[i].id;
+                            console.log(teams);
+
+                            output += "<div id=\"lagVelg\">";
+                            output += "<h4>" + teams + "</h4>";
+                            output += '<button name="' + teams +'" id="'+ teamId +'" type="button" onclick="chooseClub(name, id);">Forespør medlemskap</button>';
+                            output += "</div>";
+                        }
+                        $("#list-posts").html(output);
+                    },
+                    error: function(error) {
+                        output += "<div id =\"lagvelg\">";
+                        output += "<h4>" + "Du er allerede med i en klubb" + "</h4>";
+                        output += "</div>";
+                        console.log("Query error:" + error.message);
+                    }
+                });
+        }
+
+
+        getTeams();
+    </script>
+
+</body>
+
+</html>

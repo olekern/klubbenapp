@@ -1,0 +1,873 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+html{
+    font-family: 'Helvetica Neue', sans-serif;
+    width: 100%;
+}
+
+#dvLoading
+	{
+	   background:#000 url(images/loader.gif) no-repeat center center;
+	   height: 100%;
+	   width: 100%;
+	   position: fixed;
+	   z-index: 1000;
+	}
+
+	
+.nav{
+    width: 100%;
+    height: 5em;
+    background-color: #cf2424;
+    z-index: 25;
+    position: fixed;
+    border-bottom: 1px solid #b62929;
+    top: 0;
+}
+
+.nav img{
+    height: 50px;
+    width: auto;
+    float: left;
+    margin-left: 100px;
+    margin-top: 17px;
+}
+
+.navn{
+    text-decoration: none;
+    float: left;
+    display: block;
+    padding: 26px;
+    margin-left: 40px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: 400;
+    
+}
+
+.app{
+    text-decoration: none;
+    display: block;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    
+}
+
+#topApp{
+    float: right;
+    font-weight: 400;
+    font-size: 18px;
+    margin-top: 31px;
+    margin-right: 3em;
+}
+
+.app:hover {
+    color: lightgrey;
+}
+
+#first {
+    width: 100%;
+    height: 570px;
+    margin-top: 30px;
+    background-image: url("./img/forsidebilde.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}
+
+#info{
+    width: 600px;
+    /*
+    float: left;
+    */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+#first h1{
+    width: 600px;
+    font-size: 35px;
+    /*
+    color: black;
+    */
+    color: white;
+    z-index: 11;
+    position: absolute;
+    margin-top: 250px;
+    font-weight: 400;
+
+}
+
+#first h2{
+    width: 600px;
+    font-size: 28px;
+    /*
+    color: black;
+    */
+    color: white;
+    z-index: 11;
+    position: absolute;
+    margin-top: 295px;
+    font-weight: 300;
+    
+}
+
+#contact{
+    z-index: 11;
+    position: absolute;
+    margin-left: 170px;
+    margin-top: 360px;
+    height: 50px;
+    width: 240px;
+    background-color: transparent;
+    display: block;
+    cursor: pointer;
+}
+
+#contactText{
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 300;
+    border: 2px solid white;
+    padding: 7px 10px;
+    border-radius: 1px;
+   
+    
+}
+
+#contactText:hover{
+    color: lightgrey;
+    border: 2px solid lightgrey;
+}
+
+#first img{
+    height: 500px;
+    width: auto;
+    float: right;
+    margin-right: 10px;
+    margin-top: -350px;
+}
+
+#second{
+    width: 100%;
+    height: 230px;
+    background-color: white;
+}
+
+
+#sitat{
+    width: 950px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#sitat img{
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    float: left;
+    margin-left: 100px;
+    margin-top: 35px;
+}
+#sitat p{
+    font-size: 30px;
+    font-weight: 200;
+    width: 550px;
+    line-height: 33px;
+    float: left;
+    margin-left: 30px;
+    margin-top: 35px;
+}
+
+#second h4{
+    float: right;
+    font-size: 20px;
+    font-weight: 300;
+    margin-top: 0px;
+    margin-right: 25px;
+}
+
+.content{
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+#third{
+    width: 100%;
+    height: 650px;
+    background-color: #ffc857;
+}
+
+
+#third img{
+    width: 330px;
+    height: auto;
+    float: right;
+    margin-top: 5px;
+}
+
+#text{
+    height: 400px;
+    width: 350px;
+    float: left;
+    margin-top: 130px;
+    margin-left: 60px;
+}
+
+#third h3{
+    font-size: 26px;
+    font-weight: 100;
+    line-height: 33px;
+}
+
+#third h2{
+    width: 400px;
+    font-size: 45px;
+    font-weight: 300;
+    line-height: 49px;
+    margin-top: 13px;
+}
+
+#third p{
+    width: 350px;
+    font-size: 29px;
+    font-weight: 200;
+    line-height: 30px;
+    margin-left: 5px;
+    margin-top: 17px;
+
+}
+
+#fourth{
+    width: 100%;
+    height: 500px;
+    background-color: #3f88c5;
+}
+
+#fourth iframe{
+    float: right;
+    height: 500px;
+    width: 888px;
+    top: 0;
+    right: 0;
+    border-left: 1px solid white;
+}
+
+#fifth{
+    width: 100%;
+    height: 950px;
+    background-color: #eafdf8;
+}
+
+#topstat{
+    height: 950px;
+}
+
+#iosStat{
+    width: 330px;
+    height: auto;
+    float: left;
+    margin-top: 15px;
+}
+
+#statsios{
+    width: 400px;
+    float: right;
+    margin-right: 90px;
+    margin-top: 120px;
+}
+
+#statsios h3{
+    font-size: 23px;
+    font-weight: 100;
+    padding-top: 10px;
+    line-height: 33px;
+}
+
+#statsios h2{
+    font-size: 40px;
+    font-weight: 300;
+    margin-top: 13px;
+    line-height: 49px;
+}
+
+#statsios p{
+    font-size: 24px;
+    font-weight: 200;
+    line-height: 30px;
+    margin-top: 17px;
+}
+
+#statsmac{
+    width: 300px;
+    height: 70px;
+    position: absolute;
+    margin-top: 700px;
+    margin-left: 40px;
+}
+
+#chart{
+    font-size: 60px;
+    float: left;
+}
+
+#statsmac h2{
+    text-align: center;
+    font-size: 27px;
+    font-weight: 400;
+    width: 200px;
+    float: right;
+
+}
+
+#macStat{
+    width: 600px;
+    height: auto;
+    float: right;
+    margin-top: -100px;
+    
+}
+
+#sixth{
+    height: 650px;
+    width: 100%;
+    background-color: #d0e3cc;
+}
+
+#iosNF{
+    height: 650px;
+    width: auto;
+}
+
+#information{
+    width: 500px;
+    float: right;
+    margin-top: 90px;
+}
+
+#pun{
+    float: right;
+    margin-top: 26px;
+    width: 400px;
+}
+
+#pun h2{
+    font-size: 28px;
+    font-weight: 400;
+    margin-top: 71px;
+}
+#sign {
+    font-size: 60px;
+    float: left;
+    width: 100px;
+    padding-top: 40px;
+}
+
+#inbox, #map, #slider{
+    margin-top: 40px;
+}
+
+#seventh{
+    height: 500px;
+    width: 100%;
+    background-color: #cf2424;
+}
+
+#free{
+    width: 63%;
+    height: 500px;
+    float: left;
+    border-right: 1px solid white;
+    padding: none;
+}
+
+#freeText{
+    height: 200px;
+    width: 300px;
+    margin-top: 130px;
+    margin-left: 200px;
+}
+#free h2{
+    font-size: 25px;
+    font-weight: 100;
+    color: white;
+    line-height: 33px;
+}
+
+#free h1{
+    font-size: 40px;
+    font-weight: 400;
+    color: white;
+    line-height: 49px;
+    margin-top: 10px;
+}
+
+#free a {
+    padding: 7px 12px;
+    border: 1px solid white;
+    text-decoration: none;
+    color: white;
+    font-weight: 200;
+    font-size: 20px;
+    position: absolute;
+    margin-top: 20px;
+}
+
+#pricing{
+    height: 500px;
+    width: calc(37% - 1px);
+    float: right;
+    background-color: #3f88c5;
+    padding: none;
+}
+
+#eighth{
+    width: 100%;
+    height: 920px;
+    background-color: white;
+}
+
+#topFoot{
+    height: 130px;
+    border-bottom: 1px solid black;
+}
+
+#topFootContent{
+    height: 110px;
+    margin-top: 25px;
+}
+
+#topFoot img{
+    height: 110px;
+    width: auto;
+    margin-left: 60px;
+}
+
+#btmApp{
+    font-size: 23px;
+    font-weight: 300;
+    width: 110px;
+    padding: 11px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -85px;
+    color: black;
+    border: 2px solid black;
+}
+
+#btmApp:hover{
+    color: grey;
+    border: 2px solid grey;
+}
+
+#globe{
+    float: right;
+    font-size: 30px;
+    margin-right: 230px;
+    margin-top: -40px;
+}
+
+#changeLanguage{
+    float: right;
+    margin-top: -49px;
+    width: 210px;
+    height: 45px;
+    font-size: 16px;
+    text-transform: uppercase;
+    border: none;
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+    cursor: pointer;
+}
+select {
+  color: #000;
+  color: rgba(0,0,0,0);
+  text-shadow: 0 0 0 #000;
+}
+.no-textshadow select {
+  color: #000;
+}
+
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+
+#triangle{
+    font-size: 20px;
+    position: relative;
+    float: right;
+    margin-right: 20px;
+    margin-top: -38px;
+    z-index: 0;
+}
+#changeLanguage:focus{
+    outline:0;
+    border:none;
+    box-shadow:none;
+}
+
+select {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+}
+select::-ms-expand { /* for IE 11 */
+    display: none;
+}
+
+#contactInf{
+    height: 640px;
+    border-bottom: 1px solid black;
+}
+
+#phonecontact{
+    height: 50px;
+}
+
+#mail{
+    margin-top: 20px;
+    width: 380px;
+    height: 45px;
+}
+
+#mailIcon{
+    font-size: 40px;
+}
+
+#mail h5 {
+    font-size: 20px;
+    font-weight: 200;
+    margin-right: 40px;
+    text-transform: uppercase;
+    float: right;
+    margin-top: 10px;
+}
+
+#social{
+    height: 50px; 
+    width: 140px;
+    float: right;
+    margin-top: -45px;
+}
+
+#facebook{
+    font-size: 45px;
+    text-decoration: none;
+    color: black;
+    margin-left: 20px;
+}
+
+#youtube{
+    font-size: 45px;
+    text-decoration: none;
+    color: black;
+    float: right;
+    margin-right: 10px; 
+}
+
+#register{
+    height: 500px;
+}
+
+#registerTeam{
+    width: 300px;
+    float: left;
+    margin-top: 40px;
+    margin-left: 70px;
+}
+
+#registerTeam h3{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#fakturering{
+    float: left;
+    width: 300px;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+#list-teams{
+    width: 210px;
+    height: 45px;
+    position: absolute;
+    margin-left: -190px;
+    margin-top: -12px;
+    font-size: 16px;
+    text-transform: uppercase;
+    border: 1px solid black;
+    z-index: 1;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#triangle2{
+    font-size: 20px;
+    position: relative;
+    float: right;
+    margin-right: 20px;
+    z-index: 0;
+}
+#list-teams:focus{
+    outline:0;
+    border:none;
+    box-shadow:none;
+}
+
+
+ #registerTeam input[type="text"],#registerTeam input[type="password"], #registerTeam input[type="mail"]{
+    height: 43px;
+    width: 180px;
+    font-size: 16px;
+    background-color: #fff;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    border: 1px solid grey;
+    border-radius: 4px;
+}
+
+ #fakturering input[type="text"],#fakturering input[type="password"], #fakturering input[type="mail"]{
+    height: 43px;
+    width: 180px;
+    font-size: 16px;
+    background-color: #fff;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    border: 1px solid grey;
+    border-radius: 4px;
+}
+
+#fakturering h3{
+    font-size: 22px;
+    font-weight: 400;
+}
+
+#btmInv{
+    height: 100px;
+    float: left;
+    margin-top: 90px;
+    width: 100%;
+}
+
+#product{
+    height: 25px;
+}
+
+#product h3{
+    font-size: 21px;
+    font-weight: 400;
+}
+
+#linePrice{
+    height: 25px; 
+    width: 65px;
+    margin-left: 370px;
+    margin-top: -21px;
+}
+
+#linePrice h4{
+    font-size: 20px;
+    font-weight: 300;
+    color: grey;
+}
+
+#line{
+    width: 60px;
+    height: 1px;
+    float: left;
+    background-color: grey;
+    margin-top: -10px;
+}
+
+#product h5{
+    font-size: 22px;
+    font-weight: 300;
+    float: left;
+    margin-left: 480px;
+    margin-top: -27px;
+}
+
+#node-id{
+    float: right;
+    height: 25px;
+    width: 260px;
+    margin-top: -25px;
+}
+
+#node-id h6{
+    font-size: 19px;
+    font-weight: 300;
+    color: grey;
+    float: left;
+}
+
+#node-id h5{
+    font-size: 19px;
+    font-weight: 300;
+    color: grey;
+    float: left;
+    margin-left: 5px;
+    margin-top: 0px;
+}
+
+#sendForm{
+    height: 50px;
+    margin-top: 40px;
+}
+
+#terms{
+    float: left;
+}
+
+#termh{
+    float: left;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#termHref{
+    margin-left: 4px;
+}
+
+#product p{
+    float: left;
+    margin-left: 500px;
+    margin-top: -45px;
+    font-size: 18px;
+    font-weight: 300;
+    color: grey;
+}
+
+#register button{
+    float: right;
+    font-size: 18px;
+    font-weight: 400;
+    height: 45px;
+    width: 100px;
+    margin-right: 90px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+#register button:hover{
+    color: grey;
+    border: 1px solid grey;
+}
+
+#register p{
+    font-size: 18px;
+    font-weight: 300;
+    color: grey;
+    float: left;
+    width: 550px;
+}
+
+#btmFoot{
+    height: 150px;
+}
+#store{
+    height: 100px;
+    width: 500px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#apple svg{
+    height: 61px;
+    width: auto;
+    margin-right: 40px;
+    margin-top: 15px;
+}
+
+#android{
+    height: 91px;
+    width: auto;
+    margin-left: -40px;
+}
+
+
+#btmFoot p{
+}
+
+#btmFoot a{
+    float: right;
+    text-decoration: none;
+    color: black;
+}
+
+#btmFoot a:hover{
+    color: grey;
+}
+
+#copy{
+    color: white
+}

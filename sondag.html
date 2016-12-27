@@ -1,0 +1,291 @@
+<!doctype html>
+<!-- Treningsapp -->
+<html>
+
+    <head>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://www.parsecdn.com/js/parse-latest.js"></script>
+        <script src="//www.parsecdn.com/js/parse-1.6.14.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./style.css" />
+        <link rel="stylesheet" type="text/css" href="./sondagStyle.css" />
+        <title>Klubben | Statistikk</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+        <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+        <link rel="stylesheet" href="./font-awesome-4.6.3/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" href="./img/blackfavicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="./img/blackfavicon-16x16.png" sizes="16x16" />
+
+    </head>
+
+
+    <body>
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
+        <div class="nav">
+
+            <img src="./img/Ikon.png">
+             <a class="navn" href="newsFeed.html">Klubben</a>
+
+            <ul>
+
+                <li>
+                    <div class="loggut">
+                        <a href="registration.html" class="fa fa-sign-out" id="signOut" aria-hidden="true" onclick="logOut()"></a>
+
+                    </div>
+                    <a href="forberedelserT.html" id="forberedelserT">Forberedelser</a>
+                     <a href="evalueringT.html" id="evalueringT">Evaluering</a>
+                    <a href="sondag.html" id="søndag">Søndagsrapport</a>
+                </li>
+
+            </ul>
+
+        </div>
+        
+        
+        <div id="links">
+            <div class="spiller">
+                 <h3>Spillere: </h3>
+            </div>
+            <ul id="list-links">
+
+            </ul>
+        </div>
+
+        <div class="newboxes" id="rapport">
+            <div class="ukesDiagram">
+                <ul id="list-posts">
+
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
+            //Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
+            Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+
+            function checkLogin() {
+                if (Parse.User.current) {
+                    $("#brukernavn").html(Parse.User.current().get("name"))
+                } else {
+                    $("#brukernavn").html("");
+                }
+            }
+            checkLogin();
+
+            var currentUser = Parse.User.current();
+            if (currentUser) {
+
+            } else {
+                location.href = "./pages/parsee.html";
+            }
+
+            checkLogin();
+
+            function logOut() {
+                Parse.User.logOut(
+                    console.log("Logger ut"));
+
+            }
+
+            var klubbID = Parse.User.current().get("team").id;
+
+            function roles() {
+                klubbID = Parse.User.current().get("team").id;
+                var Query = Parse.Object.extend("data_" + klubbID + "_Members");
+                var query = new Parse.Query(Query);
+                query.equalTo("user", Parse.User.current());
+                query.find({
+                        success: function(objects) {
+                            console.log(objects.length);
+                            var role = objects[0].get("role");
+                            console.log(role);
+                            if (role == "admin") {
+
+                            } else if (role == "trener") {
+                                document.getElementById("trening").remove();
+                                document.getElementById("velvaere").remove();
+                            } else {
+                                document.getElementById("statistikk").remove();
+                                location.href = "./pages/feed.html";
+                            }
+
+                        },
+                        error: function(error) {
+                            alert("Error: " + error.code + " " + error.message);
+                        }
+                    });
+            }
+            roles();
+
+            var klubbID = localStorage.getItem("clubId");
+            var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
+            var Surveys = Parse.Object.extend("data_" + klubbID + "_Surveys");
+
+            function getAnswers() {
+                var Query = new Parse.Query(Surveys);
+                Query.include("survey");
+
+                var monthNames = [
+                    "Jan", "Feb", "Mar",
+                    "Apr", "May", "Jun", "Jul",
+                    "Aug", "Sep", "Oct",
+                    "Nov", "Dec"
+                ];
+
+                var daysOfTheWeek = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
+
+                var date = new Date();
+                var day = date.getDate();
+                var monthIndex = date.getMonth();
+                var daysIndex = date.getMonth();
+                var year = date.getFullYear();
+
+                if (day < 10) {
+                    console.log("hei");
+                    var idag = monthNames[monthIndex] + " " + "0" + day + " " + year;
+                } else {
+                    var idag = monthNames[monthIndex] + " " + day + " " + year;
+                }
+                console.log(idag);
+
+                Query.find({
+                        success: function(objects, results) {
+
+                            for (var i = 0; i < objects.length; i++) {
+                                var navn = objects[i].get("survey").get("name");
+                                if (navn == "Søndagsrapport") {
+                                    var query = new Parse.Query(SurveyAnswer);
+                                    query.descending("createdAt");
+                                    query.include("author");
+                                    query.equalTo("survey", objects[i]);
+                                    query.find({
+                                            success: function(results) {
+                                                var output = "";
+                                                var outputLink = "";
+                                                var name = new Array();
+                                                var question1 = new Array();
+                                                var question2 = new Array();
+                                                var question3 = new Array();
+                                                var question4 = new Array();
+                                                var question5 = new Array();
+                                                var question6 = new Array();
+                                                var question7 = new Array();
+                                                var question8 = new Array();
+                                                var author = new Array();
+                                                var feedback = new Array();
+                                                for (var i in results) {
+                                                    var date = results[i].get("createdAt");
+                                                    var dato = date.toString();
+                                                    var datoen = dato.substring(4, 15);
+                                                    if (datoen == idag) {
+
+
+                                                        question1 = results[i].get("data")[0];
+                                                        question2 = results[i].get("data")[1];
+                                                        question3 = results[i].get("data")[2];
+                                                        question4 = results[i].get("data")[3];
+                                                        question5 = results[i].get("data")[4];
+                                                        question6 = results[i].get("data")[5];
+                                                        question7 = results[i].get("data")[6];
+                                                        question8 = results[i].get("data")[7];
+
+                                                        author[i] = results[i].get("author");
+                                                        feedback[i] = results[i].get("data")[4];
+
+                                                        name[i] = author[i].get("name");
+                                                        navn = name[i];
+
+
+                                                        var pB = "";
+                                                        var userPB = "";
+                                                        if (author[i].get("profileImage_small")) {
+                                                            var bilde = author[i].get("profileImage_small");
+                                                            var url1 = bilde.url();
+                                                            pB = "<img src='" + url1 + "'>";
+                                                        } else {
+                                                            userPB = '<img src="./img/2000px-AWS_Simple_Icons_Non-Service_Specific_User.svg.png">';
+
+                                                        }
+
+
+
+                                                        outputLink += "<div id=\"playerLink\">";
+                                                        outputLink += "<ul>";
+                                                        outputLink += '<li> <a href="#' + navn + '">' + navn + '</a>';
+                                                        outputLink += "</ul>";
+                                                        outputLink += "</div>";
+
+
+                                                        output += "<div id=\"feedBack\">";
+                                                        output += "<div id=\"profilBilde\">";
+                                                        output += pB;
+                                                        output += userPB;
+                                                        output += "</div>"
+                                                        output += '<a name="' + navn + '">' + navn + "</a>";
+                                                        output += "<h4>" + "Hvordan har denne uken vært sportslig?" + "</h4>";
+                                                        output += "<p>" + question1 + "</p>";
+                                                        output += "<h4>" + "Hva har du lært denne uken?" + "</h4>";
+                                                        output += "<p>" + question2 + "</p>";
+                                                        output += "<h4>" + "Hvor morsom har treningsuken vært?" + "</h4>";
+                                                        output += "<p>" + question3 + "</p>";
+                                                        output += "<h4>" + "Har du hatt noen helseproblemer som har preget deg uken som har gått?" + "</h4>";
+                                                        output += "<p>" + question4 + "</p>";
+                                                        output += "<h4>" + "Hvor profesjonell har du vært denne uken?" + "</h4>";
+                                                        output += "<p>" + question5 + "</p>";
+                                                        output += "<h4>" + "Hva har du gjort bra denne uken?" + "</h4>";
+                                                        output += "<p>" + question6 + "</p>";
+                                                        output += "<h4>" + "Hva skal du gjøre bedre neste uken?" + "</h4>";
+                                                        output += "<p>" + question7 + "</p>";
+                                                        output += "<h4>" + "Er det noe spesielt i foregående eller kommende treningsuke du vil at treneren din skal vite om?" + "</h4>";
+                                                        output += "<p>" + question8 + "</p>";
+                                                        output += "</div>";
+
+                                                        $("#list-posts").html(output);
+                                                        $("#list-links").html(outputLink);
+
+                                                    }
+
+                                                }
+
+                                            },
+                                            error: function(error) {
+                                                console.log("Query error:" + error.message);
+                                            }
+                                        });
+
+                                }
+
+                            }
+
+
+                        },
+                        error: function(error) {
+                            console.log("Query error:" + error.message);
+                        }
+                    });
+
+
+            }
+
+            getAnswers();
+        </script>
+
+
+        <div class="footer2">
+            <p>Copyright &copy Klubben 2016</p>
+        </div>
+
+
+
+    </body>
+
+</html>
