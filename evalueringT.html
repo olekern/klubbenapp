@@ -31,26 +31,48 @@
 
         <div class="nav">
 
-            <img src="./img/Ikon.png">
-             <a class="navn" href="newsFeed.html">Klubben</a>
-
+            <a href="newsFeed.html"><img src="./img/Ikon.png" id="logo"></a>
             <ul>
 
                 <li>
                     <div class="loggut">
                         <a href="registration.html" class="fa fa-sign-out" id="signOut" aria-hidden="true" onclick="logOut()"></a>
-
+                        <p id="brukernavn" class="navn">
+                        </p>
+                        <ul id="profile-pb">
+                        </ul>
                     </div>
-                    <a href="forberedelserT.html" id="forberedelserT">Forberedelser</a>
-                     <a href="evalueringT.html" id="evalueringT">Evaluering</a>
-                    <a href="reports.html" id="søndag">Rapporter</a>
                 </li>
 
             </ul>
 
         </div>
+        
+        <div id="side-menu">
+            <div id="top">
+                <div id="dashbord" class="square">
+                    <div class="box" id="dashBox"></div>
+                    <a href="newsFeed.html" class="fa fa-home" aria-hidden="true"><p>Dashbord</p></a>
+                </div>
+                <div id="rapporter" class="square">
+                    <div class="box" id="repBox"></div>
+                    <a href="reports.html" class="fa fa-file-text" aria-hidden="true"><p>Rapporter</p></a>
+                </div>
+                <div id="evaluering" class="square">
+                    <div class="box" id="evBox"></div>
+                    <a href="evalueringT.html" class="fa fa-bar-chart" aria-hidden="true"><p>Evaluering</p></a>
+                    </div>
+                <div id="forberedelser" class="square">
+                    <div class="box" id="forBox"></div>
+                    <a href="forberedelserT.html" class="fa fa-bar-chart" aria-hidden="true"><p>Forberedelser</p></a>
+                </div>
+            </div>
+            <div id="btm">
+                <p>&copy 2016 Lustek AS</p>
+            </div>
+        </div>
 
-        <div class="newboxes" id="evaluering">
+        <div class="newboxes" id="evaluering1">
             <div class="treningsDiagrammer">
                  <h1>Evaluering av trening/kamp</h1>
                  <h2>Hvor gøy var det? </h2>
@@ -82,6 +104,30 @@
                 }
             }
             checkLogin();
+            
+            function getPB() {
+                var outputImg = "";
+                var user = Parse.User.current();
+                var userImg = "";
+                var noUserImg = "";
+                if (user.get("profileImage_small")) {
+                    var brukerPB = user.get("profileImage_small");
+                    var PBUrl = brukerPB.url();
+                    console.log("Url:" + PBUrl);
+                    userImg = "<img src='" + PBUrl + "'>";
+                } else{
+                    noUserImg = '<img src="./img/no-pb.png">';
+                    console.log("Supert");
+                }
+                outputImg += "<div id=\"userPB\">";
+                outputImg += userImg;
+                outputImg += noUserImg;
+                outputImg += "</div>"
+                $("#list-pb").html(outputImg);
+                $("#profile-pb").html(outputImg);
+            }
+            getPB();
+            
             //var klubbID = localStorage.getItem("clubId");
             var klubbID = Parse.User.current().get("team").id;
             var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");

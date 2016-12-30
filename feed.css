@@ -112,7 +112,15 @@ html{
     font-weight: 300;
     font-size: 20px;
     letter-spacing: 1px;
-    
+}
+
+#profile-pb img{
+    height: 45px;
+    width: auto;
+    border-radius: 50%;
+    border: 1px solid white;
+    float: right;
+    margin-top: 18px;
 }
 
 #signOut{

@@ -1,27 +1,76 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
 html, body {
     height: 100%;
     width: 100%;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Microsoft Sans Serif;
 }
 .nav {
-    
-    height: 5em;
+    height: 79px;
     background: #cf2424;
     width: 100%;
-   
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #b62929;
 }
 
-.nav img{
+#logo{
     height: 50px;
     width: auto;
     float: left;
-    margin-left: 100px;
+    margin-left: 50px;
     margin-top: 17px;
 }
 .nav ul {
     margin:0;
     padding:0;
     overflow: hidden;
-    margin-right: 3em;
+    margin-right: 40px;
 }
 .nav ul li {
     list-style:none;
@@ -32,46 +81,146 @@ html, body {
     text-decoration: none;
     float: right;
     display: block;
-    padding: 2.1em 1.5em;
+    padding: 32px 25px;
     color: white;
     text-transform: uppercase;
     font-weight: 400;
     font-size: 15px;
     letter-spacing: 1px;
 }
-.nav ul li p {
-    text-decoration: none;
-    float: right;
-    display: block;
-    padding: 1.05em 1.5em;
-    color: white;
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 15px;
-    letter-spacing: 1px;
-}
+
 .nav ul li a:hover {
     color: lightgrey;
 }
 
 .navn{
     text-decoration: none;
-    float: left;
+    float: right;
     display: block;
-    padding: 1.1em;
-    margin-left: 5em;
+    padding: 30px;
     color: white;
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 25px;
+    font-weight: 300;
+    font-size: 20px;
     letter-spacing: 1px;
-    
+}
+
+#profile-pb img{
+    height: 45px;
+    width: auto;
+    border-radius: 50%;
+    border: 1px solid white;
+    float: right;
+    margin-top: 18px;
 }
 
 #signOut{
     font-size: 23px;
-    margin-top: -0.8em; 
-    
+    margin-top: -2px;
+}
+
+#side-menu{
+    float: left;
+    height: 90%;
+    width: 150px;
+    position: fixed;
+    background-color: #343434;
+    top: 80px;
+    color: white;
+    z-index: 100;
+}
+
+#top{
+    width: 150px;
+    text-align: center;
+}
+
+#top a{
+    font-size: 30px;
+    display: block;
+    line-height: 30px;
+    color: white;
+    text-decoration: none; 
+}
+
+#top p{
+    font-size: 17px;
+    color: white;
+    line-height: 30px;
+    text-decoration: none;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Microsoft Sans Serif;
+}
+
+.square{
+    padding-top: 14px;
+    padding-bottom: 9px;
+}
+
+#rapporter{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+
+#rapporter a{
+    margin-right: 7px;
+}
+.box{
+    width: 7px;
+    height: 83px;
+    top: 0;
+    margin-top: -14px;
+    background-color: #cf2424;
+    float: left;
+    border-right: 1px solid #484848;
+}
+
+#dashBox, #evBox, #forBox{
+    display: none;
+}
+#dashbord:hover{
+    background-color: #5c5c5c;
+}
+
+#dashbord:hover #dashBox{
+    display: block;
+}
+
+#dashbord:hover a{
+    margin-right: 7px;
+}
+
+#evaluering:hover{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+#evaluering:hover #evBox{
+    display: block;
+}
+
+#evaluering:hover a{
+    margin-right: 7px;
+}
+#forberedelser:hover{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+#forberedelser:hover #forBox{
+    display: block;
+}
+
+#forberedelser:hover a{
+    margin-right: 7px;
+}
+
+#btm{
+    width: 150px;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+    font-weight: 300;
+    text-align: center;
+    font-size: 12px;
 }
 
 #chart1 {
