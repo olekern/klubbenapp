@@ -46,7 +46,8 @@ html{
     height: 500%;
     background-color: #EDEDED;
     overflow-x: hidden;
-    font-family: 'Helvetica Neue';
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 #dvLoading
@@ -148,7 +149,8 @@ html{
     color: white;
     line-height: 30px;
     text-decoration: none;
-    font-family: 'Helvetica Neue';
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 .square{
@@ -435,7 +437,8 @@ i[name="likeIcon"]{
 }
 
 #commentSection textarea{
-    font-family: 'Helvetica Neue';
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 400;
     font-size: 15px;
     overflow: auto;
