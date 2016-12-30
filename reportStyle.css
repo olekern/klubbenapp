@@ -48,7 +48,7 @@ html, body {
     width: 100%;
     background-color: white;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
-  Helvetica, Arial, "Lucida Grande", sans-serif;
+  Microsoft Sans Serif;
 }
 
 #dvLoading
@@ -151,7 +151,8 @@ html, body {
     color: white;
     line-height: 30px;
     text-decoration: none;
-    font-family: 'Helvetica Neue';
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Microsoft Sans Serif;
 }
 
 .square{
@@ -309,7 +310,8 @@ h4{
 }
 
 textarea{
-    font-family: 'Helvetica Neue';
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Microsoft Sans Serif;
     font-weight: 400;
     font-size: 15px;
     overflow: auto;

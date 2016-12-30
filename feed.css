@@ -47,7 +47,7 @@ html{
     background-color: #EDEDED;
     overflow-x: hidden;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
-  Helvetica, Arial, "Lucida Grande", sans-serif;
+  Microsoft Sans Serif;
 }
 
 #dvLoading
@@ -150,7 +150,7 @@ html{
     line-height: 30px;
     text-decoration: none;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
-  Helvetica, Arial, "Lucida Grande", sans-serif;
+  Microsoft Sans Serif;
 }
 
 .square{
@@ -255,7 +255,8 @@ form {
 
 
 .form textarea{
-    font-family: Microsoft Sans Serif, Verdana;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Microsoft Sans Serif;
     font-weight: 500;
     overflow: auto;
     border: none;
@@ -438,7 +439,7 @@ i[name="likeIcon"]{
 
 #commentSection textarea{
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
-  Helvetica, Arial, "Lucida Grande", sans-serif;
+  Microsoft Sans Serif;
     font-weight: 400;
     font-size: 15px;
     overflow: auto;
