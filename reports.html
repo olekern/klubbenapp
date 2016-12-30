@@ -56,19 +56,29 @@
         
         <div id="side-menu">
             <div id="top">
-                <i class="fa fa-file-text" aria-hidden="true"></i>
-                <a href="reports.html" id="søndag">Rapporter</a>
-                <i class="fa fa-bar-chart" aria-hidden="true"></i>
-                <a href="evalueringT.html" id="evalueringT">Evaluering</a>
-                <a href="forberedelserT.html" id="forberedelserT">Forberedelser</a>
+                <div id="dashbord" class="square">
+                    <div class="box" id="dashBox"></div>
+                    <a href="newsFeed.html" class="fa fa-home" aria-hidden="true"><p>Dashbord</p></a>
                 </div>
+                <div id="rapporter" class="square">
+                    <div class="box" id="repBox"></div>
+                    <a href="reports.html" class="fa fa-file-text" aria-hidden="true"><p>Rapporter</p></a>
+                </div>
+                <div id="evaluering" class="square">
+                    <div class="box" id="evBox"></div>
+                    <a href="evalueringT.html" class="fa fa-bar-chart" aria-hidden="true"><p>Evaluering</p></a>
+                    </div>
+                <div id="forberedelser" class="square">
+                    <div class="box" id="forBox"></div>
+                    <a href="forberedelserT.html" class="fa fa-bar-chart" aria-hidden="true"><p>Forberedelser</p></a>
+                </div>
+            </div>
             <div id="btm">
                 <p>&copy 2016 Lustek AS</p>
             </div>
         </div>
 
-
-        <div class="newboxes" id="forberedelser">
+        <div class="newboxes" id="reports">
             <div class="forDiagram">
                 <ul id="list-posts">
 
@@ -216,11 +226,11 @@
                                                     var feedback = results[k].get("feedback");
                                                     
                                                     if(feedback != undefined){
-                                                    output += "<h4>Tilbakemelding fra trener</h4>";
+                                                    output += "<h4>Tilbakemelding fra din trener</h4>";
                                                     output += "<p>" + feedback + "</p>";
                                                     
                                                     }else{
-                                                    output += '<textarea rows="1" cols="40 name="text" id="text' + h + '" placeholder="Skriv en tilbakemelding"></textarea>';
+                                                    output += '<textarea rows="2" cols="30 name="text" id="text' + h + '" placeholder="Skriv en tilbakemelding"></textarea>';
                                                     output += '<button type="button" name="' + answerID +'" id="' + h + '" onclick="submitFeedback(id, name)">Publiser</button>';
                                                     }
                                                     output += "</div>";
@@ -370,7 +380,7 @@
                                             objects[j].set("feedback", feedback);
                                             objects[j].save({
                                                        success: function() {
-                                                            location.href = "./sovn.html";
+                                                            location.href = "./reports.html";
                                                         }
                                                     });
                                             }

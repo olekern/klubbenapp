@@ -14,7 +14,8 @@
         <link rel="icon" type="image/png" href="./img/favicon-32x32.png" sizes="32x32" />
         <link rel="icon" type="image/png" href="./img/favicon-16x16.png" sizes="16x16" />
 
-
+        RewriteRule ^about$ newsFeed.html [L]
+        
     </head>
 
     <body>
@@ -22,23 +23,43 @@
 
         <div class="nav">
 
-            <img src="./img/Ikon.png">
-             <a class="navn" href="newsFeed.html">Klubben</a>
-
+            <img src="./img/Ikon.png" id="logo">
             <ul>
 
                 <li>
                     <div class="loggut">
                         <a href="registration.html" class="fa fa-sign-out" id="signOut" aria-hidden="true" onclick="logOut()"></a>
-
+                        <p id="brukernavn" class="navn">
+                        </p>
                     </div>
-                    <a href="forberedelserT.html" id="forberedelserT">Forberedelser</a>
-                     <a href="evalueringT.html" id="evalueringT">Evaluering</a>
-                    <a href="reports.html" id="søndag">Rapporter</a>
                 </li>
 
             </ul>
 
+        </div>
+        
+        <div id="side-menu">
+            <div id="top">
+                <div id="dashbord" class="square">
+                    <div class="box" id="dashBox"></div>
+                    <a href="newsFeed.html" class="fa fa-home" aria-hidden="true"><p>Dashbord</p></a>
+                </div>
+                <div id="rapporter" class="square">
+                    <div class="box" id="repBox"></div>
+                    <a href="reports.html" class="fa fa-file-text" aria-hidden="true"><p>Rapporter</p></a>
+                </div>
+                <div id="evaluering" class="square">
+                    <div class="box" id="evBox"></div>
+                    <a href="evalueringT.html" class="fa fa-bar-chart" aria-hidden="true"><p>Evaluering</p></a>
+                    </div>
+                <div id="forberedelser" class="square">
+                    <div class="box" id="forBox"></div>
+                    <a href="forberedelserT.html" class="fa fa-bar-chart" aria-hidden="true"><p>Forberedelser</p></a>
+                </div>
+            </div>
+            <div id="btm">
+                <p>&copy 2016 Lustek AS</p>
+            </div>
         </div>
         
         <!--
@@ -169,12 +190,12 @@
                             $("#list-role").html(outputRole);
                             if (role == "admin") {
                             } else if (role == "trener") {
-                                document.getElementById("forberedelser").remove();
-                                document.getElementById("evaluering").remove();
+                                //document.getElementById("forberedelser").remove();
+                                //document.getElementById("evaluering").remove();
                             } else {
-                                document.getElementById("forberedelserT").remove();
-                                document.getElementById("evalueringT").remove();
-                                document.getElementById("søndag").remove();
+                                //document.getElementById("forberedelserT").remove();
+                                //document.getElementById("evalueringT").remove();
+                                //document.getElementById("søndag").remove();
                             }
                             if ((role == "admin") || (role == "trener")) {
                                 var queryQ = new Parse.Query(Query);

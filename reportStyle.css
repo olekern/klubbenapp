@@ -61,12 +61,13 @@ html, body {
 	}
 	
 .nav {
-    height: 10%;
+    height: 79px;
     background: #cf2424;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
+    border-bottom: 1px solid #b62929;
 }
 
 #logo{
@@ -126,8 +127,9 @@ html, body {
     width: 150px;
     position: fixed;
     background-color: #343434;
-    top: 10%;
+    top: 80px;
     color: white;
+    z-index: 100;
 }
 
 #top{
@@ -135,15 +137,81 @@ html, body {
     text-align: center;
 }
 
-#top i{
+#top a{
     font-size: 30px;
     display: block;
-    margin-top: 20px;
+    line-height: 30px;
+    color: white;
+    text-decoration: none; 
 }
 
-#top a{
-    text-decoration: none;
+#top p{
+    font-size: 17px;
     color: white;
+    line-height: 30px;
+    text-decoration: none;
+    font-family: 'Helvetica Neue';
+}
+
+.square{
+    padding-top: 14px;
+    padding-bottom: 9px;
+}
+
+#rapporter{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+
+#rapporter a{
+    margin-right: 7px;
+}
+.box{
+    width: 7px;
+    height: 83px;
+    top: 0;
+    margin-top: -14px;
+    background-color: #cf2424;
+    float: left;
+    border-right: 1px solid #484848;
+}
+
+#dashBox, #evBox, #forBox{
+    display: none;
+}
+#dashbord:hover{
+    background-color: #5c5c5c;
+}
+
+#dashbord:hover #dashBox{
+    display: block;
+}
+
+#dashbord:hover a{
+    margin-right: 7px;
+}
+
+#evaluering:hover{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+#evaluering:hover #evBox{
+    display: block;
+}
+
+#evaluering:hover a{
+    margin-right: 7px;
+}
+#forberedelser:hover{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+#forberedelser:hover #forBox{
+    display: block;
+}
+
+#forberedelser:hover a{
+    margin-right: 7px;
 }
 
 #btm{
@@ -152,63 +220,12 @@ html, body {
     position: absolute;
     bottom: 0;
     margin-bottom: 15px;
-    font-size: 12px;
     font-weight: 300;
     text-align: center;
+    font-size: 12px;
 }
 
-#chart1 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-    font-weight: 300;
-    
-}
-#chart2 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-    font-weight: 300;
-}
-#chart3 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-    font-weight: 300;
-}
-#chart4 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-    font-weight: 300;
-}
-#chart5 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-    font-weight: 300;
-}
-#chart6 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-    font-weight: 300;
-}
-.ct-labels span {
-    color: black;
-}
+
 
 .newboxes {
     border: 0 solid;
@@ -247,8 +264,6 @@ html, body {
 }
 #feedBack {
     width: 400px;
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 5px;
     padding-left: 30px;
     padding-right: 30px;
@@ -256,6 +271,14 @@ html, body {
     padding-bottom: 20px;
     word-wrap: break-word;
     border-bottom: 1px solid black;
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-right: auto;
+}
+
+#feedback p{
+    line-height: 40px;
 }
 
 h1{
@@ -274,4 +297,42 @@ h3{
     font-size: 18px;
     font-weight: 500;
     margin-top: 20px;
+    line-height: 40px;
+}
+
+h4{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 40px;
+    margin-top: 10px;
+}
+
+textarea{
+    font-family: 'Helvetica Neue';
+    font-weight: 400;
+    font-size: 15px;
+    overflow: auto;
+    resize: none;
+    margin-top: 30px;
+    border: 1px solid #d5d5d5;
+    position: relative;
+    height: 35px;
+    padding-left: 10px;
+    padding-top: 8px;
+    padding-right: 10px;
+}
+
+button{
+    float: right;
+    margin-right: 35px;
+    margin-top: 38px;
+    padding: 4px 5px;
+    color: #fff;
+    border: none;
+    background-color: #01baef;
+    border-bottom: 3px solid #00a7d7;
+    font-size: 11px;
+    font-weight: 500;
+    display: block;
+    cursor: pointer;
 }

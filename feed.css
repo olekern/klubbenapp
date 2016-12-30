@@ -1,7 +1,52 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 html{
     height: 500%;
     background-color: #EDEDED;
     overflow-x: hidden;
+    font-family: 'Helvetica Neue';
 }
 
 #dvLoading
@@ -13,18 +58,21 @@ html{
 	   z-index: 1000;
 	}
 .nav {
-    
-    height: 80px;
+    height: 79px;
     background: #cf2424;
     width: 100%;
-   
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #b62929;
+    z-index: 1000;
 }
 
-.nav img{
+#logo{
     height: 50px;
     width: auto;
     float: left;
-    margin-left: 100px;
+    margin-left: 50px;
     margin-top: 17px;
 }
 .nav ul {
@@ -56,14 +104,12 @@ html{
 
 .navn{
     text-decoration: none;
-    float: left;
+    float: right;
     display: block;
-    padding: 26px;
-    margin-left: 50px;
+    padding: 30px;
     color: white;
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 25px;
+    font-weight: 300;
+    font-size: 20px;
     letter-spacing: 1px;
     
 }
@@ -73,56 +119,110 @@ html{
     margin-top: -2px;
 }
 
-
 #side-menu{
-    width: 250px;
     float: left;
-    margin-left: -250px;
-    margin-top: 15px;
-    height: 400px;
-    background-color: white;
-    border: 1px solid #d5d5d5;
-}
-
-#profile{
-    height: 10.7em;
-    background-color: #cf2424;
-    border: 1px solid #d5d5d5;
-}
-
-
-#brukernavn{
-    text-align: center; 
-    font-weight: 600;
-    font-size: 17;
-    margin-top: 2.5em;
+    height: 90%;
+    width: 150px;
+    position: fixed;
+    background-color: #343434;
+    top: 80px;
     color: white;
+    z-index: 100;
 }
-#userRole {
-    display: block;
+
+#top{
+    width: 150px;
     text-align: center;
-    margin-left: -2.5em;
-    font-weight: 600;
-    font-size: 17;
+}
+
+#top a{
+    font-size: 30px;
+    display: block;
+    line-height: 30px;
     color: white;
+    text-decoration: none; 
 }
 
-#list-role p:first-letter{
-    text-transform: uppercase;
+#top p{
+    font-size: 17px;
+    color: white;
+    line-height: 30px;
+    text-decoration: none;
+    font-family: 'Helvetica Neue';
 }
 
-#changePB{
-    font-size: 14px;
-    font-weight: 500;
-    margin-top: 3.5em;
-    margin-left: 1em;
+.square{
+    padding-top: 14px;
+    padding-bottom: 9px;
 }
 
-#pb-file{
-   float: right; 
-   margin-right: -4.5em;
-   margin-top: -2.5em;
+#dashbord{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
 }
+
+#dashbord a{
+    margin-right: 7px;
+}
+.box{
+    width: 7px;
+    height: 83px;
+    top: 0;
+    margin-top: -14px;
+    background-color: #cf2424;
+    float: left;
+    border-right: 1px solid #484848;
+}
+
+#repBox, #evBox, #forBox{
+    display: none;
+}
+#rapporter:hover{
+    background-color: #5c5c5c;
+}
+
+#rapporter:hover #repBox{
+    display: block;
+}
+
+#rapporter:hover a{
+    margin-right: 7px;
+}
+
+#evaluering:hover{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+#evaluering:hover #evBox{
+    display: block;
+}
+
+#evaluering:hover a{
+    margin-right: 7px;
+}
+#forberedelser:hover{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+#forberedelser:hover #forBox{
+    display: block;
+}
+
+#forberedelser:hover a{
+    margin-right: 7px;
+}
+
+#btm{
+    width: 150px;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+    font-weight: 300;
+    text-align: center;
+    font-size: 12px;
+}
+
 
 .postClass{
     width: 500px;
@@ -133,7 +233,7 @@ html{
 .form{
     background-color: white;
     width: 500px;
-    margin-top: 15px;
+    margin-top: 105px;
     margin-bottom: 10px;
     border: 1px solid #d5d5d5;
     height: 175px;
@@ -146,8 +246,8 @@ form {
 
 #list-pb img{
     height: 65px;
-    margin-left: -5px;
-    margin-top: 15px;
+    margin-left: 35px;
+    margin-top: 20px;
     width: auto;
 }
 
@@ -159,7 +259,7 @@ form {
     border: none;
     resize: none;
     margin-left: 130px;
-    top: -85px;
+    top: -65px;
     position: relative;
 
 }
@@ -186,7 +286,7 @@ form {
 }
 
 #tekstboks{
-    height: 110px;
+    height: 130px;
     width: 500px;
     border-bottom: 1px solid #C2C2C2;
 }
@@ -223,8 +323,8 @@ form {
 }
 
 #feedCell h5{
-    margin-left: 112px;
-    margin-top: -20px;
+    margin-left: 111px;
+    margin-top: 7px;
     margin-bottom: 3em;
     font-weight: 400;
     color: grey;
@@ -333,7 +433,7 @@ i[name="likeIcon"]{
 }
 
 #commentSection textarea{
-    font-family: Microsoft Sans Serif, Verdana;
+    font-family: 'Helvetica Neue';
     font-weight: 500;
     font-size: 15px;
     overflow: auto;
