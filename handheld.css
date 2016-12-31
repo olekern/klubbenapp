@@ -63,10 +63,14 @@ body{
     display: none;
 }
 
-
-#second{
+#second iframe{
     width: 100%;
-    height: 190px;
+}
+
+
+#third{
+    width: 100%;
+    height: 130px;
     background-color: white;
     right: 0;
     margin-right: 0;
@@ -83,7 +87,7 @@ body{
     font-weight: 200;
     text-align: center;
     color: black;
-    padding-top: 50px;
+    padding-top: 10px;
 }
 
 #sitat img{
@@ -91,54 +95,12 @@ body{
 }
 
 
-#second h4{
+#third h4{
     float: right;
     font-size: 12px;
     font-weight: 300;
     margin-top: -15px;
     margin-right: 15px;
-}
-
-#third{
-    width: 100%;
-    height: 790px;
-    background-color: #ffc857;
-    right: 0;
-    margin-right: 0;
-    border-right: 0;
-}
-
-#third img{
-    width: 250px;
-    height: auto;
-    float: left;
-    margin-left: 55px;
-}
-
-#text{
-    float: left;
-    margin-top: -6px;
-}
-
-#third h3{
-    font-size: 23px;
-    font-weight: 100;
-    text-align: center;
-}
-
-#third h2{
-    font-size: 32px;
-    font-weight: 300;
-    text-align: center;
-    margin-top: -10px;
-}
-
-#third p{
-    font-size: 24px;
-    font-weight: 200;
-    text-align: center;
-    margin-top: -10px;
-
 }
 
 #fifth{
@@ -227,7 +189,7 @@ body{
     bottom: 0;
 }
 
-#iosNF{
+#androidrep{
     width: 250px;
     height: auto;
     float: left;
