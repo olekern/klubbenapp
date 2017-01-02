@@ -162,7 +162,7 @@
                 var outputReq = "";
                 query.equalTo("user", Parse.User.current());
                 query.find({
-<<<<<<< HEAD
+
                     success: function (objects) {
                         console.log(objects.length);
                         var role = objects[0].get("role");
@@ -201,7 +201,7 @@
                                             outputReq += "<button>" + "Avslå" + "</button>";
                                             outputReq += '<button name="' + name + '" type="button" onclick="acceptPlayerRequest(name);">' + 'Godkjenn' + '</button>';
                                             outputReq += "</div>"
-=======
+
                         success: function(objects) {
                             console.log(objects.length);
                             var role = objects[0].get("role");
@@ -245,7 +245,7 @@
                                         },
                                         error: function(error) {
                                             console.log("Query error:" + error.message);
->>>>>>> 96c7f8094b83b76e1b9be8157416eb06e603df68
+
                                         }
                                     }
                                     $("#list-req").html(outputReq);
@@ -485,7 +485,6 @@
                                 if (commentid.length == 1) {
                                     output += '<p onclick="return show();">' + commentid.length + ' kommentar</p>';
                                 }
-<<<<<<< HEAD
                                 else {
                                     output += '<p onclick="return show();">' + commentid.length + ' kommentarer</p>';
                                 }
@@ -525,7 +524,6 @@
                                         }
                                         else {
                                             userPB = '<img src="./img/User_Small.png">';
-=======
                                 output += "</div>";
                                 output += "</div>";
                                 output += '<div id="all-comments">';
@@ -566,7 +564,6 @@
                                             //output += "<h5>" + ctdatoen + "</h5>";
                                             output += "<p>" + ctxt + "</p>";
                                             output += "</div>";
->>>>>>> 96c7f8094b83b76e1b9be8157416eb06e603df68
                                         }
                                         output += '<div class="comments" id="comments' + i + '">';
                                         output += "<div id=\"profilBildeC\">";
