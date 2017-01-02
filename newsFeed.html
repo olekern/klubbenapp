@@ -162,6 +162,7 @@
                 var outputReq = "";
                 query.equalTo("user", Parse.User.current());
                 query.find({
+<<<<<<< HEAD
                     success: function (objects) {
                         console.log(objects.length);
                         var role = objects[0].get("role");
@@ -200,6 +201,51 @@
                                             outputReq += "<button>" + "Avslå" + "</button>";
                                             outputReq += '<button name="' + name + '" type="button" onclick="acceptPlayerRequest(name);">' + 'Godkjenn' + '</button>';
                                             outputReq += "</div>"
+=======
+                        success: function(objects) {
+                            console.log(objects.length);
+                            var role = objects[0].get("role");
+                            console.log(role);
+                            outputRole += "<div id=\"userRole\">";
+                            outputRole += "<p>" + role + "</p>";
+                            outputRole += "</div>"
+                            $("#list-role").html(outputRole);
+                            if (role == "admin") {
+                            } else if (role == "trener") {
+                                //document.getElementById("forberedelser").remove();
+                                //document.getElementById("evaluering").remove();
+                            } else {
+                                document.getElementById("rapporter").remove();
+                                document.getElementById("evaluering").remove();
+                            
+                            }
+                            if ((role == "admin") || (role == "trener")) {
+                                var queryQ = new Parse.Query(Query);
+                                queryQ.descending("createdAt");
+                                queryQ.include("user");
+                                queryQ.find({
+                                        success: function(objects) {
+                                            outputReq += '<h1 id="request-heading">' + "Forespørsler" + "</h1>";
+                                            for (var a in objects) {
+                                                objects[a].toJSON();
+                                                var content = objects[a].get("accepted");
+                                                var user = objects[a].get("user");
+                                                var name = user.get("name");
+                                                var accept = objects[a].get("accepted");
+                                                if (accept == false) {
+                                                    console.log(name);
+                                                    outputReq += "<div id=\"all-requests\">";
+                                                    outputReq += "<p>" + name + "</p>";
+                                                    outputReq += "<button>" + "Avslå" + "</button>";
+                                                    outputReq += '<button name="' + name + '" type="button" onclick="acceptPlayerRequest(name);">' + 'Godkjenn' + '</button>';
+                                                    outputReq += "</div>"
+                                                }
+                                            }
+                                            $("#list-req").html(outputReq);
+                                        },
+                                        error: function(error) {
+                                            console.log("Query error:" + error.message);
+>>>>>>> 96c7f8094b83b76e1b9be8157416eb06e603df68
                                         }
                                     }
                                     $("#list-req").html(outputReq);
@@ -439,6 +485,7 @@
                                 if (commentid.length == 1) {
                                     output += '<p onclick="return show();">' + commentid.length + ' kommentar</p>';
                                 }
+<<<<<<< HEAD
                                 else {
                                     output += '<p onclick="return show();">' + commentid.length + ' kommentarer</p>';
                                 }
@@ -478,6 +525,48 @@
                                         }
                                         else {
                                             userPB = '<img src="./img/User_Small.png">';
+=======
+                                output += "</div>";
+                                output += "</div>";
+                                output += '<div id="all-comments">';
+                                output += '<div id="commentSection">';
+                                output += '<i class="fa fa-comment-o" id="commentIcon" aria-hidden="true"></i>';
+                                output += '<textarea rows="1" cols="40 name="text" id="text' + i + '" placeholder="Skriv en kommentar"></textarea>';
+                                output += '<button type="button" name="' + realPost + '" id="' + i + '" onclick="submitComment(id, name)">Publiser</button>';
+                                output += '</div>';
+                                commentid = results[i].get("comments");
+                                var m;
+                                if (commentid != null) {
+                                    for (var i in commentid) {
+                                        if (commentid[i] != null) {
+                                            var ct = commentid[i];
+                                            var ctxt = ct.get("text");
+                                            var ctauth = ct.get("author");
+                                            var ctname = ctauth.get("name");
+                                            var ctdate = results[i].get("createdAt");
+                                            var ctdato = ctdate.toString();
+                                            var ctdatoen = ctdato.substring(4, 15);
+                                            
+                                            var pB = "";
+                                            var userPB = "";
+                                            if (ctauth.get("profileImage_small")) {
+                                                var bilde = ctauth.get("profileImage_small");
+                                                var url1 = bilde.url();
+                                                pB = '<img class="pb" src="' + url1 + '">';
+                                            } else {
+                                                userPB = '<img class="pb" src="./img/no-pb.png">';
+                                                    }
+        
+                                            output += '<div class="comments" id="comments' + i +'">';
+                                            output += "<div id=\"profilBildeC\">";
+                                            output += pB;
+                                            output += userPB;
+                                            output += "</div>"
+                                            output += "<h4>" + ctname + "</h4>";
+                                            //output += "<h5>" + ctdatoen + "</h5>";
+                                            output += "<p>" + ctxt + "</p>";
+                                            output += "</div>";
+>>>>>>> 96c7f8094b83b76e1b9be8157416eb06e603df68
                                         }
                                         output += '<div class="comments" id="comments' + i + '">';
                                         output += "<div id=\"profilBildeC\">";

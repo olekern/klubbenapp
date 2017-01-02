@@ -66,10 +66,7 @@ html{
     background-color: #cf2424;
     z-index: 25;
     position: fixed;
-    border-bottom: 1px solid #b62929;
-    /*
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    */
     top: 0;
 }
 
