@@ -17,12 +17,14 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+    
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
@@ -58,15 +60,15 @@ html{
 	   position: fixed;
 	   z-index: 1000;
 	}
+
 .nav {
     height: 79px;
     background: #cf2424;
     width: 100%;
     position: fixed;
-    top: 0;
-    left: 0;
+    z-index: 100;
     border-bottom: 1px solid #b62929;
-    z-index: 1000;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 1); 
 }
 
 #logo{
@@ -115,12 +117,12 @@ html{
 }
 
 #profile-pb img{
-    height: 45px;
+    height: 48px;
     width: auto;
     border-radius: 50%;
     border: 1px solid white;
     float: right;
-    margin-top: 18px;
+    margin-top: 18px; 
 }
 
 #signOut{
@@ -130,13 +132,21 @@ html{
 
 #side-menu{
     float: left;
-    height: 90%;
+    height: calc(100% - 79px);
     width: 150px;
+    z-index: 50;
     position: fixed;
     background-color: #343434;
-    top: 80px;
     color: white;
-    z-index: 100;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5); 
+    top: 79px;
+}
+
+.wrapper {
+    position: relative;
+    float: right;
+    top: 79px;
+    width: calc(100% - 150px);
 }
 
 #top{
@@ -205,7 +215,7 @@ html{
 }
 #evaluering:hover #evBox{
     display: block;
-}
+}a
 
 #evaluering:hover a{
     margin-right: 7px;
@@ -227,119 +237,142 @@ html{
     color: white;
     position: absolute;
     bottom: 0;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     font-weight: 300;
     text-align: center;
     font-size: 12px;
 }
 
-
 .postClass{
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 40%;
+    max-width: 800px;
+    margin-left: 150px;
+    margin-right: 0px;
+    display: table;
+    margin: 0 auto;
 }
 
 .form{
-    background-color: white;
-    width: 500px;
-    margin-top: 105px;
-    margin-bottom: 10px;
+    background-color: white;    
+    margin-top: 60px;
+    margin-bottom: 50px;
     border: 1px solid #d5d5d5;
-    height: 145px;
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 5px;
+    height: 164px;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5); 
 }
-form {
-    margin-bottom: 60px;
+
+.form:hover {
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 1);
+}
+
+#tekstboks{
+    margin: 24px;
+    height: 80px;
+    width: calc(100% - 48px);
+    border-bottom: 1px solid #C2C2C2;
 }
 
 #list-pb img{
-    height: 65px;
-    margin-left: 35px;
-    margin-top: 20px;
+    height: 64px;
+    border-radius: 32px;
     width: auto;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 1);
 }
 
+.form textarea:focus {
+  border-color: #999999;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #999999;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #999999;
+} 
 
 .form textarea{
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
-  Microsoft Sans Serif;
-    font-weight: 500;
-    overflow: auto;
-    border: none;
+    font-family: "Helvetica Neue", "Microsoft Sans Serif";
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border-color: #C7C4C4;
+    width: calc(100% - 96px);
+    height: 44px;
     resize: none;
-    margin-left: 130px;
-    top: -65px;
+    margin-left: 78px;
+    top: -64px;
     position: relative;
+    padding: 8px;
+    box-shadow: 0px 1px 4px -2px rgba(0, 0, 0, 1);
+    
+    -moz-transition: all .5s;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    border: 1px solid #eee;
 
 }
 
 #post-file{
-    margin-left: 40px;
+    margin-left: 24px;
     position: relative;
-    top: 13px;
+    top: -4px;
 }
 
 .form button{
     float: right;
-    margin-right: 10px;
-    margin-top: 6px;
+    margin-right: 24px;
     padding: 6px 8px;
     color: #fff;
     border: none;
-    background-color: #2ECC71;
-    border-bottom: 4px solid #27AE60;
+    margin-top: -10px;
+    background-color: #D94842;
+    border-bottom: 3px solid #A0332F;
     font-size: 12px;
     font-weight: 600;
-    display: block;
     cursor: pointer;
+    width: 100px;
+    border-radius: 15px;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5); 
 }
 
-#tekstboks{
-    height: 100px;
-    width: 500px;
-    border-bottom: 1px solid #C2C2C2;
-}
-
-#list-posts {
-    width: 512px;
-    word-wrap: break-word;
-    padding: 0;
-    margin-left: -4px;
-}
-
-#list-posts img {
-    width: 400px;
-    height: auto;
-    padding-bottom: 10px;
+#feedPost {
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
 
 #feedCell{
     background-color: white;
     border: 1px solid #d5d5d5;
+    padding-top: 20px;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin: 0px;
 }
 
+#list-posts img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5%;
+    margin-bottom: 16px;
+}
+
+
 #profilBilde img{
-    height: 65px;
-    margin-left: 0px;
-    margin-top: 5px;
+    height: 50px;
     width: auto;
+    border-radius: 50%;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5); 
 }
 
 #feedCell h4{
-    margin-left: 110px;
-    margin-top: -65px;
-    font-size: 18px;
-    font-weight: 500;
+    margin-left: 64px;
+    margin-top: -60px;
+    font-size: 17px;
+    color: #2D2D2D;
 }
 
 #feedCell h5{
-    margin-left: 111px;
+    margin-left: 72px;
     margin-top: 7px;
-    font-weight: 400;
-    color: grey;
-    font-size: 15px;
+    font-size: 17px;
+    color: #707070;
 }
 
 #feedCell p{
@@ -347,134 +380,112 @@ form {
     font-weight: 300;
     margin-left: 5px;
     line-height: 25px;
-    padding-bottom: 10px;
-    margin-top: 25px;
-    
-}
-
-#post{
-    padding-top: 15px;
-    padding-left: 30px;
-    padding-right: 30px;
+    margin-top: 32px;
+    margin-bottom: 16px;
 }
 
 #like-comment{
     padding: 0;
-    height: 30px;
-    width: 500px;
-    margin-left: -3px;
+    height: 32px;
+    width: 100%;
     background-color: white;
     border-top: 1px solid #d5d5d5;
     padding-top: 8px;
+    padding-bottom: 8px;
+    clear:both;
 }
 
-i[name="likeIconPressed"]{
-    position: absolute;
-    margin-left: 20px;
-    margin-top: -2px;
-    font-size: 30px;
-    color: #cf2424;
-    cursor: pointer;
-}
 
-i[name="likeIcon"]{
-    position: absolute;
-    margin-left: 20px;
-    margin-top: -2px;
-    font-size: 30px;
-    color: black;
-    cursor: pointer;
+
+
+#like-comment img {
+    height: 100%;
+    width: auto;
+    float: left;
 }
 
 #like-comment h4{
     font-size: 17px;
     font-weight: 300;
-    margin-left: 65px;
-    display: inline;
+    margin: 12px 0 0 16px;
+    float: left;
 }
 
 #like-comment p{
-    display: inline;
     font-size: 17px;
     font-weight: 300;
-    margin-left: 230px;
+    margin: 6px 0;
+    float: right;
 }
 
-/*
-#like-comment span{
-    background: #cf2424;
-    color: white;
-    font-size: 13px;
-    height: 30px;
-    width: 100px;
-    letter-spacing: 1px;
-    line-height: 30px;
-    margin: 0 auto;
-    position: relative;
-    text-align: center;
-    top: 10px;
-    left: -125px;
-    display:none;
-    z-index: 2;
-
-}
-
-#like-comment h4:hover span{
-    display:block;
-
-}
-*/
 
 #all-comments{
-    margin-bottom: 15px;
+    margin-bottom: 40px;
+    background-color: #f7f7f7;
+    border: 1px solid #d5d5d5;
 }
 
 #commentSection{
-    width: 500px;
     height: 50px;
-    margin-left: 5px;
-    background-color: #f7f7f7;
-    border: 1px solid #d5d5d5;
+    margin-left: 20px;
+    clear:both;
+
 }
 
 #commentIcon{
     position: absolute;
     margin-top: 7px;
-    margin-left: 20px;
+    margin-left: 16px;
     font-size: 30px;
     color: #b4b4b4;
+    float: left;
 }
 
 #commentSection textarea{
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
-  Microsoft Sans Serif;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Microsoft Sans Serif";
     font-weight: 400;
     font-size: 15px;
-    overflow: auto;
     resize: none;
-    margin-top: 7px;
-    margin-left: 70px;
+    width: calc(100% - 180px);
+    margin-top: 4px;
+    margin-left: 64px;
+    height: 28px;
     border: 1px solid #d5d5d5;
-    position: relative;
-    height: 27px;
-    padding-left: 10px;
-    padding-top: 8px;
-    padding-right: 10px;
+    padding-left: 8px;
+    padding-top: 6px;
+    padding-right: 8px;
+    
+    border-color: #C7C4C4;
+    box-shadow: 0px 1px 4px -2px rgba(0, 0, 0, 1);
+    
+    -moz-transition: all .5s;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    border: 1px solid #eee;
 }
+
+#commentSection textarea:focus {
+  border-color: #999999;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #999999;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #999999;
+} 
 
 #commentSection button{
     float: right;
-    margin-right: 15px;
-    margin-top: 11px;
-    padding: 4px 5px;
+    margin-right: 8px;
+    margin-top: 8px;
     color: #fff;
     border: none;
-    background-color: #01baef;
-    border-bottom: 3px solid #00a7d7;
+    background-color: #D94842;
+    border-bottom: 3px solid #A0332F;
     font-size: 11px;
     font-weight: 500;
-    display: block;
     cursor: pointer;
+    width: 80px;
+    height: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -484,15 +495,15 @@ i[name="likeIcon"]{
     float: right;
     background-color: #34495e;
     top: 0;
-    right: 0;
+    right: 0;´
     margin-top: 6em;
 }
 
-#request-heading{
+#request-heading{´
     color: white;
     font-weight: 600;
     font-size: 18px;
-    margin-left: 2em;
+    margin-left: 2em;´
 }
 
 #all-requests{
@@ -506,51 +517,51 @@ i[name="likeIcon"]{
 }
 
 .comments{
-    width: 485px;
-    margin-left: 5px;
+    margin: 0 4px;
     background-color: #f7f7f7;
-    border: 1px solid #d5d5d5;
-    padding-left: 15px;
-    overflow: auto;
+    border-top: 1px solid #d5d5d5;
+    overflow: hidden;
 }
 
-#profilBildeC img{
-    height: 35px;
-    width: auto;
-    padding-top: 5px;
+#profilBildeC {
+    float: left;
+}
+
+#commentTextC {
+    float: left;
+    width: calc(100% - 72px);
+    margin-left: 64px;
+    margin-top: -68px;
+}
+
+#profilBildeC img {
+    margin: 12px;
+    border-radius: 50%;
+    height: 48px;
+    width: 48px;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
 }
 
 .comments h4{
-    margin: 0;
-    padding: 0;
-    font-size: 17px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 700;
     float: left;
-    margin-top: -38px;
-    padding-left: 55px;
+    margin: 8px 0px 0px 8px;
 }
 
-/*
+
 .comments h5{
-    margin: 0;
-    padding: 0;
     font-size: 15px;
     font-weight: 500;
-    float: left;
-    padding-top: 2px;
     float: right;
-    padding-right: 10px;
+    margin: 8px 8px 0px 0px;
+
 }
 
-*/
+
 .comments p{
-    margin: 0;
-    padding: 0;
     font-size: 16px;
     font-weight: 400;
-    margin-top: -38px;
-    padding-bottom: 10px;
-    margin-left: 280px;
-    display: block;
     word-wrap: break-word;
+    margin: 28px 8px 16px 8px;
 }
