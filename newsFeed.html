@@ -54,7 +54,8 @@
                     </div>
                 <div id="forberedelser" class="square">
                     <div class="box" id="forBox"></div>
-                    <a href="forberedelserT.html" class="fa fa-bar-chart" aria-hidden="true"><p>Laget</p></a>
+                    <a href="team.html" class="fa fa-users" aria-hidden="true"><p>Laget</p></a>
+
                 </div>
             </div>
             <div id="btm">
@@ -193,9 +194,9 @@
                                 //document.getElementById("forberedelser").remove();
                                 //document.getElementById("evaluering").remove();
                             } else {
-                                //document.getElementById("forberedelserT").remove();
-                                //document.getElementById("evalueringT").remove();
-                                //document.getElementById("søndag").remove();
+                                document.getElementById("rapporter").remove();
+                                document.getElementById("evaluering").remove();
+                            
                             }
                             if ((role == "admin") || (role == "trener")) {
                                 var queryQ = new Parse.Query(Query);
@@ -500,7 +501,7 @@
                                             output += "<h4>" + ctname + "</h4>";
                                             //output += "<h5>" + ctdatoen + "</h5>";
                                             output += "<p>" + ctxt + "</p>";
-                                            output += "</div>"
+                                            output += "</div>";
                                         }
                                     }
                                 }

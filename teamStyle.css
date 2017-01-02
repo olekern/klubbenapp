@@ -156,12 +156,12 @@ html, body {
     padding-bottom: 9px;
 }
 
-#evaluering{
+#team{
     background-color: #5c5c5c;
     border-top: 1px solid #484848;
 }
 
-#evaluering a{
+#team a{
     margin-right: 7px;
 }
 .box{
@@ -174,7 +174,7 @@ html, body {
     border-right: 1px solid #484848;
 }
 
-#dashBox, #repBox, #forBox{
+#dashBox, #repBox, #evBox{
     display: none;
 }
 #dashbord:hover{
@@ -200,15 +200,15 @@ html, body {
 #rapporter:hover a{
     margin-right: 7px;
 }
-#forberedelser:hover{
+#evaluering:hover{
     background-color: #5c5c5c;
     border-top: 1px solid #484848;
 }
-#forberedelser:hover #forBox{
+#evaluering:hover #evBox{
     display: block;
 }
 
-#forberedelser:hover a{
+#evaluering:hover a{
     margin-right: 7px;
 }
 
@@ -223,110 +223,48 @@ html, body {
     font-size: 12px;
 }
 
-#chart1 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-    
-}
-#chart2 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-}
-#chart3 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-}
-#chart4 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-}
-#chart5 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-}
-#chart6 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-}
 .ct-labels span {
     color: black;
 }
 
-h1 {
-    font-size: 25px;
-    font-family: Microsoft Sans Serif, Verdana;
-    font-weight: lighter;
-    text-align: center;
-}
-h2 {
-    font-size: 20px;
-    font-family: Microsoft Sans Serif, Verdana;
-    font-weight: 500;
-    text-align: center;
-    margin-top: 3em;
-}
-.newboxes {
-    border: 0 solid;
-    display: block;
-}
-.rapporter {
-    height: 2em;
-    background: #c94832;
-    width: 21em;
+.listPlayers{
+    width: 800px;
     margin-left: auto;
     margin-right: auto;
-}
-.rapporter ul {
-    padding:0;
-}
-.rapporter ul li {
-    list-style:none;
-}
-.rapporter ul li a {
-    text-decoration: none;
-    display: block;
-    padding: 0.5em 3em;
-    color: white;
-    width: 1em;
-    float: left;
-    margin-left: auto;
-    margin-right: auto;
-}
-.rapporter ul li a:hover {
-    background-color:#e05038;
-    height: 1em;
-}
-#feedBack {
-    background-color: white;
-    width: 25em;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1em;
+    margin-top: 130px;
 }
 
-#injury {
-    background-color: white;
-    width: 25em;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1em;
-    
+.player{
+    width: 400px;
+    height: 100px;
+    border-bottom: 1px solid lightgrey;
+    margin-top: 20px;
+}
+
+.text{
+    float: left;
+    margin-left: 30px;
+    margin-top: 7px;
+}
+
+#list-team img{
+    border-radius: 50%;
+    border: 1px solid white;
+    height: 60px;
+    width: auto;
+    float: left;
+}
+
+#list-team h3{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+#list-team h4{
+    color: #a6a6a6;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 25px;
+    text-transform: capitalize;
 }
