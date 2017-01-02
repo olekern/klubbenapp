@@ -69,6 +69,7 @@ html, body {
     top: 0;
     left: 0;
     border-bottom: 1px solid #b62929;
+    z-index: 100;
 }
 
 #logo{
@@ -329,6 +330,7 @@ textarea{
     padding-left: 10px;
     padding-top: 8px;
     padding-right: 10px;
+    z-index: 10;
 }
 
 button{
