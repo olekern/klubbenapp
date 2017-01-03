@@ -205,18 +205,20 @@ html{
 
 #second > p {
     float: left;
-    width: calc(100% - 1000px);
-    margin: 60px 100px;
+    width: calc(60% - 120px);
+    max-width: 350px;
+    margin: 10px;
     font-size: 30px;
     font-weight: 200;
     line-height: 35px;
-
+    max-height: 300px;
 }
 
 #second iframe{
-    width: 550px;
+    width: 40%;
+    height: 380px;
     float: right;
-    margin: 40px;
+    margin: 10px;
 }
 
 #third{
