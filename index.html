@@ -24,14 +24,20 @@
         Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
 
         function getLink() {
-            var currentuser = Parse.User.current();
-            if (currentuser) {
-                location.href = "newsFeed.html";
-            }
-            else {
-                location.href = "registration.html";
+            var uagent = navigator.userAgent.toLowerCase();
+            if (uagent.search("iphone") > -1){
+                location.href = "itms://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8";
+            } else {
+                var currentuser = Parse.User.current();
+                if (currentuser) {
+                    location.href = "newsFeed.html";
+                }
+                else {
+                    location.href = "registration.html";
+                }
             }
         }
+
     </script>
     <div id="nav"> <img src="./img/Ikon.png"> <a id="name" href="index.html">Klubben</a> <a id="app" onclick="getLink()">Gå til appen</a> </div>
     <div id="first">
