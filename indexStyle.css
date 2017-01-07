@@ -76,17 +76,21 @@ h2 {
 
 h3 {
     font-size: 25px;
-    font-weight: 300;
+    font-weight: 400;
     text-align: center;
 }
 
 h4 {
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 400;
+}
+
+p {
+    font-weight: 400;
 }
 
 .left {
-     width: 50%;
+    width: 50%;
     height: 100%;
     float: left;
 }
