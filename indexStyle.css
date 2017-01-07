@@ -147,7 +147,7 @@ h4 {
 
 #app {
     float: right;
-    margin-right: 5%;
+    margin-right: 4%;
     font-size: 18px;
     margin-top: 33px;
 }
@@ -249,10 +249,6 @@ h4 {
 \*=====================*/
 
 
-#second h1 {
-    max-width: 600px;
-}
-
 #second iframe {
     width: 80%;
     max-width: 600px;
@@ -266,9 +262,10 @@ h4 {
         height: 380px;
     }
     
-    #second h1 {
+    #second h3 {
         float: right;
         margin: 50px;
+        max-width: 600px;
     }
 }
 
@@ -292,7 +289,11 @@ h4 {
     #second * {
         width: calc(100%-20px);
         display: inline-block;
-        margin: 10px;
+    }
+    
+    #second h3 {
+        margin: 20px 20px 0px 20px;
+        max-width: 400px;
     }
 }
 
