@@ -1,6 +1,6 @@
 body {
-    background-color: #040916;
-    color: white;
+    background-color: white/*#040916*/;
+    color: #000000;
     margin: 16px;
 }
 
