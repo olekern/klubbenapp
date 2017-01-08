@@ -85,85 +85,16 @@
 
         </div>
 
-
+        
+        <script type="text/javascript" src="../js/usersession.js"></script>
+        <script type="text/javascript" src="../js/pb.js"></script>
+        <script type="text/javascript" src="../js/roles.js"></script>
+        <script type="text/javascript" src="../js/survstat.js"></script>
 
         <script>
             //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
              //Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
             Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
-
-            function checkLogin() {
-                if (Parse.User.current) {
-                    $("#brukernavn").html(Parse.User.current().get("name"))
-                } else {
-                    $("#brukernavn").html("");
-                }
-            }
-            checkLogin();
-            
-            var klubbID;
-            function roles() {
-                klubbID = Parse.User.current().get("team").id;
-                var Query = Parse.Object.extend("data_" + klubbID + "_Members");
-                var query = new Parse.Query(Query);
-                query.find().then(function() {
-                        }, function(err) {
-                handleParseError(err);
-                        });
-                
-                var outputRole = "";
-                var outputReq = "";
-                query.equalTo("user", Parse.User.current());
-                query.find({
-                        success: function(objects) {
-                            console.log(objects.length);
-                            var role = objects[0].get("role");
-                            console.log(role);
-                            outputRole += "<div id=\"userRole\">";
-                            outputRole += "<p>" + role + "</p>";
-                            outputRole += "</div>"
-                            $("#list-role").html(outputRole);
-                            if (role == "admin") {
-                            } else if (role == "trener") {
-                                //document.getElementById("forberedelser").remove();
-                                //document.getElementById("evaluering").remove();
-                            } else {
-                                document.getElementById("rapporter").remove();
-                                document.getElementById("evaluering").remove();
-      
-                            }
-                            
-                        },
-                        error: function(error) {
-                            alert("Error: " + error.code + " " + error.message);
-                            handleParseError();
-                        }
-                    });
-            }
-            roles();
-            
-            function getPB() {
-                var outputImg = "";
-                var user = Parse.User.current();
-                var userImg = "";
-                var noUserImg = "";
-                if (user.get("profileImage_small")) {
-                    var brukerPB = user.get("profileImage_small");
-                    var PBUrl = brukerPB.url();
-                    console.log("Url:" + PBUrl);
-                    userImg = "<img src='" + PBUrl + "'>";
-                } else{
-                    noUserImg = '<img src="./img/no-pb.png">';
-                    console.log("Supert");
-                }
-                outputImg += "<div id=\"userPB\">";
-                outputImg += userImg;
-                outputImg += noUserImg;
-                outputImg += "</div>"
-                $("#list-pb").html(outputImg);
-                $("#profile-pb").html(outputImg);
-            }
-            getPB();
 
             //var klubbID = localStorage.getItem("clubId");
             var klubbID = Parse.User.current().get("team").id;
@@ -187,7 +118,7 @@
                                     var url1 = bilde.url();
                                     pB = '<img class="pb1" src="' + url1 + '">';
                                 } else {
-                                    userPB = '<img class="pb1" src="./img/no-pb.png">';
+                                    userPB = '<img class="pb1" src="../img/no-pb.png">';
                                          }
                             
                                 output += '<div class="player">';
