@@ -1,0 +1,117 @@
+.square{
+    padding-top: 14px;
+    padding-bottom: 9px;
+}
+
+#team{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+
+#team a{
+    margin-right: 7px;
+}
+.box{
+    width: 7px;
+    height: 83px;
+    top: 0;
+    margin-top: -14px;
+    background-color: #cf2424;
+    float: left;
+    border-right: 1px solid #484848;
+}
+
+#dashBox, #repBox, #evBox{
+    display: none;
+}
+#dashbord:hover{
+    background-color: #5c5c5c;
+}
+
+#dashbord:hover #dashBox{
+    display: block;
+}
+
+#dashbord:hover a{
+    margin-right: 7px;
+}
+
+#rapporter:hover{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+#rapporter:hover #repBox{
+    display: block;
+}
+
+#rapporter:hover a{
+    margin-right: 7px;
+}
+#evaluering:hover{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+#evaluering:hover #evBox{
+    display: block;
+}
+
+#evaluering:hover a{
+    margin-right: 7px;
+}
+
+#btm{
+    width: 150px;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+    font-weight: 300;
+    text-align: center;
+    font-size: 12px;
+}
+
+.ct-labels span {
+    color: black;
+}
+
+.listPlayers{
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 130px;
+}
+
+.player{
+    width: 400px;
+    height: 100px;
+    border-bottom: 1px solid lightgrey;
+    margin-top: 20px;
+}
+
+.text{
+    float: left;
+    margin-left: 30px;
+    margin-top: 7px;
+}
+
+#list-team img{
+    border-radius: 50%;
+    border: 1px solid white;
+    height: 60px;
+    width: auto;
+    float: left;
+}
+
+#list-team h3{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+#list-team h4{
+    color: #a6a6a6;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 25px;
+    text-transform: capitalize;
+}

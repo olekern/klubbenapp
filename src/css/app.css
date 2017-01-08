@@ -17,12 +17,14 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+    
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
@@ -42,21 +44,32 @@ table {
 	border-spacing: 0;
 }
 
-
-html, body {
-    height: 100%;
-    width: 100%;
+html{
+    height: 500%;
+    background-color: #EDEDED;
+    overflow-x: hidden;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
   Microsoft Sans Serif;
 }
+
+#dvLoading
+	{
+	   background: #cf2424 url(images/loader.gif) no-repeat center center;
+	   height: 100%;
+	   width: 100%;
+	   position: fixed;
+	   z-index: 1000;
+	}
+
 .nav {
     height: 79px;
+    top: 0;
     background: #cf2424;
     width: 100%;
     position: fixed;
-    top: 0;
-    left: 0;
+    z-index: 100;
     border-bottom: 1px solid #b62929;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 1); 
 }
 
 #logo{
@@ -105,12 +118,12 @@ html, body {
 }
 
 #profile-pb img{
-    height: 45px;
+    height: 48px;
     width: auto;
     border-radius: 50%;
     border: 1px solid white;
     float: right;
-    margin-top: 18px;
+    margin-top: 18px; 
 }
 
 #signOut{
@@ -120,13 +133,21 @@ html, body {
 
 #side-menu{
     float: left;
-    height: 90%;
+    height: calc(100% - 79px);
     width: 150px;
+    z-index: 50;
     position: fixed;
     background-color: #343434;
-    top: 80px;
     color: white;
-    z-index: 100;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5); 
+    top: 79px;
+}
+
+.wrapper {
+    position: relative;
+    float: right;
+    top: 79px;
+    width: calc(100% - 150px);
 }
 
 #top{
@@ -149,122 +170,4 @@ html, body {
     text-decoration: none;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
   Microsoft Sans Serif;
-}
-
-.square{
-    padding-top: 14px;
-    padding-bottom: 9px;
-}
-
-#team{
-    background-color: #5c5c5c;
-    border-top: 1px solid #484848;
-}
-
-#team a{
-    margin-right: 7px;
-}
-.box{
-    width: 7px;
-    height: 83px;
-    top: 0;
-    margin-top: -14px;
-    background-color: #cf2424;
-    float: left;
-    border-right: 1px solid #484848;
-}
-
-#dashBox, #repBox, #evBox{
-    display: none;
-}
-#dashbord:hover{
-    background-color: #5c5c5c;
-}
-
-#dashbord:hover #dashBox{
-    display: block;
-}
-
-#dashbord:hover a{
-    margin-right: 7px;
-}
-
-#rapporter:hover{
-    background-color: #5c5c5c;
-    border-top: 1px solid #484848;
-}
-#rapporter:hover #repBox{
-    display: block;
-}
-
-#rapporter:hover a{
-    margin-right: 7px;
-}
-#evaluering:hover{
-    background-color: #5c5c5c;
-    border-top: 1px solid #484848;
-}
-#evaluering:hover #evBox{
-    display: block;
-}
-
-#evaluering:hover a{
-    margin-right: 7px;
-}
-
-#btm{
-    width: 150px;
-    color: white;
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 15px;
-    font-weight: 300;
-    text-align: center;
-    font-size: 12px;
-}
-
-.ct-labels span {
-    color: black;
-}
-
-.listPlayers{
-    width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 130px;
-}
-
-.player{
-    width: 400px;
-    height: 100px;
-    border-bottom: 1px solid lightgrey;
-    margin-top: 20px;
-}
-
-.text{
-    float: left;
-    margin-left: 30px;
-    margin-top: 7px;
-}
-
-#list-team img{
-    border-radius: 50%;
-    border: 1px solid white;
-    height: 60px;
-    width: auto;
-    float: left;
-}
-
-#list-team h3{
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 25px;
-}
-
-#list-team h4{
-    color: #a6a6a6;
-    font-size: 20px;
-    font-weight: 300;
-    line-height: 25px;
-    text-transform: capitalize;
 }

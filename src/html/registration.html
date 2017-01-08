@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.parsecdn.com/js/parse-latest.js"></script>
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <link rel="stylesheet" type="text/css" href="./regStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/regStyle.css" />
     <meta charset="utf-8">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <link rel="stylesheet" href="./font-awesome-4.6.3/css/font-awesome.min.css">
-    <link rel="icon" type="image/png" href="./img/blackfavicon-32x32.png" sizes="32x32" />
-        <link rel="icon" type="image/png" href="./img/blackfavicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../img/blackfavicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="../img/blackfavicon-16x16.png" sizes="16x16" />
 
 
 </head>
@@ -26,14 +26,14 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
     <div class="imac">
-        <img src="./img/imac.png" alt="Image not found. Check internet connection.">
+        <img src="../img/imac.png">
     </div>
     
 
     <div class="logForm">
 
         <div class="innlogging">
-            <img src="./img/ball.png">
+            <img src="../img/ball.png">
             <form name="login" action="#">
                 <div class="form-input">
                 <input type="text" name="username" placeholder="Mail" onkeydown = "if (event.keyCode == 13)
@@ -115,21 +115,17 @@
             checkLogin();
 
         function logOut() {
-            Parse.User.logOut(
-                console.log("Logger ut"));
+            Parse.User.logOut(console.log("Logger ut"));
 
         }
 
         function logIn() {
             var name = document.login.elements[0].value;
             var pass = document.login.elements[1].value;
-            console.log(name);
-            console.log(pass);
             var loginError = "";
 
             Parse.User.logIn(name, pass, {
                     success: function() {
-                        console.log("Innlogging  suksessfull");
                         window.location = "newsFeed.html";
                     },
                     error: function(error) {
@@ -158,8 +154,6 @@
             user.set("username", mail)
             user.set("password", pass);
 
-            console.log("Signing up user...")
-
             user.signUp(null, {
                     success: function(user) {
                         console.log("New user signed up successfully!");
@@ -167,8 +161,6 @@
                         function logIn() {
             var email = mail;
             var passord = pass;
-            console.log(email);
-            console.log(passord);
             
     
 
