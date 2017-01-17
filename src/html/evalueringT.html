@@ -7,7 +7,7 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script type="text/javascript" src="https://www.parsecdn.com/js/parse-latest.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/style.css" />
-        <link rel="stylesheet" type="text/css" href="../css/reportStyle.css" />
+        <link rel="stylesheet" type="text/css" href="../css/statstyle.css" />
         <link rel="stylesheet" type="text/css" href="../css/app.css" />
         <title>Klubben | Rapporter</title>
         <meta charset="utf-8">
@@ -15,11 +15,16 @@
         <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet"> 
         <link rel="icon" type="image/png" href="../img/blackfavicon-32x32.png" sizes="32x32" />
         <link rel="icon" type="image/png" href="../img/blackfavicon-16x16.png" sizes="16x16" />
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+        <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
         
     </head>
 
     <body>
         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
         <div id="dvLoading"></div>
 
@@ -62,7 +67,8 @@
                 </div>
                 <div id="evaluering" class="square">
                     <div class="box" id="evBox"></div>
-                    <a href="evalueringT.html" class="fa fa-bar-chart" aria-hidden="true"><p>Oversikt</p></a>
+                    <a href="evalueringT.html" class="fa fa-bar-chart" aria-hidden="true">
+                        <p>Oversikt</p></a>
                     </div>
                 <div id="forberedelser" class="square">
                     <div class="box" id="forBox"></div>
@@ -77,10 +83,17 @@
         
         
         <div class="wrapper" id="reports">
-            <div class="forDiagram">
-                <ul id="list-surv">
+            <div class="stat">
+                <div id="list">
+                    <ul id="list-surv">
+                    </ul>
+                </div>
+                
+                <div id="answer">
+                    <ul id="list-answ">
 
-                </ul>
+                    </ul>
+                </div>
             </div>
 
 

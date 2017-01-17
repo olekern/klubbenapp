@@ -1,156 +1,3 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-
-html, body {
-    height: 100%;
-    width: 100%;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
-  Microsoft Sans Serif;
-}
-.nav {
-    height: 79px;
-    background: #cf2424;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    border-bottom: 1px solid #b62929;
-}
-
-#logo{
-    height: 50px;
-    width: auto;
-    float: left;
-    margin-left: 50px;
-    margin-top: 17px;
-}
-.nav ul {
-    margin:0;
-    padding:0;
-    overflow: hidden;
-    margin-right: 40px;
-}
-.nav ul li {
-    list-style:none;
-}
-
-
-.nav ul li a {
-    text-decoration: none;
-    float: right;
-    display: block;
-    padding: 32px 25px;
-    color: white;
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 15px;
-    letter-spacing: 1px;
-}
-
-.nav ul li a:hover {
-    color: lightgrey;
-}
-
-.navn{
-    text-decoration: none;
-    float: right;
-    display: block;
-    padding: 30px;
-    color: white;
-    font-weight: 300;
-    font-size: 20px;
-    letter-spacing: 1px;
-}
-
-#profile-pb img{
-    height: 45px;
-    width: auto;
-    border-radius: 50%;
-    border: 1px solid white;
-    float: right;
-    margin-top: 18px;
-}
-
-#signOut{
-    font-size: 23px;
-    margin-top: -2px;
-}
-
-#side-menu{
-    float: left;
-    height: 90%;
-    width: 150px;
-    position: fixed;
-    background-color: #343434;
-    top: 80px;
-    color: white;
-    z-index: 100;
-}
-
-#top{
-    width: 150px;
-    text-align: center;
-}
-
-#top a{
-    font-size: 30px;
-    display: block;
-    line-height: 30px;
-    color: white;
-    text-decoration: none; 
-}
-
-#top p{
-    font-size: 17px;
-    color: white;
-    line-height: 30px;
-    text-decoration: none;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
-  Microsoft Sans Serif;
-}
-
 .square{
     padding-top: 14px;
     padding-bottom: 9px;
@@ -191,7 +38,6 @@ html, body {
 
 #rapporter:hover{
     background-color: #5c5c5c;
-    border-top: 1px solid #484848;
 }
 #rapporter:hover #repBox{
     display: block;
@@ -223,66 +69,13 @@ html, body {
     font-size: 12px;
 }
 
-#chart1 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-    
-}
-#chart2 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-}
-#chart3 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-}
-#chart4 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-}
-#chart5 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-}
-#chart6 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85em;
-    height: 20em;
-}
-.ct-labels span {
-    color: black;
+.wrapper {
+    position: relative;
+    float: right;
+    top: 79px;
+    width: calc(100% - 150px);
 }
 
-h1 {
-    font-size: 25px;
-    font-family: Microsoft Sans Serif, Verdana;
-    font-weight: lighter;
-    text-align: center;
-}
-h2 {
-    font-size: 20px;
-    font-family: Microsoft Sans Serif, Verdana;
-    font-weight: 500;
-    text-align: center;
-    margin-top: 3em;
-}
 .newboxes {
     border: 0 solid;
     display: block;
@@ -314,19 +107,97 @@ h2 {
     background-color:#e05038;
     height: 1em;
 }
-#feedBack {
-    background-color: white;
-    width: 25em;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1em;
+
+.stat{
+    margin-top: 30px;
 }
 
-#injury {
+#surv{
+    border-top: 1px solid #d5d5d5;
+    border-bottom: 1px solid #d5d5d5;
+    width: 25%;
+    margin-left: 3%;
     background-color: white;
-    width: 25em;
+    max-width: 400px;
+    min-width: 200px;
+    padding: 10px;
+    border: 1px solid #d5d5d5;
+    z-index: 10;
+}
+
+#list-surv h3{
+    line-height: 27px;
+    font-weight: 400;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#list-surv h3:hover{
+    text-decoration: underline;
+}
+
+#answer{
+    top: 0;
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    width: 55%;
+    max-width: 700px;
+    min-width: 300px;
+    margin-left: 37%;
+    margin-top: 30px;
+}
+
+#list-answ{
+}
+
+#feedBack {
+    width: 400px;
+    margin-top: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    word-wrap: break-word;
+    border-bottom: 1px solid black;
+    color: black;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1em;
-    
+    margin-right: auto;
+}
+
+#feedback p{
+    line-height: 40px;
+}
+
+textarea{
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Microsoft Sans Serif;
+    font-weight: 400;
+    font-size: 15px;
+    overflow: auto;
+    resize: none;
+    margin-top: 30px;
+    border: 1px solid #d5d5d5;
+    position: relative;
+    height: 35px;
+    padding-left: 10px;
+    padding-top: 8px;
+    padding-right: 10px;
+    z-index: 10;
+}
+
+button{
+    float: right;
+    margin-right: 35px;
+    margin-top: 38px;
+    padding: 4px 5px;
+    color: #fff;
+    border: none;
+    background-color: #01baef;
+    border-bottom: 3px solid #00a7d7;
+    font-size: 11px;
+    font-weight: 500;
+    display: block;
+    cursor: pointer;
 }

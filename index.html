@@ -124,10 +124,12 @@
             <h1>Registrer 30 dagers prøveperiode</h1>
             <div class="left">
                 <h3>Registrer et nytt lag</h3>
-                <form name="reg">
+                <form name="reg" id="elements">
                     <input type="text" name="teamName" placeholder="Lagnavn" />
                     <input type="text" name="coachName" placeholder="Fullt navn på trener" />
-                    <input type="mail" name="coachMail" placeholder="Mailadresse til trener" /> </form>
+                    <input type="mail" name="coachMail" placeholder="Mailadresse til trener" />
+                    <input type="password" name="coachPass" placeholder="Passord til trener" />
+                </form>
             </div>
             <div class="right">
                 <h3>Faktureringsinformasjon</h3>
@@ -163,49 +165,14 @@
     <div id="footer">
         <p>&copy; 2017 Lustek AS</p>
     </div>
+    
+    <script type="text/javascript" src="./src/js/regtrainer.js"></script>
+    
     <script type="text/javascript">
         //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
         //Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
         Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
 
-        function getInfo() {
-            var registerTeams = Parse.Object.extend("RegisterTeams");
-            var teamName = document.reg.elements[0].value;
-            var coachName = document.reg.elements[1].value;
-            var coachMail = document.reg.elements[2].value;
-            var invMail = document.invoice.elements[0].value;
-            var invMob = document.invoice.elements[1].value;
-            var address = document.invoice.elements[2].value;
-            var postal = document.invoice.elements[3].value;
-            if ((teamName.length == 0) || (coachName.length == 0) || (coachMail.length == 0) || (invMail.length == 0) || (invMob.length == 0) || (address.length == 0) || (postal.length == 0)) {
-                console.log("Oopsey");
-            }
-            else {
-                if (document.getElementById('terms').checked) {
-                    console.log("Signing up team...");
-                    var team = new registerTeams();
-                    team.set("team", teamName);
-                    team.set("coachname", coachName);
-                    team.set("coachmail", coachMail);
-                    team.set("mailinvoice", invMail);
-                    team.set("phoneinvoice", invMob)
-                    team.set("address", address);
-                    team.set("postal", postal);
-                    team.save(null, {
-                        success: function (gameScore) {
-                            // Execute any logic that should take place after the object is saved.
-                            console.log("Signed up team");
-                            location.href = "./src/html/finreg.html";
-                        }
-                        , error: function (gameScore, error) {
-                            // Execute any logic that should take place if the save fails.
-                            // error is a Parse.Error with an error code and message.
-                            alert('Problem ved registrering');
-                        }
-                    });
-                }
-            }
-        }
         var monthNames = [
                 "Jan", "Feb", "Mar"
                 , "Apr", "May", "Jun", "Jul"

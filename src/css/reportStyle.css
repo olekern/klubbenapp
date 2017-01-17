@@ -77,12 +77,6 @@
     width: calc(100% - 150px);
 }
 
-#list-surv{
-    width: 300px;
-    background-color: blue;
-    margin-left: 100px;
-}
-
 .newboxes {
     border: 0 solid;
     display: block;
