@@ -77,7 +77,7 @@
                                                 teamNew.save(null, {
                                                             success: function () {
                                                                 console.log("Signed up team");
-                                                                location.href = "./src/html/finreg.html";
+                                                                alert('Bruker registrert. Logg inn for å begynne å bruke systemet.');
                                                             }
                                                             , error: function (error) {
                                                                 alert('Problem ved registrering');
