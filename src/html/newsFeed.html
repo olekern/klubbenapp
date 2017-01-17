@@ -72,7 +72,10 @@
                         <textarea rows="3" cols="44" name="text" id="postbtn" placeholder="Skriv ditt innlegg her"></textarea>
                     </div>
                     <input id="post-file" class="imageInput" type="file" />
-                    <button name="submit" type="button" onclick="Submit()">Publiser</button>
+                    <div id="button">
+                        <button name="submit" id="submit-btn" type="button" onclick="Submit()">Publiser</button>
+                        <img src="../loading/Preloader_8.gif">
+                    </div>
                 </form>
             </div>
             <div class="posts">
@@ -258,6 +261,9 @@
         var Post = Parse.Object.extend("data_" + klubbID + "_Posts");
 
         function Submit() {
+            
+            document.getElementById('submit-btn').style.cssText = "display: none;";
+            
             var newPost = new post1();
             var text = document.post.elements[0].value;
             var bilde = document.post.elements[1];
@@ -282,6 +288,7 @@
                             console.log("Fantastisk");
                             getPosts();
                             document.getElementById("post-file").value = "";
+                            location.href = "newsFeed.html";
                         }
                         , error: function (error) {
                             console.log("Post Save with File Error:" + error.message);
@@ -296,6 +303,7 @@
                         console.log("Fantastisk");
                         getPosts();
                         document.getElementById("post-file").value = "";
+                        location.href = "newsFeed.html";
                     }
                     , error: function (newPost, error) {
                         console.log("Error:" + error.message);
@@ -447,7 +455,9 @@
                         output += '<div id="commentSection">';
                         output += '<i class="fa fa-comment-o" id="commentIcon" aria-hidden="true"></i>';
                         output += '<textarea rows="1" cols="40 name="text" id="text' + i + '" placeholder="Skriv en kommentar"></textarea>';
+                        output += '<div class="cmt-btn">';
                         output += '<button type="button" name="' + realPost + '" id="' + i + '" onclick="submitComment(id, name)">Publiser</button>';
+                        output += '</div>';
                         output += '</div>';
                         commentid = results[i].get("comments");
                         var m;
@@ -561,6 +571,9 @@
         }
 
         function submitComment(number, postID) {
+            
+            document.getElementById(number).style.cssText = "display: none;";
+            
             var Comment = Parse.Object.extend("data_" + klubbID + "_Comments");
             var commenting = new Comment();
             var postComment = document.getElementById("text" + number).value;
@@ -582,6 +595,7 @@
                                     objects[j].save({
                                         success: function () {
                                             getPosts();
+                                            location.href = "newsFeed.html";
                                         }
                                     });
                                 }
