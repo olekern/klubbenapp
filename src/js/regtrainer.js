@@ -6,6 +6,10 @@
             
             Parse.User.logOut();
             
+            document.getElementById('reg').style.cssText = "display: none;";
+            
+            /*
+            
             var registerTeams = Parse.Object.extend("RegisterTeams");
             var setTeam = Parse.Object.extend("Teams");
             var teamName = document.reg.elements[0].value;
@@ -78,6 +82,7 @@
                                                             success: function () {
                                                                 console.log("Signed up team");
                                                                 alert('Bruker registrert. Logg inn for å begynne å bruke systemet.');
+                                                                location.href = "./src/html/registration.html";
                                                             }
                                                             , error: function (error) {
                                                                 alert('Problem ved registrering');
@@ -117,4 +122,5 @@
         }
         
                 }
+                */
             }
