@@ -6,10 +6,6 @@
             
             Parse.User.logOut();
             
-            document.getElementById('reg').style.cssText = "display: none;";
-            
-            /*
-            
             var registerTeams = Parse.Object.extend("RegisterTeams");
             var setTeam = Parse.Object.extend("Teams");
             var teamName = document.reg.elements[0].value;
@@ -25,6 +21,7 @@
             }
             else {
                 if (document.getElementById('terms').checked) {
+                    document.getElementById('reg').style.cssText = "display: none;";
                     var team = new registerTeams();
                     team.set("team", teamName);
                     team.set("coachname", coachName);
@@ -122,5 +119,5 @@
         }
         
                 }
-                */
+                
             }
