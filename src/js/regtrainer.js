@@ -116,6 +116,8 @@
                     
                     
                     
+        } else{
+            alert('Har du lest vilkår og betingelser?');
         }
         
                 }
