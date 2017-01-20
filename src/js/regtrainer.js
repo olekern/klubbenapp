@@ -16,8 +16,8 @@
             var invMob = document.invoice.elements[1].value;
             var address = document.invoice.elements[2].value;
             var postal = document.invoice.elements[3].value;
-            if ((teamName.length == 0) || (coachName.length == 0) || (coachMail.length == 0) || (invMail.length == 0) || (invMob.length == 0) || (address.length == 0) || (postal.length == 0)) {
-                console.log("Oopsey");
+            if ((teamName.length == 0) || (coachName.length == 0) || (coachMail.length == 0) || (invMail.length == 0) || (invMob.length == 0) || (address.length == 0) || (postal.length == 0) || (coachPass.length == 0)) {
+                alert('Har du fylt ut alle feltene?');
             }
             else {
                 if (document.getElementById('terms').checked) {
