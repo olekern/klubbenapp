@@ -117,7 +117,7 @@
                     
                     
         } else{
-            alert('Har du lest vilkår og betingelser?');
+            alert('Du må bekrefte at du har lest og akseptert våre vilkår og betingelser før du kan registrere deg.');
         }
         
                 }
