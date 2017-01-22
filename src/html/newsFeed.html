@@ -109,9 +109,9 @@
             }
             return false;
         }
-        //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
+        Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
         //Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
-        Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+        //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
 
         function handleParseError(err) {
             switch (err.code) {
@@ -251,11 +251,7 @@
             console.log(id);
         }
         console.log(klubbID);
-    </script>
-    <script type="text/javascript">
-        //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
-        //Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
-        Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+
         var klubbID = Parse.User.current().get("team").id;
         var post1 = Parse.Object.extend("Post");
         var Post = Parse.Object.extend("data_" + klubbID + "_Posts");
@@ -502,6 +498,7 @@
                 }
                 , error: function (error) {
                     console.log("Query error:" + error.message);
+                    alert('Siden er under ombygging. Last ned appen fra App Store eller Google Play for å begynne å bruke plattformen.');
                     handleParseError();
                 }
             });
