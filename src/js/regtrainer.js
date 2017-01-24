@@ -12,11 +12,12 @@
             var coachName = document.reg.elements[1].value;
             var coachMail = document.reg.elements[2].value;
             var coachPass = document.reg.elements[3].value;
-            
+            /*
             var invMail = document.invoice.elements[0].value;
             var invMob = document.invoice.elements[1].value;
             var address = document.invoice.elements[2].value;
             var postal = document.invoice.elements[3].value;
+            */
             if ((teamName.length == 0) || (coachName.length == 0) || (coachMail.length == 0) || (coachPass.length == 0)) {
                 alert('Har du fylt ut alle feltene?');
             }
