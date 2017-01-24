@@ -28,10 +28,12 @@
                     team.set("team", teamName);
                     team.set("coachname", coachName);
                     team.set("coachmail", coachMail);
+                    /*
                     team.set("mailinvoice", invMail);
                     team.set("phoneinvoice", invMob)
                     team.set("address", address);
                     team.set("postal", postal);
+                    */
                     team.save(null, {
                         success: function (gameScore) {
                             var teamSet = new setTeam();
