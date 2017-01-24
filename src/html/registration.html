@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- Registrering -->
-
+<html>
 <head>
     <meta charset="utf-8">
 
@@ -90,12 +90,20 @@
             </div>
         </div>
         
+<script type="text/javascript" src="../js/login.js"></script>
 
 
-    <script type="text/javascript">
-        //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
-            //Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
-            Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+    <script type="text/javascript">/*
+            Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
+            Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
+            //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+        
+        var TestObject = Parse.Object.extend("TestObject");
+var testObject = new TestObject();
+testObject.save({foo: "bar"}).then(function(object) {
+  alert("yay! it worked");
+});
+        
         
         function checkLogin() {
                 if (Parse.User.current) {
@@ -136,12 +144,6 @@
                 })
             return false;
         }
-    </script>
-
-    <script type="text/javascript">
-        //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
-            //Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
-            Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
 
         function signUp() {
             var name = document.signup.elements[0].value;
@@ -184,6 +186,7 @@
             return false;
         }
         
+        */
        
     </script>
 

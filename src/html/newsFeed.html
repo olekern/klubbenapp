@@ -110,7 +110,7 @@
             return false;
         }
         Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
-        //Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
+        Parse.serverURL = 'http://klubbenheroku.herokuapp.com/parse';
         //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
 
         function handleParseError(err) {
@@ -498,7 +498,8 @@
                 }
                 , error: function (error) {
                     console.log("Query error:" + error.message);
-                    alert('Siden er under ombygging. Last ned appen fra App Store eller Google Play for å begynne å bruke plattformen.');
+                    /*
+                    alert('Siden er under ombygging. Last ned appen fra App Store eller Google Play for å begynne å bruke plattformen.');*/
                     handleParseError();
                 }
             });

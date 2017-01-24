@@ -1,5 +1,5 @@
 Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
-        //Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
+        Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
         //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
 
 function getPB() {
