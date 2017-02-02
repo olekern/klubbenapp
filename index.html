@@ -7,7 +7,7 @@
     <meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width" />
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="https://npmcdn.com/parse@1.9.2/dist/parse.min.js"></script>
+    <script src="https://npmcdn.com/parse/dist/parse.js"></script>
     <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
@@ -26,9 +26,8 @@
 
 <body>
     <script type="text/javascript">
-        Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
+        Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
         Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
-        //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
 
         function getLink() {
             var uagent = navigator.userAgent.toLowerCase();
@@ -121,8 +120,7 @@
         </div>
         <div id="seventh-form">
             <h1>Prøveperiode frem til 1. august</h1>
-            <h1>Send oss en mail for å registrere ditt lag</h1>
-            <!--
+            
             <div class="left">
                 <h3>Registrer et nytt lag</h3>
                 <form name="reg" id="elements">
@@ -132,6 +130,7 @@
                     <input type="password" name="coachPass" placeholder="Passord til trener" />
                 </form>
             </div>
+            <!--
             <div class="right">
                 <h3>Faktureringsinformasjon</h3>
                 <form name="invoice">
@@ -140,7 +139,9 @@
                     <input type="text" name="address" placeholder="Adresse" />
                     <input type="text" name="zip" placeholder="Postnr og sted" /> </form>
             </div>
+    -->
         </div>
+
         <div id="seventh-info">
             <div class="left">
                 <h3>Abonnement Klubben 30 dager</h3> </div>
@@ -160,7 +161,7 @@
                 <img src="./src/loading/Preloader_8.gif">
             </div>
         </div>
--->
+
         <div id="seventh-stores">
             <a href="https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8"> <img src="./src/img/Get_AppStore_Black.png" /> </a>
             <a href="https://play.google.com/store/apps/details?id=com.lustek.klubben"> <img src="./src/img/Get_GooglePlay_Black.png" /> </a>
@@ -173,9 +174,8 @@
     <script type="text/javascript" src="./src/js/regtrainer.js"></script>
     
     <script type="text/javascript">
-        Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
-        Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
-        //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+        Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+        Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse'; 
 
         var monthNames = [
                 "Jan", "Feb", "Mar"
