@@ -144,9 +144,9 @@
 
         <div id="seventh-info">
             <div class="left">
-                <h3>Abonnement Klubben 30 dager</h3> </div>
+                <h3>Abonnement Klubben</h3> </div>
             <div class="center">
-                <h3>Gratis <strike style="color: grey;">250kr</strike></h3> </div>
+                <h3>Gratis <!-- <strike style="color: grey;">250kr</strike> --> </h3> </div>
             <div class="right">
                 <div id="subscriptionDate"></div>
             </div>
@@ -207,13 +207,15 @@
         else {
             var future30 = monthNames[monthIndex2] + " " + day2 + " " + year2;
         }
+        
+        var august = "Aug 01 2017"
         console.log(future30);
         console.log(idag);
         var node = document.getElementById('subscriptionDate');
         var newNode2 = document.createElement('h4');
         newNode2.appendChild(document.createTextNode(idag + ' - '));
         var newNode = document.createElement('h4');
-        newNode2.appendChild(document.createTextNode(future30));
+        newNode2.appendChild(document.createTextNode(august));
         node.appendChild(newNode);
         node.appendChild(newNode2);
     </script>
