@@ -211,12 +211,31 @@ p {
     
     #firstInfo {
         max-width: 400px;
-        margin: 100px 20px 0px 20px;
+        margin: 60px 20px 0px 20px;
     }
     
     #firstStores {
         max-width: 460px;
         margin-top: 50px;
+    }
+    
+    #firstRegister{
+        max-width: 400px;
+        text-align: center;
+        margin: 30px 13px 0px 27px;
+    }
+    
+    #firstRegister a{
+        text-decoration: none;
+        color: white;
+        padding: 10px 10px;
+        border: 1px solid white;
+        font-size: 20px;
+    }
+    
+    #firstRegister a:hover{
+        color: lightgrey;
+        border: 1px solid lightgrey;
     }
 
 }
@@ -224,7 +243,7 @@ p {
 @media all and (max-width: 650px) {
     
     #first {
-        height: 350px;
+        height: 430px;
     }
     
     #firstShowcase, #first .left  {
@@ -243,6 +262,25 @@ p {
     #firstStores {
         width: calc(100%-40px);
         margin: 20px;
+    }
+    
+    #firstRegister{
+        width: calc(100%-40px);
+        text-align: center;
+        margin-top: 5vw;
+    }
+    
+    #firstRegister a{
+        text-decoration: none;
+        color: white;
+        padding: 10px 10px;
+        border: 1px solid white;
+        font-size: 20px;
+    }
+    
+    #firstRegister a:hover{
+        color: lightgrey;
+        border: 1px solid lightgrey;
     }
     
 }
