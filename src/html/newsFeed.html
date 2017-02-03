@@ -92,6 +92,8 @@
         -->
     
     <script type="text/javascript" src="../js/pb.js"></script>
+    <script type="text/javascript" src="../js/usersession.js"></script>
+    <script type="text/javascript" src="../js/roles.js"></script>
     
     <script type="text/javascript">     
         
@@ -125,29 +127,9 @@
         var currentUserId = Parse.User.current().id;
         console.log(currentUserId);
 
-        function checkLogin() {
-            if (Parse.User.current) {
-                $("#brukernavn").html(Parse.User.current().get("name"));
-            }
-            else {
-                $("#brukernavn").html("");
-            }
-        }
         var klubbID = Parse.User.current().get("team").id;
-        var currentUser = Parse.User.current();
-        if (currentUser) {}
-        else {
-            location.href = "registration.html";
-        }
-        checkLogin();
-
-        function logOut() {
-            Parse.User.logOut(console.log("Logger ut"));
-        }
-        var klubbID;
 
         function roles() {
-            klubbID = Parse.User.current().get("team").id;
             var Query = Parse.Object.extend("data_" + klubbID + "_Members");
             var query = new Parse.Query(Query);
             query.find().then(function () {}, function (err) {
@@ -158,9 +140,7 @@
             query.equalTo("user", Parse.User.current());
             query.find({
                 success: function (objects) {
-                    console.log(objects.length);
                     var role = objects[0].get("role");
-                    console.log(role);
                     outputRole += "<div id=\"userRole\">";
                     outputRole += "<p>" + role + "</p>";
                     outputRole += "</div>"
@@ -188,7 +168,6 @@
                                     var name = user.get("name");
                                     var accept = objects[a].get("accepted");
                                     if (accept == false) {
-                                        console.log(name);
                                         outputReq += "<div id=\"all-requests\">";
                                         outputReq += "<p>" + name + "</p>";
                                         outputReq += "<button>" + "Avslå" + "</button>";
@@ -236,7 +215,6 @@
                             });
                             objects[a].save(null, {
                                 success: function () {
-                                    console.log("Heia Heia");
                                 }
                             });
                         }
@@ -247,9 +225,7 @@
                     handleParseError();
                 }
             });
-            console.log(id);
         }
-        console.log(klubbID);
 
         var klubbID = Parse.User.current().get("team").id;
         var post1 = Parse.Object.extend("Post");
@@ -280,7 +256,6 @@
                     newPost.set("Image", theFile);
                     newPost.save({
                         success: function () {
-                            console.log("Fantastisk");
                             getPosts();
                             document.getElementById("post-file").value = "";
                             location.href = "newsFeed.html";
@@ -295,7 +270,6 @@
             else {
                 newPost.save(null, {
                     success: function (newPost) {
-                        console.log("Fantastisk");
                         getPosts();
                         document.getElementById("post-file").value = "";
                         location.href = "newsFeed.html";
@@ -310,30 +284,6 @@
             console.log(Parse.User.current());
             console.log(klubbID);
         }
-
-        function getPB() {
-            var outputImg = "";
-            var user = Parse.User.current();
-            var userImg = "";
-            var noUserImg = "";
-            if (user.get("profileImage_small")) {
-                var brukerPB = user.get("profileImage_small");
-                var PBUrl = brukerPB.url();
-                console.log("Url:" + PBUrl);
-                userImg = "<img src='" + PBUrl + "'>";
-            }
-            else {
-                noUserImg = '<img src="./img/no-pb.png">';
-                console.log("Supert");
-            }
-            outputImg += "<div id=\"userPB\">";
-            outputImg += userImg;
-            outputImg += noUserImg;
-            outputImg += "</div>"
-            $("#list-pb").html(outputImg);
-            $("#profile-pb").html(outputImg);
-        }
-        getPB();
 
         function getPosts() {
             var query = new Parse.Query(Post);

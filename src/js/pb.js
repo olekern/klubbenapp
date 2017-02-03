@@ -19,6 +19,6 @@ function getPB() {
                 outputImg += "</div>"
                 $("#list-pb").html(outputImg);
                 $("#profile-pb").html(outputImg);
-            }
+}
 
-            getPB();
+getPB();
