@@ -193,6 +193,7 @@ p {
 
 #firstInfo h3 {
     margin-top: 20px;
+    font-weight: 300;
 }
 
 @media all and (min-width: 650px) {
@@ -306,7 +307,9 @@ p {
     #second h3 {
         float: right;
         margin: 100px 50px;
-        max-width: 300px;
+        max-width: 350px;
+        font-weight: 300;
+        line-height: 27px;
     }
 }
 
@@ -336,6 +339,7 @@ p {
     #second h3 {
         margin: 20px 20px 0px 20px;
         max-width: 400px;
+        font-weight: 300;
     }
 }
 
@@ -370,6 +374,7 @@ p {
 #third h4{
     float: right;
     margin: 10px 25px 10px 0px;
+    font-weight: 300;
 }
 
 
@@ -378,6 +383,9 @@ p {
         width: 450px;
         float: left;
         margin: 12px 20px 0px 20px;
+        font-weight: 200;
+        line-height: 27px;
+        letter-spacing: 1px;
     }
     
     #third img{
@@ -394,6 +402,9 @@ p {
     
     #third h3 {
         margin: 12px 10% 0px 10%;
+        font-weight: 200;
+        line-height: 27px;
+        letter-spacing: 1px;
     }
     
     
@@ -441,6 +452,27 @@ p {
     width: auto;
 }
 
+#fourthTwo h1{
+    font-weight: 400;
+}
+
+#fourthOne h4{
+    font-weight: 200;
+    font-size: 24px;
+}
+
+#fourthOne h1{
+    font-weight: 300;
+    font-size: 37px;
+    line-height: 45px;
+}
+
+#fourthOne h3{
+    font-weight: 200;
+    font-size: 25px;
+    line-height: 30px;
+}
+
 
 @media all and (min-width: 1200px) {
     #fourthTwo h1 {
@@ -481,7 +513,7 @@ p {
     
     #fourth .right div {
         float: left;
-        max-width: 300px;
+        max-width: 400px;
         margin-left: 80px;
         margin-top: 100px;
     }
@@ -637,8 +669,23 @@ p {
     text-decoration: none;
     font-size: 20px;
     color: white;
-    top: 70px;
+    top: 40px;
   
+}
+
+#sixth h2{
+    font-weight: 100;
+    font-size: 25px;
+    line-height: 40px;
+    margin-top: 10px;
+}
+
+#sixth h1{
+    font-weight: 300;
+    font-size: 35px;
+    line-height: 40px;
+    margin-top: 10px;
+    width: 300px;
 }
 
 @media all and (max-width: 750px) {
