@@ -94,9 +94,8 @@
 
 
         <script>
-            //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
-             //Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
             Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+             Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
         
             function checkLogin() {
                 if (Parse.User.current) {
@@ -292,107 +291,7 @@
                                 }
                                 
                                 
-                                /*
-                            var navn = objects[i].get("survey").get("name");
-                                if (navn == "Forberedelse til trening/kamp") {
-                                    var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
-                                    var query = new Parse.Query(SurveyAnswer);
-                                    query.descending("createdAt");
-                                    query.include("author");
-                                    query.equalTo("survey", objects[i]);
-                                    query.find({
-                                            success: function(objects) {
-                                                var outputSkade = "";
-                                                var output = "";
-                                                var sovn = new Array();
-                                                var opplagt = new Array();
-                                                var motivasjon = new Array();
-                                                var name = new Array();
-                                                var author = new Array();
-                                                var feedback = new Array();
-                                                for (var j in objects) {
-                                                    var date = objects[j].get("createdAt");
-                                                    var dato = date.toString();
-                                                    var datoen = dato.substring(4, 15);
-
-                                                    if (idag == datoen) {
-
-                                                        sovn[j] = parseInt(objects[j].get("data")[0]);
-                                                        opplagt[j] = parseInt(objects[j].get("data")[1]);
-                                                        motivasjon[j] = parseInt(objects[j].get("data")[3]);
-                                                        author[j] = objects[j].get("author");
-                                                        feedback[j] = objects[j].get("data")[4];
-
-                                                        name[j] = author[j].get("name");
-
-                                                        var evaluering = feedback[j];
-                                                        name[j] = author[j].get("name");
-                                                        navn = name[j];
-
-                                                        var user;
-                                                        var userName = "";
-                                                        var skade = "";
-                                                        if (objects[j].get("data")[2]) {
-                                                            user = objects[j].get("author");
-                                                            userName = user.get("name");
-                                                            skade = objects[j].get("data")[2];
-
-                                                        }
-
-                                                        outputSkade += "<div id=\"injury\">";
-                                                        outputSkade += "<h4>" + userName + "</h4>";
-                                                        outputSkade += "<p>" + skade + "</p>";
-                                                        outputSkade += "</div>";
-
-                                                        output += "<div id=\"feedBack\">";
-                                                        output += "<h4>" + navn + "</h4>";
-                                                        output += "<p>" + evaluering + "</p>";
-                                                        output += "</div>";
-                                                        
-                                                        
-                                                        var data = {
-                                                            labels: name,
-                                                            series: [sovn]
-                                                            
-                                                        }
-
-                                                        var data2 = {
-                                                            labels: name,
-                                                            series: [opplagt]
-                                                            
-                                                        }
-
-                                                        var data3 = {
-                                                            labels: name,
-                                                            series: [motivasjon]
-                                                            
-                                                        }
-
-                                                        var options = {
-                                                            ticks: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-                                                            width: '85em',
-                                                            height: '23em',
-                                                            high: 10,
-                                                            low: 0
-
-                                                        };
-                                                        
-                                                        new Chartist.Bar('#chart1', data, options);
-                                                        new Chartist.Bar('#chart2', data2, options);
-                                                        new Chartist.Bar('#chart3', data3, options);
-                                                        $("#list-posts").html(output);
-                                                        $("#list-skade").html(outputSkade);
-
-                                                    }
-                                                }
-
-                                            },
-                                            error: function(error) {
-                                                console.log("Query error:" + error.message);
-                                            }
-                                        });
-                                }
-                                */
+                                
                             }
                             
                         },
