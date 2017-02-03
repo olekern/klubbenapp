@@ -8,7 +8,7 @@
     <meta name="description" content="My Parse App">
     <meta name="viewport" content="width=device-width">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://www.parsecdn.com/js/parse-latest.js"></script>
+    <script src="https://npmcdn.com/parse/dist/parse.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link rel="stylesheet" type="text/css" href="../css/regStyle.css" />
     <meta charset="utf-8">
@@ -94,10 +94,8 @@
 
 
     <script type="text/javascript">
-            //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
-            //Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
             Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
-        
+            Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';     
         
         function checkLogin() {
                 if (Parse.User.current) {

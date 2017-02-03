@@ -1,6 +1,5 @@
-//Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
-            //Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
-            Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse'; 
         
         function logIn() {
             var name = document.login.elements[0].value;

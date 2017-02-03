@@ -8,7 +8,7 @@
     <meta name="description" content="My Parse App">
     <meta name="viewport" content="width=device-width">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://www.parsecdn.com/js/parse-latest.js"></script>
+    <script src="https://npmcdn.com/parse/dist/parse.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link rel="stylesheet" type="text/css" href="../css/clubStyle.css" />
     <meta charset="utf-8">
@@ -25,26 +25,27 @@
 
 <body>
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    
+    <div id="container">
+        <div class="imac">
+            <img src="../img/imac.png" alt="Image not found. Check internet connection.">
+        </div>
 
-    <div class="imac">
-        <img src="../img/imac.png" alt="Image not found. Check internet connection.">
-    </div>
-
-    <img class="klubbFor" src="../img/ball.png">
-        
-    <div class="klubb" id="benefits1">
-        <div class="klubbValg">
-             <h3>Velg lag:</h3>
-            <div class="posts">
-                <ul id="list-posts">
-                </ul>
+        <div class="klubb" id="benefits1">
+            <img class="klubbFor" src="../img/ball.png">
+            <div class="klubbValg">
+                 <h3>Velg lag:</h3>
+                <div class="posts">
+                    <ul id="list-posts">
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 
-
     <script type="text/javascript">
         Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+        Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 
         function checkLogin() {
             if (Parse.User.current) {
@@ -62,10 +63,6 @@
                 console.log("Logger ut"));
 
         }
-    </script>
-
-    <script type="text/javascript">
-        Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
         
         function chooseClub(team, id){
             
@@ -111,8 +108,12 @@
                             console.log(teams);
 
                             output += "<div id=\"lagVelg\">";
+                            output += "<div id=\"box1\">";
                             output += "<h4>" + teams + "</h4>";
+                            output += "</div>";
+                            output += "<div id=\"box2\">";
                             output += '<button name="' + teams +'" id="'+ teamId +'" type="button" onclick="chooseClub(name, id);">Forespør medlemskap</button>';
+                            output += "</div>";
                             output += "</div>";
                         }
                         $("#list-posts").html(output);

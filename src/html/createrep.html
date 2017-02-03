@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
+        <link rel="stylesheet" type="text/css" href="../css/createstyle.css" />
+        <link rel="stylesheet" type="text/css" href="../css/app.css" />
+        <title>Klubben | Rapporter</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./font-awesome-4.6.3/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet"> 
+        <link rel="icon" type="image/png" href="../img/blackfavicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="../img/blackfavicon-16x16.png" sizes="16x16" />
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+        <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <script src="https://npmcdn.com/parse/dist/parse.js"></script>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+</head>
+<body>
+    
+    <div id="dvLoading"></div>
+
+        <script>
+            $(window).load(function() {
+                $('#dvLoading').fadeOut(2000);
+            });
+            
+        </script>
+
+        <div class="nav">
+
+            <a href="newsFeed.html"><img src="../img/Icon-white.png" id="logo"></a>
+            <ul>
+
+                <li>
+                    <div class="loggut">
+                        <a href="registration.html" class="fa fa-sign-out" id="signOut" aria-hidden="true" onclick="logOut()"></a>
+                        <p id="brukernavn" class="navn">
+                        </p>
+                        <ul id="profile-pb">
+                        </ul>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+        
+        <div id="side-menu">
+            <div id="top">
+                <div id="dashbord" class="square">
+                    <div class="box" id="dashBox"></div>
+                    <a href="newsFeed.html" class="fa fa-home" aria-hidden="true"><p>Dashbord</p></a>
+                </div>
+                <div id="rapporter" class="square">
+                    <div class="box" id="repBox"></div>
+                    <a href="reports.html" class="fa fa-file-text" aria-hidden="true"><p>Rapporter</p></a>
+                </div>
+                <div id="evaluering" class="square">
+                    <div class="box" id="evBox"></div>
+                    <a href="evalueringT.html" class="fa fa-bar-chart" aria-hidden="true"><p>Oversikt</p></a>
+                    </div>
+                <div id="forberedelser" class="square">
+                    <div class="box" id="forBox"></div>
+                    <a href="team.html" class="fa fa-users" aria-hidden="true"><p>Laget</p></a>
+
+                </div>
+            </div>
+            <div id="btm">
+                <p>&copy 2016 Lustek AS</p>
+            </div>
+        </div>
+        
+        <div class="wrapper">
+            <div id="create-reports">
+                <div id="create-doc">
+                    <h2>Opprett undersøkelse</h2>
+                    <textarea rows="1" cols="30" name="text" id="title" placeholder="Tittel på undersøkelse"></textarea>
+                    <div id="date-switch">
+                        <h3 id="single">Enkeltundersøkelse</h3>
+                        <label class="switch">
+                          <input onclick="chooseTime()" id="check" autocomplete="off" type="checkbox">
+                          <div class="slider round"></div>
+                        </label>
+                        <h3 id="plural">Gjentagende</h3>
+                    </div>
+                    <p id="date">Dato: <input type="text" autocomplete="off" id="datepicker"></p>
+                    <div id="days" style="display: none;">
+                    <p>Man<input class="day-checkbox" id="mon" type="checkbox"></p>
+                    <p>Tir<input class="day-checkbox" id="tue" type="checkbox"></p>
+                    <p>Ons<input class="day-checkbox" id="wed" type="checkbox"></p>
+                    <p>Tor<input class="day-checkbox" id="thu" type="checkbox"></p>
+                    <p>Fre<input class="day-checkbox" id="fri" type="checkbox"></p>
+                    <p>Lør<input class="day-checkbox" id="sat" type="checkbox"></p>
+                    <p>Søn<input class="day-checkbox" id="sun" type="checkbox"></p>
+                        </div>
+                    <button id="btn" onclick="createQuest()">Legg til spørsmål</button>
+                    <button id="' + number +'" onclick="deleteAll()">Slett alt</button>
+                    <button onclick="sendForm()">Ferdig</button>
+                    <ul id="list-create-doc">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="../js/pb.js"></script>
+
+        <script>
+            
+            function show() {
+                if (document.getElementById('days').style.display == 'none') {
+                    document.getElementById('days').style.display = 'block';
+                    document.getElementById('date').style.display = 'none';
+                }
+                return false;
+            }
+
+            function hide() {
+                if (document.getElementById('days').style.display == 'block') {
+                    document.getElementById('days').style.display = 'none';
+                    document.getElementById('date').style.display = 'block';
+                }
+                return false;
+            }
+            
+            Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
+             Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
+            //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+            
+            var dateObject;
+            var daysArray = new Array();
+            
+            function checkLogin() {
+                if (Parse.User.current) {
+                    $("#brukernavn").html(Parse.User.current().get("name"));
+                } else {
+                    $("#brukernavn").html("");
+                }
+            }
+            checkLogin();
+            
+            var klubbID = Parse.User.current().get("team").id;
+            
+            var outputQuestion = "";
+            var number = 0;
+            
+            function chooseTime(){
+                
+                if (document.getElementById('check').checked) {
+                    show();
+                    
+                    dateObject = undefined;
+
+                }else{
+                    hide();
+                }
+            }
+            
+            $("#datepicker").datepicker(
+            {
+                onSelect: function()
+                { 
+                    dateObject = $(this).datepicker('getDate'); 
+                    console.log(dateObject);
+                }
+            });
+            
+            
+            function createQuest(){
+                number++;
+                chooseTime();
+                
+                outputQuestion += '<div id="question'+ number + '>';
+                outputQuestion += '<p id="k"></p>';
+                outputQuestion += '<h2>Spørsmål'+ number +'</h2>';
+                outputQuestion += '<form name="choose">';
+                outputQuestion += '<textarea rows="1" cols="30" name="text" placeholder="Spørsmål"></textarea>';
+                outputQuestion += '<select id="sel">';
+                outputQuestion += '<option id="' + number + '" onclick="textChosen(id)" id="1">Tekst</option>';
+                outputQuestion += '<option id="' + number + '" onclick="ratingChosen(id)" id="2">Rating</option>';
+                outputQuestion += '<option id="' + number + '" onclick="yesnoChosen(id)" id="3">Ja/nei med kommentarer</option>';
+                outputQuestion += '<option id="' + number + '" onclick="yesnoChosen(id)" id="3">Dato</option>';
+                outputQuestion += '</select>';
+                
+                outputQuestion += '<ul id="list-quest' + number +'">';
+                outputQuestion += '</ul>';
+                outputQuestion += '</form>';
+                outputQuestion += '</div>';
+                $("#list-create-doc").html(outputQuestion); 
+                textChosen(number);
+            }
+            
+            function deleteAll(){
+                outputQuestion = "";
+                $("#list-create-doc").html(outputQuestion); 
+                number = 0; 
+            }
+            
+            console.log(number);
+            var outputQuest1 = "";
+            function textChosen(nr){
+                console.log(nr);
+                outputQuest1 = "";
+                if(document.getElementById("rating")){
+                document.getElementById("rating").remove();
+                }else if(document.getElementById("yesno")){
+                document.getElementById("yesno").remove();
+                }
+                
+                outputQuest1 += '<div class="textbox" id="txt">';
+                outputQuest1 += '<textarea rows="1" cols="30" placeholder="Svares kun med tekst"></textarea>';
+                outputQuest1 += '</div>';
+                
+                var whereAdd = "#list-quest" + nr;
+                console.log(whereAdd);
+                $(whereAdd).html(outputQuest1); 
+                }
+            
+            var outputQuest2 = "";
+            function ratingChosen(){
+                outputQuest2 = "";
+                if(document.getElementById("txt")){
+                document.getElementById("txt").remove();
+                }else if(document.getElementById("yesno")){
+                document.getElementById("yesno").remove();
+                }
+                outputQuest2 += '<div class="rating" id="rating">';
+                outputQuest2 += '<h2>Svar</h2>';
+                outputQuest2 += '</div>';
+                
+                outputQuest2 += '<p>Med kommentar<input class="day-checkbox" type="checkbox"></p>';
+                
+                $("#list-quest").html(outputQuest2); 
+                }
+            
+            var outputQuest3 = "";
+            function yesnoChosen(){
+                outputQuest3 = "";
+                if(document.getElementById("txt")){
+                document.getElementById("txt").remove();
+                }else if(document.getElementById("rating")){
+                document.getElementById("rating").remove();
+                }
+                
+                outputQuest3 += '<div class="yesno" id="yesno">';
+                outputQuest3 += '<h2>Sv</h2>';
+                outputQuest3 += '</div>';
+                
+                $("#list-quest").html(outputQuest3); 
+                }
+            
+            function sendForm(){
+                    
+                function days(){
+                    if (document.getElementById('check').checked) {
+
+                        if (document.getElementById('mon').checked) {
+                            daysArray.push(true);
+                        }else{
+                            daysArray.push(false);
+                        }
+                        if (document.getElementById('tue').checked) {
+                            daysArray.push(true);
+                        }else{
+                            daysArray.push(false);
+                        }
+                        if (document.getElementById('wed').checked) {
+                            daysArray.push(true);
+                        }else{
+                            daysArray.push(false);
+                        }
+                        if (document.getElementById('thu').checked) {
+                            daysArray.push(true);
+                        }else{
+                            daysArray.push(false);
+                        }
+                        if (document.getElementById('fri').checked) {
+                            daysArray.push(true);
+                        }else{
+                            daysArray.push(false);
+                        }
+                        if (document.getElementById('sat').checked) {
+                            daysArray.push(true);
+                        }else{
+                            daysArray.push(false);
+                        }
+                        if (document.getElementById('sun').checked) {
+                            daysArray.push(true);
+                        }else{
+                            daysArray.push(false);
+                        }
+                    }else{
+                        daysArray = [false, false, false, false, false, false, false];
+                    }
+                }
+                days();
+                
+                var title = document.getElementById('title').value;
+                
+                console.log(title);
+                console.log(daysArray);
+                console.log(dateObject);
+            }
+            
+        </script>
+ 
+</body>
+</html>
