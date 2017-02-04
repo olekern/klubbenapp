@@ -54,11 +54,13 @@ html{
 
 #dvLoading
 	{
-	   background: #cf2424 url(images/loader.gif) no-repeat center center;
+	   background-color: #cf2424;
 	   height: 100%;
 	   width: 100%;
 	   position: fixed;
 	   z-index: 1000;
+        top: 0;
+        bottom: 0;
 	}
 
 .nav {

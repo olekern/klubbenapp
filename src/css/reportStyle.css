@@ -110,8 +110,20 @@
 }
 
 .forDiagram{
-    margin-top: 100px;
+    margin-top: 30px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+#report-header{
+    color: black;
+    font-size: 30px;
+    width: 300px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
 #feedBack {
     width: 400px;
     margin-top: 5px;
@@ -124,11 +136,29 @@
     color: black;
     margin-left: auto;
     margin-right: auto;
-    margin-right: auto;
 }
 
-#feedback p{
-    line-height: 40px;
+#feedBack h1{
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 30px;
+}
+
+#feedBack h2{
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 26px;
+    margin-top: 6px;
+}
+
+#feedBack h3{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 23px;
+}
+
+#feedBack p{
+    line-height: 34px;
 }
 
 h1{

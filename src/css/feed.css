@@ -82,7 +82,7 @@
 .form{
     background-color: white;    
     margin-top: 60px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     border: 1px solid #d5d5d5;
     border-radius: 5px;
     height: 164px;
@@ -166,6 +166,7 @@
     padding-left: 32px;
     padding-right: 32px;
     margin: 0px;
+    margin-top: -15px;
 }
 
 #list-posts img {
