@@ -82,7 +82,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                                             success: function () {
                                                                 console.log("Signed up team");
                                                                 alert('Bruker registrert. Logg inn for å begynne å bruke systemet.');
-                                                                location.href = "./src/html/registration.html";
+                                                                location.href = "./index.html";
                                                             }
                                                             , error: function (error) {
                                                                 alert('Problem ved registrering');
