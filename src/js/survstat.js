@@ -1,6 +1,7 @@
 Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
 Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 
+
             var klubbID = Parse.User.current().get("team").id;
 
             var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
@@ -54,8 +55,31 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                             for (var i = 0; i < objects.length; i++) {
                                 
                                 var surveyDate = objects[i].get("day");
+                                
+                                if(surveyDate <= date){ 
+                                    
+                                    var day2 = surveyDate.getDate();
+                                    var monthIndex2 = surveyDate.getMonth();
+                                    var daysIndex2 = surveyDate.getMonth();
+                                    var year2 = surveyDate.getFullYear();
 
-                                if(surveyDate <= date){
+                                    if (day < 10) {
+                                        var dateOfSurv = monthNames[monthIndex2] + " " + "0" + day2 + " " + year2;
+                                    } else {
+                                        var dateOfSurv = monthNames[monthIndex2] + " " + day2 + " " + year2;
+                                    }
+
+                                    surveyDate.setHours(23);
+                                    surveyDate.setMinutes(59);
+                                    surveyDate.setSeconds(59);
+                                    
+                                    var showDate = "";
+                                    if(idag == dateOfSurv){
+                                        showDate = "I dag";
+                                    }else{
+                                        showDate = dateOfSurv;
+                                    }
+
                                     oldSurv[j] = objects[i];
                                     survId[j] = objects[i].id;
                                     survName[j] = objects[i].get("survey").get("name");
@@ -65,6 +89,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                     
                                     outputSurv += '<div id="surv">';
                                     outputSurv += '<h3 id="' + j +'" onclick="chooseSurv(id);">' + survName[j] + '</h3>';
+                                    outputSurv += '<h4>' + showDate +'</h4>';
                                     outputSurv += '</div>';
                                     
                                     
@@ -84,6 +109,14 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 
 
             }
+
+            // Load the Visualization API and the corechart package.
+                google.charts.load('current', {
+                  // Set a callback to run when the Google Visualization API is loaded.
+                  'callback': chooseSurv,
+                  // Set packages to use
+                  'packages': ['corechart']
+                });
             
             function chooseSurv(number, name){
                 
@@ -97,6 +130,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                 var outputans = "";
                 var outputchart ="";
                 
+                
                 var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
                 var query = new Parse.Query(SurveyAnswer);
                 query.descending("createdAt");
@@ -105,84 +139,52 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                 query.equalTo("survey", oldSurv[j]);
                 query.find({
                     success: function(results) {
-                                
+                                    
                             for(var u = 0; u<question.length; u++){
                                 
                                 var questions = question[u];
-                                var divid = "chart_div" + j + u;
-                                console.log(divid);
                                 outputans += '<div id="ansbox">';
-                                outputans += '<div id="'+ divid + '"></div>'
-                                      
-                                if(questionType[u]/1){
-                                    
+                                /*if(questionType[u]/1){*/
+                                    var divid = "chart_div" + j + u;
+                                    console.log(divid);
                                     outputans += '<h2>' + questions + '</h2>';
-                                    /*
-                                    outputans += '<div class="ct-chart ct-golden-section" id="chart' + u + j + '"></div>';
+                                    outputans += '<div id="' + divid +'" class="chart-box"></div>';
+                                    outputans += '</div>';
                                     
-                                    var data1 = {
-                                                            
-                                                            labels: name,
-                                                            series: [morsom]
-                                                            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-                                                      series: [
-                                                        [5, 2, 4, 2, 0]
-                                                      ]
-                                                    };
-                                                    
+                                    for(var k in results){
+                                    
+                                    var answer = results[k].get("data")[u];
+                                    var author = results[k].get("author");
+                                    var name = author.get("name");
+                                    outputans += '<h4>' + name + '</h4>';
+                                    outputans += '<p>' + answer + '</p>';
+                                    outputans += '</div>';   
+                                }
+
+                                // Create the data table.
+                                var data = new google.visualization.DataTable();
+                                data.addColumn('string', 'Topping');
+                                data.addColumn('number', 'Slices');
+                                data.addRows([
+                                  ['Mushrooms', 3],
+                                  ['Onions', 1],
+                                  ['Olives', 1],
+                                  ['Zucchini', 1],
+                                  ['Pepperoni', 2]
+                                ]);
+                                    console.log(divid);
                                 
-                                            var options = {
-                                            width: '400px',
-                                            height: '300px',                                         high: 10,
-                                            low: 0,
-                                                        };
-                                                        new Chartist.Bar('#chart' + u + j, data1, options);
-                                */
-                                    
-                                    
-                                    // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
+                                // Set chart options
+                                var options = {'title':'How Much Pizza I Ate Last Night',
+                                               'width':400,
+                                               'height':300};
 
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-          
-          "use strict";
-var name = "foo";
-var customAction = function() {
-    // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        data.addRows([
-          ['Mushrooms', 3],
-          ['Onions', 1],
-          ['Olives', 1],
-          ['Zucchini', 1],
-          ['Pepperoni', 2]
-        ]);
-
-        // Set chart options
-        var options = {'title':'How Much Pizza I Ate Last Night',
-                       'width':400,
-                       'height':300};
-          console.log(divid);
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById(divid));
-        chart.draw(data, options);
-}
-        var func = new Function("action", "return function " + name + "(){ action() };")(customAction);
-
-func();
-
-      }
-
-                                   
-                                }else{
+                                // Instantiate and draw our chart, passing in some options.
+                                var chart = new google.visualization.PieChart(document.getElementById(divid));
+                                chart.draw(data, options);
+                                
+                              
+                                /*}else{ */
 
                                 outputans += '<h2>' + questions + '</h2>';
                                 
@@ -195,7 +197,7 @@ func();
                                     outputans += '<p>' + answer + '</p>';
                                     outputans += '</div>';   
                                 }
-                                }
+                                //}
                                 
                             }
                         

@@ -148,9 +148,6 @@
     margin-top: 30px;
 }
 
-#list-answ{
-}
-
 #feedBack {
     width: 400px;
     margin-top: 5px;
@@ -199,5 +196,30 @@ button{
     font-size: 11px;
     font-weight: 500;
     display: block;
+    cursor: pointer;
+}
+
+#ansbox h2{
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 22px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.chart-box{
+    height: 400px;
+    width: 600px;
+    background-color: blue;
+}
+
+#newSurv{
+    bottom: 0;
+    right: 0;
+    color: #cf2424;
+    font-size: 70px;
+    position: fixed;
+    margin-right: 20px;
+    margin-bottom: 10px;
     cursor: pointer;
 }

@@ -11,24 +11,19 @@
         <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet"> 
         <link rel="icon" type="image/png" href="../img/blackfavicon-32x32.png" sizes="32x32" />
         <link rel="icon" type="image/png" href="../img/blackfavicon-16x16.png" sizes="16x16" />
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-        <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <script src="https://npmcdn.com/parse/dist/parse.js"></script>
 
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-  </script>
 </head>
 <body>
+    
+    <script type="text/javascript" src="../ericjgagnon-wickedpicker-5080539/src/wickedpicker.js"></script>
+    <link rel="stylesheet" href="../ericjgagnon-wickedpicker-5080539/stylesheets/wickedpicker.css">
     
     <div id="dvLoading"></div>
 
@@ -38,24 +33,22 @@
             });
             
         </script>
+    
+        <script>
+      $( function() {
+        $( ".datepicker" ).datepicker();
+      } );
+      </script>
 
         <div class="nav">
 
             <a href="newsFeed.html"><img src="../img/Icon-white.png" id="logo"></a>
-            <ul>
-
-                <li>
-                    <div class="loggut">
-                        <a href="registration.html" class="fa fa-sign-out" id="signOut" aria-hidden="true" onclick="logOut()"></a>
-                        <p id="brukernavn" class="navn">
-                        </p>
-                        <ul id="profile-pb">
-                        </ul>
-                    </div>
-                </li>
-
-            </ul>
-
+            <div id="send-in" onclick="sendForm()">
+                <div id="send-text">
+                    <p>Send inn</p>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </div>
+            </div>
         </div>
         
         <div id="side-menu">
@@ -86,9 +79,14 @@
         <div class="wrapper">
             <div id="create-reports">
                 <div id="create-doc">
+                    <div id="topRightBtn">
+                        <!--
+                        <button id="' + number +'" onclick="deleteAll()">Slett alt</button>
+-->
+                    </div>
                     <h2>Opprett undersøkelse</h2>
                     <textarea rows="1" cols="30" name="text" id="title" placeholder="Tittel på undersøkelse"></textarea>
-                    <div id="date-switch">
+                    <div class="date-switch">
                         <h3 id="single">Enkeltundersøkelse</h3>
                         <label class="switch">
                           <input onclick="chooseTime()" id="check" autocomplete="off" type="checkbox">
@@ -96,22 +94,23 @@
                         </label>
                         <h3 id="plural">Gjentagende</h3>
                     </div>
-                    <p id="date">Dato: <input type="text" autocomplete="off" id="datepicker"></p>
+                    <p id="date-pick">Dato: <input type="text" autocomplete="off" id="form-date" class="datepicker"></p>
                     <div id="days" style="display: none;">
-                    <p>Man<input class="day-checkbox" id="mon" type="checkbox"></p>
-                    <p>Tir<input class="day-checkbox" id="tue" type="checkbox"></p>
-                    <p>Ons<input class="day-checkbox" id="wed" type="checkbox"></p>
-                    <p>Tor<input class="day-checkbox" id="thu" type="checkbox"></p>
-                    <p>Fre<input class="day-checkbox" id="fri" type="checkbox"></p>
-                    <p>Lør<input class="day-checkbox" id="sat" type="checkbox"></p>
-                    <p>Søn<input class="day-checkbox" id="sun" type="checkbox"></p>
+                    <p class="day">Man<input class="day-checkbox" id="mon" type="checkbox"></p>
+                    <p class="day">Tir<input class="day-checkbox" id="tue" type="checkbox"></p>
+                    <p class="day">Ons<input class="day-checkbox" id="wed" type="checkbox"></p>
+                    <p class="day">Tor<input class="day-checkbox" id="thu" type="checkbox"></p>
+                    <p class="day">Fre<input class="day-checkbox" id="fri" type="checkbox"></p>
+                    <p class="day">Lør<input class="day-checkbox" id="sat" type="checkbox"></p>
+                    <p class="day">Søn<input class="day-checkbox" id="sun" type="checkbox"></p>
                         </div>
-                    <button id="btn" onclick="createQuest()">Legg til spørsmål</button>
-                    <button id="' + number +'" onclick="deleteAll()">Slett alt</button>
-                    <button onclick="sendForm()">Ferdig</button>
                     <ul id="list-create-doc">
 
                     </ul>
+                        <div id="addQuestBtn" onclick="createQuest()">
+                            <i class="material-icons">add_circle</i>
+                            <p>Legg til spørsmål</p>
+                        </div>  
                 </div>
             </div>
         </div>
@@ -123,7 +122,7 @@
             function show() {
                 if (document.getElementById('days').style.display == 'none') {
                     document.getElementById('days').style.display = 'block';
-                    document.getElementById('date').style.display = 'none';
+                    document.getElementById('date-pick').style.display = 'none';
                 }
                 return false;
             }
@@ -131,17 +130,16 @@
             function hide() {
                 if (document.getElementById('days').style.display == 'block') {
                     document.getElementById('days').style.display = 'none';
-                    document.getElementById('date').style.display = 'block';
+                    document.getElementById('date-pick').style.display = 'block';
                 }
                 return false;
             }
             
-            Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
+            Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
              Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
-            //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
             
-            var dateObject;
-            var daysArray = new Array();
+            var survDate;
+            var weekdays = new Array();
             
             function checkLogin() {
                 if (Parse.User.current) {
@@ -156,50 +154,63 @@
             
             var outputQuestion = "";
             var number = 0;
+            var pickernr = 0;
+            
+            createQuest();
             
             function chooseTime(){
                 
                 if (document.getElementById('check').checked) {
                     show();
                     
-                    dateObject = undefined;
+                    date = undefined;
 
                 }else{
                     hide();
                 }
             }
             
-            $("#datepicker").datepicker(
+            $("#form-date").datepicker(
             {
-                onSelect: function()
+                onSelect: function(date)
                 { 
-                    dateObject = $(this).datepicker('getDate'); 
-                    console.log(dateObject);
+                    date = $(this).datepicker('getDate'); 
+                    survDate = date;
+                    
                 }
             });
-            
+             
             
             function createQuest(){
                 number++;
                 chooseTime();
                 
-                outputQuestion += '<div id="question'+ number + '>';
-                outputQuestion += '<p id="k"></p>';
-                outputQuestion += '<h2>Spørsmål'+ number +'</h2>';
-                outputQuestion += '<form name="choose">';
-                outputQuestion += '<textarea rows="1" cols="30" name="text" placeholder="Spørsmål"></textarea>';
-                outputQuestion += '<select id="sel">';
-                outputQuestion += '<option id="' + number + '" onclick="textChosen(id)" id="1">Tekst</option>';
-                outputQuestion += '<option id="' + number + '" onclick="ratingChosen(id)" id="2">Rating</option>';
-                outputQuestion += '<option id="' + number + '" onclick="yesnoChosen(id)" id="3">Ja/nei med kommentarer</option>';
-                outputQuestion += '<option id="' + number + '" onclick="yesnoChosen(id)" id="3">Dato</option>';
-                outputQuestion += '</select>';
+                pickernr = 0;
+                outputAlt = "";
+                outputQuestion = "";
                 
-                outputQuestion += '<ul id="list-quest' + number +'">';
+                outputQuestion += '<div class="questionDiv" id="question'+ number + '>';
+                outputQuestion += '<p id="k"></p>';
+                outputQuestion += '<h3>Spørsmål '+ number +'</h3>';
+                outputQuestion += '<form name="choose">';
+                outputQuestion += '<textarea rows="1" cols="30" class="question-title" id="question'+ number +'" name="text" placeholder="Spørsmål"></textarea>';
+                outputQuestion += '<div class="choose-type">';
+                outputQuestion += '<p>Svartype';
+                outputQuestion += '<select id="sel' + number + '">';
+                outputQuestion += '<option id="' + number + '" value="TEXT" onclick="textChosen(id)">Tekst</option>';
+                outputQuestion += '<option id="' + number + '" value="SLIDER" onclick="ratingChosen(id)" >Rating</option>';
+                outputQuestion += '<option id="' + number + '" value="COMMENT" onclick="yesnoChosen(id)">Ja/nei med kommentar</option>';
+                outputQuestion += '<option id="' + number + '" value="PICKER" onclick="pickerChosen(id)">Velger</option>';
+                outputQuestion += '<option id="' + number + '" value="DATE" onclick="dateChosen(id)">Dato/klokkeslett</option>';
+                outputQuestion += '</select>';
+                outputQuestion += '</p>';
+                outputQuestion += '</div>';
+                
+                outputQuestion += '<ul id="list-quest' + number +'" class="list-question">';
                 outputQuestion += '</ul>';
                 outputQuestion += '</form>';
                 outputQuestion += '</div>';
-                $("#list-create-doc").html(outputQuestion); 
+                $("#list-create-doc").append(outputQuestion);
                 textChosen(number);
             }
             
@@ -209,110 +220,394 @@
                 number = 0; 
             }
             
-            console.log(number);
             var outputQuest1 = "";
             function textChosen(nr){
-                console.log(nr);
                 outputQuest1 = "";
-                if(document.getElementById("rating")){
-                document.getElementById("rating").remove();
-                }else if(document.getElementById("yesno")){
-                document.getElementById("yesno").remove();
-                }
                 
                 outputQuest1 += '<div class="textbox" id="txt">';
-                outputQuest1 += '<textarea rows="1" cols="30" placeholder="Svares kun med tekst"></textarea>';
+                outputQuest1 += '<textarea rows="1" cols="30" placeholder="Svares kun med tekst slik som her"></textarea>';
                 outputQuest1 += '</div>';
                 
                 var whereAdd = "#list-quest" + nr;
-                console.log(whereAdd);
                 $(whereAdd).html(outputQuest1); 
                 }
             
             var outputQuest2 = "";
-            function ratingChosen(){
+            function ratingChosen(nr){
                 outputQuest2 = "";
-                if(document.getElementById("txt")){
-                document.getElementById("txt").remove();
-                }else if(document.getElementById("yesno")){
-                document.getElementById("yesno").remove();
-                }
-                outputQuest2 += '<div class="rating" id="rating">';
-                outputQuest2 += '<h2>Svar</h2>';
+
+                outputQuest2 += '<div class="rating" id="'+ nr +'" onclick="showRatCom(id)">';
+                outputQuest2 += '<p class="comment-check">Med kommentar<input id="commentCheck' + nr + '" class="day-checkbox" type="checkbox" onclick="ratingChosen()"></p>';
+                
+                outputQuest2 += '<div class="choose-nr">';
+                outputQuest2 += '<form>';
+                outputQuest2 += '<input class="day-checkbox" id="onetofive' + nr + '" value="1" type="radio" name="gender" onclick="ratingChosen()" checked>1-5<br>';
+                outputQuest2 += '<input class="day-checkbox" id="onetoten' + nr + '" type="radio" name="gender" onclick="ratingChosen()">1-10<br>';
+                outputQuest2 += '<input class="day-checkbox" id="onetotwelve' + nr + '" type="radio" name="gender" onclick="ratingChosen()">1-12<br>';
+                outputQuest2 += '</form>';
+                outputQuest2 += '</div>';
                 outputQuest2 += '</div>';
                 
-                outputQuest2 += '<p>Med kommentar<input class="day-checkbox" type="checkbox"></p>';
+                outputQuest2 += '<ul id="list-rating' + nr +'">';
+                outputQuest2 += '</ul>';
                 
-                $("#list-quest").html(outputQuest2); 
+                var whereAdd = "#list-quest" + nr;
+                $(whereAdd).html(outputQuest2); 
+                
+                showRatCom(nr);
                 }
+            
+            var outputRating = "";
+            var outputComment = "";
+            function showRatCom(nr){
+                outputRating = "";
+                if(document.getElementById('onetofive' + nr).checked){
+                    
+                    outputRating += '<div id="rangeSlider">';
+                    outputRating += '<p>1';
+                    outputRating += '<input type="range" name="ageInputName" id="ageInputId" value="1" min="1" max="5" oninput="ageOutputId.value = ageInputId.value">';
+                    outputRating += '5';
+                    outputRating += '</p>';
+                    outputRating += '<output name="ageOutputName" class="output-number" id="ageOutputId">1</output>';
+                    outputRating += '</div>';
+                    
+                }else if(document.getElementById('onetoten' + nr).checked){
+                    
+                    outputRating += '<div id="rangeSlider">';
+                    outputRating += '<p>1';
+                    outputRating += '<input type="range" name="ageInputName" id="ageInputId" value="1" min="1" max="10" oninput="ageOutputId.value = ageInputId.value">';
+                    outputRating += '10';
+                    outputRating += '</p>';
+                    outputRating += '<output name="ageOutputName" class="output-number" id="ageOutputId">1</output>';
+                    outputRating += '</div>';
+                    
+                }else if(document.getElementById('onetotwelve' + nr).checked){
+                    
+                    outputRating += '<div id="rangeSlider">';
+                    outputRating += '<p>1';
+                    outputRating += '<input type="range" name="ageInputName" id="ageInputId" value="1" min="1" max="12" oninput="ageOutputId.value = ageInputId.value">';
+                    outputRating += '12';
+                    outputRating += '</p>';
+                    outputRating += '<output name="ageOutputName" class="output-number" id="ageOutputId">1</output>';
+                    outputRating += '</div>';
+                    
+                }
+                
+                var comcheck = "commentCheck" + nr;
+                if(document.getElementById(comcheck).checked){
+                    outputRating += '<textarea rows="1" cols="30" class="ratingText" placeholder="Her kan utøverne legge en kommentar"></textarea>';
+                }
+                var whereAdd = "#list-rating" + nr;
+                $(whereAdd).html(outputRating);
+            }
             
             var outputQuest3 = "";
-            function yesnoChosen(){
+            function yesnoChosen(nr){
                 outputQuest3 = "";
-                if(document.getElementById("txt")){
-                document.getElementById("txt").remove();
-                }else if(document.getElementById("rating")){
-                document.getElementById("rating").remove();
-                }
                 
-                outputQuest3 += '<div class="yesno" id="yesno">';
-                outputQuest3 += '<h2>Sv</h2>';
+                outputQuest3 += '<div class="yesno">';
+                outputQuest3 += '<div id="'+ nr +'" onclick="yesChosen(id)">';
+                outputQuest3 += '<div class="date-switch" id="yesnoSwitch">';
+                outputQuest3 += '<h3 id="single">Nei</h3>';
+                outputQuest3 += '<label class="switch">';
+                outputQuest3 += '<input id="yesnoCheck' + nr + '" autocomplete="off" type="checkbox">';                
+                outputQuest3 += '<div class="slider round"></div>';                
+                outputQuest3 += '</label>';
+                outputQuest3 += '<h3 id="plural">Ja</h3>';
+                outputQuest3 += '</div>';
+                outputQuest3 += '</div>';
+                outputQuest3 += '<ul id="list-text' + nr +'">';
+                outputQuest3 += '</ul>';
                 outputQuest3 += '</div>';
                 
-                $("#list-quest").html(outputQuest3); 
+                var whereAdd = "#list-quest" + nr;
+                $(whereAdd).html(outputQuest3); 
                 }
             
-            function sendForm(){
+            var outputTextArea = "";
+            function yesChosen(nr){
+                outputTextArea = "";
+                var whereAdd = "#list-text" + nr;
+                if(document.getElementById('yesnoCheck'+ nr).checked){
+                    outputTextArea += '<textarea rows="1" cols="30" class="yesText" placeholder="Her kan utøverne legge en kommentar"></textarea>';
                     
+                    $(whereAdd).html(outputTextArea); 
+                }else{
+                    $(whereAdd).html(outputTextArea);
+                }
+            }
+            
+            var outputQuest4 = "";
+            function pickerChosen(nr){
+                pickernr = 0;
+                outputQuest4 = "";
+                
+                outputQuest4 += '<div class="add-alternativ">';
+                outputQuest4 += '<div class="add-alt" id="' + nr +'" onclick="addAlternativ(id)">';
+                outputQuest4 += '<i class="material-icons">add_circle</i>';
+                outputQuest4 += '<p>Legg til alternativ</p>';
+                outputQuest4 += '</div>';
+                
+                outputQuest4 += '<ul id="list-alt' + nr +'">';
+                outputQuest4 += '</ul>';
+                
+                outputQuest4 += '<select>';
+                outputQuest4 += '<option id="' + number + '" name="TEXT" onclick="textChosen(id)">Alternativ 1</option>';
+                outputQuest4 += '<option id="' + number + '" name="SLIDER" onclick="ratingChosen(id)" >Alternativ 2</option>';
+                outputQuest4 += '<option id="' + number + '" name="COMMENT" onclick="yesnoChosen(id)">Etc.</option>';
+                outputQuest4 += '</select>';
+                outputQuest4 += '</div>';
+                
+                var whereAdd = "#list-quest" + nr;
+                $(whereAdd).html(outputQuest4); 
+                
+                addAlternativ(nr);
+                }
+            
+            var outputAlt = "";
+            function addAlternativ(nr){
+                pickernr ++;
+                outputAlt = "";
+                
+                outputAlt += '<div class="alt">';
+                outputAlt += '<textarea rows="1" cols="30" class="alternativ' + nr + '" id="alternativ' + nr + pickernr + '" placeholder="Skriv inn alternativ"></textarea>';
+                outputAlt += '</div>';
+                
+                var addAlt = "#list-alt" + nr;
+                $(addAlt).append(outputAlt); 
+                
+            }
+            
+            var outputQuest5 = "";
+            function dateChosen(nr){
+                outputQuest5 = "";
+                
+                outputQuest5 += '<div id="' + nr + '"  class="date-time" onclick="addTime(id)">';
+                outputQuest5 += '<form>';
+                outputQuest5 += '<input class="day-checkbox" value="time-rad' + nr +'" type="radio" class="time-rad" name="gender" id="time-rad' + nr +'" checked>Klokkeslett<br>';
+                outputQuest5 += '<input class="day-checkbox" value="date-rad' + nr + '" type="radio" name="gender" id="date-rad' + nr +'">Dato<br>';
+                outputQuest5 += '</form>';
+                outputQuest5 += '</div>';
+                
+                outputQuest5 += '<ul id="list-time' + nr +'">';
+                outputQuest5 += '</ul>';
+                
+                var whereAdd = "#list-quest" + nr;
+                $(whereAdd).html(outputQuest5);  
+                
+                addTime(nr);
+                }
+            
+            var outputTime = "";
+            function addTime(nr){
+                var outputTime = "";
+                
+                if(document.getElementById('time-rad' + nr).checked){
+                    
+                    outputTime = '<p id="time-pick">Tid: <input type="text" name="timepicker" class="timepicker"></p>';
+                    
+                }else if(document.getElementById('date-rad' + nr).checked){
+                    
+                    outputTime += '<p id="date-pick">Dato: <input type="text" autocomplete="off" class="datepicker"></p>';
+                }
+                
+                var whereAdd = "#list-time" + nr;
+                $(whereAdd).html(outputTime);  
+                
+                $( function() {
+                $( ".datepicker" ).datepicker();
+                } );
+                
+                $('.timepicker').wickedpicker({
+
+	           twentyFour: true,
+              upArrow: 'wickedpicker__controls__control-up',
+              downArrow: 'wickedpicker__controls__control-down',
+              close: 'wickedpicker__close',
+              hoverState: 'hover-state',
+              title: 'Tid'
+            });
+            }
+            
+            function sendForm(){
+                
+                    weekdays.length = 0;
                 function days(){
+                    
                     if (document.getElementById('check').checked) {
 
                         if (document.getElementById('mon').checked) {
-                            daysArray.push(true);
+                            weekdays.push(true);
                         }else{
-                            daysArray.push(false);
+                            weekdays.push(false);
                         }
                         if (document.getElementById('tue').checked) {
-                            daysArray.push(true);
+                            weekdays.push(true);
                         }else{
-                            daysArray.push(false);
+                            weekdays.push(false);
                         }
                         if (document.getElementById('wed').checked) {
-                            daysArray.push(true);
+                            weekdays.push(true);
                         }else{
-                            daysArray.push(false);
+                            weekdays.push(false);
                         }
                         if (document.getElementById('thu').checked) {
-                            daysArray.push(true);
+                            weekdays.push(true);
                         }else{
-                            daysArray.push(false);
+                            weekdays.push(false);
                         }
                         if (document.getElementById('fri').checked) {
-                            daysArray.push(true);
+                            weekdays.push(true);
                         }else{
-                            daysArray.push(false);
+                            weekdays.push(false);
                         }
                         if (document.getElementById('sat').checked) {
-                            daysArray.push(true);
+                            weekdays.push(true);
                         }else{
-                            daysArray.push(false);
+                            weekdays.push(false);
                         }
                         if (document.getElementById('sun').checked) {
-                            daysArray.push(true);
+                            weekdays.push(true);
                         }else{
-                            daysArray.push(false);
+                            weekdays.push(false);
                         }
                     }else{
-                        daysArray = [false, false, false, false, false, false, false];
+                        weekdays = [false, false, false, false, false, false, false];
                     }
                 }
                 days();
                 
-                var title = document.getElementById('title').value;
+                var name = document.getElementById('title').value;
+                    
+                    var questionTypes = new Array();
+                    var questions = new Array();
+                    var questionTypeInfo = new Array();
+                for(var i = 1; i <= number; i++){
+                    var id = "sel" + i;
+                    var id2 = "question" + i;
+                    
+                    var question = document.getElementById(id2).value;
+                    var questionType = document.getElementById(id);
+                    var type = questionType.options[questionType.selectedIndex].value;
+                    
+                    questions.push(question);
+                    
+                    if(type == "SLIDER"){
+                        
+                        if(document.getElementById('commentCheck' + i).checked){
+                            questionTypes.push("SLIDERCOMMENT");
+                        }else{
+                            questionTypes.push(type);
+                        }
+                    }else{
+                        questionTypes.push(type);
+                    }
+                    
+                    if(type == "PICKER"){
+                        var altclass = '.alternativ' + i;
+                        var altlength = $(altclass).length;
+                        var typeAdd = "";
+                        
+                        for(var j = 1; j <= altlength; j++){
+                            var altid = 'alternativ' + i + j;
+                            var altvalue = document.getElementById(altid).value;
+                            
+                            if(j != altlength){
+                                typeAdd += altvalue + ";";    
+                            }else{
+                                typeAdd += altvalue;
+                            }
+                        }
+                        
+                        questionTypeInfo.push(typeAdd);
+                        
+                    }else if(type == "SLIDER"){
+                        
+                        if(document.getElementById('onetofive' + i).checked){
+                            questionTypeInfo.push("5");
+                        }else if(document.getElementById('onetoten' + i).checked){
+                            questionTypeInfo.push("10");
+                        }else if(document.getElementById('onetotwelve' + i).checked){
+                            questionTypeInfo.push("12");
+                        }
+                        
+                    }else if(type == "DATE"){
+                        
+                        if(document.querySelector('input[value=time-rad' + i +']').checked){
+                            questionTypeInfo.push("TIME");
+                        }else if(document.querySelector('input[value=date-rad' + i +']').checked){
+                            questionTypeInfo.push("DAY");
+                        }
+                    }else{
+                        questionTypeInfo.push("");
+                    }
+                }
                 
-                console.log(title);
-                console.log(daysArray);
-                console.log(dateObject);
+                var active = true;
+                var expirationDays = 365;
+                
+                console.log(active);
+                console.log(weekdays);
+                console.log(name);
+                console.log(questions);
+                console.log(questionTypeInfo);
+                console.log(survDate);
+                console.log(questionTypes);
+                
+                var createForm = Parse.Object.extend("data_" + klubbID + "_Survey");
+                var formCreate = new createForm();
+                
+                formCreate.set("active", active);
+                formCreate.set("expirationDays", expirationDays);
+                formCreate.set("weekdays", weekdays);
+                formCreate.set("name", name);
+                formCreate.set("questions", questions);
+                formCreate.set("questionTypeInfo", questionTypeInfo);
+                formCreate.set("date", survDate);
+                formCreate.set("questionTypes", questionTypes);
+                
+                formCreate.save(null, {
+                        success: function (formCreate) {
+                            
+                            var todayDate = new Date();
+                            
+                            survDate.setHours(23);
+                            survDate.setMinutes(59);
+                            survDate.setSeconds(59);
+
+                            todayDate.setHours(23);
+                            todayDate.setMinutes(59);
+                            todayDate.setSeconds(59);
+                            todayDate.setMilliseconds(0);
+
+                            if(survDate.getTime() === todayDate.getTime()){
+                                console.log("Heyeyey");
+
+                                var survId = formCreate;
+                                console.log(survId);
+                                
+                                var setForm = Parse.Object.extend("data_" + klubbID + "_Surveys");
+                                var formSet = new setForm();
+                            
+                                formSet.set("day", survDate);
+                                formSet.set("survey", survId);
+
+                                formSet.save(null, {
+                                    success: function(){
+                                        console.log("Undersøkelse opprettet");
+                                        window.location = "newsFeed.html";
+                                    }
+                                });
+
+                                }
+
+                        },
+                    error: function(error) {
+                        console.log("Noe feilet:" + error.message);
+                    }
+                    
+                });
+            
             }
             
         </script>
