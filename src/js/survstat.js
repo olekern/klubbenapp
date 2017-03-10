@@ -144,7 +144,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                 
                                 var questions = question[u];
                                 outputans += '<div id="ansbox">';
-                                /*if(questionType[u]/1){*/
+                                /*if(questionType[u]/1){
                                     var divid = "chart_div" + j + u;
                                     console.log(divid);
                                     outputans += '<h2>' + questions + '</h2>';
@@ -184,7 +184,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                 chart.draw(data, options);
                                 
                               
-                                /*}else{ */
+                                }else{ */
 
                                 outputans += '<h2>' + questions + '</h2>';
                                 
