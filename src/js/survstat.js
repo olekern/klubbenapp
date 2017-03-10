@@ -110,13 +110,6 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 
             }
 
-            // Load the Visualization API and the corechart package.
-                google.charts.load('current', {
-                  // Set a callback to run when the Google Visualization API is loaded.
-                  'callback': chooseSurv,
-                  // Set packages to use
-                  'packages': ['corechart']
-                });
             
             function chooseSurv(number, name){
                 
@@ -128,8 +121,9 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                 questionType = survType[j];
                 
                 var outputans = "";
-                var outputchart ="";
+                var outputnone = "";
                 
+                $("#draw-charts").html(outputnone);
                 
                 var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
                 var query = new Parse.Query(SurveyAnswer);
@@ -139,53 +133,53 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                 query.equalTo("survey", oldSurv[j]);
                 query.find({
                     success: function(results) {
+                        
+                            google.charts.load('current', {
+                              callback: function () {
+                                for(var u = 0; u<question.length; u++){
+                                    if(questionType[u]/1){
+                                        
+                                        var questions = question[u];
+                                        
+                                  var container = document.getElementById('draw-charts').appendChild(document.createElement('div'));
+
+                                  var data = new google.visualization.DataTable();
+                                data.addColumn('string');
+                                data.addColumn('number');
+                                
+                                    for(var k in results){
+                                        
+                                        var answer = results[k].get("data")[u];
+                                        var answerNumber = Number(answer);
+                                        var author = results[k].get("author");
+                                        var name = author.get("name");
+                                        
+                                        data.addRows([
+                                          [name, answerNumber]
+                                        ]);
+                                    }
+
+                                var options = {
+                                    title: questions,
+                                    width:500,
+                                    height:400,
+                                    colors: ['#3f88c5'],
+                                };
+                                  var chart = new google.visualization.BarChart(container);
+                                  chart.draw(data, options);
+                                }
+                                }
+                              },
+                              packages: ['corechart']
+                            });
                                     
                             for(var u = 0; u<question.length; u++){
                                 
                                 var questions = question[u];
                                 outputans += '<div id="ansbox">';
-                                /*if(questionType[u]/1){
-                                    var divid = "chart_div" + j + u;
-                                    console.log(divid);
-                                    outputans += '<h2>' + questions + '</h2>';
-                                    outputans += '<div id="' + divid +'" class="chart-box"></div>';
-                                    outputans += '</div>';
-                                    
-                                    for(var k in results){
-                                    
-                                    var answer = results[k].get("data")[u];
-                                    var author = results[k].get("author");
-                                    var name = author.get("name");
-                                    outputans += '<h4>' + name + '</h4>';
-                                    outputans += '<p>' + answer + '</p>';
-                                    outputans += '</div>';   
-                                }
-
-                                // Create the data table.
-                                var data = new google.visualization.DataTable();
-                                data.addColumn('string', 'Topping');
-                                data.addColumn('number', 'Slices');
-                                data.addRows([
-                                  ['Mushrooms', 3],
-                                  ['Onions', 1],
-                                  ['Olives', 1],
-                                  ['Zucchini', 1],
-                                  ['Pepperoni', 2]
-                                ]);
-                                    console.log(divid);
+                                if(questionType[u]/1){
+                                }else{
                                 
-                                // Set chart options
-                                var options = {'title':'How Much Pizza I Ate Last Night',
-                                               'width':400,
-                                               'height':300};
-
-                                // Instantiate and draw our chart, passing in some options.
-                                var chart = new google.visualization.PieChart(document.getElementById(divid));
-                                chart.draw(data, options);
-                                
-                              
-                                }else{ */
-
                                 outputans += '<h2>' + questions + '</h2>';
                                 
                                 for(var k in results){
@@ -197,16 +191,16 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                     outputans += '<p>' + answer + '</p>';
                                     outputans += '</div>';   
                                 }
-                                //}
                                 
                             }
                         
                             $("#list-answ").html(outputans);
                         
                         }
+                    }
                         
                     });
-                
-            }
+                           
+                           }
 
             getAnswers();
