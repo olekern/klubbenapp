@@ -38,6 +38,7 @@
       $( function() {
         $( ".datepicker" ).datepicker();
       } );
+            
       </script>
 
         <div class="nav">
@@ -196,12 +197,12 @@
                 outputQuestion += '<textarea rows="1" cols="30" class="question-title" id="question'+ number +'" name="text" placeholder="Spørsmål"></textarea>';
                 outputQuestion += '<div class="choose-type">';
                 outputQuestion += '<p>Svartype';
-                outputQuestion += '<select id="sel' + number + '">';
-                outputQuestion += '<option id="' + number + '" value="TEXT" onclick="textChosen(id)">Tekst</option>';
-                outputQuestion += '<option id="' + number + '" value="SLIDER" onclick="ratingChosen(id)" >Rating</option>';
-                outputQuestion += '<option id="' + number + '" value="COMMENT" onclick="yesnoChosen(id)">Ja/nei med kommentar</option>';
-                outputQuestion += '<option id="' + number + '" value="PICKER" onclick="pickerChosen(id)">Velger</option>';
-                outputQuestion += '<option id="' + number + '" value="DATE" onclick="dateChosen(id)">Dato/klokkeslett</option>';
+                outputQuestion += '<select id="sel' + number + '" name="' + number + '" onchange="selectChosen(name)">';
+                outputQuestion += '<option id="' + number + '" value="TEXT">Tekst</option>';
+                outputQuestion += '<option id="' + number + '" value="SLIDER">Rating</option>';
+                outputQuestion += '<option id="' + number + '" value="COMMENT">Ja/nei med kommentar</option>';
+                outputQuestion += '<option id="' + number + '" value="PICKER">Velger</option>';
+                outputQuestion += '<option id="' + number + '" value="DATE">Dato/klokkeslett</option>';
                 outputQuestion += '</select>';
                 outputQuestion += '</p>';
                 outputQuestion += '</div>';
@@ -211,7 +212,7 @@
                 outputQuestion += '</form>';
                 outputQuestion += '</div>';
                 $("#list-create-doc").append(outputQuestion);
-                textChosen(number);
+                selectChosen(number);
             }
             
             function deleteAll(){
@@ -220,88 +221,58 @@
                 number = 0; 
             }
             
-            var outputQuest1 = "";
-            function textChosen(nr){
-                outputQuest1 = "";
+            function selectChosen(nr){
+                var id = "sel" + nr;
+                    
+                var questionType = document.getElementById(id);
+                var type = questionType.options[questionType.selectedIndex].value;
                 
-                outputQuest1 += '<div class="textbox" id="txt">';
-                outputQuest1 += '<textarea rows="1" cols="30" placeholder="Svares kun med tekst slik som her"></textarea>';
-                outputQuest1 += '</div>';
-                
-                var whereAdd = "#list-quest" + nr;
-                $(whereAdd).html(outputQuest1); 
-                }
-            
-            var outputQuest2 = "";
-            function ratingChosen(nr){
-                outputQuest2 = "";
+                if(type == "TEXT"){
+                    var outputQuest1 = "";
+                    
+                    function textChosen(nr){
+                        outputQuest1 = "";
 
-                outputQuest2 += '<div class="rating" id="'+ nr +'" onclick="showRatCom(id)">';
-                outputQuest2 += '<p class="comment-check">Med kommentar<input id="commentCheck' + nr + '" class="day-checkbox" type="checkbox" onclick="ratingChosen()"></p>';
-                
-                outputQuest2 += '<div class="choose-nr">';
-                outputQuest2 += '<form>';
-                outputQuest2 += '<input class="day-checkbox" id="onetofive' + nr + '" value="1" type="radio" name="gender" onclick="ratingChosen()" checked>1-5<br>';
-                outputQuest2 += '<input class="day-checkbox" id="onetoten' + nr + '" type="radio" name="gender" onclick="ratingChosen()">1-10<br>';
-                outputQuest2 += '<input class="day-checkbox" id="onetotwelve' + nr + '" type="radio" name="gender" onclick="ratingChosen()">1-12<br>';
-                outputQuest2 += '</form>';
-                outputQuest2 += '</div>';
-                outputQuest2 += '</div>';
-                
-                outputQuest2 += '<ul id="list-rating' + nr +'">';
-                outputQuest2 += '</ul>';
-                
-                var whereAdd = "#list-quest" + nr;
-                $(whereAdd).html(outputQuest2); 
-                
-                showRatCom(nr);
-                }
-            
-            var outputRating = "";
-            var outputComment = "";
-            function showRatCom(nr){
-                outputRating = "";
-                if(document.getElementById('onetofive' + nr).checked){
+                        outputQuest1 += '<div class="textbox" id="txt">';
+                        outputQuest1 += '<textarea rows="1" cols="30" placeholder="Svares kun med tekst slik som her"></textarea>';
+                        outputQuest1 += '</div>';
+
+                        var whereAdd = "#list-quest" + nr;
+                        $(whereAdd).html(outputQuest1); 
+                        }
+                    textChosen(nr);
+                }else if(type == "SLIDER"){
                     
-                    outputRating += '<div id="rangeSlider">';
-                    outputRating += '<p>1';
-                    outputRating += '<input type="range" name="ageInputName" id="ageInputId" value="1" min="1" max="5" oninput="ageOutputId.value = ageInputId.value">';
-                    outputRating += '5';
-                    outputRating += '</p>';
-                    outputRating += '<output name="ageOutputName" class="output-number" id="ageOutputId">1</output>';
-                    outputRating += '</div>';
+                    var outputQuest2 = "";
+                    function ratingChosen(nr){
+                        outputQuest2 = "";
+
+                        outputQuest2 += '<div class="rating" id="'+ nr +'" onclick="showRatCom(id)">';
+                        outputQuest2 += '<p class="comment-check">Med kommentar<input id="commentCheck' + nr + '" class="day-checkbox" type="checkbox"></p>';
+
+                        outputQuest2 += '<div class="choose-nr">';
+                        outputQuest2 += '<form>';
+                        outputQuest2 += '<input class="day-checkbox" id="onetofive' + nr + '" value="1" type="radio" name="gender" checked>1-5<br>';
+                        outputQuest2 += '<input class="day-checkbox" id="onetoten' + nr + '" type="radio" name="gender" >1-10<br>';
+                        outputQuest2 += '<input class="day-checkbox" id="onetotwelve' + nr + '" type="radio" name="gender">1-12<br>';
+                        outputQuest2 += '</form>';
+                        outputQuest2 += '</div>';
+                        outputQuest2 += '</div>';
+
+                        outputQuest2 += '<ul id="list-rating' + nr +'">';
+                        outputQuest2 += '</ul>';
+
+                        var whereAdd = "#list-quest" + nr;
+                        $(whereAdd).html(outputQuest2); 
+
+                        }
+
+                        ratingChosen(nr);
+                        showRatCom(nr);
+
+                }else if(type == "COMMENT"){
                     
-                }else if(document.getElementById('onetoten' + nr).checked){
-                    
-                    outputRating += '<div id="rangeSlider">';
-                    outputRating += '<p>1';
-                    outputRating += '<input type="range" name="ageInputName" id="ageInputId" value="1" min="1" max="10" oninput="ageOutputId.value = ageInputId.value">';
-                    outputRating += '10';
-                    outputRating += '</p>';
-                    outputRating += '<output name="ageOutputName" class="output-number" id="ageOutputId">1</output>';
-                    outputRating += '</div>';
-                    
-                }else if(document.getElementById('onetotwelve' + nr).checked){
-                    
-                    outputRating += '<div id="rangeSlider">';
-                    outputRating += '<p>1';
-                    outputRating += '<input type="range" name="ageInputName" id="ageInputId" value="1" min="1" max="12" oninput="ageOutputId.value = ageInputId.value">';
-                    outputRating += '12';
-                    outputRating += '</p>';
-                    outputRating += '<output name="ageOutputName" class="output-number" id="ageOutputId">1</output>';
-                    outputRating += '</div>';
-                    
-                }
-                
-                var comcheck = "commentCheck" + nr;
-                if(document.getElementById(comcheck).checked){
-                    outputRating += '<textarea rows="1" cols="30" class="ratingText" placeholder="Her kan utøverne legge en kommentar"></textarea>';
-                }
-                var whereAdd = "#list-rating" + nr;
-                $(whereAdd).html(outputRating);
-            }
-            
-            var outputQuest3 = "";
+                    var outputQuest3 = "";
             function yesnoChosen(nr){
                 outputQuest3 = "";
                 
@@ -323,46 +294,119 @@
                 var whereAdd = "#list-quest" + nr;
                 $(whereAdd).html(outputQuest3); 
                 }
-            
-            var outputTextArea = "";
-            function yesChosen(nr){
-                outputTextArea = "";
-                var whereAdd = "#list-text" + nr;
-                if(document.getElementById('yesnoCheck'+ nr).checked){
-                    outputTextArea += '<textarea rows="1" cols="30" class="yesText" placeholder="Her kan utøverne legge en kommentar"></textarea>';
+                    yesnoChosen(nr);
                     
-                    $(whereAdd).html(outputTextArea); 
-                }else{
-                    $(whereAdd).html(outputTextArea);
-                }
+                }else if(type == "PICKER"){
+                    var outputQuest4 = "";
+                    function pickerChosen(nr){
+                        pickernr = 0;
+                        outputQuest4 = "";
+
+                        outputQuest4 += '<div class="add-alternativ">';
+                        outputQuest4 += '<div class="add-alt" id="' + nr +'" onclick="addAlternativ(id)">';
+                        outputQuest4 += '<i class="material-icons">add_circle</i>';
+                        outputQuest4 += '<p>Legg til alternativ</p>';
+                        outputQuest4 += '</div>';
+
+                        outputQuest4 += '<ul id="list-alt' + nr +'">';
+                        outputQuest4 += '</ul>';
+
+                        outputQuest4 += '<select>';
+                        outputQuest4 += '<option id="' + number + '" name="TEXT" onclick="textChosen(id)">Alternativ 1</option>';
+                        outputQuest4 += '<option id="' + number + '" name="SLIDER" onclick="ratingChosen(id)" >Alternativ 2</option>';
+                        outputQuest4 += '<option id="' + number + '" name="COMMENT" onclick="yesnoChosen(id)">Etc.</option>';
+                        outputQuest4 += '</select>';
+                        outputQuest4 += '</div>';
+
+                        var whereAdd = "#list-quest" + nr;
+                        $(whereAdd).html(outputQuest4); 
+
+                        addAlternativ(nr);
+                        }
+                    pickerChosen(nr);
+                }else if(type == "DATE"){
+                    var outputQuest5 = "";
+                    function dateChosen(nr){
+                        outputQuest5 = "";
+
+                        outputQuest5 += '<div id="' + nr + '"  class="date-time" onclick="addTime(id)">';
+                        outputQuest5 += '<form>';
+                        outputQuest5 += '<input class="day-checkbox" value="time-rad' + nr +'" type="radio" class="time-rad" name="gender" id="time-rad' + nr +'" checked>Klokkeslett<br>';
+                        outputQuest5 += '<input class="day-checkbox" value="date-rad' + nr + '" type="radio" name="gender" id="date-rad' + nr +'">Dato<br>';
+                        outputQuest5 += '</form>';
+                        outputQuest5 += '</div>';
+
+                        outputQuest5 += '<ul id="list-time' + nr +'">';
+                        outputQuest5 += '</ul>';
+
+                        var whereAdd = "#list-quest" + nr;
+                        $(whereAdd).html(outputQuest5);  
+
+                        addTime(nr);
+                        }
+                        
+                        dateChosen(nr);
+
+                        }
             }
             
-            var outputQuest4 = "";
-            function pickerChosen(nr){
-                pickernr = 0;
-                outputQuest4 = "";
-                
-                outputQuest4 += '<div class="add-alternativ">';
-                outputQuest4 += '<div class="add-alt" id="' + nr +'" onclick="addAlternativ(id)">';
-                outputQuest4 += '<i class="material-icons">add_circle</i>';
-                outputQuest4 += '<p>Legg til alternativ</p>';
-                outputQuest4 += '</div>';
-                
-                outputQuest4 += '<ul id="list-alt' + nr +'">';
-                outputQuest4 += '</ul>';
-                
-                outputQuest4 += '<select>';
-                outputQuest4 += '<option id="' + number + '" name="TEXT" onclick="textChosen(id)">Alternativ 1</option>';
-                outputQuest4 += '<option id="' + number + '" name="SLIDER" onclick="ratingChosen(id)" >Alternativ 2</option>';
-                outputQuest4 += '<option id="' + number + '" name="COMMENT" onclick="yesnoChosen(id)">Etc.</option>';
-                outputQuest4 += '</select>';
-                outputQuest4 += '</div>';
-                
-                var whereAdd = "#list-quest" + nr;
-                $(whereAdd).html(outputQuest4); 
-                
-                addAlternativ(nr);
-                }
+            var outputRating = "";
+                    var outputComment = "";
+                    function showRatCom(nr){
+                        outputRating = "";
+                        if(document.getElementById('onetofive' + nr).checked){
+
+                            outputRating += '<div id="rangeSlider">';
+                            outputRating += '<p>1';
+                            outputRating += '<input type="range" name="ageInputName" id="ageInputId" value="1" min="1" max="5" oninput="ageOutputId.value = ageInputId.value">';
+                            outputRating += '5';
+                            outputRating += '</p>';
+                            outputRating += '<output name="ageOutputName" class="output-number" id="ageOutputId">1</output>';
+                            outputRating += '</div>';
+
+                        }else if(document.getElementById('onetoten' + nr).checked){
+
+                            outputRating += '<div id="rangeSlider">';
+                            outputRating += '<p>1';
+                            outputRating += '<input type="range" name="ageInputName" id="ageInputId" value="1" min="1" max="10" oninput="ageOutputId.value = ageInputId.value">';
+                            outputRating += '10';
+                            outputRating += '</p>';
+                            outputRating += '<output name="ageOutputName" class="output-number" id="ageOutputId">1</output>';
+                            outputRating += '</div>';
+
+                        }else if(document.getElementById('onetotwelve' + nr).checked){
+
+                            outputRating += '<div id="rangeSlider">';
+                            outputRating += '<p>1';
+                            outputRating += '<input type="range" name="ageInputName" id="ageInputId" value="1" min="1" max="12" oninput="ageOutputId.value = ageInputId.value">';
+                            outputRating += '12';
+                            outputRating += '</p>';
+                            outputRating += '<output name="ageOutputName" class="output-number" id="ageOutputId">1</output>';
+                            outputRating += '</div>';
+
+                        }
+
+                        var comcheck = "commentCheck" + nr;
+                        if(document.getElementById(comcheck).checked){
+                            outputRating += '<textarea rows="1" cols="30" class="ratingText" placeholder="Her kan utøverne legge en kommentar"></textarea>';
+                        }
+                        var whereAdd = "#list-rating" + nr;
+                        $(whereAdd).html(outputRating);
+                    }
+            
+            var outputTextArea = "";
+                    
+                    function yesChosen(nr){
+                        outputTextArea = "";
+                        var whereAdd = "#list-text" + nr;
+                        if(document.getElementById('yesnoCheck'+ nr).checked){
+                            outputTextArea += '<textarea rows="1" cols="30" class="yesText" placeholder="Her kan utøverne legge en kommentar"></textarea>';
+
+                            $(whereAdd).html(outputTextArea); 
+                        }else{
+                            $(whereAdd).html(outputTextArea);
+                        }
+                    }
             
             var outputAlt = "";
             function addAlternativ(nr){
@@ -377,26 +421,6 @@
                 $(addAlt).append(outputAlt); 
                 
             }
-            
-            var outputQuest5 = "";
-            function dateChosen(nr){
-                outputQuest5 = "";
-                
-                outputQuest5 += '<div id="' + nr + '"  class="date-time" onclick="addTime(id)">';
-                outputQuest5 += '<form>';
-                outputQuest5 += '<input class="day-checkbox" value="time-rad' + nr +'" type="radio" class="time-rad" name="gender" id="time-rad' + nr +'" checked>Klokkeslett<br>';
-                outputQuest5 += '<input class="day-checkbox" value="date-rad' + nr + '" type="radio" name="gender" id="date-rad' + nr +'">Dato<br>';
-                outputQuest5 += '</form>';
-                outputQuest5 += '</div>';
-                
-                outputQuest5 += '<ul id="list-time' + nr +'">';
-                outputQuest5 += '</ul>';
-                
-                var whereAdd = "#list-quest" + nr;
-                $(whereAdd).html(outputQuest5);  
-                
-                addTime(nr);
-                }
             
             var outputTime = "";
             function addTime(nr){
