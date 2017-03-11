@@ -161,7 +161,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 
                                 var options = {
                                     title: questions,
-                                    width:500,
+                                    width:700,
                                     colors: ['#3f88c5'],
                                 };
                                   var chart = new google.visualization.BarChart(container);
