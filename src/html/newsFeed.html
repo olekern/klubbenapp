@@ -25,8 +25,11 @@
             <li>
                 <div class="loggut">
                     <a href="registration.html" class="fa fa-sign-out" id="signOut" aria-hidden="true" onclick="logOut()"></a>
-                    <p id="brukernavn" class="navn"> </p>
-                    <ul id="profile-pb"> </ul>
+                    <a href="profile.html">
+                        <p id="brukernavn" class="navn">
+                        </p></a>
+                        <ul id="profile-pb">
+                        </ul>
                 </div>
             </li>
         </ul>
@@ -97,6 +100,7 @@
     <script type="text/javascript" src="../js/pb.js"></script>
     <script type="text/javascript" src="../js/usersession.js"></script>
     <script type="text/javascript" src="../js/roles.js"></script>
+    <script type="text/javascript" src="../js/getteam.js"></script>
     
     <script type="text/javascript">     
         
@@ -129,8 +133,6 @@
         console.log(currentUserName);
         var currentUserId = Parse.User.current().id;
         console.log(currentUserId);
-
-        var klubbID = Parse.User.current().get("team").id;
 
         function roles() {
             var Query = Parse.Object.extend("data_" + klubbID + "_Members");

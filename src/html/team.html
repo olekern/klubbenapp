@@ -37,8 +37,9 @@
                 <li>
                     <div class="loggut">
                         <a href="registration.html" class="fa fa-sign-out" id="signOut" aria-hidden="true" onclick="logOut()"></a>
+                        <a href="profile.html">
                         <p id="brukernavn" class="navn">
-                        </p>
+                        </p></a>
                         <ul id="profile-pb">
                         </ul>
                     </div>
@@ -89,14 +90,12 @@
         <script type="text/javascript" src="../js/pb.js"></script>
         <script type="text/javascript" src="../js/roles.js"></script>
         <script type="text/javascript" src="../js/survstat.js"></script>
+        <script type="text/javascript" src="../js/getteam.js"></script>
 
         <script>
-            //Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI");
-             //Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
             Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+            Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';  
 
-            //var klubbID = localStorage.getItem("clubId");
-            var klubbID = Parse.User.current().get("team").id;
             var team = Parse.Object.extend("data_" + klubbID + "_Members");
 
             function getTeam() {

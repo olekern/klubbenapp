@@ -1,9 +1,6 @@
 Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
 Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 
-
-            var klubbID = Parse.User.current().get("team").id;
-
             var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
             var Surveys = Parse.Object.extend("data_" + klubbID + "_Surveys");
             

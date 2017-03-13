@@ -1,10 +1,9 @@
 Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
 Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 
-
-            var klubbID;
+var role;
             function roles() {
-                klubbID = Parse.User.current().get("team").id;
+                var klubbID = Parse.User.current().get("team").id;
                 var Query = Parse.Object.extend("data_" + klubbID + "_Members");
                 var query = new Parse.Query(Query);
                 query.find().then(function() {
@@ -17,7 +16,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                 query.equalTo("user", Parse.User.current());
                 query.find({
                         success: function(objects) {
-                            var role = objects[0].get("role");
+                            role = objects[0].get("role");
                             outputRole += "<div id=\"userRole\">";
                             outputRole += "<p>" + role + "</p>";
                             outputRole += "</div>"

@@ -44,8 +44,9 @@
                 <li>
                     <div class="loggut">
                         <a href="registration.html" class="fa fa-sign-out" id="signOut" aria-hidden="true" onclick="logOut()"></a>
+                        <a href="profile.html">
                         <p id="brukernavn" class="navn">
-                        </p>
+                        </p></a>
                         <ul id="profile-pb">
                         </ul>
                     </div>
@@ -93,7 +94,7 @@
             </div>
         </div>
 
-
+        <script type="text/javascript" src="../js/getteam.js"></script>
 
         <script>
             Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
@@ -131,9 +132,7 @@
             }
             getPB();
             
-            var klubbID;
             function roles() {
-                klubbID = Parse.User.current().get("team").id;
                 var Query = Parse.Object.extend("data_" + klubbID + "_Members");
                 var query = new Parse.Query(Query);
                 query.find().then(function() {
@@ -172,10 +171,6 @@
             }
             roles();
             
-            var klubbID = Parse.User.current().get("team").id;
-
-            //var klubbID = localStorage.getItem("clubId");
-             //var klubbID = "dgrxgGwOLw";
             var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
             var Surveys = Parse.Object.extend("data_" + klubbID + "_Surveys");
 

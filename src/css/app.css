@@ -45,7 +45,6 @@ table {
 }
 
 html{
-    height: 500%;
     background-color: #EDEDED;
     overflow-x: hidden;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
@@ -92,7 +91,7 @@ html{
 }
 
 
-.nav ul li a {
+#signOut {
     text-decoration: none;
     float: right;
     display: block;
@@ -104,7 +103,7 @@ html{
     letter-spacing: 1px;
 }
 
-.nav ul li a:hover {
+#signOut:hover {
     color: lightgrey;
 }
 
@@ -117,6 +116,10 @@ html{
     font-weight: 300;
     font-size: 20px;
     letter-spacing: 1px;
+}
+
+.navn:hover {
+    color: lightgrey;
 }
 
 #profile-pb img{
