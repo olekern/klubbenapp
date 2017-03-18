@@ -39,13 +39,6 @@ function profile(){
                     
                 });
     
-    function changeTeam(){
-        
-        var teams = Parse.User.current().get("teams");
-        console.log(teams);
-        
-    }
-    
     
     function changeSettings(){
         
@@ -58,6 +51,7 @@ function profile(){
         outputSettings += '<ul id="list-pass"></ul>';
         outputSettings += '<button onclick="changePassword()" id="submitpass">Lagre endring</button>';
         outputSettings += '</div>';
+        outputSettings += '<ul id="list-teams"></ul>';
         $("#list-settings").html(outputSettings);
     }
     changeSettings();
@@ -103,3 +97,80 @@ function changePassword(){
     $("#list-pass").html(outputPass);
 }
 
+function changeTeam(){
+    
+    var user = Parse.User.current();
+    var teams = user.get("teams");
+    var nr = teams.length;
+    
+    var outputTeam = "";
+
+    for(var i = 0; i<nr; i++){
+        var team = teams[i];
+        var outputTeams = "";
+        
+        if(i == 0){
+            console.log(i);
+            team.fetch({
+            success: function(team){
+                var teamName = team.get("Name");
+                var teamid = team.id;
+                outputTeams += '<div id="change-team">';
+                outputTeams += '<h4>Bytt lag</h4>';
+                outputTeams += '<select id="select-team" onchange="saveChange()">';
+                if(teamid == klubbID){
+                        outputTeams += '<option id="' + teamid +'" selected>' + teamName +'</option>';
+                    }else{
+                        outputTeams += '<option id="' + teamid +'">' + teamName +'</option>';
+                    }
+                console.log(teamName);
+            }
+            })
+        }else if(i != nr-1){
+            console.log(i);
+            team.fetch({
+            success: function(team){
+                var teamName = team.get("Name");
+                var teamid = team.id;
+                if(teamid == klubbID){
+                        outputTeams += '<option id="' + teamid +'" selected>' + teamName +'</option>';
+                    }else{
+                        outputTeams += '<option id="' + teamid +'">' + teamName +'</option>';
+                    }
+                console.log(teamName);
+            }
+            
+        });
+            
+            }else{
+                console.log(i);
+                team.fetch({
+                success: function(team){
+                    var teamName = team.get("Name");
+                    var teamid = team.id;
+                    if(teamid == klubbID){
+                        outputTeams += '<option id="' + teamid +'" selected>' + teamName +'</option>';
+                    }else{
+                        outputTeams += '<option id="' + teamid +'">' + teamName +'</option>';
+                    }
+                    outputTeams += '</select>';
+                    outputTeams += '</div>';
+                    $("#list-teams").html(outputTeams);
+                }
+
+            });
+                }
+    }
+    
+}
+changeTeam();
+
+function saveChange(){
+    var team = document.getElementById('select-team');
+    var type = team.options[team.selectedIndex].id;
+    
+    localStorage.setItem('clubId', type);
+    
+    window.location = "profile.html";
+    
+}

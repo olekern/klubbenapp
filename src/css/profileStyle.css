@@ -157,6 +157,7 @@ html{
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 90px;
 }
 
 input[type="password"]{
@@ -192,4 +193,41 @@ input[type="password"]{
     margin-top: 15px;
     font-size: 16px;
     color: #cf2424;
+}
+
+#change{
+    margin-top: 20px;
+}
+
+#change{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 6px 8px;
+    color: #fff;
+    border: none;
+    background-color: #D94842;
+    border-bottom: 3px solid #A0332F;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 200px;
+    border-radius: 15px;
+}
+
+#change-team{
+    margin-top: 30px;
+    background-color: white;
+    width: 170px;
+    height: 50px;
+    margin-left: 10px;
+}
+
+#change-team h4{
+    float: left;
+    font-size: 17px;
+}
+
+#change-team select{
+    float: right;
 }

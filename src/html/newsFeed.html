@@ -97,10 +97,10 @@
         </div>
         -->
     
+    <script type="text/javascript" src="../js/getteam.js"></script>
     <script type="text/javascript" src="../js/pb.js"></script>
     <script type="text/javascript" src="../js/usersession.js"></script>
     <script type="text/javascript" src="../js/roles.js"></script>
-    <script type="text/javascript" src="../js/getteam.js"></script>
     
     <script type="text/javascript">     
         
@@ -232,7 +232,6 @@
             });
         }
 
-        var klubbID = Parse.User.current().get("team").id;
         var post1 = Parse.Object.extend("Post");
         var Post = Parse.Object.extend("data_" + klubbID + "_Posts");
 
