@@ -127,9 +127,10 @@ function changeTeam(){
             }
             })
         }else if(i != nr-1){
+            setTimeout(function(){
             console.log(i);
             team.fetch({
-            success: function(team){
+            success: function(){
                 var teamName = team.get("Name");
                 var teamid = team.id;
                 if(teamid == klubbID){
@@ -141,11 +142,13 @@ function changeTeam(){
             }
             
         });
+                }, 200);
             
             }else{
+                setTimeout(function(){
                 console.log(i);
                 team.fetch({
-                success: function(team){
+                success: function(){
                     var teamName = team.get("Name");
                     var teamid = team.id;
                     if(teamid == klubbID){
@@ -159,6 +162,7 @@ function changeTeam(){
                 }
 
             });
+                    }, 200);
                 }
     }
     
