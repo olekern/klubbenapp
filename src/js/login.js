@@ -12,8 +12,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                     },
                     error: function(error) {
                         console.log("Innlogging feilet:" + error.message);
-                        loginError += '<p>Ser ut til at enten brukernavn eller passord er skrevet feil</p>'
-                        $("#list-error").html(loginError);
+                        alert('Ser ut til at enten brukernavn eller passord er skrevet feil.');
                     }
                 })
             return false;

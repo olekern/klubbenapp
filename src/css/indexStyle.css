@@ -754,11 +754,84 @@ p {
     color: #D94842;
 }
 
-#seventh-form div {
-    margin-top: 30px;
+#seventh-form h5 {
+    text-decoration: underline;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
 }
 
-#seventh-form input {
+#seventh-form h5:hover{
+    cursor: pointer;
+}
+
+
+#seventh-form button{
+    font-size: 18px;
+    height: 50px;
+    width: 100px;
+    background-color: #D94842;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-bottom: 3px solid #A0332F;
+    border-radius: 5px;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5); 
+    z-index: 10;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#seventh-form #log-form input {
+    height: 50px;
+    width: 250px;
+    font-size: 18px;
+    margin: 15px auto;
+    padding-left: 10px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    display: block;
+}
+
+#seventh-form #log-form{
+    height: 320px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#seventh-form #log-form h4{
+    margin-top: 15px;
+    text-decoration: underline;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#seventh-form #log-form h4:hover{
+    cursor: pointer;
+}
+
+#seventh-form .form{
+    height: 320px;
+    width: 300px;
+    background-color: white;
+}
+
+#seventh-form #form-input{
+    position: absolute;
+    z-index: 10;
+    margin-top: 0px;
+}
+
+#seventh-form #create-coach{
+    position: relative;
+    z-index: 1;
+}
+
+#seventh-form .left input {
     height: 50px;
     width: 80%;
     font-size: 18px;
@@ -767,6 +840,10 @@ p {
     border: 1px solid grey;
     border-radius: 4px;
     display: block;
+}
+
+#seventh-form div {
+    margin-top: 30px;
 }
 
 #seventh-info {
@@ -779,6 +856,7 @@ p {
     width: 40%;
     text-align: left;
 }
+
 #seventh-info .center {
     width: 30%;
 }
@@ -792,6 +870,7 @@ p {
     width: 30%;
     text-align: right;
 }
+
 #seventh-info .right * {
     float: right;
 }
