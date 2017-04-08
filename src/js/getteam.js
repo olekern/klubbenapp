@@ -4,12 +4,11 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 var klubbID;
         if(localStorage.getItem("clubId")){
             klubbID = localStorage.getItem("clubId");
-            
         }else{
-            klubbID = Parse.User.current().get("team").id;
-            if(klubbID == undefined){
-            localStorage.setItem('clubId', klubbID);
+            if(Parse.User.current().get("team") == undefined){
+                window.location = "club.html";
             }else{
-                window.location = "noteam.html";
+            klubbID = Parse.User.current().get("team").id;
+            localStorage.setItem('clubId', klubbID);
             }
         }
