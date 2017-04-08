@@ -159,34 +159,6 @@
                         document.getElementById("rapporter").remove();
                         document.getElementById("evaluering").remove();
                     }
-                    if ((role == "admin") || (role == "trener")) {
-                        var queryQ = new Parse.Query(Query);
-                        queryQ.descending("createdAt");
-                        queryQ.include("user");
-                        queryQ.find({
-                            success: function (objects) {
-                                outputReq += '<h1 id="request-heading">' + "Forespørsler" + "</h1>";
-                                for (var a in objects) {
-                                    objects[a].toJSON();
-                                    var content = objects[a].get("accepted");
-                                    var user = objects[a].get("user");
-                                    var name = user.get("name");
-                                    var accept = objects[a].get("accepted");
-                                    if (accept == false) {
-                                        outputReq += "<div id=\"all-requests\">";
-                                        outputReq += "<p>" + name + "</p>";
-                                        outputReq += "<button>" + "Avslå" + "</button>";
-                                        outputReq += '<button name="' + name + '" type="button" onclick="acceptPlayerRequest(name);">' + 'Godkjenn' + '</button>';
-                                        outputReq += "</div>"
-                                    }
-                                }
-                                $("#list-req").html(outputReq);
-                            }
-                            , error: function (error) {
-                                console.log("Query error:" + error.message);
-                            }
-                        });
-                    }
                     $("#list-req").html(outputReq);
                 }
                 , error: function (error) {
@@ -196,41 +168,6 @@
             });
         }
         roles();
-
-        function acceptPlayerRequest(id) {
-            var query = Parse.Object.extend("data_" + klubbID + "_Members");
-            var queryQ = new Parse.Query(query);
-            queryQ.descending("createdAt");
-            queryQ.include("user");
-            queryQ.find().then(function () {}, function (err) {
-                handleParseError(err);
-            });
-            queryQ.find({
-                success: function (objects) {
-                    for (var a in objects) {
-                        var content = objects[a].get("accepted");
-                        var user = objects[a].get("user");
-                        var name = user.get("name");
-                        if (name == id) {
-                            console.log(name);
-                            objects[a].set("accepted", true);
-                            objects[a].set("role", "spiller");
-                            Parse.Cloud.run("setPlayersTeam", {
-                                user: "teamId"
-                            });
-                            objects[a].save(null, {
-                                success: function () {
-                                }
-                            });
-                        }
-                    }
-                }
-                , error: function (error) {
-                    console.log("Query error:" + error.message);
-                    handleParseError();
-                }
-            });
-        }
 
         var post1 = Parse.Object.extend("Post");
         var Post = Parse.Object.extend("data_" + klubbID + "_Posts");

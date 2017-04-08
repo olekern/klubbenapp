@@ -17,6 +17,7 @@ var role;
                 query.find({
                         success: function(objects) {
                             role = objects[0].get("role");
+                            localStorage.setItem("role", role);
                             outputRole += "<div id=\"userRole\">";
                             outputRole += "<p>" + role + "</p>";
                             outputRole += "</div>"
@@ -39,3 +40,4 @@ var role;
                     });
             }
             roles();
+

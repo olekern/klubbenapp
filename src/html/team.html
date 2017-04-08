@@ -21,6 +21,7 @@
         <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet"> 
         <link rel="icon" type="image/png" href="../img/blackfavicon-32x32.png" sizes="32x32" />
         <link rel="icon" type="image/png" href="../img/blackfavicon-16x16.png" sizes="16x16" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     </head>
 
@@ -77,69 +78,19 @@
 
         <div class="newboxes" id="teamOverview">
             <div class="listPlayers">
-            <h1></h1>
-            <ul id="list-team">
-            </ul>
+                <h1></h1>
+                <ul id="list-team">
+                </ul>
             </div>
-            
+            <ul id="list-req"></ul>         
 
         </div>
-
+        
+        <script type="text/javascript" src="../js/roles.js"></script>
         <script type="text/javascript" src="../js/getteam.js"></script>
         <script type="text/javascript" src="../js/usersession.js"></script>
         <script type="text/javascript" src="../js/pb.js"></script>
-        <script type="text/javascript" src="../js/roles.js"></script>
-        <script type="text/javascript" src="../js/survstat.js"></script>
-
-        <script>
-            Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
-            Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';  
-
-            var team = Parse.Object.extend("data_" + klubbID + "_Members");
-
-            function getTeam() {
-                var Query = new Parse.Query(team);
-                Query.include("user");
-                Query.find({
-                        success: function(objects, results) {
-                            var output = "";
-                            for (var i = 0; i < objects.length; i++) {
-                                var user = objects[i].get("user");
-                                var navn = user.get("name");
-                                var role = objects[i].get("role");
-                        
-                                var pB = "";
-                                var userPB = "";
-                                if (user.get("profileImage_small")) {
-                                    var bilde = user.get("profileImage_small");
-                                    var url1 = bilde.url();
-                                    pB = '<img class="pb1" src="' + url1 + '">';
-                                } else {
-                                    userPB = '<img class="pb1" src="../img/User_Small.png">';
-                                         }
-                            
-                                output += '<div class="player">';
-                                output += pB;
-                                output += userPB;
-                                output += '<div class="text">';
-                                output += '<h3>' + navn + '</h3>';
-                                output += '<h4>' + role + '</h4>';
-                                output += '</div>';
-                                output += '</div>';
-                                }
-                            $("#list-team").html(output);
-                        },
-                        error: function(error) {
-                            console.log("Query error:" + error.message);
-                        }
-                            
-                    });
-
-
-            }
-
-            getTeam();
-        </script>
+        <script type="text/javascript" src="../js/team.js"></script>
 
 
 
