@@ -7,6 +7,9 @@ var klubbID;
             
         }else{
             klubbID = Parse.User.current().get("team").id;
-            
+            if(klubbID == undefined){
             localStorage.setItem('clubId', klubbID);
+            }else{
+                window.location = "noteam.html";
+            }
         }
