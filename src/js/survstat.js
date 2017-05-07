@@ -173,7 +173,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                             for(var u = 0; u<question.length; u++){
                                 
                                 var questions = question[u];
-                                outputans += '<div id="ansbox">';
+                                outputans += '<div class="ansbox">';
                                 if(questionType[u]/1){
                                 }else{
                                 

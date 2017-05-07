@@ -1,6 +1,3 @@
-html{
-    height: 500%;
-}
 .square{
     padding-top: 14px;
     padding-bottom: 9px;
@@ -79,19 +76,18 @@ html{
 
 .listPlayers{
     width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 130px;
+    margin-left: 10%;
+    margin-top: 50px;
 }
 
 .player{
     width: 400px;
-    height: 100px;
+    height: 150px;
     border-bottom: 1px solid lightgrey;
     margin-top: 20px;
 }
 
-.text{
+.playerbox{
     float: left;
     margin-left: 30px;
     margin-top: 7px;
@@ -109,6 +105,7 @@ html{
     font-size: 20px;
     font-weight: 400;
     line-height: 25px;
+    width: 300px;
 }
 
 #list-team h4{
@@ -119,18 +116,137 @@ html{
     text-transform: capitalize;
 }
 
-#list-req{
+.kickout{
+    margin-top: 18px;
+    width: 220px;
+}
+
+.kickout i {
+    font-size: 25px;
+}
+
+.kickout p{
+    margin-top: 8px;
+}
+
+.kick{
+    float: left;
+    cursor: pointer;
+}
+
+.confirm{
+    height: 100px;
+    width: 270px;
+    padding: 20px;
+    background-color: white;
+    position: fixed;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    margin-top: 200px;
+    margin-left: 200px;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 1);
+    text-align: center;
+}
+
+.confirm h2{
+    font-size: 20px;
+}
+
+.confirm span{
+    color: #cf2424;
+    font-size: 22px;
+}
+
+.confirm button{
+    margin-top: 15px;
+    padding: 6px 8px;
+    z-index: 10;
+    color: #fff;
+    border: none;
+    background-color: #D94842;
+    border-bottom: 3px solid #A0332F;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100px;
+    border-radius: 15px;
+}
+
+.confirm .no{
+    margin-left: -5px;
+}
+
+.confirm .yes{
+    margin-left: 10px;
+}
+
+.changerole{
     float: right;
-    right: 0;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.role{
+    height: 130px;
+    width: 270px;
+    padding: 20px;
+    background-color: white;
+    position: fixed;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    margin-top: 200px;
+    margin-left: 200px;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 1);
+    text-align: center;
+}
+
+.role h2{
+    font-size: 20px;
+}
+
+.role span{
+    color: #cf2424;
+    font-size: 22px;
+}
+
+.role button{
+    margin-top: 15px;
+    padding: 6px 8px;
+    z-index: 10;
+    color: #fff;
+    border: none;
+    background-color: #D94842;
+    border-bottom: 3px solid #A0332F;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100px;
+    border-radius: 15px;
+}
+
+.role .no{
+    margin-left: -5px;
+}
+
+.role .yes{
+    margin-left: 10px;
+}
+
+.right-block{
     width: 300px;
-    height: 200px;
+    position: absolute;
+    top: 0;
+    margin-top: 50px;
+    margin-left: 70%;
+}
+
+#list-req{
+    max-height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
     background-color: white;
-    position: absolute;
-    top: 0;
-    margin-top: 150px;
-    margin-right: 100px;
     box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 1); 
 }
 
@@ -198,4 +314,166 @@ html{
 
 #check #true:hover{
     cursor: pointer;
+}
+
+#list-groups{
+    background-color: white;
+    margin-top: 50px;
+    box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 1); 
+}
+
+#list-groups h2{
+    text-align: center;
+    font-size: 20px;
+    padding-top: 10px;
+    margin-bottom: 12px;
+}
+
+.groups h3{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+hr{
+    display: none;
+}
+
+.username button{
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.username button:hover + hr {
+display: block;
+  border:none;
+  border-top: 2px solid black;
+  color:black;
+  background-color:black;
+  height:2px;
+  width:100%;
+    margin-top: -11px;
+    margin-bottom: 19px;
+}
+
+.change-group{
+    height: 55px;
+    display: table;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.change-group i{
+    color: #cf2424;
+    font-size: 30px;
+    display: table-cell;
+    vertical-align: middle; 
+    padding-left: 60px;
+}
+
+.change-group p{
+    font-size: 16px;
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 15px;
+}
+
+#new{
+    height: 55px;
+    display: table;
+    width: 100%;
+    cursor: pointer;
+}
+
+#new i{
+    color: #cf2424;
+    font-size: 45px;
+    display: table-cell;
+    vertical-align: middle; 
+    padding-left: 30px;
+}
+
+#new p{
+    font-size: 18px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#members{
+    width: 300px;
+    position: fixed;
+    top: 0;
+    margin-top: 250px;
+    margin-left: 40%;
+    background-color: white; 
+    z-index: 200;
+    box-shadow: 0px 1px 6px -1px rgba(0, 0, 0, 1); 
+}
+
+#groupname{
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Microsoft Sans Serif;
+    font-weight: 400;
+    font-size: 17px;
+    overflow: auto;
+    resize: none;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-bottom: 1px solid #d5d5d5;
+    position: relative;
+    height: 35px;
+    padding-left: 10px;
+    padding-top: 8px;
+    padding-right: 10px;
+}
+
+.addmembers p{
+    text-align: center;
+    margin-top: 12px;
+}
+
+.select-members{
+    margin-top: 10px;
+    width: 250px;
+    display: block;
+    margin-left: 25px;
+}
+
+.finishgroup{
+    font-size: 16px;
+    height: 35px;
+    width: 80px;
+    background-color: #D94842;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-bottom: 3px solid #A0332F;
+    border-radius: 5px;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5); 
+    z-index: 10;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.addnewmembers p{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 5px;
 }

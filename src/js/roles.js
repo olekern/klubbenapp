@@ -3,7 +3,6 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 
 var role;
             function roles() {
-                var klubbID = Parse.User.current().get("team").id;
                 var Query = Parse.Object.extend("data_" + klubbID + "_Members");
                 var query = new Parse.Query(Query);
                 query.find().then(function() {
@@ -16,12 +15,8 @@ var role;
                 query.equalTo("user", Parse.User.current());
                 query.find({
                         success: function(objects) {
-                            role = objects[0].get("role");
-                            localStorage.setItem("role", role);
-                            outputRole += "<div id=\"userRole\">";
-                            outputRole += "<p>" + role + "</p>";
-                            outputRole += "</div>"
-                            $("#list-role").html(outputRole);
+                            for(var i in objects){
+                            role = objects[i].get("role");
                             if (role == "admin") {
                             } else if (role == "trener") {
                                 //document.getElementById("forberedelser").remove();
@@ -29,7 +24,7 @@ var role;
                             } else {
                                 document.getElementById("rapporter").remove();
                                 document.getElementById("evaluering").remove();
-                               
+                            }
                             }
                             
                         },

@@ -85,11 +85,14 @@
     margin-bottom: 30px;
     border: 1px solid #d5d5d5;
     border-radius: 5px;
-    height: 164px;
+    height: 200px;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
 }
 
 #tekstboks{
-    margin: 24px;
+    margin-top: 24px;
+    margin-right: 24px;
+    margin-left: 24px;
     height: 80px;
     width: calc(100% - 48px);
     border-bottom: 1px solid #C2C2C2;
@@ -124,7 +127,73 @@
     top: -4px;
 }
 
-.form button{
+#list-group{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+#groupSet{
+    height: 30px;
+    width: 44%;
+    margin-top: 5px;
+    display: inline-table;
+    margin-bottom: 10px;
+}
+
+#groupSet select{
+    width: 130px;
+    display: inline-block;
+}
+
+#group{
+    float: left;
+    font-size: 25px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+#info{
+    float: right;
+    font-size: 20px;
+    display: inline-block;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+#group-info{
+    display: none;
+}
+
+#groupSet i:hover + #group-info{
+    display: block;
+    position: fixed;
+    top: 0;
+    margin-top: 180px;
+    left: 0;
+    margin-left: 600px;
+    z-index: 100;
+    width: 200px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
+}
+
+#button{
+    height: 30px;
+    width: 100px;
+    float: right;
+    margin-right: 22px;
+    margin-top: -8px;
+}
+
+#button button{
     padding: 6px 8px;
     position: absolute;
     z-index: 10;
@@ -139,16 +208,8 @@
     border-radius: 15px;
 }
 
-#button{
-    height: 30px;
-    width: 100px;
-    float: right;
-    margin-right: 22px;
-    margin-top: -8px;
-}
-
 #button img{
-    height: 35px;
+    height: 30px;
     width: auto;
     position: relative;
     z-index: 1;
@@ -167,6 +228,7 @@
     padding-right: 32px;
     margin: 0px;
     margin-top: -15px;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
 }
 
 #list-posts img {
@@ -243,6 +305,7 @@
     margin-bottom: 40px;
     background-color: #f7f7f7;
     border: 1px solid #d5d5d5;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
 }
 
 #commentSection{
@@ -274,28 +337,13 @@
     padding-left: 8px;
     padding-top: 6px;
     padding-right: 8px;
-    
-    border-color: #C7C4C4;
-    box-shadow: 0px 1px 4px -2px rgba(0, 0, 0, 1);
-    
-    -moz-transition: all .5s;
-    -webkit-transition: all .5s;
-    transition: all .5s;
-    border: 1px solid #eee;
 }
-
-#commentSection textarea:focus {
-  border-color: #999999;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #999999;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #999999;
-} 
 
 #commentSection button{
     float: right;
     z-index: 10;
     position: absolute;
-    margin-right: 8px;
+    margin-left: -10px;
     margin-top: 8px;
     color: #fff;
     border: none;
@@ -307,7 +355,6 @@
     width: 80px;
     height: 30px;
     border-radius: 15px;
-    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
 }
 
 .cmt-btn{
@@ -383,7 +430,6 @@
     margin: 8px 8px 0px 0px;
 
 }
-
 
 .comments p{
     font-size: 16px;

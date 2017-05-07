@@ -100,71 +100,38 @@ function changePassword(){
 function changeTeam(){
     
     var user = Parse.User.current();
-    var teams = user.get("teams");
-    var nr = teams.length;
-    
-    var outputTeam = "";
-
-    for(var i = 0; i<nr; i++){
-        var team = teams[i];
-        var outputTeams = "";
-        
-        if(i == 0){
-            console.log(i);
-            team.fetch({
-            success: function(team){
-                var teamName = team.get("Name");
-                var teamid = team.id;
-                outputTeams += '<div id="change-team">';
-                outputTeams += '<h4>Bytt lag</h4>';
-                outputTeams += '<select id="select-team" onchange="saveChange()">';
-                if(teamid == klubbID){
-                        outputTeams += '<option id="' + teamid +'" selected>' + teamName +'</option>';
-                    }else{
-                        outputTeams += '<option id="' + teamid +'">' + teamName +'</option>';
-                    }
-                console.log(teamName);
-            }
-            })
-        }else if(i != nr-1){
-            setTimeout(function(){
-            console.log(i);
-            team.fetch({
-            success: function(){
-                var teamName = team.get("Name");
-                var teamid = team.id;
-                if(teamid == klubbID){
-                        outputTeams += '<option id="' + teamid +'" selected>' + teamName +'</option>';
-                    }else{
-                        outputTeams += '<option id="' + teamid +'">' + teamName +'</option>';
-                    }
-                console.log(teamName);
-            }
-            
-        });
-                }, 200);
-            
-            }else{
-                setTimeout(function(){
-                console.log(i);
-                team.fetch({
-                success: function(){
-                    var teamName = team.get("Name");
-                    var teamid = team.id;
+    var userId = user.get("username");
+    var users = Parse.Object.extend("User");
+    var queryUsers = new Parse.Query(users);
+    queryUsers.equalTo("username", userId);
+    queryUsers.include("teams");
+    queryUsers.find({
+        success:function(results){
+            for(var i in results){
+                    var outputTeams = "";
+                var team = results[i].get("teams");
+                    outputTeams += '<div id="change-team">';
+                    outputTeams += '<h4>Bytt lag</h4>';
+                    outputTeams += '<select id="select-team" onchange="saveChange()">';
+                for(var k = 0; k<team.length; k++){
+                    var teamName = team[k].get("Name");
+                    var teamid = team[k].id;
+                    
                     if(teamid == klubbID){
-                        outputTeams += '<option id="' + teamid +'" selected>' + teamName +'</option>';
-                    }else{
-                        outputTeams += '<option id="' + teamid +'">' + teamName +'</option>';
-                    }
-                    outputTeams += '</select>';
-                    outputTeams += '</div>';
-                    $("#list-teams").html(outputTeams);
+                            outputTeams += '<option id="' + teamid +'" selected>' + teamName +'</option>';
+                        }else{
+                            outputTeams += '<option id="' + teamid +'">' + teamName +'</option>';
+                        }
+                
                 }
-
-            });
-                    }, 200);
-                }
-    }
+                        outputTeams += '</select>';
+                        outputTeams += '</div>';
+                        $("#list-teams").html(outputTeams);
+                
+            }
+            
+        }
+    });
     
 }
 changeTeam();
