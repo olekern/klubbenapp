@@ -254,10 +254,24 @@
 }
 
 #feedCell h5{
-    margin-left: 72px;
+    margin-left: 65px;
     margin-top: 7px;
     font-size: 17px;
     color: #707070;
+    display: inline-block;
+}
+
+#feedCell h6{
+    display: inline-block;
+    margin-left: 25px;
+    font-size: 15px;
+}
+
+#feedCell i{
+    float: right;
+    margin-top: -20px;
+    cursor: pointer;
+    font-size: 20px;
 }
 
 #feedCell p{

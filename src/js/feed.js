@@ -145,13 +145,15 @@ chooseGroup();
                     var commentid = new Array();
                     for (var i in results) {
                         results[i].toJSON();
+                        var postId = results[i].id;
                         var content = results[i].get("content");
                         var author = results[i].get("author");
+                        var authorid = author.id;
                         var name = "Anonymous";
                         var postID = results[i];
                         var posts = postID.id;
                         var realPost = posts;
-                        var date = results[i].get("createdAt");
+                        var date = results[i].get("updatedAt");
                         var dato = date.toString();
                         var datoen = dato.substring(4, 15);
                         if (author != null) {
@@ -176,12 +178,17 @@ chooseGroup();
                         
                         var confirmation = "yes";
                         var group = results[i].get("audiences");
+                        var groupName = new Array();
                         if(group != undefined){
                             if(group.length != 0){
                                 confirmation = "no";
                                 for(var k in group){
                                     var groupMembers = group[k].get("members");
-                                    var groupName = group[k].get("name");
+                                    var gname = group[k].get("name");
+                                    var pushname = " " + gname;
+                                    if(gname != undefined){
+                                    groupName.push(pushname);
+                                    }
                                     for(var j in groupMembers){
                                         var memberId = groupMembers[j].get("user").id;
                                         var userId = Parse.User.current().id;
@@ -193,7 +200,6 @@ chooseGroup();
                             }
                         }
                         if(confirmation == "yes"){
-
                         output += "<div id=\"feedPost\">";
                         output += "<div id=\"feedCell\">";
                         output += "<div id=\"post\">";
@@ -203,6 +209,10 @@ chooseGroup();
                         output += "</div>"
                         output += "<h4>" + name + "</h4>";
                         output += "<h5>" + datoen + "</h5>";
+                        output += '<h6>' + groupName + '</h6>';
+                        if(authorid == Parse.User.current().id){
+                            output += '<i class="material-icons" id="' + postId + '" onclick="deletePost(id)">clear</i>';
+                        }
                         output += "<p>" + content + "</p>";
                         output += img;
                         output += "</div>";
@@ -273,13 +283,13 @@ chooseGroup();
                         commentid = results[i].get("comments");
                         var m;
                         if (commentid != null) {
-                            for (var i in commentid) {
-                                if (commentid[i] != null) {
-                                    var ct = commentid[i];
+                            for (var k in commentid) {
+                                if (commentid[k] != null) {
+                                    var ct = commentid[k];
                                     var ctxt = ct.get("text");
                                     var ctauth = ct.get("author");
                                     var ctname = ctauth.get("name");
-                                    var ctdate = results[i].get("createdAt");
+                                    var ctdate = ct.get("createdAt");
                                     var ctdato = ctdate.toString();
                                     var ctdatoen = ctdato.substring(4, 15);
                                     var pB = "";
@@ -292,7 +302,7 @@ chooseGroup();
                                     else {
                                         userPB = '<img src="../img/User_Small.png">';
                                     }
-                                    output += '<div class="comments" id="comments' + i + '">';
+                                    output += '<div class="comments" id="comments' + k + '">';
                                     output += "<div id=\"profilBildeC\">";
                                     output += pB;
                                     output += userPB;
@@ -430,3 +440,23 @@ chooseGroup();
             });
         }
         getPosts();
+
+        function deletePost(postid){
+            
+            var post = Parse.Object.extend("data_" + klubbID + "_Posts");
+            var queryp = new Parse.Query(post);
+            queryp.equalTo("objectId", postid);
+            queryp.find({
+                success: function(result){
+                    for(var j in result){
+                    result[j].destroy({
+                      success: function(result) {
+                          getPosts();
+                      },
+                      error: function(result, error) {
+                      }
+                    });
+                    }
+                }
+            });
+        }
