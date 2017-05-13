@@ -174,7 +174,28 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                 var questions = question[u];
                                 outputans += '<div id="ansbox">';
                                 if(questionType[u]/1){
-                                }else{
+                                }else if((questionType[u] == "NO") || (questionType[u] == "YES")){
+                                    console.log("AF");
+                                    for(var k in results){
+                                    
+                                    var answer = results[k].get("data")[u];
+                                    var author = results[k].get("author");
+                                    var name = author.get("name");
+                                    outputans += '<h4>' + name + '</h4>';
+                                        
+                                    if(answer[4] == 'YES±'){
+                                    var yes = answer.split("±").pop();
+                                    outputans += '<p>Ja</p>';
+                                    outputans += '<p>' + yes + '</p>';
+                                    }else if(answer[3] == 'NO±){
+                                    var no = answer.split("±").pop();
+                                    outputans += '<p>Nei</p>';
+                                    outputans += '<p>' + no + '</p>';
+                                    }
+                                    outputans += '</div>';   
+                                }
+                                    
+                                } else{
                                 
                                 outputans += '<h2>' + questions + '</h2>';
                                 
@@ -193,6 +214,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                             $("#list-answ").html(outputans);
                         
                         }
+                    
                     }
                         
                     });

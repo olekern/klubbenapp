@@ -52,6 +52,8 @@ function profile(){
         outputSettings += '<button onclick="changePassword()" id="submitpass">Lagre endring</button>';
         outputSettings += '</div>';
         outputSettings += '<ul id="list-teams"></ul>';
+        outputSettings += '<h4>Endre profilbilde:</h4>';
+        outputSettings += '<input id="pb-file" class="pbInput" onChange="changePB(this.value);" type="file"/>';
         $("#list-settings").html(outputSettings);
     }
     changeSettings();
@@ -144,4 +146,43 @@ function saveChange(){
     
     window.location = "profile.html";
     
+}
+
+function changePB(){
+    
+    var user = Parse.User.current();
+    
+    var bilde = document.getElementById("pb-file");
+    
+    var file = bilde.files[0];
+                
+                var reader = new FileReader();
+                  reader.onloadend = function() {
+                      var base64 = reader.result;
+                      console.log(base64);
+                      var newFile = new Parse.File("img.txt", { base64: base64 });
+
+                newFile.save({
+                    success: function () {
+                        console.log("YAYA");
+                    }
+                    , error: function (file, error) {
+                        console.log("Files Save Error:" + error.message);
+                    }
+                }).then(function (theFile) {
+                    user.set("profileImage", theFile);
+                    user.set("profileImage_small", theFile);
+                    user.save({
+                        success: function () {
+                            location.href = "profile.html";
+                        }
+                        , error: function (error) {
+                            console.log("Post Save with File Error:" + error.message);
+                            handleParseError();
+                        }
+                    });
+                });
+                  }
+                  reader.readAsDataURL(file);
+                
 }

@@ -93,9 +93,17 @@ chooseGroup();
             document.getElementById("postbtn").value = "";
             if (bilde.files.length > 0) {
                 var file = bilde.files[0];
-                var newFile = new Parse.File(bildeNavn, file);
+                
+                var reader = new FileReader();
+                  reader.onloadend = function() {
+                      var base64 = reader.result;
+                      console.log(base64);
+                      var newFile = new Parse.File("img.txt", { base64: base64 });
+
                 newFile.save({
-                    success: function () {}
+                    success: function () {
+                        console.log("YAYA");
+                    }
                     , error: function (file, error) {
                         console.log("Files Save Error:" + error.message);
                     }
@@ -113,6 +121,9 @@ chooseGroup();
                         }
                     });
                 });
+                  }
+                  reader.readAsDataURL(file);
+                
             }
             else {
                 newPost.save(null, {

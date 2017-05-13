@@ -175,6 +175,27 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                 var questions = question[u];
                                 outputans += '<div class="ansbox">';
                                 if(questionType[u]/1){
+                                }else if((questionType[u] == "NO") || (questionType[u] == "YES")){
+                                    
+                                    outputans += '<h2>' + questions + '</h2>';
+                                    
+                                    for(var k in results){
+                                    
+                                    var answer = results[k].get("data")[u];
+                                    var author = results[k].get("author");
+                                    var name = author.get("name");
+                                    outputans += '<h4>' + name + '</h4>';
+                                    if(answer[0] == 'Y'){
+                                    var yes = answer.split("±").pop();
+                                    outputans += '<p>Ja</p>';
+                                    outputans += '<p>' + yes + '</p>';
+                                    }else{
+                                    var no = answer.split("±").pop();
+                                    outputans += '<p>Nei</p>';
+                                    outputans += '<p>' + no + '</p>';
+                                    }
+                                    outputans += '</div>';   
+                                }
                                 }else{
                                 
                                 outputans += '<h2>' + questions + '</h2>';
