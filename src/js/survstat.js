@@ -1,7 +1,7 @@
 Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
 Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
-            
-            console.log(klubbID);
+
+
             var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
             var Surveys = Parse.Object.extend("data_" + klubbID + "_Surveys");
             
@@ -9,6 +9,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
             var survName = new Array();
             var survQuestions = new Array();
             var survType = new Array();
+   	    var survId = new Array();
 
             function getAnswers() {
                 var Query = new Parse.Query(Surveys);
@@ -40,13 +41,11 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                 date.setMinutes(59);
                 date.setSeconds(59);
                 
-                console.log(idag);
 
                 Query.find({
                         success: function(objects) {
                                 
                                 var j = 0;
-                                var survId = new Array();
                                 var id = new Array();
                                 var output = "";
                                 var outputSurv = "";
@@ -179,12 +178,14 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                     
                                     outputans += '<h2>' + questions + '</h2>';
                                     
-                                    for(var k in results){
-                                    
+                                   for(var k in results){ 
                                     var answer = results[k].get("data")[u];
                                     var author = results[k].get("author");
                                     var name = author.get("name");
-                                    outputans += '<h4>' + name + '</h4>';
+
+				    var userSurvId = results[k].id; 
+
+                                    outputans += '<h4 id="' + userSurvId + '" onclick="playerSurv(id)">' + name + '</h4>';
                                     if(answer[0] == 'Y'){
                                     var yes = answer.split("±").pop();
                                     outputans += '<p>Ja</p>';
@@ -205,7 +206,10 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                     var answer = results[k].get("data")[u];
                                     var author = results[k].get("author");
                                     var name = author.get("name");
-                                    outputans += '<h4>' + name + '</h4>';
+
+				    var userSurvId = results[k].id; 
+
+                                    outputans += '<h4 id="' + userSurvId + '" onclick="playerSurv(id)">' + name + '</h4>';
                                     outputans += '<p>' + answer + '</p>';
                                     outputans += '</div>';   
                                 }
@@ -222,3 +226,165 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                            }
 
             getAnswers();
+
+	function playerSurv(surveyId){
+                                    
+                        var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
+                        var query = new Parse.Query(SurveyAnswer);
+                        query.descending("createdAt");
+                        query.include("author");
+			query.include("survey");
+                        query.equalTo("objectId", surveyId);
+                        query.find({
+                                    success: function(results) {
+
+				        var output = "";
+					output += '<div id="survey-box">';
+
+					document.getElementById('simpleSurv').style.display = 'block';
+                                                
+                                                for (var k in results) {
+
+                                                    var surveyName = results[k].get("survey").get("survey").get("name");
+                                                    var answerID = results[k].id;
+                                                    var question = results[k].get("survey").get("survey").get("questions");
+                                                    var surveyData = results[k].get("data");
+                                                    var dateAnswer = results[k].get("createdAt");
+                                                    var dato = dateAnswer.toString();
+                                                    var datoen = dato.substring(4, 15);
+                                                    
+                                                    var author = results[k].get("author");
+                                                    var name = author.get("name");
+						    var pB = "";
+                        			    var userPB = "";
+                       				    if (author.get("profileImage_small")) {
+                           			    var bilde = author.get("profileImage_small");
+                           			    var url1 = bilde.url();
+                            		       	    pB = '<img class="pb1" src="' + url1 + '">';
+                        				}
+                      				    else {
+                          			    userPB = '<img class="pb1" src="../img/User_Small.png">';
+                       					 }
+                                                    
+                                                        output += "<div id=\"survey-player\">";
+							output += "<h1>" + surveyName + "</h1>";
+							output += "<p>" + datoen + "</p>";
+							output += '<div id="profileimg">';
+							output += pB;
+							output += userPB;
+                                                        output += "<h2>" + name + "</h2>";
+							output += '</div>';
+                                                        
+                                                    
+                                                    for (var j = 0; j < surveyData.length; j++){
+                                                        var questions = question[j];
+                                                        var answer = surveyData[j];
+
+							  output += "<h3>" + questions + "</h3>";
+
+							    if(answer[0] == 'Y'){
+                                    			    var yes = answer.split("±").pop();
+                                    			    output += '<p>Ja</p>';
+                                    			    output += '<p>' + yes + '</p>';
+                                   			      }else{
+                                    		       	    var no = answer.split("±").pop();
+                                   			    output += '<p>Nei</p>';
+                                   			    output += '<p>' + no + '</p>';
+                                   			 }
+                                                        
+                                                    }
+                                                    
+                                                    var feedback = results[k].get("feedback");
+                                                    
+                                                    if(feedback != undefined){
+						    output += '<div id="coach-feedback">';
+                                                    output += "<h4>Tilbakemelding fra trener</h4>";
+						    output += '<i class="material-icons" onclick="show()">edit</i>';
+                                                    output += "<p>" + feedback + "</p>";
+					            output += '</div>';
+						    output += '<div id="change-feedback" style="display: none;">';
+						    output += '<textarea  id="feedbackText" placeholder="Skriv en tilbakemelding">' + feedback + '</textarea>';
+						    output += '<button type="button" name="' + surveyId +'" onclick="submitFeedback(name)">Publiser</button>';
+						    output += '<p onclick="hide()">Avbryt</p>';
+						    output += '</div>';
+                                                    
+                                                    }else{
+                                                    output += '<textarea rows="2" cols="30 name="text" id="feedbackText" placeholder="Skriv en tilbakemelding"></textarea>';
+                                                    output += '<button type="button" name="' + surveyId +'" onclick="submitFeedback(name)">Publiser</button>';
+                                                    }
+                                                    output += "</div>";
+                                                
+                                                }
+                                                
+
+					output += '</div>';
+                               		$("#simpleSurv").html(output);
+
+					}, error: function(error) {
+                                        console.log("Query error:" + error.message);
+                                    }
+                                            
+                                    });
+                                  
+
+			}
+
+ function submitFeedback(answerID) {
+
+                var feedback = document.getElementById('feedbackText').value;
+                console.log(feedback);
+                console.log(answerID);
+                
+                
+                        var answer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
+                        var Query = new Parse.Query(answer);
+			Query.equalTo("objectId", answerID);
+                          Query.find({
+                                success: function(objects) {
+                                    for (var j in objects) {
+                                            objects[j].set("feedback", feedback);
+                                            objects[j].save({
+                                                       success: function() {
+                                                            playerSurv(answerID);
+                                                        }
+                                                    });
+                                            
+
+                                        }
+
+                                    },
+                                    error: function(error) {
+                                        console.log("Query error:" + error.message);
+                                    }
+                                });
+
+				}
+
+
+ function show() {
+                if (document.getElementById('change-feedback').style.display == 'none') {
+                    document.getElementById('change-feedback').style.display = 'block';
+		    document.getElementById('coach-feedback').style.display = 'none';
+                }
+                return false;
+            }
+
+            function hide() {
+                if (document.getElementById('change-feedback').style.display == 'block') {
+                    document.getElementById('change-feedback').style.display = 'none';
+		    document.getElementById('coach-feedback').style.display = 'block';
+                }
+                return false;
+            }
+
+$(document).click(function(event) { 
+    if(!$(event.target).closest('#survey-box').length) {
+        if($('#survey-box').is(":visible")) {
+            var output = "";
+
+            $("#simpleSurv").html(output);
+
+		document.getElementById('simpleSurv').style.display = 'none';
+        }
+    }        
+});

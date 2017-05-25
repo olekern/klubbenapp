@@ -94,250 +94,74 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="../js/getteam.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clndr/1.4.7/clndr.min.js"></script>
+    <script type="text/javascript" src="../js/multiple-select.js"></script>
+    <script type="text/javascript" src="../js/getteam.js"></script>
+    <script type="text/javascript" src="../js/pb.js"></script>
+    <script type="text/javascript" src="../js/usersession.js"></script>
+    <script type="text/javascript" src="../js/roles.js"></script>
+	<script type="text/javascript" src="../js/calendar.js"></script>
 
-        <script>
-            Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
-             Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
-        
-            function checkLogin() {
-                if (Parse.User.current) {
-                    $("#brukernavn").html(Parse.User.current().get("name"))
-                } else {
-                    $("#brukernavn").html("");
-                }
-            }
-            checkLogin();
-            
-            function getPB() {
-                var outputImg = "";
-                var user = Parse.User.current();
-                var userImg = "";
-                var noUserImg = "";
-                if (user.get("profileImage_small")) {
-                    var brukerPB = user.get("profileImage_small");
-                    var PBUrl = brukerPB.url();
-                    console.log("Url:" + PBUrl);
-                    userImg = "<img src='" + PBUrl + "'>";
-                } else{
-                    noUserImg = '<img src="./img/no-pb.png">';
-                    console.log("Supert");
-                }
-                outputImg += "<div id=\"userPB\">";
-                outputImg += userImg;
-                outputImg += noUserImg;
-                outputImg += "</div>"
-                $("#list-pb").html(outputImg);
-                $("#profile-pb").html(outputImg);
-            }
-            getPB();
-            
-            function roles() {
-                var Query = Parse.Object.extend("data_" + klubbID + "_Members");
-                var query = new Parse.Query(Query);
-                query.find().then(function() {
-                        }, function(err) {
-                handleParseError(err);
-                        });
-                
-                var outputRole = "";
-                var outputReq = "";
-                query.equalTo("user", Parse.User.current());
-                query.find({
-                        success: function(objects) {
-                            console.log(objects.length);
-                            var role = objects[0].get("role");
-                            console.log(role);
-                            outputRole += "<div id=\"userRole\">";
-                            outputRole += "<p>" + role + "</p>";
-                            outputRole += "</div>"
-                            $("#list-role").html(outputRole);
-                            if (role == "admin") {
-                            } else if (role == "trener") {
-                                //document.getElementById("forberedelser").remove();
-                                //document.getElementById("evaluering").remove();
-                            } else {
-                                document.getElementById("rapporter").remove();
-                                document.getElementById("evaluering").remove();
-                               
-                            }
-                            
-                        },
-                        error: function(error) {
-                            alert("Error: " + error.code + " " + error.message);
-                            handleParseError();
-                        }
-                    });
-            }
-            roles();
-            
-            var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
-            var Surveys = Parse.Object.extend("data_" + klubbID + "_Surveys");
-
-            function getAnswers() {
-                var Query = new Parse.Query(Surveys);
-                Query.descending("day");
-                Query.include("survey");
-
-                var monthNames = [
-                    "Jan", "Feb", "Mar",
-                    "Apr", "May", "Jun", "Jul",
-                    "Aug", "Sep", "Oct",
-                    "Nov", "Dec"
-                ];
-
-                var daysOfTheWeek = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
-
-                var date = new Date();
-                var day = date.getDate();
-                var monthIndex = date.getMonth();
-                var daysIndex = date.getMonth();
-                var year = date.getFullYear();
-
-                if (day < 10) {
-                    console.log("hei");
-                    var idag = monthNames[monthIndex] + " " + "0" + day + " " + year;
-                } else {
-                    var idag = monthNames[monthIndex] + " " + day + " " + year;
-                }
-                
-                date.setHours(23);
-                date.setMinutes(59);
-                date.setSeconds(59);
-                
-                console.log(idag);
-
-                Query.find({
-                        success: function(objects, results) {
-                                
-                                var oldSurv = new Array();
-                                var j = 0;
-                                var navn = new Array();
-                                var id = new Array();
-                                var output = "";
-                            for (var i = 0; i < objects.length; i++) {
-                                
-                                var surveyDate = objects[i].get("day");
-                                //console.log(surveyDate);
-
-                                if(surveyDate <= date){
-                                    oldSurv[j] = objects[i];
-                                    navn[j] = objects[i].get("survey").get("name");
-                                    //console.log(oldSurv[j]);
-                                    //console.log(navn[j]);
-                                    var h = 0;
-                                    
-                                    var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
-                                    var query = new Parse.Query(SurveyAnswer);
-                                    query.descending("createdAt");
-                                    query.include("author");
-                                    query.include("survey");
-                                    query.equalTo("survey", objects[i]);
-                                    query.find({
-                                            success: function(results) {
-                                                
-                                                for (var k in results) {
-                                                    var id = results[k].get("survey").get("survey").get("name");
-                                                    var answerID = results[k].id;
-                                                    var question = results[k].get("survey").get("survey").get("questions");
-                                                    var surveyData = results[k].get("data");
-                                                    var dateAnswer = results[k].get("createdAt");
-                                                    var dato = dateAnswer.toString();
-                                                    var datoen = dato.substring(4, 15);
-                                                    
-                                                    var author = results[k].get("author");
-                                                    var name = author.get("name");
-                                                    
-                                                        output += "<div id=\"feedBack\">";
-                                                        output += "<h1>" + id + "</h1>";
-                                                        output += "<h2>" + name + "</h2>";
-                                                        output += "<p>" + datoen + "</p>";
-                                                        
-                                                    
-                                                    for (var j = 0; j < surveyData.length; j++){
-                                                        var questions = question[j];
-                                                        var answer = surveyData[j];
-                                                        
-                                                        output += "<h3>" + questions + "</h3>";
-                                                        output += "<p>" + answer + "</p>";
-                                                        
-                                                    }
-                                                    
-                                                    var feedback = results[k].get("feedback");
-                                                    
-                                                    if(feedback != undefined){
-                                                    output += "<h4>Tilbakemelding fra din trener</h4>";
-                                                    output += "<p>" + feedback + "</p>";
-                                                    
-                                                    }else{
-                                                    output += '<textarea rows="2" cols="30 name="text" id="text' + h + '" placeholder="Skriv en tilbakemelding"></textarea>';
-                                                    output += '<button type="button" name="' + answerID +'" id="' + h + '" onclick="submitFeedback(id, name)">Publiser</button>';
-                                                    }
-                                                    output += "</div>";
-                                                    h++;
-                                                
-                                                }
-                                                
-                                                $("#list-posts").html(output);
-                                            }
-                                            
-                                    });
-                                    
-                                    
-                                    j++;
-                                }
-                                
-                                
-                                
-                            }
-                            
-                        },
-                        error: function(error) {
-                            console.log("Query error:" + error.message);
-                        }
-
-                    });
-
-
-            }
-            
-            function submitFeedback(number, answerID) {
-
-                var feedback = document.getElementById('text' + number).value;
-                console.log(number);
-                console.log(feedback);
-                console.log(answerID);
-                
-                
-                        var answer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
-                        var Query = new Parse.Query(answer);
-
-                          Query.find({
-                                success: function(objects) {
-                                    for (var j = 0; j < objects.length; j++) {
-                                           var post = objects[j].id;
-                                           if (post == answerID) {
-                                            objects[j].set("feedback", feedback);
-                                            objects[j].save({
-                                                       success: function() {
-                                                            location.href = "./reports.html";
-                                                        }
-                                                    });
-                                            }
-
-                                        }
-
-                                    },
-                                    error: function(error) {
-                                        console.log("Query error:" + error.message);
-                                    }
-                                });
-
-                        }
-
-            getAnswers();
+	<div class="wrapper">
+	 <div class="container">
+        <div class="cal1"></div>
+        <div class="cal2">
+        <script type="text/template" id="template-calendar">
+            <div class="clndr-controls">
+                <div class="clndr-previous-button">&lsaquo;</div>
+                <div class="month"><%= intervalStart.format('M/DD') + ' &mdash; ' + intervalEnd.format('M/DD') %></div>
+                <div class="clndr-next-button">&rsaquo;</div>
+            </div>
+            <div class="clndr-grid">
+                <div class="days-of-the-week">
+                <% _.each(daysOfTheWeek, function(day) { %>
+                    <div class="header-day"><%= day %></div>
+                <% }); %>
+                    <div class="days">
+                    <% _.each(days, function(day) { %>
+                        <div class="<%= day.classes %>"><%= day.day %></div>
+                    <% }); %>
+                    </div>
+                </div>
+            </div>
+            <div class="clndr-today-button">Today</div>
         </script>
-        
+        </div>
+        <div class="cal3">
+        <script type="text/template" id="template-calendar-months">
+            <div class="clndr-controls top">
+                <div class="clndr-previous-button">&lsaquo;</div>
+                <div class="clndr-next-button">&rsaquo;</div>
+            </div>
+            <div class="clearfix">
+            <% _.each(months, function(cal) { %>
+                <div class="cal">
+                    <div class="clndr-controls">
+                        <div class="month"><%= cal.month.format('MMMM') %></div>
+                    </div>
+                    <div class="clndr-grid">
+                        <div class="days-of-the-week">
+                        <% _.each(daysOfTheWeek, function(day) { %>
+                            <div class="header-day"><%= day %></div>
+                        <% }); %>
+                            <div class="days">
+                            <% _.each(cal.days, function(day) { %>
+                                <div class="<%= day.classes %>"><%= day.day %></div>
+                            <% }); %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+            </div>
+            <div class="clndr-today-button">Today</div>
+        </script>
+</div>
+ </div>       
 
     </body>
 
