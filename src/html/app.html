@@ -24,11 +24,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="../css/multiple-select.css" rel="stylesheet"/>
     	
-    </head>
-
-
-    <body>
-        <script type="text/javascript">
+	<script type="text/javascript">
         Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
         Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 
@@ -45,7 +41,7 @@
                 var currentuser = Parse.User.current();
                 if (currentuser) {
                     location.href = "newsFeed.html";
-                
+		}
                 else {
                     location.href = "registration.html";
                 }
@@ -53,8 +49,12 @@
         }
 	redirect();
     </script>
+    </head>
 
-    <h1 onclick="redirect()">Blir du ikke videresendt? Trykk her.</h1>
+
+    <body>
+
+    <h1 onclick="redirect()" style="font-size: 50px; text-align: center; font-weight: 400;">Blir du ikke videresendt? Trykk her.</h1>
     </body>
 
 </html>
