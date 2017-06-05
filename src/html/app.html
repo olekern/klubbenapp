@@ -28,39 +28,31 @@
 
 
     <body>
-        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-        
-        <div id="list-sm"></div>>
-        <script type="text/javascript" src="../js/nav.js"></script>>
+        <script type="text/javascript">
+        Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+        Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 
-
-        <div class="wrapper" id="teamOverview">
-            <div class="listPlayers">
-                <ul id="list-team">
-                </ul>
-                <div id="list-confirmation">
-                </div>
-                <div id="list-roles">
-                </div>
-            </div>
-            <div class="right-block">
-                <ul id="list-req"></ul>     
-                <ul id="list-groups"></ul> 
-            </div>
-            <ul id="list-members"></ul> 
-        </div>
-        
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
-        
-        <script type="text/javascript" src="../js/getteam.js"></script>
-        <script type="text/javascript" src="../js/roles.js"></script>
-        <script type="text/javascript" src="../js/usersession.js"></script>
-        <script type="text/javascript" src="../js/pb.js"></script>
-        <script type="text/javascript" src="../js/team.js"></script>
-        <script type="text/javascript" src="../js/multiple-select.js"></script>
-
-
-
+        function redirect() {
+            var uagent = navigator.userAgent.toLowerCase();
+            if (uagent.search("iphone") > -1) {
+                location.href = "https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8";
+            }
+            else if (uagent.indexOf("android") > -1) {
+                location.href = "https://play.google.com/store/apps/details?id=com.lustek.klubben";
+            }
+            else {
+                
+                var currentuser = Parse.User.current();
+                if (currentuser) {
+                    location.href = "./src/html/newsFeed.html";
+                }
+                else {
+                    location.href = "./src/html/registration.html";
+                }
+            }
+        }
+	redirect();
+    </script>
     </body>
 
 </html>

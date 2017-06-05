@@ -97,10 +97,10 @@ html{
     display: block;
     padding: 32px 25px;
     color: white;
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 15px;
-    letter-spacing: 1px;
+}
+
+#signOut a{
+font-size: 80px;
 }
 
 #signOut:hover {

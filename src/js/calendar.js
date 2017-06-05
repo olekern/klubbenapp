@@ -1,156 +1,180 @@
+Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';  
 
-// Call this from the developer console and you can control both instances
-var calendars = {};
+$(document).ready(function() {
 
-$(document).ready( function() {
-    console.info(
-        'Welcome to the CLNDR demo. Click around on the calendars and' +
-        'the console will log different events that fire.');
+	var eventsArray = new Array();
 
-    // Assuming you've got the appropriate language files,
-    // clndr will respect whatever moment's language is set to.
-    // moment.locale('ru');
+	var reports = Parse.Object.extend("data_" + klubbID + "_Surveys");
+	var query = new Parse.Query(reports);
+	query.descending("createdAt");
+	query.include("survey");
+	query.find({
+		success: function(results){
+			for(var i in results){
+				var surveyId = results[i].id;
+				var surveyDate = results[i].get("day");
+				var surveyName = results[i].get("survey").get("name");
 
-    // Here's some magic to make sure the dates are happening this month.
-    var thisMonth = moment().format('YYYY-MM');
-    // Events to load into calendar
-    var eventArray = [
-        {
-            title: 'Multi-Day Event',
-            endDate: thisMonth + '-14',
-            startDate: thisMonth + '-10'
-        }, {
-            endDate: thisMonth + '-23',
-            startDate: thisMonth + '-21',
-            title: 'Another Multi-Day Event'
-        }, {
-            date: thisMonth + '-27',
-            title: 'Single Day Event'
-        }
-    ];
+				var activity = {date: surveyDate, title: surveyName, id: surveyId};
+				eventsArray.push(activity);
+			}
+			createCalendar();
+		}, error: function(error){
+			console.log(error);
+		}
+	});
 
-    // The order of the click handlers is predictable. Direct click action
-    // callbacks come first: click, nextMonth, previousMonth, nextYear,
-    // previousYear, nextInterval, previousInterval, or today. Then
-    // onMonthChange (if the month changed), inIntervalChange if the interval
-    // has changed, and finally onYearChange (if the year changed).
-    calendars.clndr1 = $('.cal1').clndr({
-        events: eventArray,
-        clickEvents: {
-            click: function (target) {
-                console.log('Cal-1 clicked: ', target);
-            },
-            today: function () {
-                console.log('Cal-1 today');
-            },
-            nextMonth: function () {
-                console.log('Cal-1 next month');
-            },
-            previousMonth: function () {
-                console.log('Cal-1 previous month');
-            },
-            onMonthChange: function () {
-                console.log('Cal-1 month changed');
-            },
-            nextYear: function () {
-                console.log('Cal-1 next year');
-            },
-            previousYear: function () {
-                console.log('Cal-1 previous year');
-            },
-            onYearChange: function () {
-                console.log('Cal-1 year changed');
-            },
-            nextInterval: function () {
-                console.log('Cal-1 next interval');
-            },
-            previousInterval: function () {
-                console.log('Cal-1 previous interval');
-            },
-            onIntervalChange: function () {
-                console.log('Cal-1 interval changed');
-            }
-        },
-        multiDayEvents: {
-            singleDay: 'date',
-            endDate: 'endDate',
-            startDate: 'startDate'
-        },
-        showAdjacentMonths: true,
-        adjacentDaysChangeMonth: false
-    });
+    // page is now ready, initialize the calendar...
+	
+	function createCalendar(){	
 
-    // Calendar 2 uses a custom length of time: 2 weeks paging 7 days
-    calendars.clndr2 = $('.cal2').clndr({
-        lengthOfTime: {
-            days: 14,
-            interval: 7
-        },
-        events: eventArray,
-        multiDayEvents: {
-            singleDay: 'date',
-            endDate: 'endDate',
-            startDate: 'startDate'
-        },
-        template: $('#template-calendar').html(),
-        clickEvents: {
-            click: function (target) {
-                console.log('Cal-2 clicked: ', target);
-            },
-            nextInterval: function () {
-                console.log('Cal-2 next interval');
-            },
-            previousInterval: function () {
-                console.log('Cal-2 previous interval');
-            },
-            onIntervalChange: function () {
-                console.log('Cal-2 interval changed');
-            }
-        }
-    });
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+	    height: 600,
+	    header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,agendaWeek,agendaDay,listWeek'
+		},
+	    events: eventsArray,
+	    eventClick: function(calEvent, jsEvent, view) {
 
-    // Calendar 3 renders two months at a time, paging 1 month
-    calendars.clndr3 = $('.cal3').clndr({
-        lengthOfTime: {
-            months: 2,
-            interval: 1
-        },
-        events: eventArray,
-        multiDayEvents: {
-            endDate: 'endDate',
-            startDate: 'startDate'
-        },
-        clickEvents: {
-            click: function (target) {
-                console.log('Cal-3 clicked: ', target);
-            },
-            nextInterval: function () {
-                console.log('Cal-3 next interval');
-            },
-            previousInterval: function () {
-                console.log('Cal-3 previous interval');
-            },
-            onIntervalChange: function () {
-                console.log('Cal-3 interval changed');
-            }
-        },
-        template: $('#template-calendar-months').html()
-    });
+		var surveyId = calEvent.id;
+		var surveyTitle = calEvent.title;
+		localStorage.setItem("surveyId", surveyId);
+		location.href = "evalueringT.html";
 
-    // Bind all clndrs to the left and right arrow keys
-    $(document).keydown( function(e) {
-        // Left arrow
-        if (e.keyCode == 37) {
-            calendars.clndr1.back();
-            calendars.clndr2.back();
-            calendars.clndr3.back();
-        }
+    }
+    })
+	}
 
-        // Right arrow
-        if (e.keyCode == 39) {
-            calendars.clndr1.forward();
-            calendars.clndr2.forward();
-            calendars.clndr3.forward();
-        }
-    });
 });
+
+
+
+function chooseSurv(surveyId, surveyTitle){
+                console.log(surveyTitle);
+	//	document.getElementById('simpleSurv').style.display = 'block';
+                var outputans = "";
+                var outputnone = "";
+		
+		var out = "";
+		out += '<h1>' + surveyTitle + '</h1>'; 
+		$("#listing").html(out);
+                
+                $("#draw-charts").html(outputnone);
+                
+                var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
+                var query = new Parse.Query(SurveyAnswer);
+                query.descending("createdAt");
+                query.include("author");
+                query.include("survey");
+                query.equalTo("survey", surveyId);
+                query.find({
+                    success: function(results) {
+                        console.log("asdfasdf");
+                            google.charts.load('current', {
+                              callback: function () {
+                                for(var u = 0; u<question.length; u++){
+                                    if(questionType[u]/1){
+                                        
+                                        var questions = question[u];
+                                        
+                                  var container = document.getElementById('draw-charts').appendChild(document.createElement('div'));
+
+                                  var data = new google.visualization.DataTable();
+                                data.addColumn('string');
+                                data.addColumn('number');
+                                
+                                    for(var k in results){
+                                        
+                                        var answer = results[k].get("data")[u];
+                                        var answerNumber = Number(answer);
+                                        var author = results[k].get("author");
+                                        var name = author.get("name");
+                                        
+                                        data.addRows([
+                                          [name, answerNumber]
+                                        ]);
+                                    }
+
+                                var options = {
+                                    title: questions,
+                                    width:700,
+                                    colors: ['#3f88c5'],
+                                };
+                                  var chart = new google.visualization.BarChart(container);
+                                  chart.draw(data, options);
+                                }
+                                }
+                              },
+                              packages: ['corechart']
+                            });
+                                    
+                            for(var u = 0; u<question.length; u++){
+                                
+                                var questions = question[u];
+                                outputans += '<div class="ansbox">';
+                                if(questionType[u]/1){
+                                }else if((questionType[u] == "NO") || (questionType[u] == "YES")){
+                                    
+                                    outputans += '<h2>' + questions + '</h2>';
+                                    
+                                   for(var k in results){ 
+                                    var answer = results[k].get("data")[u];
+                                    var author = results[k].get("author");
+                                    var name = author.get("name");
+
+				    var userSurvId = results[k].id; 
+
+                                    outputans += '<h4 id="' + userSurvId + '" onclick="playerSurv(id)">' + name + '</h4>';
+                                    if(answer[0] == 'Y'){
+                                    var yes = answer.split("±").pop();
+                                    outputans += '<p>Ja</p>';
+                                    outputans += '<p>' + yes + '</p>';
+                                    }else{
+                                    var no = answer.split("±").pop();
+                                    outputans += '<p>Nei</p>';
+                                    outputans += '<p>' + no + '</p>';
+                                    }
+                                    outputans += '</div>';   
+                                }
+                                }else{
+                                
+                                outputans += '<h2>' + questions + '</h2>';
+                                
+                                for(var k in results){
+                                    
+                                    var answer = results[k].get("data")[u];
+                                    var author = results[k].get("author");
+                                    var name = author.get("name");
+
+				    var userSurvId = results[k].id; 
+
+                                    outputans += '<h4 id="' + userSurvId + '" onclick="playerSurv(id)">' + name + '</h4>';
+                                    outputans += '<p>' + answer + '</p>';
+                                    outputans += '</div>';   
+                                }
+                                
+                            }
+                        
+                            $("#list-answ").html(outputans);
+                        
+                        }
+                    }
+                        
+                    });
+                           
+                           }
+$(document).click(function(event) { 
+    if(!$(event.target).closest('#survey-box').length) {
+        if($('#survey-box').is(":visible")) {
+            var output = "";
+
+            $("#simpleSurv").html(output);
+
+		document.getElementById('simpleSurv').style.display = 'none';
+        }
+    }        
+})

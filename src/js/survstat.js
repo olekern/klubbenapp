@@ -1,16 +1,17 @@
 Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
 Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
+	
+	var sId = localStorage.getItem("surveyId");
+	if(sId){
+		localStorage.removeItem("surveyId");
+		chooseSurv(sId);
+	}
+		
 
 
             var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
             var Surveys = Parse.Object.extend("data_" + klubbID + "_Surveys");
             
-            var oldSurv = new Array();
-            var survName = new Array();
-            var survQuestions = new Array();
-            var survType = new Array();
-   	    var survId = new Array();
-
             function getAnswers() {
                 var Query = new Parse.Query(Surveys);
                 Query.descending("day");
@@ -44,8 +45,6 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 
                 Query.find({
                         success: function(objects) {
-                                
-                                var j = 0;
                                 var id = new Array();
                                 var output = "";
                                 var outputSurv = "";
@@ -60,7 +59,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                     var daysIndex2 = surveyDate.getMonth();
                                     var year2 = surveyDate.getFullYear();
 
-                                    if (day < 10) {
+                                    if (day2 < 10) {
                                         var dateOfSurv = monthNames[monthIndex2] + " " + "0" + day2 + " " + year2;
                                     } else {
                                         var dateOfSurv = monthNames[monthIndex2] + " " + day2 + " " + year2;
@@ -69,7 +68,6 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                     surveyDate.setHours(23);
                                     surveyDate.setMinutes(59);
                                     surveyDate.setSeconds(59);
-                                    
                                     var showDate = "";
                                     if(idag == dateOfSurv){
                                         showDate = "I dag";
@@ -77,22 +75,17 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                         showDate = dateOfSurv;
                                     }
 
-                                    oldSurv[j] = objects[i];
-                                    survId[j] = objects[i].id;
-                                    survName[j] = objects[i].get("survey").get("name");
-                                    survQuestions[j] = objects[i].get("survey").get("questions");
-                                    survType[j] = objects[i].get("survey").get("questionTypeInfo");
-                                    var h = 0;
+                                    var survId = objects[i].id;
+                                    var survName = objects[i].get("survey").get("name");
                                     
                                     outputSurv += '<div id="surv">';
-                                    outputSurv += '<h3 id="' + j +'" onclick="chooseSurv(id);">' + survName[j] + '</h3>';
+                                    outputSurv += '<button id="' + survId +'" onclick="chooseSurv(id);">' + survName + '</button>';
                                     outputSurv += '<h4>' + showDate +'</h4>';
                                     outputSurv += '</div>';
                                     
                                     
                                     $("#list-surv").html(outputSurv);
                                     
-                                    j++;
                                 }
                                 
                             }
@@ -108,33 +101,49 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
             }
 
             
-            function chooseSurv(number, name){
-                
-                var j = number;
-                var question = new Array();
-                question = survQuestions[j];
-                
-                var questionType = new Array();
-                questionType = survType[j];
+            function chooseSurv(surveyId){
+		
+                var pointer = new Parse.Object("data_" + klubbID + "_Surveys");
+                pointer.id = surveyId;
                 
                 var outputans = "";
                 var outputnone = "";
                 
                 $("#draw-charts").html(outputnone);
+		$("#draw-title").html(outputnone);
                 
                 var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
                 var query = new Parse.Query(SurveyAnswer);
                 query.descending("createdAt");
                 query.include("author");
-                query.include("survey");
-                query.equalTo("survey", oldSurv[j]);
+                query.include("survey.survey");
+                query.equalTo("survey", pointer);
                 query.find({
                     success: function(results) {
+			    if(results.length == 0){
+				var outputTitle = "";
+			    	outputTitle += '<h1>Ingen svar registrert</h1>';
+			   	$("#draw-title").html(outputTitle);	
+			    }
+			    	var title = "";
+				var question = "";
+			   	var questionTypes = "";
+			    	var questionTypeInfo = "";
+			    for(var i in results){
+				 title = results[i].get("survey").get("survey").get("name");
+				 question = results[i].get("survey").get("survey").get("questions");
+				 questionTypes =  results[i].get("survey").get("survey").get("questionTypes");
+				 questionTypeInfo =  results[i].get("survey").get("survey").get("questionTypeInfo");
+
+				 var outputTitle = "";
+			    	outputTitle += '<h1>' + title + '</h1>';
+			   	$("#draw-title").html(outputTitle);
+			    }
                         
                             google.charts.load('current', {
                               callback: function () {
                                 for(var u = 0; u<question.length; u++){
-                                    if(questionType[u]/1){
+                                    if(questionTypeInfo[u]/1){
                                         
                                         var questions = question[u];
                                         
@@ -173,8 +182,8 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                 
                                 var questions = question[u];
                                 outputans += '<div class="ansbox">';
-                                if(questionType[u]/1){
-                                }else if((questionType[u] == "NO") || (questionType[u] == "YES")){
+                                if(questionTypeInfo[u]/1){
+                                }else if(questionTypes[u] == "COMMENT"){
                                     
                                     outputans += '<h2>' + questions + '</h2>';
                                     
@@ -215,11 +224,14 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                 }
                                 
                             }
+		  
                         
                             $("#list-answ").html(outputans);
                         
                         }
+			
                     }
+		    
                         
                     });
                            
@@ -354,7 +366,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 
                                     },
                                     error: function(error) {
-                                        console.log("Query error:" + error.message);
+                                        console.log("Query error:" + error.message);$("#draw-charts").html(outputnone);
                                     }
                                 });
 

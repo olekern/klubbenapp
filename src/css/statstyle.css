@@ -134,15 +134,30 @@ html{
     border: 1px solid #d5d5d5;
 }
 
-#list-surv h3{
+#list-surv button{
+    text-decoration: none;
+    background: none;
+    border: none;
     line-height: 27px;
     font-weight: 400;
     font-size: 20px;
     cursor: pointer;
 }
 
-#list-surv h3:hover{
+#list-surv button:hover{
     text-decoration: underline;
+}
+
+#list-surv h4{
+    margin-left: 10px;
+}
+
+#draw-title h1{
+    line-height: 30px;
+    font-size: 25px;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 #answer{
@@ -183,7 +198,7 @@ html{
     line-height: 40px;
 }
 
-textarea{
+#simpleSurv textarea{
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
   Microsoft Sans Serif;
     font-weight: 400;
@@ -200,7 +215,7 @@ textarea{
     z-index: 10;
 }
 
-button{
+#simpleSurv button{
     float: right;
     margin-right: 35px;
     margin-top: 38px;
