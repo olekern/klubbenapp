@@ -99,8 +99,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
             Parse.User.logIn(email, passord, {
                     success: function() {
                         console.log("Innlogging  suksessfull");
-			window.location.reload();
-                        location.href = "index.html#seventh-register";
+                        window.location.reload();
                     },
                     error: function() {
                         console.log("Innlogging feilet:" + error.message);
