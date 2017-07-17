@@ -1,4 +1,3 @@
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -47,6 +46,7 @@ table {
 
 html{
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Microsoft Sans Serif";
+    font-family: 'Open Sans', sans-serif;    
     width: 100%;
 }
 
@@ -139,7 +139,7 @@ p {
     text-decoration: none;
     color: white;
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 700;
     cursor: pointer;
 }
 
@@ -161,24 +161,31 @@ p {
     color: lightgrey;
 }
 
-
 /*=====================*\
-|*        FIRST        *|
+|*      FULLPAGE       *|
 \*=====================*/
 
-
-
-#first {
-    color: white;
-    margin-top: 80px;
-    width: 100%;
-    background-color: #cf2424;
-    clear: left;
+@media all and (min-height: 600px) {
+.section-box{
+	height: calc(100% - 80px);
+	width: 100%;
+	margin-top: -10vh;
 }
 
-#firstInfo {
-    vertical-align: middle;
 }
+
+@media all and (max-height: 600px) {
+.section-box{
+	height: calc(100% - 80px);
+	width: 100%;
+}
+
+}
+
+
+/*=====================*\
+|*      SECTION0       *|
+\*=====================*/
 
 #firstStores {
     height: 100px;
@@ -189,58 +196,128 @@ p {
     width: 40%;
     height: auto;
     margin: 5%;
+    margin-top: 5%;
     float: left;
 }
 
-#firstInfo h3 {
-    margin-top: 20px;
-    font-weight: 300;
+#top-content{
+	text-align: center;
+}
+
+
+@media all and (min-width: 650px) {
+
+#top-content {
+	width: 400px;
+	height: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: calc(80px + 25vh);
+	background-color: blue;
+}
+
+#top-content #top-logo {
+	width: 20vh;
+	height: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#top-content h1{
+	font-size: 5vh;
+	font-weight: 600;
+	margin-top: 8%;
+}
+
+#top-content a{
+	color: #cf2424;
+	text-decoration: none;
+	font-size: 30px;
+}
+
+#firstStores {
+        width: 100%;
+    	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5%;
+    }
+
+}
+
+
+@media all and (max-width: 650px) {
+
+
+#top-content {
+	width: 100%;
+	height: 60vh;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 30vh;
+}
+
+#top-content #top-logo {
+	width: auto;
+	height: 25vh;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#top-content h1{
+	font-size: 40px;
+	font-weight: 600;
+	margin-top: 8%;
+}
+
+#top-content a{
+	color: #cf2424;
+	text-decoration: none;
+	font-size: 25px;
+}
+
+#firstStores {
+        width: 70%;
+    	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5%;
+    }
+
+}
+
+
+/*=====================*\
+|*        FIRST        *|
+\*=====================*/
+
+
+#first {
+    color: white;
+    margin-top: 80px;
+    width: 100%;
+    background-color: #cf2424;
 }
 
 @media all and (min-width: 650px) {
     
     #first {
-        height: 570px;
+        height: 650px;
     }
     
     #firstShowcase {
-        width: auto;
-        height: 500px;
-        margin: 35px;
-        margin-right: 20%;
-        float: right;
+        width: 400px;
+        height: auto;
+	display: block;
+	position: relative;
+        margin-left: auto;
+	margin-right: auto;
+	z-index: 1000;
     }
     
-    #firstInfo {
-        max-width: 400px;
-        margin: 60px 20px 0px 20px;
-    }
-    
-    #firstStores {
-        max-width: 460px;
-        margin-top: 50px;
-    }
-    
-    #firstRegister{
-        max-width: 400px;
-        text-align: center;
-        margin: 30px 13px 0px 27px;
-    }
-    
-    #firstRegister a{
-        text-decoration: none;
-        color: white;
-        padding: 10px 10px;
-        border: 1px solid white;
-        font-size: 20px;
-    }
-    
-    #firstRegister a:hover{
-        color: lightgrey;
-        border: 1px solid lightgrey;
-    }
 
 }
+
 
 @media all and (max-width: 650px) {
     
@@ -248,41 +325,8 @@ p {
         height: 430px;
     }
     
-    #firstShowcase, #first .left  {
-        width: 0%;
-    }
-    
-    #first .right {
-        width: 100%;
-    }
-    
-    #firstInfo {
-        max-width: 400px;
-        margin: 20px auto;
-    }
-
-    #firstStores {
-        width: calc(100%-40px);
-        margin: 20px;
-    }
-    
-    #firstRegister{
-        width: calc(100%-40px);
-        text-align: center;
-        margin-top: 5vw;
-    }
-    
-    #firstRegister a{
-        text-decoration: none;
-        color: white;
-        padding: 10px 10px;
-        border: 1px solid white;
-        font-size: 20px;
-    }
-    
-    #firstRegister a:hover{
-        color: lightgrey;
-        border: 1px solid lightgrey;
+    #firstShowcase {
+        width: 70%;
     }
     
 }
@@ -639,11 +683,11 @@ p {
 
 #sixth .left {
     width: 50%;
-    height: 350px;
-    background-color: #cf2424;
+    height: 400px;
+    background-color: #01161e;
     border-right: 1px solid white;
-    padding-left: 10%;
     padding-top: 100px;
+    padding-bottom: 50px;
 }
 
 #sixth .left * {
@@ -651,10 +695,25 @@ p {
     position: relative;
 }
 
+#sixth .right * {
+    text-align: left;
+    position: relative;
+}
+
 #sixth .right {
-    width: calc(40% - 1px);
-    height: 100%;
-    background-color: #3f88c5;
+    width: calc(50% - 1px);
+    height: 400px;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    background-color: #01161e;
+}
+
+#sixth .functions{
+width: 400px;
+height: 350px;
+background-color: yellow;
+margin-left: auto;
+margin-right: auto;
 }
 
 #sixth a {
@@ -966,19 +1025,23 @@ p {
     height: 920px;
     background-color: white;
 }
+
 #topFoot{
     height: 130px;
     border-bottom: 1px solid black;
 }
+
 #topFootContent{
     height: 110px;
     margin-top: 25px;
 }
+
 #topFoot img{
     height: 110px;
     width: auto;
     margin-left: 60px;
 }
+
 #btmApp{
     font-size: 23px;
     font-weight: 300;
@@ -990,16 +1053,19 @@ p {
     color: black;
     border: 2px solid black;
 }
+
 #btmApp:hover{
     color: grey;
     border: 2px solid grey;
 }
+
 #globe{
     float: right;
     font-size: 30px;
     margin-right: 230px;
     margin-top: -40px;
 }
+
 #changeLanguage{
     float: right;
     margin-top: -49px;
@@ -1021,10 +1087,12 @@ select {
 .no-textshadow select {
   color: #000;
 }
+
 select:-moz-focusring {
     color: transparent;
     text-shadow: 0 0 0 #000;
 }
+
 #triangle{
     font-size: 20px;
     position: relative;
@@ -1038,6 +1106,7 @@ select:-moz-focusring {
     border:none;
     box-shadow:none;
 }
+
 select {
    -webkit-appearance: none;
    -moz-appearance: none;
@@ -1046,21 +1115,26 @@ select {
 select::-ms-expand { /* for IE 11 *//*
     display: none;
 }
+
 #contactInf{
     height: 640px;
     border-bottom: 1px solid black;
 }
+
 #phonecontact{
     height: 50px;
 }
+
 #mail{
     margin-top: 20px;
     width: 380px;
     height: 45px;
 }
+
 #mailIcon{
     font-size: 40px;
 }
+
 #mail h5 {
     font-size: 20px;
     font-weight: 200;
@@ -1069,18 +1143,21 @@ select::-ms-expand { /* for IE 11 *//*
     float: right;
     margin-top: 10px;
 }
+
 #social{
     height: 50px; 
     width: 140px;
     float: right;
     margin-top: -45px;
 }
+
 #facebook{
     font-size: 45px;
     text-decoration: none;
     color: black;
     margin-left: 20px;
 }
+
 #youtube{
     font-size: 45px;
     text-decoration: none;
@@ -1088,25 +1165,30 @@ select::-ms-expand { /* for IE 11 *//*
     float: right;
     margin-right: 10px; 
 }
+
 #register{
     height: 500px;
 }
+
 #registerTeam{
     width: 300px;
     float: left;
     margin-top: 40px;
     margin-left: 70px;
 }
+
 #registerTeam h3{
     font-size: 20px;
     font-weight: 400;
 }
+
 #fakturering{
     float: left;
     width: 300px;
     margin-left: 20px;
     margin-top: 40px;
 }
+
 #list-teams{
     width: 210px;
     height: 45px;
@@ -1120,6 +1202,7 @@ select::-ms-expand { /* for IE 11 *//*
     background-color: transparent;
     cursor: pointer;
 }
+
 #triangle2{
     font-size: 20px;
     position: relative;
@@ -1132,6 +1215,8 @@ select::-ms-expand { /* for IE 11 *//*
     border:none;
     box-shadow:none;
 }
+
+
  #registerTeam input[type="text"],#registerTeam input[type="password"], #registerTeam input[type="mail"]{
     height: 43px;
     width: 180px;
@@ -1144,6 +1229,7 @@ select::-ms-expand { /* for IE 11 *//*
     border: 1px solid grey;
     border-radius: 4px;
 }
+
  #fakturering input[type="text"],#fakturering input[type="password"], #fakturering input[type="mail"]{
     height: 43px;
     width: 180px;
@@ -1156,34 +1242,41 @@ select::-ms-expand { /* for IE 11 *//*
     border: 1px solid grey;
     border-radius: 4px;
 }
+
 #fakturering h3{
     font-size: 22px;
     font-weight: 400;
 }
+
 #btmInv{
     height: 100px;
     float: left;
     margin-top: 90px;
     width: 100%;
 }
+
 #product{
     height: 25px;
 }
+
 #product h3{
     font-size: 21px;
     font-weight: 400;
 }
+
 #linePrice{
     height: 25px; 
     width: 65px;
     margin-left: 370px;
     margin-top: -21px;
 }
+
 #linePrice h4{
     font-size: 20px;
     font-weight: 300;
     color: grey;
 }
+
 #line{
     width: 60px;
     height: 1px;
@@ -1191,6 +1284,7 @@ select::-ms-expand { /* for IE 11 *//*
     background-color: grey;
     margin-top: -10px;
 }
+
 #product h5{
     font-size: 22px;
     font-weight: 300;
@@ -1198,18 +1292,21 @@ select::-ms-expand { /* for IE 11 *//*
     margin-left: 480px;
     margin-top: -27px;
 }
+
 #node-id{
     float: right;
     height: 25px;
     width: 260px;
     margin-top: -25px;
 }
+
 #node-id h6{
     font-size: 19px;
     font-weight: 300;
     color: grey;
     float: left;
 }
+
 #node-id h5{
     font-size: 19px;
     font-weight: 300;
@@ -1218,22 +1315,27 @@ select::-ms-expand { /* for IE 11 *//*
     margin-left: 5px;
     margin-top: 0px;
 }
+
 #sendForm{
     height: 50px;
     margin-top: 40px;
 }
+
 #terms{
     float: left;
 }
+
 #termh{
     float: left;
     margin-left: 10px;
     font-size: 16px;
     font-weight: 400;
 }
+
 #termHref{
     margin-left: 4px;
 }
+
 #product p{
     float: left;
     margin-left: 500px;
@@ -1242,6 +1344,7 @@ select::-ms-expand { /* for IE 11 *//*
     font-weight: 300;
     color: grey;
 }
+
 #register button{
     float: right;
     font-size: 18px;
@@ -1254,10 +1357,12 @@ select::-ms-expand { /* for IE 11 *//*
     border: 1px solid black;
     cursor: pointer;
 }
+
 #register button:hover{
     color: grey;
     border: 1px solid grey;
 }
+
 #register p{
     font-size: 18px;
     font-weight: 300;
@@ -1265,6 +1370,7 @@ select::-ms-expand { /* for IE 11 *//*
     float: left;
     width: 550px;
 }
+
 #btmFoot{
     height: 150px;
 }
@@ -1281,21 +1387,28 @@ select::-ms-expand { /* for IE 11 *//*
     margin-right: 40px;
     margin-top: 15px;
 }
+
 #android{
     height: 91px;
     width: auto;
     margin-left: -40px;
 }
+
+
 #btmFoot p{
 }
+
 #btmFoot a{
     float: right;
     text-decoration: none;
     color: black;
 }
+
 #btmFoot a:hover{
     color: grey;
 }
+
 #copy{
     color: white
-}
+}*/
+
