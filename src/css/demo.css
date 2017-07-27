@@ -292,7 +292,7 @@ p {
 @media all and (min-width: 650px) {
     
     #section1 #emptyphone{
-        padding-top: 70px;
+        padding-top: 180px;
         height: 500px;
         width: auto;
         display: block;
