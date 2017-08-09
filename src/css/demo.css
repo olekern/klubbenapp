@@ -58,7 +58,7 @@ html{
    z-index: 1000;
 }
 
-
+/*
 /*=====================*\
 |*       SHARED        *|
 \*=====================*/
@@ -286,27 +286,71 @@ p {
 }
 
 /*=====================*\
-|*      SECTION1       *|
+|*      EMPTYPHONE     *|
 \*=====================*/
 
 @media all and (min-width: 650px) {
     
-    #section1 #emptyphone{
-        padding-top: 180px;
-        height: 500px;
-        width: auto;
+    #emptyphone1{
+        position: absolute;
         display: block;
-        margin-left: auto;
+        z-index: 999;
+        padding-top: 130px;
+        height: auto;
+        width: 260px;
+        margin-left: 40%;
         margin-right: auto;
     }
 
 }
 
 @media all and (max-width: 650px) {
-    
+    #emptyphone1{
+        position: absolute;
+        display: block;
+        z-index: 999;
+        padding-top: 130px;
+        height: auto;
+        width: 260px;
+        margin-left: 40%;
+        margin-right: auto;
+    }
 
 }
 
+@media all and (min-width: 650px) {
+    
+    #section1 #emptyphone2{
+        padding-top: 180px;
+        height: auto;
+        width: 260px;
+        display: block;
+        margin-left: calc(50% - 128px);
+    }
+
+}
+
+@media all and (max-width: 650px) {
+    #section1 #emptyphone2{
+        padding-top: 180px;
+        height: auto;
+        width: 260px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
+
+}
+
+.unfix1{
+    visibility: hidden;
+}
+
+.fixed2{
+    visibility: hidden;
+    float: right;
+}
 
 /*=====================*\
 |*        FIRST        *|
