@@ -30,7 +30,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
     
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.js"></script>
+    <script type="text/javascript" src="./src/fullPage.js-master/jquery.fullPage.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -38,24 +38,26 @@
             $('#emptyphone1').addClass('unfix1');
             
 			$('#fullpage').fullpage({
-    sectionsColor: ['white', '#4BBFC3', '#7BAABE', 'whitesmoke', 'black'],
+    sectionsColor: ['white', 'yellow', 'white', '#3e92cc', 'black'],
 				anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
 				menu: '#menu',
 				scrollingSpeed: 1000,
-    afterLoad: function(anchorLink, index, nextIndex, direction){
+    afterLoad: function(anchorLink, index){
         
 		if(index == 2){
             $('#emptyphone1').removeClass('unfix1');
             $('#emptyphone2').addClass('fixed2');
 		}
+
+
+	}, 
+    onLeave: function(nextIndex, direction){
         
-        if(nextIndex == 1){
-            alert("ASDFASFD");
-            
+        if(direction == 1){
+            $('#emptyphone1').addClass('unfix1');
+            $('#emptyphone2').removeClass('fixed2');
         }
-
-
-	}    
+    }
 });
 		});
         
@@ -78,18 +80,24 @@
     </script>
     
     <img src="./src/img/emptysamsung.png" id="emptyphone1">
+    
+    
 <div id="fullpage">
 	<div class="section " id="section0">
 		<div class="section-box">
 			<div class="content">
 				<div id="top-content">
-			 		<img src="./src/img/Icon-Black.png" id="top-logo">
-			 		<h1 id="klubben">Klubben</h1>
+			 		<!--<img src="./src/img/Icon-Black.png" id="top-logo">-->
+			 		<h1 id="klubben">Løft laget ditt til nye høyder!</h1>
+                    <h2>Klubben er en ny digital plattform som hjelper idrettslag med å forbedre utøvernes sportslige prestasjoner.</h2>
 			 		<div id="firstStores">
                 			<a href="https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8"> <img src="./src/img/Get_AppStore_Black.png" /> </a>
                 			<a href="https://play.google.com/store/apps/details?id=com.lustek.klubben"> <img src="./src/img/Get_GooglePlay_Black.png" /> </a>
             				</div>
-					<a href="">Registrer nytt lag</a>
+					<a id="regnt" href="demo.html#3rdPage">Registrer nytt lag</a>
+                    <div id="arrow">
+                        <a class="bounce" href="demo.html#secondPage"><i class="material-icons">keyboard_arrow_down</i></a>
+                    </div>
 				</div>
 			</div>
 		</div>
@@ -105,21 +113,18 @@
 	<div class="section" id="section2">
 		<div class="section-box">
 			<div class="content">
-			<h1>HEYO</h1>
 			</div>
 		</div>
 	</div>
 	<div class="section" id="section3">
 		<div class="section-box">
 			<div class="content">
-			<h1>HEYO</h1>
 			</div>
 		</div>
 	</div>
     <div class="section" id="section4">
 		<div class="section-box">
 			<div class="content">
-			<h1>HEYO</h1>
 			</div>
 		</div>
 	</div>
