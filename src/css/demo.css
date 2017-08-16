@@ -165,10 +165,6 @@ p {
 |*      FULLPAGE       *|
 \*=====================*/
 
-#top-content{
-    overflow: auto;
-}
-
 @media all and (max-height: 675px) {
 .section-box{
 	height: calc(100% - 80px);
@@ -186,7 +182,7 @@ p {
 }
 
 @media all and (min-height: 675px) {
-    @media all and (min-width: 650px) {
+    @media all and (min-width: 430px) {
 .section-box{
 	height: calc(100% - 80px);
 	width: 100%;
@@ -203,7 +199,7 @@ p {
 
     }
     
-    @media all and (max-width: 650px) {
+    @media all and (max-width: 430px) {
         .section-box{
 	height: calc(100% - 80px);
 	width: 100%;
