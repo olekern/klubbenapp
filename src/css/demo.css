@@ -228,19 +228,6 @@ p {
 	text-align: center;
 }
 
-#top-content h1{
-	font-size: 40px;
-	font-weight: 600;
-    line-height: 50px;
-}
-
-#top-content h2{
-    font-size: 25px;
-	font-weight: 400;
-	margin-top: 30px;
-    line-height: 40px;
-}
-
 #arrow{
     width: 70px;
     height: 70px;
@@ -300,26 +287,68 @@ p {
     transform: translateY(-15px); } }
 
 
-
+@media all and (min-height: 530px) {
 #top-content i{
     font-size: 50px;
     color: #cf2424;
     margin-left: 12px;
+    display: block;
 }
-
-@media all and (max-height: 550px) {
-    
+}
+@media all and (max-height: 530px) {
+    @media all and (max-width: 400px) {
     #top-content i{
         display: none;
     }
+    }
+    @media all and (min-width: 400px) {
+    #top-content i{
+        font-size: 50px;
+        color: #cf2424;
+        margin-left: 12px;
+        display: block;
+    }
+        }
+}
+
+@media all and (max-height: 580px) {
+    
+    #top-content h1{
+        font-size: 6vh;
+        font-weight: 600;
+        line-height: 6vh;
+    }
+    #top-content h2{
+        font-size: 5vh;
+        font-weight: 400;
+        margin-top: 4vh;
+        line-height: 6vh;
+    }
+    
+    #top-content #regnt{
+        color: #cf2424;
+        text-decoration: none;
+        font-size: 30px;
+    }
+    
     
 }
 
-@media all and (min-height: 550px) {
+@media all and (min-height: 580px) {
     
-    #top-content i{
-        display: block;
+    #top-content h1{
+        font-size: 40px;
+        font-weight: 600;
+        line-height: 50px;
     }
+    
+    #top-content h2{
+        font-size: 25px;
+        font-weight: 400;
+        margin-top: 30px;
+        line-height: 40px;
+    }
+    
     
 }
 
@@ -356,14 +385,8 @@ p {
     width: 100%;
     max-width: 500px;
 }
-
-#top-content #regnt{
-	color: #cf2424;
-	text-decoration: none;
-	font-size: 25px;
-    display: block;
-    margin-top: -20px;
-}
+    
+    @media all and (min-height: 340px) {
 
 #firstStores {
     width: 100%;
@@ -371,6 +394,7 @@ p {
     margin-left: auto;
 	margin-right: auto;
 	margin-top: 5%;
+    display: block;
     }
     
 #firstStores img {
@@ -379,8 +403,39 @@ p {
     margin: 5%;
     margin-top: 30px;
     float: left;
+    display: block;
 }
-
+        
+#top-content #regnt{
+	color: #cf2424;
+	text-decoration: none;
+	font-size: 25px;
+    display: block;
+    margin-top: -20px;
+}
+    }
+    @media all and (max-height: 340px) {
+            #firstStores{
+                display: none;
+            }
+            #firstStores img{
+                display: none;
+            }
+        @media all and (min-height: 210px) {
+            #top-content #regnt{
+            color: #cf2424;
+            text-decoration: none;
+            font-size: 25px;
+            display: block;
+            margin-top: 20px;
+        }
+        }
+        @media all and (max-height: 210px) {
+            #top-content #regnt{
+                display: none;
+            }
+        }
+    }
 }
 
 /*=====================*\
@@ -449,6 +504,10 @@ p {
     visibility: hidden;
     float: right;
 }
+
+
+
+
 
 /*=====================*\
 |*        FIRST        *|

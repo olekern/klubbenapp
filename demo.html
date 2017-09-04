@@ -63,6 +63,18 @@
             //}
 		});
         
+        var id;
+        $(window).resize(function() {
+            clearTimeout(id);
+            id = setTimeout(doneResizing, 500);
+
+        });
+
+        function doneResizing(){
+          var height = $(window).innerHeight();
+            alert(height);   
+        }
+        
 	</script>
 
     <script src="src/garand-sticky-73b0fbe/jquery.sticky.js"></script>
