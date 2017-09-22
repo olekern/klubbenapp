@@ -21,7 +21,7 @@
     border-right: 1px solid #484848;
 }
 
-#repBox, #evBox, #forBox{
+#repBox, #evBox, #forBox, #teamBox{
     display: none;
 }
 #rapporter:hover{
@@ -56,6 +56,18 @@
 }
 
 #forberedelser:hover a{
+    margin-right: 7px;
+}
+
+#team:hover{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+#team:hover #teamBox{
+    display: block;
+}
+
+#team:hover a{
     margin-right: 7px;
 }
 

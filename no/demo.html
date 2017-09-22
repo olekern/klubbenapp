@@ -1,0 +1,225 @@
+
+<!doctype html>
+
+<html>
+
+<head>
+    <title>Klubben</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://npmcdn.com/parse/dist/parse.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="./favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="./favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="../src/img/blackfavicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../src/img/blackfavicon-16x16.png" sizes="16x16" />
+    <link rel="manifest" href="/favicons/manifest.json">
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#cf2424">
+    <meta name="apple-mobile-web-app-title" content="Klubben">
+    <meta name="application-name" content="Klubben">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" type="text/css" href="../src/css/style.css" />
+    <link rel="stylesheet" href="./src/html/font-awesome-4.6.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="../src/css/demo.css">
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    
+    <script type="text/javascript" src="../src/fullPage.js-master/jquery.fullPage.js"></script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+
+            $('#emptyphone1').addClass('hide');
+            $('#emptyphone3').addClass('hide');
+            
+			$('#fullpage').fullpage({
+    sectionsColor: ['white', 'yellow', 'white', 'white', '#3e92cc', 'black'],
+				anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', '5thpage', 'lastPage'],
+				menu: '#menu',
+				scrollingSpeed: 1000,
+    afterLoad: function(anchorLink, index){
+        
+		if(index == 2){
+            $('#emptyphone1').removeClass('hide');
+            $('#emptyphone2').addClass('hide');
+            $('#emptyphone3').addClass('hide');
+            
+            $('#statImg1').removeClass('hide');
+            $('#calendarImg1').addClass('hide');
+            $('#feedbackImg1').addClass('hide');
+            
+		}
+        else if(index == 3){
+            
+            $('#emptyphone1').removeClass('hide');
+            $('#emptyphone2').addClass('hide');
+            $('#emptyphone3').addClass('hide');
+            
+            $('#statImg1').addClass('hide');
+            $('#calendarImg1').removeClass('hide');
+            $('#feedbackImg1').addClass('hide');
+            
+		}
+        
+        if(index == 4){
+            
+            $('#emptyphone1').addClass('hide');
+            $('#emptyphone2').addClass('hide');
+            $('#emptyphone3').removeClass('hide');
+            
+            $('#statImg1').addClass('hide');
+            $('#calendarImg1').addClass('hide');
+            $('#feedbackImg1').removeClass('hide');
+            
+		}
+
+
+	}, 
+    onLeave: function(nextIndex, direction){
+        
+        if(direction == 1){
+            $('#emptyphone1').addClass('hide');
+            $('#emptyphone2').removeClass('hide');
+        }
+        if(direction == 3){
+            $('#emptyphone3').addClass('hide');
+            $('#emptyphone1').removeClass('hide');
+        }
+    }
+});
+                
+            //}
+		});
+        
+        var id;
+        $(window).resize(function() {
+            clearTimeout(id);
+            id = setTimeout(doneResizing, 500);
+
+        });
+
+        function doneResizing(){
+          var height = $(window).innerHeight();
+            //alert(height);   
+        }
+        
+	</script>
+
+    <script src="../src/garand-sticky-73b0fbe/jquery.sticky.js"></script>
+</head>
+<body>
+
+<div id="nav"> <img src="../src/img/Icon-white.png"> <a id="name" href="./src/html/index.html">Klubben</a> <a id="app" onclick="getLink()">Gå til appen</a> </div>
+    
+<script>
+var s = 'file:///C:/Users/h/Desktop/klubbenapp/demo.html#secondPage';
+var r = s.replace(/^(.+?)_[^.]+(\.[^\/.]+)$/i, '$1$2');
+
+    </script>
+	
+	 <script type="text/javascript">
+        Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
+        Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
+        function getLink() {
+            var uagent = navigator.userAgent.toLowerCase();
+            if (uagent.search("iphone") > -1) {
+                location.href = "https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8";
+            }
+            else if (uagent.indexOf("android") > -1) {
+                location.href = "https://play.google.com/store/apps/details?id=com.lustek.klubben";
+            }
+            else {
+                
+                var currentuser = Parse.User.current();
+                if (currentuser) {
+                    location.href = "../src/html/newsFeed.html";
+                }
+                else {
+                    location.href = "../src/html/registration.html";
+                }
+            }
+        }
+    </script>
+    
+	<div id="emptyphone1">
+		<img src="../src/img/emptysamsung.png" id="phoneshell1">
+        
+		<img src="../src/img/androidStat.png" class="fixedimg" id="statImg1">
+		<img src="../src/img/androidCalendar.png" class="fixedimg" id="calendarImg1">
+		<img src="../src/img/androidFeedback.png" class="fixedimg" id="feedbackImg1">
+        
+	</div>
+    
+    
+<div id="fullpage">
+	<div class="section" id="section0">
+		<div class="section-box">
+			<div class="content">
+				<div id="top-content">
+			 		<!--<img src="./src/img/Icon-Black.png" id="top-logo">-->
+			 		<h1 id="klubben">Løft laget ditt til nye høyder!</h1>
+                    <h2>Klubben er en ny digital plattform som hjelper idrettslag med å forbedre utøvernes sportslige prestasjoner.</h2>
+			 		<div id="firstStores">
+                			<a href="https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8"> <img src="../src/img/Get_AppStore_Black.png" /> </a>
+                			<a href="https://play.google.com/store/apps/details?id=com.lustek.klubben"> <img src="../src/img/Get_GooglePlay_Black.png" /> </a>
+            				</div>
+					<a id="regnt" href="demo.html#3rdPage">Registrer nytt lag</a>
+                    <div id="arrow">
+                        <a class="bounce" href="demo.html#secondPage"><i class="material-icons">keyboard_arrow_down</i></a>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section" id="section1">
+		<div class="section-box">
+			<div class="content">
+				<div id="emptyphone2">
+                    <img src="../src/img/androidStat.png" id="statImg2">
+					<img src="../src/img/emptysamsung.png" id="phoneshell2">
+				</div>
+			</div>
+		</div>
+	</div>
+    
+	<div class="section" id="section2">
+		<div class="section-box">
+			<div class="content">
+                <img src="../src/img/sport1.png" id="sportscompilation">
+			</div>
+		</div>
+	</div>
+	<div class="section" id="section3">
+		<div class="section-box">
+			<div class="content">
+                <div id="emptyphone3">
+					<img src="../src/img/emptysamsung.png" id="phoneshell3">
+					<img src="../src/img/androidFeedback.png" id="statImg3">
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="section" id="section4">
+		<div class="section-box">
+			<div class="content">
+			</div>
+		</div>
+	</div>
+    <div class="section" id="section5">
+		<div class="section-box">
+			<div class="content">
+			</div>
+		</div>
+	</div>
+</div>
+   
+
+</body>
+</html>
