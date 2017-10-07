@@ -11,7 +11,7 @@ function getPB() {
                     var PBUrl = brukerPB.url();
                     userImg = "<img src='" + PBUrl + "'>";
                 } else{
-                    noUserImg = '<img src="../img/User_Small.png">';
+                    noUserImg = '<img src="../src/img/User_Small.png">';
                 }
                 outputImg += "<div id=\"userPB\">";
                 outputImg += userImg;

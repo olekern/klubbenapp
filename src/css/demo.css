@@ -6,7 +6,6 @@ small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
@@ -37,15 +36,9 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
 
 
 html{
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Microsoft Sans Serif";
     font-family: 'Open Sans', sans-serif;    
     width: 100%;
 }
@@ -63,32 +56,6 @@ html{
 |*       SHARED        *|
 \*=====================*/
 
-h1{
-    font-size: 35px;
-    font-weight: 400;
-    text-align: center;
-}
-
-h2 {
-    font-size: 30px;
-    font-weight: 400;
-    text-align: center;
-}
-
-h3 {
-    font-size: 25px;
-    font-weight: 400;
-    text-align: center;
-}
-
-h4 {
-    font-size: 20px;
-    font-weight: 400;
-}
-
-p {
-    font-weight: 400;
-}
 
 .left {
     width: 50%;
@@ -165,7 +132,7 @@ p {
 |*      FULLPAGE       *|
 \*=====================*/
 
-@media all and (max-height: 675px) {
+@media all and (max-width: 750px) {
 .section-box{
 	height: calc(100% - 80px);
 	width: 100%;
@@ -181,25 +148,39 @@ p {
 
 }
 
-@media all and (min-height: 675px) {
-    @media all and (min-width: 430px) {
-.section-box{
-	height: calc(100% - 80px);
-	width: 100%;
-	margin-top: -50px;
-}
-    
-#top-content {
-	width: 500px;
-	height: 500px;
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 170px;
-}
+@media all and (min-width: 750px) {
+    @media all and (min-height: 675px) {
+        .section-box{
+            height: calc(100% - 80px);
+            width: 100%;
+            margin-top: -50px;
+        }
 
+        #top-content {
+            width: 500px;
+            height: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 170px;
+        }
+    }
+    @media all and (max-height: 675px) {
+        .section-box{
+            height: 100;
+            width: 100%;
+        }
+
+        #top-content {
+            width: 500px;
+            height: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 120px;
+        }
+    }
     }
     
-    @media all and (max-width: 430px) {
+@media all and (max-width: 430px) {
         .section-box{
 	height: calc(100% - 80px);
 	width: 100%;
@@ -212,7 +193,7 @@ p {
 	margin-right: auto;
     padding-top: 120px;
 }
-    }
+    
 }
 
 
@@ -320,7 +301,7 @@ p {
     }
     #top-content h2{
         font-size: 5vh;
-        font-weight: 400;
+        font-weight: 300;
         margin-top: 4vh;
         line-height: 6vh;
     }
@@ -344,7 +325,7 @@ p {
     
     #top-content h2{
         font-size: 25px;
-        font-weight: 400;
+        font-weight: 300;
         margin-top: 30px;
         line-height: 40px;
     }
@@ -444,41 +425,85 @@ p {
     }
 
 /*=====================*\
+|*       CONTENT       *|
+\*=====================*/
+
+.content{
+    height: 100%;
+}
+
+/*=====================*\
 |*      EMPTYPHONE1    *|
 \*=====================*/
 
-@media all and (max-width: 675px) {
-	
-	#emptyphone1{
-		position: absolute;
-        display: block;
-        z-index: 900;
-        top: 20vh;
-        height: 460px;
-        width: 400px;
-		margin-left: calc(40% - 200px);
-        margin-right: auto;
-	}
-    
-    .fixedimg{
-        height: 85%;
-        width: auto;
-        display: block;
-        position: relative;
-        margin-top: -420px;
-    }
-    
-    #phoneshell1{
-        display: block;
-        height: 100%;
-        width: auto;
-        z-index: 998;
-        position: relative;
+@media all and (max-width: 430px) {
+        #emptyphone1{
+           display: none;
+        }
+
     }
 
+@media all and (min-width: 430px) {
+	@media all and (max-width: 600px) {
+        #emptyphone1{
+            position: absolute;
+            display: block;
+            z-index: 900;
+            top: 20vh;
+            height: 390px;
+            width: 250px;
+            margin-left: 10vw;
+        }
+
+        .fixedimg{
+            height: 85%;
+            width: auto;
+            display: block;
+            position: relative;
+            margin-top: -370px;
+        }
+
+        #phoneshell1{
+            display: block;
+            height: 100%;
+            width: auto;
+            z-index: 998;
+            position: relative;
+        }
+    }
 }
 
-@media all and (min-width: 675px) {
+@media all and (min-width: 600px) {
+	@media all and (max-width: 800px) {
+        #emptyphone1{
+            position: absolute;
+            display: block;
+            z-index: 900;
+            top: 20vh;
+            height: 460px;
+            width: 400px;
+            margin-left: 10vw;
+        }
+
+        .fixedimg{
+            height: 85%;
+            width: auto;
+            display: block;
+            position: relative;
+            margin-top: -420px;
+        }
+
+        #phoneshell1{
+            display: block;
+            height: 100%;
+            width: auto;
+            z-index: 998;
+            position: relative;
+        }
+    }
+}
+
+@media all and (min-width: 800px) {
 	
 	#emptyphone1{
 		position: absolute;
@@ -516,39 +541,78 @@ p {
 |*      EMPTYPHONE2    *|
 \*=====================*/
 
-@media all and (max-width: 675px) {
+@media all and (max-width: 430px) {
+        #emptyphone2{
+           display: none;
+        }
 
-	#emptyphone2{
-        position: absolute;
-        display: block;
-        z-index: 900;
-		margin-top: 20vh;
-        height: 460px;
-        width: 400px;
-        margin-left: calc(40% - 200px);
-        margin-right: auto;
-    }
-    
-    #statImg2{
-        height: 85%;
-        width: auto;
-        margin-top: 40px;
-        z-index: 991;
-        display: block;
-        position: absolute;
-    }
-    
-    #phoneshell2{
-        display: block;
-        height: 100%;
-        width: auto;
-        z-index: 998;
-        position: relative;
     }
 
+@media all and (min-width: 430px) {
+    @media all and (max-width: 600px) {
+
+        #emptyphone2{
+            position: absolute;
+            display: block;
+            z-index: 900;
+            margin-top: 20vh;
+            height: 390px;
+            width: 250px;
+            margin-left: 10vw;
+        }
+
+        #statImg2{
+            height: 85%;
+            width: auto;
+            margin-top: 40px;
+            z-index: 991;
+            display: block;
+            position: absolute;
+        }
+
+        #phoneshell2{
+            display: block;
+            height: 100%;
+            width: auto;
+            z-index: 998;
+            position: relative;
+        }
+
+    }
 }
+@media all and (min-width: 600px) {
+    @media all and (max-width: 800px) {
 
-@media all and (min-width: 675px) {
+        #emptyphone2{
+            position: absolute;
+            display: block;
+            z-index: 900;
+            margin-top: 20vh;
+            height: 460px;
+            width: 400px;
+            margin-left: 10vw;
+        }
+
+        #statImg2{
+            height: 85%;
+            width: auto;
+            margin-top: 40px;
+            z-index: 991;
+            display: block;
+            position: absolute;
+        }
+
+        #phoneshell2{
+            display: block;
+            height: 100%;
+            width: auto;
+            z-index: 998;
+            position: relative;
+        }
+
+    }
+}
+@media all and (min-width: 800px) {
     
     #emptyphone2{
         position: absolute;
@@ -598,38 +662,76 @@ p {
 |*      EMPTYPHONE3    *|
 \*=====================*/
 
-@media all and (max-width: 675px) {
+@media all and (max-width: 430px) {
+        #emptyphone3{
+           display: none;
+        }
 
-    #emptyphone3{
-        position: absolute;
-        display: block;
-        z-index: 900;
-		margin-top: 20vh;
-        height: 460px;
-        width: 400px;
-        margin-left: calc(40% - 200px);
-        margin-right: auto;
     }
-    
-    #statImg3{
-        height: 85%;
-        width: auto;
-        margin-top: -420px;
-        z-index: 991;
-        display: block;
-        position: absolute;
-    }
-    
-    #phoneshell3{
-        display: block;
-        height: 100%;
-        width: auto;
-        z-index: 998;
-        position: relative;
+@media all and (min-width: 430px) {
+    @media all and (max-width: 600px) {
+            #emptyphone3{
+                position: absolute;
+                display: block;
+                z-index: 900;
+                margin-top: 20vh;
+                height: 390px;
+                width: 250px;
+                margin-left: 10vw;
+                margin-right: auto;
+            }
+
+            #statImg3{
+                height: 85%;
+                width: auto;
+                margin-top: -420px;
+                z-index: 991;
+                display: block;
+                position: absolute;
+            }
+
+            #phoneshell3{
+                display: block;
+                height: 100%;
+                width: auto;
+                z-index: 998;
+                position: relative;
+            }
     }
 }
 
-@media all and (min-width: 675px) {
+@media all and (min-width: 600px) {
+    @media all and (max-width: 800px) {
+        #emptyphone3{
+            position: absolute;
+            display: block;
+            z-index: 900;
+            margin-top: 20vh;
+            height: 460px;
+            width: 400px;
+            margin-left: 10vw;
+        }
+
+        #statImg3{
+            height: 85%;
+            width: auto;
+            margin-top: -420px;
+            z-index: 991;
+            display: block;
+            position: absolute;
+        }
+
+        #phoneshell3{
+            display: block;
+            height: 100%;
+            width: auto;
+            z-index: 998;
+            position: relative;
+        }
+    }
+}
+
+@media all and (min-width: 800px) {
 
     #emptyphone3{
         position: absolute;
@@ -680,6 +782,155 @@ p {
 }
 
 /*=====================*\
+|*     SMALLSCREEN     *|
+\*=====================*/
+
+@media all and (max-width: 430px){
+    
+    .normalphone{
+        display: block;
+        height: 300px;
+        width: 150px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .phoneshell{
+        height: 100%;
+        width: auto;
+        z-index: 20;
+        position: relative;
+        margin-top: 10px;
+    }
+    .phonecontent{
+        height: 85%;
+        width: auto;
+        margin-top: -600px;
+        z-index: 10;
+    }
+    
+    .smalltext{
+        width: 90vw;
+        height: 30vh;
+        background-color: blue;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10vh;
+        z-index: 10;
+        position: relative;
+    }
+}
+
+@media all and (min-width: 430px){
+    
+    .normalphone{
+        display: none;
+    }
+    
+}
+
+/*=====================*\
+|*       INFOBOX       *|
+\*=====================*/
+
+.infobox{
+    color: white;
+    text-align: left;
+}
+
+.infobox h1, .infobox2 h1{
+    line-height: 40px;
+    font-size: 35px;
+    font-weight: 500;
+}
+
+.infobox h2, .infobox2 h2{
+    line-height: 35px;
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.infobox p, .infobox2 p{
+    line-height: 30px;
+    font-size: 21px;
+    margin-top: 15px;
+    font-weight: 400;
+}
+
+@media all and (max-width: 430px){
+    .infobox{
+        display: none;
+    }
+}
+@media all and (min-width: 430px){
+    @media all and (max-width: 800px){
+        .infobox{
+            position: absolute;
+            right: 0;
+            height: 40vh;
+            width: 35vw;
+            margin-top: 30vh;
+            margin-right: 8vw;
+            min-width: 25px;
+            
+        }
+    }
+}
+
+@media all and (min-width: 800px){
+    .infobox{
+        height: 40vh;
+        width: 25vw;
+        min-width: 400px;
+        margin-top: 30vh;
+        float: right;
+        margin-right: 8vw;
+        min-width: 25px;
+    }
+}
+
+@media all and (max-width: 430px){
+    .infobox2{
+        display: none;
+    }
+}
+@media all and (min-width: 430px){
+    @media all and (max-width: 800px){
+        .infobox2{
+            height: auto;
+            width: 35vw;
+            background-color: white;
+            box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
+            border-radius: 3px;
+            float: right;
+            margin-right: 8vw;
+            margin-top: -350px;
+            min-width: 25px;
+            z-index: 20;
+            position: relative;
+            padding: 10px;
+        }
+    }
+}
+
+@media all and (min-width: 800px){
+    .infobox2{
+        height: auto;
+        width: 25vw;
+        min-width: 400px;
+        background-color: white;
+        box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
+        border-radius: 3px;
+        margin-top: -300px;
+        float: left;
+        margin-left: 8vw;
+        min-width: 25px;
+        z-index: 20;
+        position: relative;
+        padding: 10px;
+    }
+}
+/*=====================*\
 |*      SECTION3       *|
 \*=====================*/
 
@@ -688,6 +939,8 @@ p {
     width: 100%;
     height: auto;
     margin-top: 27vh;
+    position: relative;
+    z-index: 1;
 }
     
 }
@@ -697,1133 +950,60 @@ p {
     height: 300px;
     width: auto;
     margin-top: 27vh;
+    z-index: 1;
 }
     
 }
 
 /*=====================*\
-|*        FIRST        *|
+|*      SECTION4       *|
 \*=====================*/
 
-
-#first {
-    color: white;
-    margin-top: 80px;
-    width: 100%;
-    background-color: #cf2424;
-}
-
-
-@media all and (min-width: 650px) {
-    
-    #first {
-        height: 650px;
-    }
-    
-    #firstShowcase {
-        width: 400px;
-        height: auto;
-	display: block;
-	position: relative;
-        margin-left: auto;
-	margin-right: auto;
-	z-index: 1000;
-    }
-    
-
-}
-
-
-@media all and (max-width: 650px) {
-    
-    #first {
-        height: 430px;
-    }
-    
-    #firstShowcase {
-        width: 70%;
-    }
-    
-}
-
-
-/*=====================*\
-|*       SECOND        *|
-\*=====================*/
-
-
-#second iframe {
-    width: 80%;
+#pricing{
+    padding-top: 160px;
+    color: black;
+    width: 80vw;
     max-width: 600px;
-    height: 320px;
-    margin: 30px;
-}
-
-@media all and (min-width: 800px) {
-    #second {
-        height: 380px;
-    }
-    
-    #second h3 {
-        float: right;
-        margin: 100px 50px;
-        max-width: 350px;
-        font-weight: 300;
-        line-height: 27px;
-    }
-}
-
-@media all and (max-width: 800px) {
-    #second {
-        display: table;
-        text-align: center;
-    }
-    
-    #second .left {
-        width: 100%;
-        height: 45%;
-        margin: 0px;
-    }
-    
-    #second .right {
-        width: 100%;
-        height: 30%;
-    }
-    
-    #second * {
-        width: calc(100%-20px);
-        display: inline-block;
-        margin: 0 auto;
-    }
-    
-    #second h3 {
-        margin: 20px 20px 0px 20px;
-        max-width: 400px;
-        font-weight: 300;
-    }
-}
-
-
-
-
-/*=====================*\
-|*        THIRD        *|
-\*=====================*/
-
-
-#third{
-    width: 100%;
-    background-color: #3f88c5;
-    color: white;
-    padding: 50px 0px;
-}
-
-#third div {
-    display: table;
-    margin: 0px auto 0px auto;
-}
-
-#third h4{
-    float: right;
-    margin: 10px 25px 10px 0px;
-    font-weight: 300;
-}
-
-
-@media all and (min-width: 750px) {
-    #third h3 {
-	width: 450px;
-	margin-left: auto;
-	margin-right: auto;
-        text-align: center
-        font-weight: 200;
-        line-height: 27px;
-        letter-spacing: 1px;
-    }
-    
-    #third img{
-        margin: 0px 25px 0px 25px;
-        float: left;
-    }
-    
-    #third div {
-        width: 700px;
-    }
-}
-
-@media all and (max-width: 750px) {
-    
-    #third h3 {
-        margin: 12px 10% 0px 10%;
-        font-weight: 200;
-        line-height: 27px;
-        letter-spacing: 1px;
-    }
-    
-    
-    #third * {
-        display: table;
-    }
-    
-    #third img{
-        margin: 0px auto 0px auto;
-    }
-}
-
-
-
-
-/*=====================*\
-|*       FOURTH        *|
-\*=====================*/
-
-#fourth .left {
-    width: 40%;
-}
-
-#fourth .right {
-    width: 60%;
-}
-
-#fourth {
-    background-color: #eafdf8;
-}
-
-#fourthOne .right * {
-    text-align: left;
-    margin-top: 15px;
-}
-
-#fourth > div {
-    width: 100%;
-    display: table;
-
-}
-
-#fourth img {
-    height: 500px;
-    width: auto;
-}
-
-#fourthTwo h1{
-    font-weight: 400;
-}
-
-#fourthOne h4{
-    font-weight: 200;
-    font-size: 24px;
-}
-
-#fourthOne h1{
-    font-weight: 300;
-    font-size: 37px;
-    line-height: 45px;
-}
-
-#fourthOne h3{
-    font-weight: 200;
-    font-size: 25px;
-    line-height: 30px;
-}
-
-
-@media all and (min-width: 1200px) {
-    #fourthTwo h1 {
-        margin-top: 200px;
-        text-align: right;
-    }
-}
-
-@media all and (max-width: 1200px) {
-    #fourthTwo .left {
-        width: 100%;
-    }
-    #fourthTwo h1 {
-        margin: 10px 10px 50px 10px;
-        
-    }
-    #fourthTwo .right {
-        width: 100%;
-        
-    }
-    
-    #fourthTwo {
-        display: table;
-    }
-    
-    #fourthTwo img {
-        width: 90%;
-        height: auto;
-        margin: 0px 5%;
-    }
-}
-
-
-@media all and (min-width: 750px) {
-    #fourthOne .left * {
-        float: right;
-    }
-    
-    #fourth .right div {
-        float: left;
-        max-width: 400px;
-        margin-left: 80px;
-        margin-top: 100px;
-    }
-    
-}
-
-@media all and (max-width: 750px) {
-    #fourthOne .left {
-        width: 100%;
-    }
-    
-    #fourthOne img {
-        width: 300px;
-        height: auto;
-        margin: 10px calc(50% - 150px);
-    }
-    
-    #fourthOne .right {
-        float: left;
-        margin: 0px;
-        width: 100%;
-    }
-    
-   #fourth .right div {
-       width: 300px;
-       margin: 0px auto 10px;
-    }
-    
-    #fourth .right div * {
-        text-align: center;
-    }
-    
-}
-
-
-/*=====================*\
-|*        Fifth        *|
-\*=====================*/
-
-#fifth {
-    width: 100%;
-    display: table;
-    background-color: #d0e3cc;
-}
-
-#fifth .left img {
-    height: 500px;
-    width: auto;
-    float: right;
-    margin: 30px;
-}
-
-#fifth-img {
-    font-size: 60px;
-    margin: 120px 30px 30px 40px;
-    line-height: 90px;
-    display: table;
-    clear: both;
-}
-
-#fifth-img div {
-    clear: both;
-}
-
-#fift-img i {
-    margin-top: 10px;
-}
-
-
-@media all and (min-width: 950px) {
-   #fifth .left {
-        width: 40%;
-    }
-
-    #fifth .right {
-        width: 60%;
-    }
-    
-    #fifth h2 {
-        text-align: left;
-        margin: -15px 0px 30px 50px;
-    }
-    
-    #fifth-img * {
-         float: left;
-    }
-}
-
-@media all and (max-width: 950px) {
-    #fifth .left {
-        width: 100%;
-        text-align: center;
-    }
-    
-    #fifth .left img {
-        float: none;
-    }
-    
-    #fifth .right {
-        width: 100%;
-        float: none;
-    }
-    
-    #fifth-img h2 {
-        clear: both;
-    }
-    
-    #fifth-img {
-        margin: 0 auto;
-    }
-    
-    #fifth-img i {
-        margin: 0 auto;
-        display: table;
-
-    }
-    
-}
-
-/*=====================*\
-|*        SIXTH        *|
-\*=====================*/
-
-#sixth {
-    color: white;
-    height: 450px;
-    width: 100%;
-}
-
-#sixth .left {
-    width: 50%;
-    height: 400px;
-    background-color: #01161e;
-    border-right: 1px solid white;
-    padding-top: 100px;
-    padding-bottom: 50px;
-}
-
-#sixth .left * {
-    text-align: left;
-    position: relative;
-}
-
-#sixth .right * {
-    text-align: left;
-    position: relative;
-}
-
-#sixth .right {
-    width: calc(50% - 1px);
-    height: 400px;
-    padding-top: 100px;
-    padding-bottom: 50px;
-    background-color: #01161e;
-}
-
-#sixth .functions{
-width: 400px;
-height: 350px;
-background-color: yellow;
-margin-left: auto;
-margin-right: auto;
-}
-
-#sixth a {
-    padding: 7px 12px;
-    border: 1px solid white;
-    text-decoration: none;
-    font-size: 20px;
-    color: white;
-    top: 40px;
-  
-}
-
-#sixth h2{
-    font-weight: 100;
-    font-size: 25px;
-    line-height: 40px;
-    margin-top: 10px;
-}
-
-#sixth h1{
-    font-weight: 300;
-    font-size: 35px;
-    line-height: 40px;
-    margin-top: 10px;
-    width: 300px;
-}
-
-@media all and (max-width: 750px) {
-    #sixth .right {
-        width: 0%;
-    }
-    
-    #sixth .left {
-        width: 100%;
-        padding-left: 0%;
-    }
-    
-    #sixth .left * {
-        text-align: center;
-        margin: 0 auto;
-        display: table;
-    }
-}
-
-
-/*=====================*\
-|*       SEVENTH       *|
-\*=====================*/
-
-#seventh {
-    display: table;
-    margin: 0 auto;
-    width: 90%;
-    max-width: 1000px;
-}
-
-#seventh-header {
-    width: 100%;
-    display: table;
-    border-bottom: 1px solid grey;
-}
-
-#seventh-header div * {
-    float: left;
-    margin: 30px 0px 15px 10px;
-}
-
-#seventh-header i {
-    font-size: 50px;
-}
-
-#seventh-header h3 {
-    margin: 42px 0px 0px 20px;
-}
-
-#seventh-header a {
-    font-size: 50px;
-    text-decoration: none;
-    color: black;
-    float: right;
-    margin: 30px 15px 0px 15px;
-}
-
-#seventh-form {
-    display: table;
-    width: 100%;
-}
-
-#seventh-form h1 {
-    margin-top: 50px;
-    color: #D94842;
-}
-
-#seventh-form h5 {
-    text-decoration: underline;
-    font-size: 18px;
-    text-align: center;
-    margin-top: 10px;
-}
-
-#seventh-form h5:hover{
-    cursor: pointer;
-}
-
-
-#seventh-form button{
-    font-size: 18px;
-    height: 50px;
-    width: 100px;
-    background-color: #D94842;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-bottom: 3px solid #A0332F;
-    border-radius: 5px;
-    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5); 
-    z-index: 10;
-    display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-#seventh-form #log-form input {
-    height: 50px;
-    width: 250px;
-    font-size: 18px;
-    margin: 15px auto;
-    padding-left: 10px;
-    border: 1px solid grey;
-    border-radius: 4px;
-    display: block;
-}
-
-#seventh-form #log-form{
-    height: 320px;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#seventh-form #log-form h4{
-    margin-top: 15px;
-    text-decoration: underline;
-    width: 250px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-#seventh-form #log-form h4:hover{
-    cursor: pointer;
-}
-
-#seventh-form .form{
-    height: 320px;
-    width: 300px;
-    background-color: white;
-}
-
-#seventh-form #form-input{
-    position: absolute;
-    z-index: 10;
-    margin-top: 0px;
-}
-
-#seventh-form #create-coach{
-    position: relative;
-    z-index: 1;
-}
-
-#seventh-form .left input {
-    height: 50px;
-    width: 80%;
-    font-size: 18px;
-    margin: 15px auto;
-    padding-left: 10px;
-    border: 1px solid grey;
-    border-radius: 4px;
-    display: block;
-}
-
-#seventh-form div {
-    margin-top: 30px;
-}
-
-#seventh-info {
-    display: table;
-    width: 100%;
-    margin: 30px 0px;
-}
-
-#seventh-info .left {
-    width: 40%;
-    text-align: left;
-}
-
-#seventh-info .center {
-    width: 30%;
-}
-
-#seventh-info .center * {
-    text-align: center;
-    color: #D94842;
-}
-
-#seventh-info .right {
-    width: 30%;
-    text-align: right;
-}
-
-#seventh-info .right * {
-    float: right;
-}
-
-#seventh-register {
-    display: table;
-    width: 100%;
-    padding-bottom: 40px;
-    border-bottom: 1px solid grey;
-}
-#seventh-register input {
+#pricing table{
+    width: 40vw;
+    max-width: 300px;
     float: left;
-    margin: 5px;
-}
-#seventh-register h4 {
-    float: left;
-}
-
-#seventh-register .right{
-    height: 50px;
-    width: 100px;
-    
-}
-
-#seventh-register button {
-    font-size: 18px;
-    height: 50px;
-    width: 100px;
-    background-color: #D94842;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-bottom: 3px solid #A0332F;
-    border-radius: 5px;
-    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5); 
-    z-index: 10;
-    position: absolute;
-}
-
-#seventh-register img{
-    height: 50px;
-    width: auto;
-    position: relative;
-}
-
-#seventh-stores {
-    display: table;
-    margin: 0 auto;
-    width: 50%;
-    min-width: 320px;
-}
-
-#seventh-stores img {
-    width: 40%;
-    height: auto;
-    margin: 5%;
-    float: left;
-}
-
-@media all and (max-width: 600px) {
-    #seventh-header div {
-        width: 100%;
-        text-align: center;
-    }
-    
-    #seventh-header h3 {
-        margin: 0px;
-    }
-    
-    #seventh-header div * {
-        float: none;
-        margin-bottom: 10px;
-    }
-    
-    #seventh-form div {
-        width: 100%;
-    }
-}
-
-/*=====================*\
-|*       FOOTER        *|
-\*=====================*/
-
-#footer {
-    color:white;
-    background-color: #040916;
-    height: 40px;
-    padding-top: 20px;
-}
-
-#footer * {
     text-align: center;
+    border: 1px solid #01161e;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    border-radius: 3px;
+    
+    border-collapse: collapse;
 }
 
-
-/*
-#eighth{
-    width: 100%;
-    height: 920px;
-    background-color: white;
-}
-
-#topFoot{
-    height: 130px;
-    border-bottom: 1px solid black;
-}
-
-#topFootContent{
-    height: 110px;
-    margin-top: 25px;
-}
-
-#topFoot img{
-    height: 110px;
-    width: auto;
-    margin-left: 60px;
-}
-
-#btmApp{
-    font-size: 23px;
-    font-weight: 300;
-    width: 110px;
-    padding: 11px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -85px;
-    color: black;
-    border: 2px solid black;
-}
-
-#btmApp:hover{
-    color: grey;
-    border: 2px solid grey;
-}
-
-#globe{
-    float: right;
+#pricing table caption{
     font-size: 30px;
-    margin-right: 230px;
-    margin-top: -40px;
+    font-weight: 500;
+    margin-bottom: 25px;
 }
 
-#changeLanguage{
-    float: right;
-    margin-top: -49px;
-    width: 210px;
-    height: 45px;
-    font-size: 16px;
-    text-transform: uppercase;
-    border: none;
-    position: relative;
-    z-index: 1;
-    background-color: transparent;
-    cursor: pointer;
-}
-select {
-  color: #000;
-  color: rgba(0,0,0,0);
-  text-shadow: 0 0 0 #000;
-}
-.no-textshadow select {
-  color: #000;
+#pricing table th{
+    padding: 0;
+    border: 0;
+    margin: 0;
+    height: 70px; 
+    text-transform: capitalize;
+    background-color: #598392;
+    border-bottom: 2px solid #01161e;
 }
 
-select:-moz-focusring {
-    color: transparent;
-    text-shadow: 0 0 0 #000;
-}
-
-#triangle{
-    font-size: 20px;
-    position: relative;
-    float: right;
-    margin-right: 20px;
-    margin-top: -38px;
-    z-index: 0;
-}
-#changeLanguage:focus{
-    outline:0;
-    border:none;
-    box-shadow:none;
-}
-
-select {
-   -webkit-appearance: none;
-   -moz-appearance: none;
-   appearance: none;
-}
-select::-ms-expand { /* for IE 11 *//*
-    display: none;
-}
-
-#contactInf{
-    height: 640px;
+#pricing table td{
+   height: 30px; 
     border-bottom: 1px solid black;
 }
 
-#phonecontact{
+#pricing table tfoot td{
     height: 50px;
+    background-color: #153b50;
 }
-
-#mail{
-    margin-top: 20px;
-    width: 380px;
-    height: 45px;
-}
-
-#mailIcon{
-    font-size: 40px;
-}
-
-#mail h5 {
-    font-size: 20px;
-    font-weight: 200;
-    margin-right: 40px;
-    text-transform: uppercase;
-    float: right;
-    margin-top: 10px;
-}
-
-#social{
-    height: 50px; 
-    width: 140px;
-    float: right;
-    margin-top: -45px;
-}
-
-#facebook{
-    font-size: 45px;
-    text-decoration: none;
-    color: black;
-    margin-left: 20px;
-}
-
-#youtube{
-    font-size: 45px;
-    text-decoration: none;
-    color: black;
-    float: right;
-    margin-right: 10px; 
-}
-
-#register{
-    height: 500px;
-}
-
-#registerTeam{
-    width: 300px;
-    float: left;
-    margin-top: 40px;
-    margin-left: 70px;
-}
-
-#registerTeam h3{
-    font-size: 20px;
-    font-weight: 400;
-}
-
-#fakturering{
-    float: left;
-    width: 300px;
-    margin-left: 20px;
-    margin-top: 40px;
-}
-
-#list-teams{
-    width: 210px;
-    height: 45px;
-    position: absolute;
-    margin-left: -190px;
-    margin-top: -12px;
-    font-size: 16px;
-    text-transform: uppercase;
-    border: 1px solid black;
-    z-index: 1;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-#triangle2{
-    font-size: 20px;
-    position: relative;
-    float: right;
-    margin-right: 20px;
-    z-index: 0;
-}
-#list-teams:focus{
-    outline:0;
-    border:none;
-    box-shadow:none;
-}
-
-
- #registerTeam input[type="text"],#registerTeam input[type="password"], #registerTeam input[type="mail"]{
-    height: 43px;
-    width: 180px;
-    font-size: 16px;
-    background-color: #fff;
-    margin-top: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 10px;
-    border: 1px solid grey;
-    border-radius: 4px;
-}
-
- #fakturering input[type="text"],#fakturering input[type="password"], #fakturering input[type="mail"]{
-    height: 43px;
-    width: 180px;
-    font-size: 16px;
-    background-color: #fff;
-    margin-top: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 10px;
-    border: 1px solid grey;
-    border-radius: 4px;
-}
-
-#fakturering h3{
-    font-size: 22px;
-    font-weight: 400;
-}
-
-#btmInv{
-    height: 100px;
-    float: left;
-    margin-top: 90px;
-    width: 100%;
-}
-
-#product{
-    height: 25px;
-}
-
-#product h3{
-    font-size: 21px;
-    font-weight: 400;
-}
-
-#linePrice{
-    height: 25px; 
-    width: 65px;
-    margin-left: 370px;
-    margin-top: -21px;
-}
-
-#linePrice h4{
-    font-size: 20px;
-    font-weight: 300;
-    color: grey;
-}
-
-#line{
-    width: 60px;
-    height: 1px;
-    float: left;
-    background-color: grey;
-    margin-top: -10px;
-}
-
-#product h5{
-    font-size: 22px;
-    font-weight: 300;
-    float: left;
-    margin-left: 480px;
-    margin-top: -27px;
-}
-
-#node-id{
-    float: right;
-    height: 25px;
-    width: 260px;
-    margin-top: -25px;
-}
-
-#node-id h6{
-    font-size: 19px;
-    font-weight: 300;
-    color: grey;
-    float: left;
-}
-
-#node-id h5{
-    font-size: 19px;
-    font-weight: 300;
-    color: grey;
-    float: left;
-    margin-left: 5px;
-    margin-top: 0px;
-}
-
-#sendForm{
-    height: 50px;
-    margin-top: 40px;
-}
-
-#terms{
-    float: left;
-}
-
-#termh{
-    float: left;
-    margin-left: 10px;
-    font-size: 16px;
-    font-weight: 400;
-}
-
-#termHref{
-    margin-left: 4px;
-}
-
-#product p{
-    float: left;
-    margin-left: 500px;
-    margin-top: -45px;
-    font-size: 18px;
-    font-weight: 300;
-    color: grey;
-}
-
-#register button{
-    float: right;
-    font-size: 18px;
-    font-weight: 400;
-    height: 45px;
-    width: 100px;
-    margin-right: 90px;
-    background-color: white;
-    color: black;
-    border: 1px solid black;
-    cursor: pointer;
-}
-
-#register button:hover{
-    color: grey;
-    border: 1px solid grey;
-}
-
-#register p{
-    font-size: 18px;
-    font-weight: 300;
-    color: grey;
-    float: left;
-    width: 550px;
-}
-
-#btmFoot{
-    height: 150px;
-}
-#store{
-    height: 100px;
-    width: 500px;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-}
-#apple svg{
-    height: 61px;
-    width: auto;
-    margin-right: 40px;
-    margin-top: 15px;
-}
-
-#android{
-    height: 91px;
-    width: auto;
-    margin-left: -40px;
-}
-
-
-#btmFoot p{
-}
-
-#btmFoot a{
-    float: right;
-    text-decoration: none;
-    color: black;
-}
-
-#btmFoot a:hover{
-    color: grey;
-}
-
-#copy{
-    color: white
-}*/
 

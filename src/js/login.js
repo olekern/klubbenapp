@@ -8,7 +8,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 
             Parse.User.logIn(name, pass, {
                     success: function() {
-                        window.location = "newsFeed.html";
+                        window.location = "home.html";
                     },
                     error: function(error) {
                         console.log("Innlogging feilet:" + error.message);

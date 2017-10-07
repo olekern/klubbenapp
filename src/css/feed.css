@@ -82,12 +82,15 @@
     font-size: 12px;
 }
 
+/*=====================*\
+|*      POSTCLASS      *|
+\*=====================*/
+
 .postClass{
-    width: 500px;
-    margin-left: 150px;
-    margin-right: 0px;
+    width: 40vw;
+    max-width: 500px;
     display: table;
-    margin: 0 auto;
+    margin-left: 15%;
 }
 
 .form{
@@ -116,7 +119,8 @@
 }
 
 .form textarea{
-    font-family: "Helvetica Neue", "Microsoft Sans Serif";
+    font-family: 'Open Sans', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Microsoft Sans Serif;
     font-weight: 300;
     font-size: 14px;
     letter-spacing: 1px;
@@ -201,7 +205,7 @@
     width: 100px;
     float: right;
     margin-right: 22px;
-    margin-top: -8px;
+    margin-top: -40px;
 }
 
 #button button{
@@ -350,7 +354,8 @@
 }
 
 #commentSection textarea{
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Microsoft Sans Serif";
+    font-family: 'Open Sans', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Microsoft Sans Serif;
     font-weight: 400;
     font-size: 15px;
     resize: none;
@@ -462,3 +467,147 @@
     word-wrap: break-word;
     margin: 28px 8px 16px 8px;
 }
+
+
+/*=====================*\
+|*        EVENT        *|
+\*=====================*/
+
+#event{
+    width: 300px;
+    padding-bottom: 30px;
+    background-color: white;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
+    top: 0;
+    margin-left: 60vw;
+    margin-top: 60px;
+    position: absolute;
+    z-index: 10;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#event h2{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+
+#event h3{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+
+#event h4{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 5px;
+    color: #696969;
+}
+
+#event i{
+    font-size: 60px;
+    color: #cf2424;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#event p{
+    width: 60%;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#event img{
+    height: 40px;
+    width: auto;
+}
+
+#event .attendanceInfo{
+    width: 100%;
+    height: 100px;
+    margin-top: 40px;
+}
+
+#event .attendanceInfo #checked{
+    display:inline;
+    float: left;
+    width: 33.3333333%;
+}
+
+#event .attendanceInfo #cancel{
+    text-align: center;
+    width: 33.3333333%;
+    display:inline;
+    float: left;
+}
+
+
+#event .attendanceInfo #warning{
+    display:inline;
+    float: left;
+    width: 33.3333333%;
+}
+
+#event .attendance{
+    width: 50%;
+    height: 100px;
+    display: inline;
+    float: left;
+    text-align: center;
+    z-index: 10;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+#event #box1{
+    z-index: 1;
+    height: 110px;
+    width: 90px;
+    background-color: lightgrey;
+    border: none;
+    margin-left: 30px;
+    margin-top: -80px;
+}
+
+#event #box2{
+    z-index: 1;
+    height: 110px;
+    width: 90px;
+    background-color: lightgrey;
+    border: none;
+    margin-left: 30px;
+    margin-top: -95px;
+}
+
+#event textarea{
+    font-family: 'Open Sans', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Microsoft Sans Serif;
+    font-weight: 400;
+    font-size: 15px;
+    resize: none;
+    width: 200px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 28px;
+    border: 1px solid #d5d5d5;
+    padding-left: 8px;
+    padding-top: 6px;
+    padding-right: 8px;
+}
+
+#event button{
+    margin-top: 15px;
+}
+
+
+
+

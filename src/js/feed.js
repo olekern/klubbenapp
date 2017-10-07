@@ -164,7 +164,7 @@ chooseGroup();
                         var postID = results[i];
                         var posts = postID.id;
                         var realPost = posts;
-                        var date = results[i].get("updatedAt");
+                        var date = results[i].get("createdAt");
                         var dato = date.toString();
                         var datoen = dato.substring(4, 15);
                         if (author != null) {
@@ -178,7 +178,7 @@ chooseGroup();
                             pB = '<img class="pb1" src="' + url1 + '">';
                         }
                         else {
-                            userPB = '<img class="pb1" src="../img/User_Small.png">';
+                            userPB = '<img class="pb1" src="../src/img/User_Small.png">';
                         }
                         var img = "";
                         if (results[i].get("Image")) {
@@ -230,10 +230,10 @@ chooseGroup();
                         var likes = results[i].get("likes");
                         output += "<div id=\"like-comment\">";
                         if ($.inArray(currentUserId, likes) !== -1) {
-                            output += '<img src="../img/like_red.png" name="likeIconPressed" id="' + realPost + '" onclick="dislike(id);"></img>';
+                            output += '<img src="../src/img/like_red.png" name="likeIconPressed" id="' + realPost + '" onclick="dislike(id);"></img>';
                         }
                         else {
-                            output += '<img src="../img/like_blank.png" id="' + realPost + '" name="likeIcon" onclick="like(id);"></img>';
+                            output += '<img src="../src/img/like_blank.png" id="' + realPost + '" name="likeIcon" onclick="like(id);"></img>';
                         }
                         if (likes != null) {
                             output += "<h4>" + likes.length + " likerklikk</h4>";
@@ -311,7 +311,7 @@ chooseGroup();
                                         pB = '<img src="' + url1 + '">';
                                     }
                                     else {
-                                        userPB = '<img src="../img/User_Small.png">';
+                                        userPB = '<img src="../src/img/User_Small.png">';
                                     }
                                     output += '<div class="comments" id="comments' + k + '">';
                                     output += "<div id=\"profilBildeC\">";
@@ -337,8 +337,6 @@ chooseGroup();
                 }
                 , error: function (error) {
                     console.log("Query error:" + error.message);
-                    /*
-                    alert('Siden er under ombygging. Last ned appen fra App Store eller Google Play for å begynne å bruke plattformen.');*/
                     handleParseError();
                 }
             });

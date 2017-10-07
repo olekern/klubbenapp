@@ -1,0 +1,140 @@
+html{
+   height: 200%;
+}
+
+.square{
+    padding-top: 14px;
+    padding-bottom: 9px;
+}
+
+#rapporter{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+
+#rapporter a{
+    margin-right: 7px;
+}
+.box{
+    width: 7px;
+    height: 83px;
+    top: 0;
+    margin-top: -14px;
+    background-color: #cf2424;
+    float: left;
+    border-right: 1px solid #484848;
+}
+
+#dashBox, #evBox, #forBox, #teamBox{
+    display: none;
+}
+#dashbord:hover{
+    background-color: #5c5c5c;
+}
+
+#dashbord:hover #dashBox{
+    display: block;
+}
+
+#dashbord:hover a{
+    margin-right: 7px;
+}
+
+#evaluering:hover{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+#evaluering:hover #evBox{
+    display: block;
+}
+
+#evaluering:hover a{
+    margin-right: 7px;
+}
+#forberedelser:hover{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+#forberedelser:hover #forBox{
+    display: block;
+}
+
+#forberedelser:hover a{
+    margin-right: 7px;
+}
+
+#team:hover{
+    background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+}
+#team:hover #teamBox{
+    display: block;
+}
+
+#team:hover a{
+    margin-right: 7px;
+}
+
+
+#btm{
+    width: 150px;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+    font-weight: 300;
+    text-align: center;
+    font-size: 12px;
+}
+
+.wrapper {
+    position: relative;
+    float: right;
+    top: 79px;
+    width: calc(100% - 150px);
+}
+
+
+h1{
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 40px;
+}
+
+h2{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 40px;
+}
+
+h3{
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 20px;
+    line-height: 40px;
+}
+
+h4{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 40px;
+    margin-top: 10px;
+}
+
+/*=====================*\
+|*      CALENDAR       *|
+\*=====================*/
+
+
+#calendar{
+width: 80%;
+margin-top: 200px;
+margin-left: auto;
+margin-right: auto;
+}
+
+
+
+
+
+

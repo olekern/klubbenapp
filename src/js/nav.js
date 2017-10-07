@@ -1,7 +1,7 @@
 var outputSM = "";
 
 outputSM += '<div class="nav">';
-outputSM += '<a href="newsFeed.html"><img src="../img/Icon-white.png" id="logo"></a>';
+outputSM += '<a href="newsFeed.html"><img src="../src/img/Icon-white.png" id="logo"></a>';
 outputSM += '<ul>';
 outputSM += '<li>';
 outputSM += '<div class="loggut">';
@@ -19,11 +19,11 @@ outputSM += '<div id="side-menu">';
 outputSM += '<div id="top">';
 outputSM += '<div id="dashbord" class="square">';
 outputSM += '<div class="box" id="dashBox"></div>';
-outputSM += '<a href="newsFeed.html" class="material-icons">home<p>Dashbord</p></a>';
+outputSM += '<a href="home.html" class="material-icons">home<p>Dashbord</p></a>';
 outputSM += '</div>';
 outputSM += '<div id="rapporter" class="square">';
 outputSM += '<div class="box" id="repBox"></div>';
-outputSM += '<a href="reports.html" class="material-icons">today<p>Kalender</p></a>';
+outputSM += '<a href="calendar.html" class="material-icons">today<p>Kalender</p></a>';
 outputSM += '</div>';
 outputSM += '<div id="evaluering" class="square">';
 outputSM += '<div class="box" id="evBox"></div>';

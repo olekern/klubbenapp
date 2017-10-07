@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="https://npmcdn.com/parse/dist/parse.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <link rel="stylesheet" type="text/css" href="../css/regStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../src/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../src/css/regStyle.css" />
     <meta charset="utf-8">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <link rel="stylesheet" href="./font-awesome-4.6.3/css/font-awesome.min.css">
-    <link rel="icon" type="image/png" href="../img/blackfavicon-32x32.png" sizes="32x32" />
-        <link rel="icon" type="image/png" href="../img/blackfavicon-16x16.png" sizes="16x16" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="../src/img/blackfavicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="../src/img/blackfavicon-16x16.png" sizes="16x16" />
 
 
 </head>
@@ -26,14 +26,14 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
     <div class="imac">
-        <img src="../img/imac.png">
+        <img src="../src/img/imac.png">
     </div>
     
 
     <div class="logForm">
 
         <div class="innlogging">
-            <img src="../img/ball.png">
+            <img src="../src/img/ball.png">
             <form name="login" action="#">
                 <div class="form-input">
                 <input type="text" name="username" placeholder="Mail" onkeydown = "if (event.keyCode == 13)
@@ -106,7 +106,7 @@
             
             var currentUser = Parse.User.current();
             if(currentUser){
-                        location.href = "newsFeed.html";
+                        location.href = "home.html";
             }else{
                 
             }
@@ -125,7 +125,7 @@
 
             Parse.User.logIn(name, pass, {
                     success: function() {
-                        window.location = "newsFeed.html";
+                        window.location = "home.html";
                     },
                     error: function(error) {
                         console.log("Innlogging feilet:" + error.message);
@@ -160,7 +160,7 @@
             Parse.User.logIn(email, passord, {
                     success: function() {
                         console.log("Innlogging  suksessfull");
-                        window.location = "newsFeed.html";
+                        window.location = "home.html";
                     },
                     error: function() {
                         console.log("Innlogging feilet:" + error.message);
@@ -180,7 +180,7 @@
        
     </script>
 
-    <script type="text/javascript" src="../js/login.js"></script>
+    <script type="text/javascript" src="../src/js/login.js"></script>
 
 
     <div class="footer3">Copyright &copy Klubben 2016
