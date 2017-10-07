@@ -27,7 +27,7 @@ outputSM += '<a href="calendar.html" class="material-icons">today<p>Kalender</p>
 outputSM += '</div>';
 outputSM += '<div id="evaluering" class="square">';
 outputSM += '<div class="box" id="evBox"></div>';
-outputSM += '<a href="evalueringT.html" class="material-icons">insert_chart<p>Rapporter</p></a>';
+outputSM += '<a href="answers.html" class="material-icons">insert_chart<p>Rapporter</p></a>';
 outputSM += '</div>';
 outputSM += '<div id="team" class="square">';
 outputSM += '<div class="box" id="teamBox"></div>';
