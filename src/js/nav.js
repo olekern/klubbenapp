@@ -1,7 +1,7 @@
 var outputSM = "";
 
 outputSM += '<div class="nav">';
-outputSM += '<a href="newsFeed.html"><img src="../src/img/Icon-white.png" id="logo"></a>';
+outputSM += '<a href="home.html"><img src="../src/img/Icon-white.png" id="logo"></a>';
 outputSM += '<ul>';
 outputSM += '<li>';
 outputSM += '<div class="loggut">';
