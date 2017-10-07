@@ -21,7 +21,7 @@ Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8
                                     var url1 = bilde.url();
                                     pB = '<img class="pb1" src="' + url1 + '">';
                                 } else {
-                                    userPB = '<img class="pb1" src="../img/User_Small.png">';
+                                    userPB = '<img class="pb1" src="../src/img/User_Small.png">';
                                          }
                                 
                                 output += '<div class="player">';
