@@ -25,6 +25,12 @@
     <script type="text/javascript" src="../src/ericjgagnon-wickedpicker-5080539/src/wickedpicker.js"></script>
     <link rel="stylesheet" href="../src/ericjgagnon-wickedpicker-5080539/stylesheets/wickedpicker.css">
     
+    
+    <script>
+        var language = localStorage.getItem("language");
+        
+    </script>
+    
     <div id="dvLoading"></div>
 
         <script>
@@ -51,7 +57,7 @@
                     <div id="topRightBtn">
                         
                         <button id="' + number +'" onclick="deleteAll()">Slett alt</button>
-
+                        <button id="' + number +'" onclick="sendForm()">Fullfør</button>
                     </div>
                     <h2>Opprett undersøkelse</h2>
                     <textarea rows="1" cols="30" name="text" id="title" placeholder="Tittel på undersøkelse"></textarea>

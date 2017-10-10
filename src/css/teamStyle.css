@@ -21,7 +21,7 @@
     border-right: 1px solid #484848;
 }
 
-#dashBox, #repBox, #evBox{
+#dashBox, #calBox, #attendBox, #survBox{
     display: none;
 }
 #dashbord:hover{
@@ -33,30 +33,39 @@
 }
 
 #dashbord:hover a{
-    margin-right: 7px;
+    margin-right: 8px;
 }
 
-#rapporter:hover{
+#calendar:hover{
     background-color: #5c5c5c;
-    border-top: 1px solid #484848;
 }
-#rapporter:hover #repBox{
+#calendar:hover #calBox{
     display: block;
 }
 
-#rapporter:hover a{
-    margin-right: 7px;
+#calendar:hover a{
+    margin-right: 8px;
 }
-#evaluering:hover{
+#attendance:hover{
     background-color: #5c5c5c;
-    border-top: 1px solid #484848;
 }
-#evaluering:hover #evBox{
+#attendance:hover #attendBox{
     display: block;
 }
 
-#evaluering:hover a{
-    margin-right: 7px;
+#attendance:hover a{
+    margin-right: 8px;
+}
+
+#survey:hover{
+    background-color: #5c5c5c;
+}
+#survey:hover #survBox{
+    display: block;
+}
+
+#survey:hover a{
+    margin-right: 9px;
 }
 
 #btm{

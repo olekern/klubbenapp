@@ -68,7 +68,7 @@ html{
     background: #cf2424;
     width: 100%;
     position: fixed;
-    z-index: 1000;
+    z-index: 990;
     border-bottom: 1px solid #b62929;
     box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 1); 
 }

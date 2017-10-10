@@ -256,7 +256,7 @@ $(document).click(function(event) {
                         
                         outputRole += '<div class="role">';
                         outputRole += '<h2>Er du sikker på at du vil endre rollen til <span>' + username + '</span> fra trener til spiller?</h2>';
-                        outputRole += '<button class="no" id="none" name="cancel" onclick="kickUser(id ,name)">Avbryt</button>';
+                        outputRole += '<button class="no" id="none" name="cancel" onclick="roleChange(id ,name)">Avbryt</button>';
                     outputRole += '<button class="yes" id="' + userId + '" name="confirm" onclick="roleChange(id, name)">Bekreft</button>';
                         outputRole += '</div>';
                         

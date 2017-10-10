@@ -27,6 +27,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 500, 600" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="../src/css/demo.css">
     
+    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
     
@@ -140,8 +141,9 @@
         }
         
     </script>
+    
 
-<div id="nav"> <img src="../src/img/Icon-white.png"> <a id="name" href="./src/html/index.html">Klubben</a> <a id="app" onclick="getLink()">Gå til appen</a> </div>
+<div id="nav"> <img src="../src/img/Icon-white.png"> <a id="name" href="demo.html">Klubben</a> <a id="app" onclick="getLink()">Gå til appen</a> </div>
     
 <script>
 var s = 'file:///C:/Users/h/Desktop/klubbenapp/demo.html#secondPage';
@@ -164,10 +166,10 @@ var r = s.replace(/^(.+?)_[^.]+(\.[^\/.]+)$/i, '$1$2');
                 
                 var currentuser = Parse.User.current();
                 if (currentuser) {
-                    location.href = "../src/html/newsFeed.html";
+                    location.href = "home.html";
                 }
                 else {
-                    location.href = "../src/html/registration.html";
+                    location.href = "registration.html";
                 }
             }
         }

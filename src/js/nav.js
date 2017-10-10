@@ -1,3 +1,23 @@
+var home;
+var calendar;
+var attendance;
+var surveys;
+var team;
+
+if(language == "NO"){
+    home = "Hjem";
+    calendar = "Kalender";
+    attendance = "Oppmøte";
+    surveys = "Undersøkelser";
+    team = "Laget";
+}else{
+    home = "Home";
+    calendar = "Calendar";
+    attendance = "Attendance";
+    surveys = "Surveys";
+    team = "Team";
+}
+
 var outputSM = "";
 
 outputSM += '<div class="nav">';
@@ -17,22 +37,32 @@ outputSM += '</ul>';
 outputSM += '</div>';
 outputSM += '<div id="side-menu">';
 outputSM += '<div id="top">';
+
 outputSM += '<div id="dashbord" class="square">';
 outputSM += '<div class="box" id="dashBox"></div>';
-outputSM += '<a href="home.html" class="material-icons">home<p>Dashbord</p></a>';
+outputSM += '<a href="home.html" class="material-icons">home<p>' + home + '</p></a>';
 outputSM += '</div>';
-outputSM += '<div id="rapporter" class="square">';
-outputSM += '<div class="box" id="repBox"></div>';
-outputSM += '<a href="calendar.html" class="material-icons">today<p>Kalender</p></a>';
+
+outputSM += '<div id="calendar" class="square">';
+outputSM += '<div class="box" id="calBox"></div>';
+outputSM += '<a href="calendar.html" class="material-icons">today<p>' + calendar + '</p></a>';
 outputSM += '</div>';
-outputSM += '<div id="evaluering" class="square">';
-outputSM += '<div class="box" id="evBox"></div>';
-outputSM += '<a href="answers.html" class="material-icons">insert_chart<p>Rapporter</p></a>';
+/*
+outputSM += '<div id="attendance" class="square">';
+outputSM += '<div class="box" id="attendBox"></div>';
+outputSM += '<a href="attendance.html" class="material-icons">event_available<p>' + attendance + '</p></a>';
 outputSM += '</div>';
+*/
+outputSM += '<div id="survey" class="square">';
+outputSM += '<div class="box" id="survBox"></div>';
+outputSM += '<a href="answers.html" class="material-icons">insert_chart<p>' + surveys + '</p></a>';
+outputSM += '</div>';
+
 outputSM += '<div id="team" class="square">';
 outputSM += '<div class="box" id="teamBox"></div>';
-outputSM += '<a href="team.html" class="material-icons">group<p>Laget</p></a>';
+outputSM += '<a href="team.html" class="material-icons">group<p>' + team + '</p></a>';
 outputSM += '</div>';
+
 outputSM += '</div>';
 outputSM += '<div id="btm">';
 outputSM += '<p>&copy 2017 Lustek AS</p>';

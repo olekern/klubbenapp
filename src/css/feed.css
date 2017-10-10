@@ -21,31 +21,44 @@
     border-right: 1px solid #484848;
 }
 
-#repBox, #evBox, #forBox, #teamBox{
+#calBox, #survBox, #forBox, #teamBox, #attendBox{
     display: none;
 }
-#rapporter:hover{
+#calendar:hover{
     background-color: #5c5c5c;
     border-top: 1px solid #484848;
+    margin-top: -1px;
 }
 
-#rapporter:hover #repBox{
+#calendar:hover #calBox{
     display: block;
 }
 
-#rapporter:hover a{
-    margin-right: 7px;
+#calendar:hover a{
+    margin-right: 8px;
 }
 
-#evaluering:hover{
+#attendance:hover{
     background-color: #5c5c5c;
 }
-#evaluering:hover #evBox{
-    display: block;
-}a
 
-#evaluering:hover a{
-    margin-right: 7px;
+#attendance:hover #attendBox{
+    display: block;
+}
+
+#attendance:hover a{
+    margin-right: 8px;
+}
+
+#survey:hover{
+    background-color: #5c5c5c;
+}
+#survey:hover #survBox{
+    display: block;
+}
+
+#survey:hover a{
+    margin-right: 8px;
 }
 #forberedelser:hover{
     background-color: #5c5c5c;
@@ -62,13 +75,14 @@
 #team:hover{
     background-color: #5c5c5c;
     border-top: 1px solid #484848;
+    margin-top: -1px;
 }
 #team:hover #teamBox{
     display: block;
 }
 
 #team:hover a{
-    margin-right: 7px;
+    margin-right: 8px;
 }
 
 #btm{
@@ -608,6 +622,123 @@
     margin-top: 15px;
 }
 
+#event #create{
+    cursor: pointer;
+}
 
 
 
+/*=====================*\
+|*     CREATEEVENT     *|
+\*=====================*/
+
+#createEvent textarea{
+    font-family: 'Open Sans', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Microsoft Sans Serif;
+    font-weight: 400;
+    font-size: 15px;
+    resize: none;
+    width: 200px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 28px;
+    border: 1px solid #d5d5d5;
+    padding-left: 8px;
+    padding-top: 6px;
+    padding-right: 8px;
+}
+
+#createbox{
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 45px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+#createbox i{
+    font-size: 40px;
+    float: left;
+    margin-top: 0;
+}
+
+#createbox p{
+    float: right;
+    margin-top: 4px;
+}
+
+.date-switch{
+    width: 330px;
+    height: 34px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    line-height: 34px;
+}
+
+#single{
+    float: left;
+}
+
+#plural{
+    float: right;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+    margin-left: 20px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #cf2424;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #cf2424;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

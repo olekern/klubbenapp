@@ -94,15 +94,37 @@ function showNearestEvent(){
                         var fourDays = new Date();
                         fourDays.setDate(fourDays.getDate() +4);
                         fourDays.setHours(0,0,0,0);
+                        
+                        var fiveDays = new Date();
+                        fiveDays.setDate(fiveDays.getDate() +4);
+                        fiveDays.setHours(0,0,0,0);
+
+                        
+                        var sixDays = new Date();
+                        sixDays.setDate(sixDays.getDate() +4);
+                        sixDays.setHours(0,0,0,0);
+                        
+                        var sevenDays = new Date();
+                        sevenDays.setDate(sevenDays.getDate() +4);
+                        sevenDays.setHours(0,0,0,0);
+
 
                         var eventType = results[i].get("eventID");
 
                         var eventName;
 
                         if(eventType == "training"){
+                            if(language == "NO"){
                                 eventName = "Trening";
+                            }else{
+                                eventName = "Practice";
+                            }
                             }else if(eventType == "competition"){
-                                eventName = "Konkurranse";
+                                if(language == "NO"){
+                                    eventName = "Konkurranse";
+                                }else{
+                                    eventName = "Competition"
+                                }
                             }
 
                         var outputEvent = "";
@@ -192,11 +214,101 @@ function showNearestEvent(){
                                 results = i;
                                 break;
 
+                        }else if(eventDate.getTime() === fiveDays.getTime()){
+                                outputEvent += '<i class="material-icons">fitness_center</i>';
+                                outputEvent += '<h3>' + eventName + '</h3>';
+                                outputEvent += '<h2>' + dateMonth + '</h2>';
+                                outputEvent += '<h4>' + time + '</h4>';
+
+                                if(role == "trener"){
+                                    coachEvent(eventId);
+                                }else if(role == "spiller"){
+                                    playerEvent(eventId);
+                                }else if(role == undefined){
+                                    showNearestEvent();
+                                }
+
+                                results = i;
+                                break;
+
+                        }else if(eventDate.getTime() === sixDays.getTime()){
+                                outputEvent += '<i class="material-icons">fitness_center</i>';
+                                outputEvent += '<h3>' + eventName + '</h3>';
+                                outputEvent += '<h2>' + dateMonth + '</h2>';
+                                outputEvent += '<h4>' + time + '</h4>';
+
+                                if(role == "trener"){
+                                    coachEvent(eventId);
+                                }else if(role == "spiller"){
+                                    playerEvent(eventId);
+                                }else if(role == undefined){
+                                    showNearestEvent();
+                                }
+
+                                results = i;
+                                break;
+
+                        }else if(eventDate.getTime() === sevenDays.getTime()){
+                                outputEvent += '<i class="material-icons">fitness_center</i>';
+                                outputEvent += '<h3>' + eventName + '</h3>';
+                                outputEvent += '<h2>' + dateMonth + '</h2>';
+                                outputEvent += '<h4>' + time + '</h4>';
+
+                                if(role == "trener"){
+                                    coachEvent(eventId);
+                                }else if(role == "spiller"){
+                                    playerEvent(eventId);
+                                }else if(role == undefined){
+                                    showNearestEvent();
+                                }
+
+                                results = i;
+                                break;
+
+                        }else{
+                            
+                            var noEventMessage;
+                            var createEvent;
+                            if(language == "NO"){
+        
+                                noEventMessage = "Det er ingen hendelse den neste uken";
+                                createEvent = "Opprett ny hendelse";
+                            }else{
+                                
+                                noEventMessage = "There are no events the upcoming week";
+                                createEvent = "Create new event";
+                            }
+                            
+                            if(role == "trener"){
+                                
+                                outputEvent += '<div id="noEvent">';
+                                outputEvent += '<h4>' + noEventMessage + '<h4>';
+                                outputEvent += '</div>';
+                                    
+                            }else if(role == "spiller"){
+                                
+                                outputEvent += '<div id="noEvent">';
+                                outputEvent += '<h4>' + noEventMessage + '<h4>';
+                                outputEvent += '</div>';
+                                    
+                            }else if(role == undefined){
+                                    showNearestEvent();
+                            }
                         }
 
                     }
 
                 $("#list-nearest-event").html(outputEvent);
+            
+                if(role == "trener"){
+                    var outputC = "";
+                    outputC += '<div id="createbox">';
+                    outputC += '<i class="material-icons">add_circle</i>';
+                    outputC += '<p id="create" class="createbtn" onclick="showCreator()">' + createEvent + '<p>';
+                    outputC += '</div>';
+                }
+            
+            $("#list-create-btn").html(outputC);
 
         }
 
@@ -263,7 +375,7 @@ function coachEvent(eventId){
             outputAttendance += '</div>';
             outputAttendance += '</div>';
             
-            $("#list-nearest-event").append(outputAttendance);
+            $("#list-event-answers").html(outputAttendance);
         }
     });
 }
@@ -431,4 +543,95 @@ function submitAttend(eventId){
                 });
                 
     }
+}
+
+function showCreator(){
+    
+    var outputCreator = "";
+    
+    var training;
+    var other;
+    var cancel;
+    var once;
+    var repeated;
+    var date;
+    var time;
+    var eventName;
+    
+    if(language == "NO"){
+        training = "Trening";
+        other = "Annet";
+        cancel = "Avbryt";
+        once = "Enkelthendelse";
+        repeated = "Gjentagende";
+        date = "Dato";
+        time = "Klokkeslett";
+        eventName = "Skriv inn navn på hendelsen";
+    }else{
+        training = "Practice";
+        other = "Other";
+        cancel = "Cancel";
+        once = "One time event";
+        repeated = "Repeated event";
+        date = "Date";
+        time = "Time";
+        eventName = "Write the name of the event";
+    }
+    
+    outputCreator += '<div id="createEvent">';
+    outputCreator += '<div id="createBox">';
+    outputCreator += '<button onclick="cancelEvent()">' + cancel + '</button>';
+    outputCreator += '<textarea id="eventName" placeholder="' + eventName + '"></textarea>';
+    outputCreator += '<form>';
+    outputCreator += '<input type="radio" name="gender" value="male" checked>' + training + '<br>';
+    outputCreator += '<input type="radio" name="gender" value="female">' + other + '<br>';
+    outputCreator += '</form>';
+    outputCreator += '<div class="date-switch">';
+    outputCreator += '<h3 id="single">Enkeltundersøkelse</h3>';
+    outputCreator += '<label class="switch">';
+    outputCreator += '<input onclick="chooseTime()" id="check" autocomplete="off" type="checkbox">';
+    outputCreator += '<div class="slider round"></div>';
+    outputCreator += '</label>';
+    outputCreator += '<h3 id="plural">Gjentagende</h3>';
+    outputCreator += '</div>';
+    outputCreator += '<p id="date-pick">' + date + '<input type="text" autocomplete="off" id="form-date" class="datepicker"></p>';
+    outputCreator += '<p id="time-pick">' + time + '<input type="text" autocomplete="off" id="form-time" class="timepicker"></p>';
+    outputCreator += '<div id="days" style="display: none;">';
+    outputCreator += '<p class="day">Man<input class="day-checkbox" id="mon" type="checkbox"></p>';
+    outputCreator += '<p class="day">Tir<input class="day-checkbox" id="tue" type="checkbox"></p>';
+    outputCreator += '<p class="day">Ons<input class="day-checkbox" id="wed" type="checkbox"></p>';
+    outputCreator += '<p class="day">Tor<input class="day-checkbox" id="thu" type="checkbox"></p>';
+    outputCreator += '<p class="day">Fre<input class="day-checkbox" id="fri" type="checkbox"></p>';
+    outputCreator += '<p class="day">Lør<input class="day-checkbox" id="sat" type="checkbox"></p>';
+    outputCreator += '<p class="day">Søn<input class="day-checkbox" id="sun" type="checkbox"></p>';
+    outputCreator += '<p id="date-pick">' + time + '<input type="text" autocomplete="off" id="form-time" class="timepicker"></p>';
+    outputCreator += '</div>';
+    outputCreator += '</div>';
+    outputCreator += '</div>';
+    
+    $("#list-creator").html(outputCreator);
+    
+}
+
+
+function cancelEvent(){
+    var outputCreator = "";
+    
+    $("#list-creator").html(outputCreator);
+    
+}
+
+function chooseTime(){
+    
+    if (document.getElementById('check').checked) {
+                    document.getElementById('days').style.display = 'block';
+                    document.getElementById('date-pick').style.display = 'none';
+                    document.getElementById('time-pick').style.display = 'none';
+                }else{
+                    
+                    document.getElementById('days').style.display = 'none';
+                    document.getElementById('date-pick').style.display = 'block';
+                    document.getElementById('time-pick').style.display = 'block';
+                    
+                }
 }

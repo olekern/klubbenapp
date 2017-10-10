@@ -7,12 +7,12 @@ html{
     padding-bottom: 9px;
 }
 
-#rapporter{
+#calendar{
     background-color: #5c5c5c;
     border-top: 1px solid #484848;
 }
 
-#rapporter a{
+#calendar a{
     margin-right: 7px;
 }
 .box{
@@ -25,11 +25,13 @@ html{
     border-right: 1px solid #484848;
 }
 
-#dashBox, #evBox, #forBox, #teamBox{
+#dashBox, #survBox, #forBox, #teamBox, #attendBox{
     display: none;
 }
 #dashbord:hover{
     background-color: #5c5c5c;
+    border-top: 1px solid #484848;
+    margin-top: -1px;
 }
 
 #dashbord:hover #dashBox{
@@ -37,19 +39,30 @@ html{
 }
 
 #dashbord:hover a{
-    margin-right: 7px;
+    margin-right: 8px;
 }
 
-#evaluering:hover{
+#attendance:hover{
     background-color: #5c5c5c;
-    border-top: 1px solid #484848;
 }
-#evaluering:hover #evBox{
+
+#attendance:hover #attendBox{
     display: block;
 }
 
-#evaluering:hover a{
-    margin-right: 7px;
+#attendance:hover a{
+    margin-right: 8px;
+}
+
+#survey:hover{
+    background-color: #5c5c5c;
+}
+#survey:hover #survBox{
+    display: block;
+}
+
+#survey:hover a{
+    margin-right: 8px;
 }
 #forberedelser:hover{
     background-color: #5c5c5c;
@@ -66,22 +79,22 @@ html{
 #team:hover{
     background-color: #5c5c5c;
     border-top: 1px solid #484848;
+    margin-top: -1px;
 }
 #team:hover #teamBox{
     display: block;
 }
 
 #team:hover a{
-    margin-right: 7px;
+    margin-right: 8px;
 }
-
 
 #btm{
     width: 150px;
     color: white;
     position: absolute;
     bottom: 0;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     font-weight: 300;
     text-align: center;
     font-size: 12px;
@@ -126,9 +139,9 @@ h4{
 \*=====================*/
 
 
-#calendar{
+#list-calendar{
 width: 80%;
-margin-top: 200px;
+margin-top: 50px;
 margin-left: auto;
 margin-right: auto;
 }

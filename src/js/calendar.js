@@ -24,12 +24,10 @@ $(document).ready(function() {
 			console.log(error);
 		}
 	});
-
-    // page is now ready, initialize the calendar...
-	
+    
 	function createCalendar(){	
 
-    $('#calendar').fullCalendar({
+    $('#list-calendar').fullCalendar({
         // put your options and callbacks here
 	    height: 600,
 	    header: {
@@ -43,7 +41,7 @@ $(document).ready(function() {
 		var surveyId = calEvent.id;
 		var surveyTitle = calEvent.title;
 		localStorage.setItem("surveyId", surveyId);
-		location.href = "evalueringT.html";
+		location.href = "answers.html";
 
     }
     })

@@ -7,12 +7,12 @@ html{
     padding-bottom: 9px;
 }
 
-#evaluering{
+#survey{
     background-color: #5c5c5c;
     border-top: 1px solid #484848;
 }
 
-#evaluering a{
+#survey a{
     margin-right: 7px;
 }
 .box{
@@ -25,7 +25,7 @@ html{
     border-right: 1px solid #484848;
 }
 
-#dashBox, #repBox, #forBox, #teamBox{
+#dashBox, #calBox, #attendBox, #teamBox{
     display: none;
 }
 #dashbord:hover{
@@ -37,41 +37,41 @@ html{
 }
 
 #dashbord:hover a{
-    margin-right: 7px;
+    margin-right: 8px;
 }
 
-#rapporter:hover{
+#calendar:hover{
     background-color: #5c5c5c;
 }
-#rapporter:hover #repBox{
+#calendar:hover #calBox{
     display: block;
 }
 
-#rapporter:hover a{
-    margin-right: 7px;
+#calendar:hover a{
+    margin-right: 8px;
 }
-#forberedelser:hover{
+#attendance:hover{
     background-color: #5c5c5c;
-    border-top: 1px solid #484848;
 }
-#forberedelser:hover #forBox{
+#attendance:hover #attendBox{
     display: block;
 }
 
-#forberedelser:hover a{
-    margin-right: 7px;
+#attendance:hover a{
+    margin-right: 8px;
 }
 
 #team:hover{
     background-color: #5c5c5c;
     border-top: 1px solid #484848;
+    margin-top: -1px;
 }
 #team:hover #teamBox{
     display: block;
 }
 
 #team:hover a{
-    margin-right: 7px;
+    margin-right: 8px;
 }
 
 
