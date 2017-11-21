@@ -21,7 +21,7 @@ if(language == "NO"){
 var outputSM = "";
 
 outputSM += '<div class="nav">';
-outputSM += '<a href="home.html"><img src="../src/img/Icon-white.png" id="logo"></a>';
+outputSM += '<a href="home.html"><img src="./src/img/Icon-white.png" id="logo"></a>';
 outputSM += '<ul>';
 outputSM += '<li>';
 outputSM += '<div class="loggut">';
@@ -47,12 +47,12 @@ outputSM += '<div id="calendar" class="square">';
 outputSM += '<div class="box" id="calBox"></div>';
 outputSM += '<a href="calendar.html" class="material-icons">today<p>' + calendar + '</p></a>';
 outputSM += '</div>';
-/*
+
 outputSM += '<div id="attendance" class="square">';
 outputSM += '<div class="box" id="attendBox"></div>';
 outputSM += '<a href="attendance.html" class="material-icons">event_available<p>' + attendance + '</p></a>';
 outputSM += '</div>';
-*/
+    
 outputSM += '<div id="survey" class="square">';
 outputSM += '<div class="box" id="survBox"></div>';
 outputSM += '<a href="answers.html" class="material-icons">insert_chart<p>' + surveys + '</p></a>';
@@ -65,9 +65,22 @@ outputSM += '</div>';
 
 outputSM += '</div>';
 outputSM += '<div id="btm">';
-outputSM += '<p>&copy 2017 Lustek AS</p>';
+outputSM += '<p id="NO" class="language" onclick="setLanguage(id)">NO</p>';
+outputSM += '<p id="EN" class="language" onclick="setLanguage(id);">EN</p>';
+outputSM += '<p id="copy">&copy 2017 Lustek AS</p>';
 outputSM += '</div>';
 outputSM += '</div>';
 
 
 $("#list-sm").html(outputSM);
+
+function setLanguage(lng){
+    
+    localStorage.setItem("language", lng);
+    
+    document.location.reload();
+        
+    
+}
+
+

@@ -1,4 +1,3 @@
-
 <!doctype html>
 
 <html>
@@ -22,96 +21,93 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" type="text/css" href="../src/css/style.css" />
     <link rel="stylesheet" href="../src/html/font-awesome-4.6.3/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 500, 600" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 500, 600" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../src/css/demo.css">
-    
-    
+
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-    
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
     <script type="text/javascript" src="../src/fullPage.js-master/jquery.fullPage.js"></script>
 
-	<script type="text/javascript">
-
-		$(document).ready(function() {
+    <script type="text/javascript">
+        $(document).ready(function() {
 
             $('#emptyphone1').addClass('hide');
             $('#emptyphone3').addClass('hide');
-            
-			$('#fullpage').fullpage({
+
+            $('#fullpage').fullpage({
                 sectionsColor: ['white', '#04151f', 'white', '#183a37', '#3e78b2', 'white'],
-				anchors: ['1', '2', '3', '4', '5', '6'],
-				menu: '#menu',
-				scrollingSpeed: 1000,
+                anchors: ['1', '2', '3', '4', '5', '6'],
+                menu: '#menu',
+                scrollingSpeed: 1000,
                 responsiveWidth: 430,
-    afterLoad: function(anchorLink, index){
-        
-		if(index == 2){
-            $('#emptyphone1').removeClass('hide');
-            $('#emptyphone2').addClass('hide');
-            $('#emptyphone3').addClass('hide');
-            
-            $('#statImg1').removeClass('hide');
-            $('#calendarImg1').addClass('hide');
-            $('#feedbackImg1').addClass('hide');
-            
-		}
-        else if(index == 3){
-            
-            $('#emptyphone1').removeClass('hide');
-            $('#emptyphone2').addClass('hide');
-            $('#emptyphone3').addClass('hide');
-            
-            $('#statImg1').addClass('hide');
-            $('#calendarImg1').removeClass('hide');
-            $('#feedbackImg1').addClass('hide');
-            
-		}
-        
-        if(index == 4){
-            
-            $('#emptyphone1').addClass('hide');
-            $('#emptyphone2').addClass('hide');
-            $('#emptyphone3').removeClass('hide');
-            
-            $('#statImg1').addClass('hide');
-            $('#calendarImg1').addClass('hide');
-            $('#feedbackImg1').removeClass('hide');
-            
-		}
-        
-        if(index == 5){
-            
-            $('#emptyphone1').addClass('hide');
-            $('#emptyphone2').addClass('hide');
-            $('#emptyphone3').removeClass('hide');
-            
-            $('#statImg1').addClass('hide');
-            $('#calendarImg1').addClass('hide');
-            $('#feedbackImg1').removeClass('hide');
-            
-		}
+                afterLoad: function(anchorLink, index) {
+
+                    if (index == 2) {
+                        $('#emptyphone1').removeClass('hide');
+                        $('#emptyphone2').addClass('hide');
+                        $('#emptyphone3').addClass('hide');
+
+                        $('#statImg1').removeClass('hide');
+                        $('#calendarImg1').addClass('hide');
+                        $('#feedbackImg1').addClass('hide');
+
+                    } else if (index == 3) {
+
+                        $('#emptyphone1').removeClass('hide');
+                        $('#emptyphone2').addClass('hide');
+                        $('#emptyphone3').addClass('hide');
+
+                        $('#statImg1').addClass('hide');
+                        $('#calendarImg1').removeClass('hide');
+                        $('#feedbackImg1').addClass('hide');
+
+                    }
+
+                    if (index == 4) {
+
+                        $('#emptyphone1').addClass('hide');
+                        $('#emptyphone2').addClass('hide');
+                        $('#emptyphone3').removeClass('hide');
+
+                        $('#statImg1').addClass('hide');
+                        $('#calendarImg1').addClass('hide');
+                        $('#feedbackImg1').removeClass('hide');
+
+                    }
+
+                    if (index == 5) {
+
+                        $('#emptyphone1').addClass('hide');
+                        $('#emptyphone2').addClass('hide');
+                        $('#emptyphone3').removeClass('hide');
+
+                        $('#statImg1').addClass('hide');
+                        $('#calendarImg1').addClass('hide');
+                        $('#feedbackImg1').removeClass('hide');
+
+                    }
 
 
-	}, 
-    onLeave: function(nextIndex, direction){
-        
-        if(direction == 1){
-            $('#emptyphone1').addClass('hide');
-            $('#emptyphone2').removeClass('hide');
-        }
-        if(direction == 3){
-            $('#emptyphone3').addClass('hide');
-            $('#emptyphone1').removeClass('hide');
-        }
-    }
-});
-                
+                },
+                onLeave: function(nextIndex, direction) {
+
+                    if (direction == 1) {
+                        $('#emptyphone1').addClass('hide');
+                        $('#emptyphone2').removeClass('hide');
+                    }
+                    if (direction == 3) {
+                        $('#emptyphone3').addClass('hide');
+                        $('#emptyphone1').removeClass('hide');
+                    }
+                }
+            });
+
             //}
-		});
-        
+        });
+
         var id;
         $(window).resize(function() {
             clearTimeout(id);
@@ -119,162 +115,186 @@
 
         });
 
-        function doneResizing(){
-          var height = $(window).innerHeight();
-            alert(height);   
+        function doneResizing() {
+            var height = $(window).innerHeight();
+            //alert(height);   
         }
-        
-	</script>
+
+    </script>
 
     <script src="../src/garand-sticky-73b0fbe/jquery.sticky.js"></script>
 </head>
+
 <body>
-    
+
     <script>
         var userLanguage = window.navigator.userLanguage || window.navigator.language;
         var language = userLanguage.slice(-2);
-        
+
         localStorage.setItem("language", language);
-        
-        if(language != "NO"){
-            
+
+        if (language != "NO") {
+
         }
-        
-    </script>
-    
-
-<div id="nav"> <img src="../src/img/Icon-white.png"> <a id="name" href="demo.html">Klubben</a> <a id="app" onclick="getLink()">Gå til appen</a> </div>
-    
-<script>
-var s = 'file:///C:/Users/h/Desktop/klubbenapp/demo.html#secondPage';
-var r = s.replace(/^(.+?)_[^.]+(\.[^\/.]+)$/i, '$1$2');
 
     </script>
-	
-	 <script type="text/javascript">
+
+
+    <div id="nav"> <img src="../src/img/Icon-white.png"> <a id="name" href="demo.html">Klubben</a> <a id="app" onclick="getLink()">Gå til appen</a> </div>
+
+    <script>
+        var s = 'file:///C:/Users/h/Desktop/klubbenapp/demo.html#secondPage';
+        var r = s.replace(/^(.+?)_[^.]+(\.[^\/.]+)$/i, '$1$2');
+
+    </script>
+
+    <script type="text/javascript">
         Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
         Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
+
         function getLink() {
             var uagent = navigator.userAgent.toLowerCase();
             if (uagent.search("iphone") > -1) {
                 location.href = "https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8";
-            }
-            else if (uagent.indexOf("android") > -1) {
+            } else if (uagent.indexOf("android") > -1) {
                 location.href = "https://play.google.com/store/apps/details?id=com.lustek.klubben";
-            }
-            else {
-                
+            } else {
+
                 var currentuser = Parse.User.current();
                 if (currentuser) {
-                    location.href = "home.html";
-                }
-                else {
-                    location.href = "registration.html";
+                    location.href = "../home.html";
+                } else {
+                    location.href = "../registration.html";
                 }
             }
         }
+
     </script>
-    
-    
-	<div id="emptyphone1">
-		<img src="../src/img/emptysamsung.png" id="phoneshell1">
-        
-		<img src="../src/img/s8img.png" class="fixedimg" id="statImg1">
-		<img src="../src/img/s8img.png" class="fixedimg" id="calendarImg1">
-		<img src="../src/img/s8img.png" class="fixedimg" id="feedbackImg1">
-	</div>
-    
-    
-<div id="fullpage">
-	<div class="section" id="section0">
-		<div class="section-box">
-			<div class="content">
-				<div id="top-content">
-			 		<h1 id="klubben">Løft laget ditt til nye høyder!</h1>
-                    <h2>Klubben er en ny digital plattform som hjelper idrettslag med å forbedre utøvernes sportslige prestasjoner.</h2>
-			 		<div id="firstStores">
-                			<a href="https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8"> <img src="../src/img/Get_AppStore_Black.png" /> </a>
-                			<a href="https://play.google.com/store/apps/details?id=com.lustek.klubben"> <img src="../src/img/Get_GooglePlay_Black.png" /> </a>
-            				</div>
-					<a id="regnt" href="demo.html#3rdPage">Registrer nytt lag</a>
-                    <div id="arrow">
-                        <a class="bounce" href="demo.html#secondPage"><i class="material-icons">keyboard_arrow_down</i></a>
-                    </div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="section" id="section1">
-		<div class="section-box">
-			<div class="content">
-				<div id="emptyphone2">
-                    <img src="../src/img/s8img.png" id="statImg2">
-					<img src="../src/img/emptysamsung.png" id="phoneshell2">
-				</div>
-                <div class="smallscreen">
-                    <div class="normalphone">
-                        <img src="../src/img/emptysamsung.png" class="phoneshell">
-                        <img src="../src/img/s8img.png" class="phonecontent">
-                    </div>
-                    <div class="smalltext">
-                        
+
+
+    <div id="emptyphone1">
+        <img src="../src/img/emptysamsung.png" id="phoneshell1">
+
+        <img src="../src/img/s8img.png" class="fixedimg" id="statImg1">
+        <img src="../src/img/s8img.png" class="fixedimg" id="calendarImg1">
+        <img src="../src/img/s8img.png" class="fixedimg" id="feedbackImg1">
+    </div>
+
+
+    <div id="fullpage">
+        <div class="section" id="section0">
+            <div class="section-box">
+                <div class="content">
+                    <div id="top-content">
+                        <h1 id="klubben">Løft laget ditt til nye høyder!</h1>
+                        <h2>Klubben er en ny digital plattform som hjelper idrettslag med å forbedre utøvernes sportslige prestasjoner.</h2>
+                        <div id="firstStores">
+                            <a href="https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8"> <img src="../src/img/Get_AppStore_Black.png" /> </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.lustek.klubben"> <img src="../src/img/Get_GooglePlay_Black.png" /> </a>
+                        </div>
+                        <a id="regnt" href="demo.html#3rdPage">Registrer nytt lag</a>
+                        <div id="arrow">
+                            <a class="bounce" href="demo.html#secondPage"><i class="material-icons">keyboard_arrow_down</i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="infobox">
-                    <h2>Enkel oversikt</h2>
-                    <h1>Registrer oppmøte og få statistikk for ditt lag</h1>
-                    <p>Klubben lar utøverne melde fra om de kommer på trening, slik at du som trener får god kontroll over laget.</p>
-                </div>
-                
-			</div>
-		</div>
-	</div>
-    
-	<div class="section" id="section2">
-		<div class="section-box">
-			<div class="content">
-                <div class="smallscreen">
-                    <div class="normalphone">
-                        <img src="../src/img/emptysamsung.png" class="phoneshell">
-                        <img src="../src/img/s8img.png" class="phonecontent">
+            </div>
+        </div>
+        <div class="section" id="section1">
+            <div class="section-box">
+                <div class="content">
+                    <div id="emptyphone2">
+                        <img src="../src/img/s8img.png" id="statImg2">
+                        <img src="../src/img/emptysamsung.png" id="phoneshell2">
                     </div>
-                    <div class="smalltext"></div>
-                </div>
-                <img src="../src/img/sport1.png" id="sportscompilation">
-                <div class="infobox2">
-                    <h2>Raske undersøkelser</h2>
-                    <h1>Forbedre oppfølgingen mellom utøver og trener</h1>
-                    <p>Mange trenere føler at tiden på treningsfeltet ikke strekker til. Lag undersøkelser til dine utøvere og oppretthold en tett og god dialog gjennom Klubben. </p>
-                </div>
-			</div>
-		</div>
-	</div>
-	<div class="section" id="section3">
-		<div class="section-box">
-			<div class="content">
-                <div id="emptyphone3">
-					<img src="../src/img/emptysamsung.png" id="phoneshell3">
-					<img src="../src/img/s8img.png" id="statImg3">
-				</div>
-                <div class="smallscreen">
-                    <div class="normalphone">
-                        <img src="../src/img/emptysamsung.png" class="phoneshell">
-                        <img src="../src/img/s8img.png" class="phonecontent">
+                    <div class="smallscreen">
+                        <div class="normalphone">
+                            <img src="../src/img/emptysamsung.png" class="phoneshell">
+                            <img src="../src/img/s8img.png" class="phonecontent">
+                        </div>
+                        <div class="smalltext">
+
+                        </div>
                     </div>
-                    <div class="smalltext"></div>
+                    <div class="infobox">
+                        <h2>Enkel oversikt</h2>
+                        <h1>Registrer oppmøte og få statistikk for ditt lag</h1>
+                        <p>Klubben lar utøverne melde fra om de kommer på trening, slik at du som trener får god kontroll over laget.</p>
+                    </div>
+
                 </div>
-                <div class="infobox">
-                    <h2>Oversiktlig kommunikasjon</h2>
-                    <h1>Gi beskjeder til hele laget</h1>
-                    <p>I nyhetsfeeden blir informasjonen raskt tilgjengelig for både utøvere og trenere. Slipp lange mailinglister og knotete smslogger.</p>
+            </div>
+        </div>
+
+        <div class="section" id="section2">
+            <div class="section-box">
+                <div class="content">
+                    <div class="smallscreen">
+                        <div class="normalphone">
+                            <img src="../src/img/emptysamsung.png" class="phoneshell">
+                            <img src="../src/img/s8img.png" class="phonecontent">
+                        </div>
+                        <div class="smalltext"></div>
+                    </div>
+                    <img src="../src/img/sport1.png" id="sportscompilation">
+                    <div class="infobox2">
+                        <h2>Raske undersøkelser</h2>
+                        <h1>Forbedre oppfølgingen mellom utøver og trener</h1>
+                        <p>Mange trenere føler at tiden på treningsfeltet ikke strekker til. Lag undersøkelser til dine utøvere og oppretthold en tett og god dialog gjennom Klubben. </p>
+                    </div>
                 </div>
-			</div>
-		</div>
-	</div>
-    <div class="section" id="section4">
-		<div class="section-box">
-			<div class="content">
-                <div id="pricing">
+            </div>
+        </div>
+        <div class="section" id="section3">
+            <div class="section-box">
+                <div class="content">
+                    <div id="emptyphone3">
+                        <img src="../src/img/emptysamsung.png" id="phoneshell3">
+                        <img src="../src/img/s8img.png" id="statImg3">
+                    </div>
+                    <div class="smallscreen">
+                        <div class="normalphone">
+                            <img src="../src/img/emptysamsung.png" class="phoneshell">
+                            <img src="../src/img/s8img.png" class="phonecontent">
+                        </div>
+                        <div class="smalltext"></div>
+                    </div>
+                    <div class="infobox">
+                        <h2>Oversiktlig kommunikasjon</h2>
+                        <h1>Gi beskjeder til hele laget</h1>
+                        <p>I nyhetsfeeden blir informasjonen raskt tilgjengelig for både utøvere og trenere. Slipp lange mailinglister og knotete smslogger.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section4">
+            <div class="section-box">
+                <div class="content">
+                    <div id="pricing">
+
+                        <div class="columns">
+                            <ul class="price">
+                                <li class="header">Standard-lag</li>
+                                <li class="grey">Gratis</li>
+                                <li>Nyhetsfeed</li>
+                                <li>Oppmøtestatistikk</li>
+                                <li>Flere trenere per lag</li>
+                                <li>Grupper</li>
+                                <li class="grey"><a href="#" class="button">Sign Up</a></li>
+                            </ul>
+                        </div>
+                        <div class="columns">
+                            <ul class="price">
+                                <li class="header">Premium-lag</li>
+                                <li class="grey">300 kr/år</li>
+                                <li>All funksjonalitet fra standard-lag</li>
+                                <li>Fri for reklame</li>
+                                <li>Send egne push-varslinger</li>
+                                <li>Opprett undersøkelser</li>
+                                <li class="grey"><a href="#" class="button">Sign Up</a></li>
+                            </ul>
+                        </div>
+                        <!--
                     <table id="free">
                         <thead>
                             <tr>
@@ -346,8 +366,21 @@ var r = s.replace(/^(.+?)_[^.]+(\.[^\/.]+)$/i, '$1$2');
                             </tr>
                         </tfoot>
                     </table>
-                    
-                    <!--
+-->
+                        <!--
+                          <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_test_D6MICwodyNK6JackKJstv4Oz"
+                            data-image="/images/marketplace.png"
+                            data-name="Emma's Farm CSA"
+                            data-description="Subscription for 1 weekly box"
+                            data-amount="0"
+                            data-label="Sign Me Up!"
+                            data-locale="auto"
+                            data-zip-code="true"
+                            data-currency="nok">
+                          </script> -->
+                        <!--
                     <h1>Prisliste:</h1>
                     <div id="features">
                         <h3>Nyhetsfeed</h3>
@@ -365,24 +398,24 @@ var r = s.replace(/^(.+?)_[^.]+(\.[^\/.]+)$/i, '$1$2');
                     
                     </div>
 -->
+                    </div>
                 </div>
-			</div>
-		</div>
-	</div>
-    <div class="section" id="section5">
-		<div class="section-box">
-			<div class="content">
-                <div id="aboutUs">
-                
+            </div>
+        </div>
+        <div class="section" id="section5">
+            <div class="section-box">
+                <div class="content">
+                    <div id="aboutUs">
+
+                    </div>
+                    <div id="aboutOrg">
+
+                    </div>
                 </div>
-                <div id="aboutOrg">
-                
-                </div>
-			</div>
-		</div>
-	</div>
-</div>
-    
+            </div>
+        </div>
+    </div>
+
     <!--
     <div id="footer">
         <div id="leftfoot">
@@ -394,7 +427,8 @@ var r = s.replace(/^(.+?)_[^.]+(\.[^\/.]+)$/i, '$1$2');
         </div>
     </div>
     -->
-   <script type="text/javascript" src="../src/js/regtrainer.js"></script>
+    <script type="text/javascript" src="../src/js/regtrainer.js"></script>
 
 </body>
+
 </html>

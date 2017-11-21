@@ -7,7 +7,12 @@ html {
   background-size: cover;
   */
   background-color: #cf2424;
-    height: 500%;
+    height: 100%;
+}
+
+html{
+    font-family: 'Open Sans', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Microsoft Sans Serif;
 }
 
 .imac img{
@@ -29,7 +34,6 @@ html {
 
 h1, h3{
     font-size: 20px;
-    font-family:  Helvetica Neue, Trebuchet MS, Verdana;
     font-weight: normal;
     
 }
@@ -116,12 +120,22 @@ h1, h3{
 
 }
 
- .innlogging input[type="text"],.innlogging input[type="password"]{
+ .innlogging input[type="text"]{
     height: 2.3em;
     width: 14.3em;
     font-size: 18px;
     background-color: #fff;
     margin-bottom: 1.2em;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2em;
+}
+
+.innlogging input[type="password"]{
+    height: 2.3em;
+    width: 14.3em;
+    font-size: 18px;
+    background-color: #fff;
     margin-left: auto;
     margin-right: auto;
     padding-left: 2em;
@@ -232,4 +246,13 @@ h1, h3{
     color: white;
     float: right;
     margin-right: 1em;
+}
+
+.pass p{
+    margin-top: 7px;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 13px;
+    text-align: center;
+    cursor: pointer;
 }

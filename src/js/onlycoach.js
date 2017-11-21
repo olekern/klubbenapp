@@ -17,13 +17,8 @@ var role;
                         success: function(objects) {
                             for(var i in objects){
                             role = objects[i].get("role");
-                            if (role == "admin") {
-                            } else if (role == "trener") {
-                                //document.getElementById("forberedelser").remove();
-                                //document.getElementById("evaluering").remove();
-                            } else {
-                                document.getElementById("survey").remove();
-                                document.getElementById("calendar").remove();
+                            if (role == "spiller") {
+                                location.href = "home.html"
                             }
                             }
                             
@@ -35,4 +30,3 @@ var role;
                     });
             }
             roles();
-

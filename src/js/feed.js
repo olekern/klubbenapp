@@ -28,12 +28,19 @@ function show() {
 
     function chooseGroup(){
         
+        var groupSpecification;
+        if(language == "NO"){
+            groupSpecification = "Spesifiser gruppe for at kun enkelte brukere skal kunne se innlegget";
+        }else{
+            groupSpecification = "Specify group to limit who can see the post";
+        }
+        
         var outputGroup = "";
         outputGroup += '<div id="groupSet">';
         outputGroup += '<i id="group" class="material-icons">group</i>';
         outputGroup += '<i id="info" class="material-icons">info</i>';
         outputGroup += '<div id="group-info">';
-        outputGroup += '<p>Spesifiser gruppe for at kun enkelte brukere skal kunne se innlegget</p>';
+        outputGroup += '<p>' + groupSpecification + '</p>';
         outputGroup += '</div>';
         outputGroup += '<select class="select-members" id="selectmemb" multiple="multiple">';
         
@@ -71,7 +78,7 @@ chooseGroup();
         var post1 = Parse.Object.extend("Post");
         var Post = Parse.Object.extend("data_" + klubbID + "_Posts");
 
-        function Submit() {
+    function Submit() {
             
             document.getElementById('submit-btn').style.cssText = "display: none;";
             
@@ -79,6 +86,21 @@ chooseGroup();
             var text = document.post.elements[0].value;
             var bilde = document.getElementById("post-file");
             var bildePath = document.getElementById("post-file").value;
+            
+            var noContent;
+            
+            if(language == "NO"){
+               noContent = "Du må skrive noe før du publiserer"; 
+            }else{
+                noContent = "The post does not have any content"; 
+            }
+            
+            if(text == "" && bildePath == ""){
+                    document.getElementById('submit-btn').style.cssText = "display: block;";
+
+                    alert(noContent);
+            }else{
+            
             var bildeNavn = bildePath.split("\\").pop();
             var chosengroups = $('#selectmemb').val();
             var pointers = _.map(chosengroups, function(memberId) {
@@ -111,9 +133,9 @@ chooseGroup();
                     newPost.set("Image", theFile);
                     newPost.save({
                         success: function () {
-                            getPosts();
+                            getPosts(0);
                             document.getElementById("post-file").value = "";
-                            location.href = "newsFeed.html";
+                            location.href = "home.html";
                         }
                         , error: function (error) {
                             console.log("Post Save with File Error:" + error.message);
@@ -128,9 +150,9 @@ chooseGroup();
             else {
                 newPost.save(null, {
                     success: function (newPost) {
-                        getPosts();
+                        getPosts(0);
                         document.getElementById("post-file").value = "";
-                        location.href = "newsFeed.html";
+                        location.href = "home.html";
                     }
                     , error: function (newPost, error) {
                         console.log("Error:" + error.message);
@@ -138,23 +160,34 @@ chooseGroup();
                     }
                 });
             }
-            
+            }
+        
+        
         }
 
-        function getPosts() {
+    var counting = 0;
+        function getPosts(loopCount) {
+            
+            if(loopCount == undefined){
+                loopCount = counting;
+            }
+            var limit = 10;
             var query = new Parse.Query(Post);
             query.descending("createdAt");
+            query.limit(limit);
+            query.skip(limit * loopCount);
             query.include("author");
             query.include("comments");
+            query.include("comments.author");
             query.include("likes");
             query.find().then(function () {}, function (err) {
                 handleParseError(err);
             });
             query.find({
                 success: function (results) {
-                    var output = "";
                     var commentid = new Array();
                     for (var i in results) {
+                        var output = "";
                         results[i].toJSON();
                         var postId = results[i].id;
                         var content = results[i].get("content");
@@ -178,7 +211,7 @@ chooseGroup();
                             pB = '<img class="pb1" src="' + url1 + '">';
                         }
                         else {
-                            userPB = '<img class="pb1" src="../src/img/User_Small.png">';
+                            userPB = '<img class="pb1" src="./src/img/User_Small.png">';
                         }
                         var img = "";
                         if (results[i].get("Image")) {
@@ -211,6 +244,29 @@ chooseGroup();
                             }
                         }
                         if(confirmation == "yes"){
+                        
+                        var likeText;
+                        var likesText;
+                        var commentText;
+                        var commentsText;
+                        var writeCommentText;
+                        var publishText;
+                        if(language == "NO"){
+                            likeText = "Likerklikk";
+                            likeText = "Likerklikk";
+                            commentText = "Kommentar";
+                            commentsText = "Kommentarer";
+                            writeCommentText = "Skriv en kommentar";
+                            publishText = "Publiser";
+                        }else{
+                            likeText = "Like";
+                            likesText = "Likes";
+                            commentText = "Comment";
+                            commentsText = "Comments";
+                            writeCommentText = "Write a comment";
+                            publishText = "Publish";
+                        }
+        
                         output += "<div id=\"feedPost\">";
                         output += "<div id=\"feedCell\">";
                         output += "<div id=\"post\">";
@@ -221,7 +277,7 @@ chooseGroup();
                         output += "<h4>" + name + "</h4>";
                         output += "<h5>" + datoen + "</h5>";
                         output += '<h6>' + groupName + '</h6>';
-                        if(authorid == Parse.User.current().id){
+                        if((authorid == Parse.User.current().id)||(role == "trener")){
                             output += '<i class="material-icons" id="' + postId + '" onclick="deletePost(id)">clear</i>';
                         }
                         output += "<p>" + content + "</p>";
@@ -230,19 +286,23 @@ chooseGroup();
                         var likes = results[i].get("likes");
                         output += "<div id=\"like-comment\">";
                         if ($.inArray(currentUserId, likes) !== -1) {
-                            output += '<img src="../src/img/like_red.png" name="likeIconPressed" id="' + realPost + '" onclick="dislike(id);"></img>';
+                            output += '<img src="./src/img/like_red.png" name="likeIconPressed" id="' + realPost + '" onclick="dislike(id);"></img>';
                         }
                         else {
-                            output += '<img src="../src/img/like_blank.png" id="' + realPost + '" name="likeIcon" onclick="like(id);"></img>';
+                            output += '<img src="./src/img/like_blank.png" id="' + realPost + '" name="likeIcon" onclick="like(id);"></img>';
                         }
                         if (likes != null) {
-                            output += "<h4>" + likes.length + " likerklikk</h4>";
+                            if(likes.length == 1){
+                                output += "<h4>" + likes.length + " " + likeText + "</h4>";
+                            }else{
+                                output += "<h4>" + likes.length +  " " + likesText + "</h4>";
+                            }
                         }
                         else if (likes == undefined) {
-                            output += "<h4>0 likerklikk</h4>";
+                            output += '<h4>0 ' + likeText + '</h4>';
                         }
                         else if (likes == 0) {
-                            output += "<h4>0 likerklikk</h4>";
+                            output += '<h4>0 ' + likesText + '</h4>';
                         }
                         /*
                         var User = Parse.Object.extend("User");
@@ -269,26 +329,26 @@ chooseGroup();
                         commentid = results[i].get("comments");
                         if (commentid != null) {
                             if (commentid.length == 1) {
-                                output += '<p onclick="return show();">' + commentid.length + ' kommentar</p>';
+                                output += '<p onclick="return show();">' + commentid.length + " " + commentText + '</p>';
                             }
                             else {
-                                output += '<p onclick="return show();">' + commentid.length + ' kommentarer</p>';
+                                output += '<p onclick="return show();">' + commentid.length + " " + commentsText + '</p>';
                             }
                         }
                         else if (commentid == undefined) {
-                            output += "<p>0 kommentarer</p>";
+                            output += '<p>0 ' + commentsText + '</p>';
                         }
                         else if (commentid == 0) {
-                            output += "<p>0 kommentarer</p>";
+                            output += '<p>0 ' + commentsText + '</p>';
                         }
                         output += "</div>";
                         output += "</div>";
                         output += '<div id="all-comments">';
                         output += '<div id="commentSection">';
                         output += '<i class="fa fa-comment-o" id="commentIcon" aria-hidden="true"></i>';
-                        output += '<textarea rows="1" cols="40 name="text" id="text' + i + '" placeholder="Skriv en kommentar"></textarea>';
+                        output += '<textarea rows="1" cols="40 name="text" id="text' + i + '" placeholder="' + writeCommentText + '"></textarea>';
                         output += '<div class="cmt-btn">';
-                        output += '<button type="button" name="' + realPost + '" id="' + i + '" onclick="submitComment(id, name)">Publiser</button>';
+                        output += '<button type="button" name="' + realPost + '" id="' + i + '" onclick="submitComment(id, name)">' + publishText + '</button>';
                         output += '</div>';
                         output += '</div>';
                         commentid = results[i].get("comments");
@@ -311,7 +371,7 @@ chooseGroup();
                                         pB = '<img src="' + url1 + '">';
                                     }
                                     else {
-                                        userPB = '<img src="../src/img/User_Small.png">';
+                                        userPB = '<img src="./src/img/User_Small.png">';
                                     }
                                     output += '<div class="comments" id="comments' + k + '">';
                                     output += "<div id=\"profilBildeC\">";
@@ -328,12 +388,12 @@ chooseGroup();
                             }
                         }
                             
-                        output += "</div>";
-                        output += "</div>";
-                    $("#list-posts").html(output);
                         }
-            
+                        output += "</div>";
+                        output += "</div>";
+                    $("#list-posts").append(output);
                     }
+                    counting ++;
                 }
                 , error: function (error) {
                     console.log("Query error:" + error.message);
@@ -360,7 +420,7 @@ chooseGroup();
                             results[i].save(null, {
                                 success: function (newPost) {
                                     console.log("Fantastisk");
-                                    getPosts();
+                                    getPosts(0);
                                 }
                                 , error: function (newPost, error) {
                                     console.log("Error:" + error.message);
@@ -392,7 +452,7 @@ chooseGroup();
                             results[i].save(null, {
                                 success: function (newPost) {
                                     console.log("Fantastisk");
-                                    getPosts();
+                                    getPosts(0);
                                 }
                                 , error: function (newPost, error) {
                                     console.log("Error:" + error.message);
@@ -412,13 +472,14 @@ chooseGroup();
             var Comment = Parse.Object.extend("data_" + klubbID + "_Comments");
             var commenting = new Comment();
             var postComment = document.getElementById("text" + number).value;
+            
+            if(postComment != ""){
             commenting.set("text", postComment);
             commenting.set("author", Parse.User.current());
             commenting.save({
                 success: function (commenting) {
                     var objectID = commenting.id;
-                    console.log(objectID);
-                    console.log(postComment);
+
                     var post = Parse.Object.extend("data_" + klubbID + "_Posts");
                     var Query = new Parse.Query(post);
                     Query.find({
@@ -429,8 +490,8 @@ chooseGroup();
                                     objects[j].addUnique("comments", commenting);
                                     objects[j].save({
                                         success: function () {
-                                            getPosts();
-                                            location.href = "newsFeed.html";
+                                            getPosts(0);
+                                            location.href = "home.html";
                                         }
                                     });
                                 }
@@ -447,8 +508,20 @@ chooseGroup();
                     handleParseError();
                 }
             });
+            }else{
+                var noContent;
+                
+                if(language == "NO"){
+                    noContent = "Du må skrive noe før du publiserer";
+                }else{
+                    noContent = "Write something before you publish it"
+                }
+                
+                alert(noContent);
+                document.getElementById(number).style.cssText = "display: block;";
+            }
         }
-        getPosts();
+        getPosts(0);
 
         function deletePost(postid){
             
@@ -460,7 +533,7 @@ chooseGroup();
                     for(var j in result){
                     result[j].destroy({
                       success: function(result) {
-                          getPosts();
+                          getPosts(0);
                       },
                       error: function(result, error) {
                       }

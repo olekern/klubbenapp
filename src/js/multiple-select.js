@@ -5,6 +5,23 @@
  * http://wenzhixin.net.cn/p/multiple-select/
  */
 
+
+var selectAll;
+var selectedAll;
+var selectCount;
+var matchesNotFound;
+if(language == "NO"){
+    selectAll = "Velg alle";
+    selectedAll = "Alle valgt";
+    selectCount = "# av % valgt";
+    matchesNotFound = "Ingen alternativer funnet";
+}else{
+    selectAll = "Select all";
+    selectedAll = "All selected";
+    selectCount = "# of % selected";
+    matchesNotFound = "No matches found";
+}
+
 (function ($) {
 
     'use strict';
@@ -736,10 +753,10 @@
         filterAcceptOnEnter: false,
         hideOptgroupCheckboxes: false,
 
-        selectAllText: 'Velg alle',
-        allSelected: 'Alle valgt',
-        countSelected: '# av % valgt',
-        noMatchesFound: 'No matches found',
+        selectAllText: selectAll,
+        allSelected: selectedAll,
+        countSelected: selectCount,
+        noMatchesFound: matchesNotFound,
 
         styler: function () {
             return false;

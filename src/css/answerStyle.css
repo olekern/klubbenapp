@@ -299,10 +299,10 @@ html{
 	overflow-x: hidden;
 	width: 500px;
 	height: 500px;
-	right: 50%;
-	margin-right: -200px;
+	right: calc(50% - 250px);
 	box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 1); 
 	text-align: center;
+    border-radius: 3px;
 }
 
 #survey-player h1{

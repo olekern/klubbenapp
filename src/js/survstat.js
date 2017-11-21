@@ -13,6 +13,13 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
             var Surveys = Parse.Object.extend("data_" + klubbID + "_Surveys");
             
             function getAnswers() {
+                
+                var todayText;
+                if(language == "NO"){
+                    todayText = "I dag";
+                }else{
+                    todayText = "Today";
+                }
                 var Query = new Parse.Query(Surveys);
                 Query.descending("day");
                 Query.include("survey");
@@ -70,7 +77,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                     surveyDate.setSeconds(59);
                                     var showDate = "";
                                     if(idag == dateOfSurv){
-                                        showDate = "I dag";
+                                        showDate = todayText;
                                     }else{
                                         showDate = dateOfSurv;
                                     }
@@ -102,6 +109,20 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 
             
             function chooseSurv(surveyId){
+                
+                var noAnswers;
+                var yesText;
+                var noText;
+                
+                if(language == "NO"){
+                    noAnswers = "Ingen svar registrert";
+                    yesText = "Ja";
+                    noText = "Nei";
+                }else{
+                    noAnswers = "No answers registered";
+                    yesText = "Yes";
+                    noText = "No";
+                }
 		
                 var pointer = new Parse.Object("data_" + klubbID + "_Surveys");
                 pointer.id = surveyId;
@@ -110,7 +131,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                 var outputnone = "";
                 
                 $("#draw-charts").html(outputnone);
-		$("#draw-title").html(outputnone);
+		          $("#draw-title").html(outputnone);
                 
                 var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
                 var query = new Parse.Query(SurveyAnswer);
@@ -122,8 +143,9 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                     success: function(results) {
 			    if(results.length == 0){
 				var outputTitle = "";
-			    	outputTitle += '<h1>Ingen svar registrert</h1>';
+			    	outputTitle += '<h1>' + noAnswers + '</h1>';
 			   	$("#draw-title").html(outputTitle);	
+                $("#list-answ").html('');
 			    }
 			    	var title = "";
 				var question = "";
@@ -197,11 +219,11 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                     outputans += '<h4 id="' + userSurvId + '" onclick="playerSurv(id)">' + name + '</h4>';
                                     if(answer[0] == 'Y'){
                                     var yes = answer.split("±").pop();
-                                    outputans += '<p>Ja</p>';
+                                    outputans += '<p>' + yesText + '</p>';
                                     outputans += '<p>' + yes + '</p>';
                                     }else{
                                     var no = answer.split("±").pop();
-                                    outputans += '<p>Nei</p>';
+                                    outputans += '<p>' + noText + '</p>';
                                     outputans += '<p>' + no + '</p>';
                                     }
                                     outputans += '</div>';   
@@ -240,7 +262,22 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
             getAnswers();
 
 	function playerSurv(surveyId){
-                                    
+            
+        var coachFeedbackText;
+        var writeFeedbackText;
+        var publishText;
+        var cancelText;
+        if(language == "NO"){
+            coachFeedbackText = "Tilbakemelding fra trener";
+            writeFeedbackText = "Skriv en tilbakemelding";
+            publishText = "Publiser";
+            cancelText = "Avbryt";
+        }else{
+            coachFeedbackText = "Feedback from coach";
+            writeFeedbackText = "Write feedback";
+            publishText = "Publish";
+            cancelText = "Cancel";
+        }
                         var SurveyAnswer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
                         var query = new Parse.Query(SurveyAnswer);
                         query.descending("createdAt");
@@ -275,7 +312,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                             		       	    pB = '<img class="pb1" src="' + url1 + '">';
                         				}
                       				    else {
-                          			    userPB = '<img class="pb1" src="../img/User_Small.png">';
+                          			    userPB = '<img class="pb1" src="./src/img/User_Small.png">';
                        					 }
                                                     
                                                         output += "<div id=\"survey-player\">";
@@ -310,19 +347,19 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
                                                     
                                                     if(feedback != undefined){
 						    output += '<div id="coach-feedback">';
-                                                    output += "<h4>Tilbakemelding fra trener</h4>";
+                                                    output += '<h4>' + coachFeedbackText + '</h4>';
 						    output += '<i class="material-icons" onclick="show()">edit</i>';
                                                     output += "<p>" + feedback + "</p>";
 					            output += '</div>';
 						    output += '<div id="change-feedback" style="display: none;">';
-						    output += '<textarea  id="feedbackText" placeholder="Skriv en tilbakemelding">' + feedback + '</textarea>';
-						    output += '<button type="button" name="' + surveyId +'" onclick="submitFeedback(name)">Publiser</button>';
-						    output += '<p onclick="hide()">Avbryt</p>';
+						    output += '<textarea  id="feedbackText" placeholder="' + writeFeedbackText + '">' + feedback + '</textarea>';
+						    output += '<button type="button" name="' + surveyId +'" onclick="submitFeedback(name)">' + publishText + '</button>';
+						    output += '<p onclick="hide()">' + cancelText + '</p>';
 						    output += '</div>';
                                                     
                                                     }else{
-                                                    output += '<textarea rows="2" cols="30 name="text" id="feedbackText" placeholder="Skriv en tilbakemelding"></textarea>';
-                                                    output += '<button type="button" name="' + surveyId +'" onclick="submitFeedback(name)">Publiser</button>';
+                                                    output += '<textarea rows="2" cols="30 name="text" id="feedbackText" placeholder="' + writeFeedbackText + '"></textarea>';
+                                                    output += '<button type="button" name="' + surveyId +'" onclick="submitFeedback(name)">' + publishText + '</button>';
                                                     }
                                                     output += "</div>";
                                                 
@@ -344,13 +381,10 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
  function submitFeedback(answerID) {
 
                 var feedback = document.getElementById('feedbackText').value;
-                console.log(feedback);
-                console.log(answerID);
-                
                 
                         var answer = Parse.Object.extend("data_" + klubbID + "_Surveys_Answers");
                         var Query = new Parse.Query(answer);
-			Query.equalTo("objectId", answerID);
+			             Query.equalTo("objectId", answerID);
                           Query.find({
                                 success: function(objects) {
                                     for (var j in objects) {
@@ -366,7 +400,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 
                                     },
                                     error: function(error) {
-                                        console.log("Query error:" + error.message);$("#draw-charts").html(outputnone);
+                                        console.log("Query error:" + error.message);
                                     }
                                 });
 
