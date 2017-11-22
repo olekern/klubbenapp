@@ -315,10 +315,12 @@
     clear:both;
 }
 
-#like-comment img {
+#like-comment i {
+    font-size: 30px;
     height: 100%;
     width: auto;
     float: left;
+    margin-top: 5px;
 }
 
 #like-comment h4{

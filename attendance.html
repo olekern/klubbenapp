@@ -41,6 +41,15 @@
     <div class="wrapper">
         <div class="doubleWrap">
             <div id="piechart"></div>
+            <div id="event-link">
+                <div id="event-box" onclick="">
+                    <a href="events.html">
+                        <i href="attendance.html" class="material-icons">event_available</i>
+                        <h1 id="goTo"></h1>
+                    </a>
+                </div>
+                <h3 id="link-explanation"></h3>
+            </div>
             <div id="list-player-attendance"></div>
 
         </div>
@@ -55,5 +64,21 @@
     <script type="text/javascript" src="./src/js/roles.js"></script>
 
     <script type="text/javascript" src="./src/js/attendance.js"></script>
+
+    <script>
+        var specificEvent;
+        var explanation;
+        if (language == "NO") {
+            specificEvent = "Gå til side for enkeltarrangement";
+            explanation = "Se svar for enkelte arrangement, slett eller rediger arrangement";
+        } else {
+            specificEvent = "Go to page for single events";
+            explanation = "See answers for single events, delete or edit an event";
+        }
+
+        $('#goTo').html(specificEvent);
+        $('#link-explanation').html(explanation);
+
+    </script>
 
 </body>

@@ -253,7 +253,7 @@ chooseGroup();
                         var publishText;
                         if(language == "NO"){
                             likeText = "Likerklikk";
-                            likeText = "Likerklikk";
+                            likesText = "Likerklikk";
                             commentText = "Kommentar";
                             commentsText = "Kommentarer";
                             writeCommentText = "Skriv en kommentar";
@@ -285,12 +285,14 @@ chooseGroup();
                         output += "</div>";
                         var likes = results[i].get("likes");
                         output += "<div id=\"like-comment\">";
+                        output += '<div id="like' + realPost + '">';
                         if ($.inArray(currentUserId, likes) !== -1) {
-                            output += '<img src="./src/img/like_red.png" name="likeIconPressed" id="' + realPost + '" onclick="dislike(id);"></img>';
+                            output += '<i class="material-icons" id="' + realPost + '" onclick="dislike(id);" style="color: #cf2424">thumb_up</i>';
                         }
                         else {
-                            output += '<img src="./src/img/like_blank.png" id="' + realPost + '" name="likeIcon" onclick="like(id);"></img>';
+                            output += '<i class="material-icons" id="' + realPost + '" onclick="like(id);" style="color: #000">thumb_up</i>';
                         }
+                        output += "</div>";
                         if (likes != null) {
                             if(likes.length == 1){
                                 output += "<h4>" + likes.length + " " + likeText + "</h4>";
@@ -403,6 +405,10 @@ chooseGroup();
         }
 
         function like(id) {
+            /*
+            var likeButton = document.getElementById("like" + id);
+            likeButton.style.color = '#cf2424';
+            */
             var query = new Parse.Query(Post);
             query.descending("createdAt");
             query.include("author");
@@ -419,8 +425,8 @@ chooseGroup();
                             results[i].addUnique("likes", userId);
                             results[i].save(null, {
                                 success: function (newPost) {
-                                    console.log("Fantastisk");
                                     getPosts(0);
+                                    location.reload();
                                 }
                                 , error: function (newPost, error) {
                                     console.log("Error:" + error.message);
@@ -434,6 +440,9 @@ chooseGroup();
         }
 
         function dislike(id) {
+            /*
+            document.getElementById(id).style.color = '#000';
+            */
             var query = new Parse.Query(Post);
             query.descending("createdAt");
             query.include("author");
@@ -447,12 +456,12 @@ chooseGroup();
                     for (var i = 0; i < results.length; i++) {
                         var post = results[i].id;
                         if (post === id) {
-                            console.log(post);
+
                             results[i].remove("likes", userId);
                             results[i].save(null, {
                                 success: function (newPost) {
-                                    console.log("Fantastisk");
                                     getPosts(0);
+                                    location.reload();
                                 }
                                 , error: function (newPost, error) {
                                     console.log("Error:" + error.message);

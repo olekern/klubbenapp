@@ -197,7 +197,7 @@ svg[aria-label="A chart."] > g > g:last-child { pointer-events: none }
     font-size: 15px;
 }
 
-#event button{
+#button button{
     margin-top: 10px;
     margin-bottom: 20px;
     background-color: white;
@@ -208,4 +208,112 @@ svg[aria-label="A chart."] > g > g:last-child { pointer-events: none }
     font-weight: 500;
     font-size: 15px;
     cursor: pointer;
+}
+
+#event i{
+    cursor: pointer;
+}
+
+.editdelete{
+    float: right;
+    margin-top: -10px;
+}
+
+.editdelete i{
+    margin-bottom: 10px;
+}
+
+.editor{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.editor h1{
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.editor button{
+    margin-top: 20px;
+    padding: 6px 8px;
+    z-index: 10;
+    color: #fff;
+    border: none;
+    background-color: #D94842;
+    border-bottom: 3px solid #A0332F;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100px;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.editor p{
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#newName{
+    font-family: 'Open Sans', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Microsoft Sans Serif;
+    font-weight: 400;
+    font-size: 15px;
+    resize: none;
+    width: 160px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 24px;
+    border: 1px solid #d5d5d5;
+    padding-left: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 8px;
+    text-align: center;
+}
+/*=====================*\
+|*      DELETEBOX      *|
+\*=====================*/
+
+#confirmKick{
+    height: 100px;
+    width: 270px;
+    padding: 20px;
+    background-color: white;
+    position: fixed;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    margin-top: 200px;
+    margin-left: 200px;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 1);
+    text-align: center;
+    border-radius: 5px;
+}
+
+#confirmKick p{
+    font-size: 20px;
+}
+
+#confirmKick button{
+    margin-top: 20px;
+    padding: 6px 8px;
+    z-index: 10;
+    color: #fff;
+    border: none;
+    background-color: #D94842;
+    border-bottom: 3px solid #A0332F;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100px;
+    border-radius: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
 }

@@ -6,18 +6,36 @@ var notComingText;
 var addComment;
 var enter;
 var commentText;
+var yesText;
+var noText;
+var save;
+var dateText;
+var timeText;
+var cancelText;
 if (language == "NO") {
     comingText = "Kommer";
     notComingText = "Kommer ikke";
     addComment = "Skriv en kommentar";
     enter = "Trykk enter for å fullføre";
     commentText = "Kommentar";
+    yesText = "Ja";
+    noText = "Nei";
+    save = "Lagre";
+    dateText = "Dato";
+    timeText = "Klokkeslett";
+    cancelText = "Avbryt";
 } else {
     comingText = "Attending";
     notComingText = "Not attending";
     addComment = "Write a comment";
     enter = "Press enter to submit";
     commentText = "Comment";
+    yesText = "Yes";
+    noText = "No";
+    save = "Save";
+    dateText = "Date";
+    timeText = "Time";
+    cancelText = "Cancel";
 }
 
 var amountOfMembers;
@@ -150,10 +168,10 @@ function getAllEvents(loopCount, date) {
     var trainingText;
     var eventText;
     if (language == "NO") {
-        showStatsText = "Trykk her for å hente svarene fra hendelsen";
-        noEventText = "Fant ingen hendelser denne dagen";
+        showStatsText = "Trykk her for å hente svarene fra arrangementet";
+        noEventText = "Fant ingen arrangementer denne dagen";
         trainingText = "Trening";
-        eventText = "Hendelse";
+        eventText = "Arrangement";
     } else {
         showStatsText = "Press here to get the answers from the event";
         noEventText = "No events found this day";
@@ -197,11 +215,11 @@ function getAllEvents(loopCount, date) {
 
                             var date1 = moment(eventDate).format('llll');
                             var date2 = date1.slice(0, -15);
-                            
-                            if((eventName == undefined)||(eventName == "")){
-                                if(allEvents.get("eventID") == "training"){
+
+                            if ((eventName == undefined) || (eventName == "")) {
+                                if (allEvents.get("eventID") == "training") {
                                     eventName = trainingText;
-                                }else{
+                                } else {
                                     eventName = eventText;
                                 }
                             }
@@ -212,7 +230,15 @@ function getAllEvents(loopCount, date) {
                             outputEvent += '<div id="event">';
                             outputEvent += '<h2>' + eventName + '</h2>';
                             outputEvent += '<h3>' + date2 + '</h3>';
+                            outputEvent += '<div class="editdelete">';
+                            outputEvent += '<div class="nohide">';
+                            outputEvent += '<i class="material-icons" id="' + eventId + '" onclick="confirmDelete(id)">close</i>';
+                            outputEvent += '</div>';
+                            outputEvent += '<i class="material-icons" id="' + eventId + '" onclick="editEvent(id)">create</i>';
+                            outputEvent += '</div>';
+                            outputEvent += '<div id="button">';
                             outputEvent += '<button name="0" id="' + eventId + '" onclick="getAllRecords(name, id)">' + showStatsText + '</button>';
+                            outputEvent += '</div>';
                             outputEvent += '<div id="event-stats' + eventId + '" class="event-stats"></div>';
                             outputEvent += '</div>';
 
@@ -226,7 +252,7 @@ function getAllEvents(loopCount, date) {
                           var eventAnswer = results[j].get("attending");
                            */
                     }
-                    
+
                     if (checkForEvents.indexOf(true) == -1) {
 
 
@@ -322,5 +348,192 @@ function drawChart() {
         },
 
         packages: ['corechart']
+    });
+}
+
+function confirmDelete(eventId) {
+    var confirmText;
+
+    if (language == "NO") {
+        confirmText = "Er du sikker på at du vil slette dette arrangementet";
+    } else {
+        confirmText = "Are you sure you want to delete this event";
+    }
+
+    var outputBox = "";
+    outputBox += '<div id="confirmKick" class="nohide">';
+    outputBox += '<p>' + confirmText + '?</p>';
+    outputBox += '<button onclick="cancel()">' + noText + '</button>';
+    outputBox += '<button id="' + eventId + '" onclick="deleteEvent(id)">' + yesText + '</button>';
+    outputBox += '</div>';
+
+    $("#confirm-delete").html(outputBox);
+}
+
+function deleteEvent(eventId) {
+
+    var events = Parse.Object.extend("data_" + klubbID + "_Events");
+    var queryEvents = new Parse.Query(events);
+
+    queryEvents.equalTo("objectId", eventId);
+    queryEvents.find({
+        success: function (results) {
+            var eventObject = results[0];
+            var eventDate = eventObject.get("date");
+            eventObject.destroy({
+                success: function (result) {
+
+                    var output = "";
+
+                    $("#confirm-delete").html(output);
+
+                    getAllEvents(0, eventDate);
+                },
+                error: function (result, error) {
+
+                }
+            });
+        }
+    });
+
+}
+
+
+$(document).click(function (event) {
+    if (!$(event.target).closest('.nohide').length) {
+        if ($('#confirmKick').is(":visible")) {
+            var output = "";
+
+            $("#confirm-delete").html(output);
+        }
+    }
+});
+
+
+function cancel() {
+    var output = "";
+
+    $("#confirm-delete").html(output);
+}
+
+function editEvent(eventId) {
+
+    var changeTitle;
+    var changeName;
+
+    if (language == "NO") {
+        changeName = "Nytt navn";
+        changeTitle = "Gjør endringer på arrangementet";
+    } else {
+        changeName = "New name";
+        changeTitle = "Make changes to the event";
+    }
+
+    var outputEditor = "";
+
+    outputEditor += '<div class="editor" id="editor' + eventId + '">';
+    outputEditor += '<h1>' + changeTitle + '</h1>';
+    outputEditor += '<p id="' + eventId + '" onclick="cancelEdit(id)">' + cancelText + '</p>';
+    outputEditor += '<input type="text" placeholder="' + changeName + '" id="newName"/>';
+    outputEditor += '<p id="date-pick">' + dateText + ': <input type="text" autocomplete="off" id="form-date" class="datepicker"></p>';
+    outputEditor += '<p id="time-pick-once">' + timeText + ': <input type="text" autocomplete="off" id="form-time" class="timepicker" /></p>';
+    outputEditor += '<button id="' + eventId + '" onclick="sendEdit(id)">' + save + '</button>';
+    outputEditor += '</div>';
+
+    var listevent = "#event-stats" + eventId;
+    $(listevent).html(outputEditor);
+
+    var timeString;
+    if (language == "NO") {
+        timeString = "Tid";
+    } else {
+        timeString = "Time";
+    }
+
+    $(function () {
+        $(".datepicker").datepicker();
+    });
+
+    $('.timepicker').wickedpicker({
+
+        twentyFour: true,
+        upArrow: 'wickedpicker__controls__control-up',
+        downArrow: 'wickedpicker__controls__control-down',
+        close: 'wickedpicker__close',
+        hoverState: 'hover-state',
+        title: timeString
+    });
+}
+
+
+function cancelEdit(eventId) {
+
+    var listevent = "#event-stats" + eventId;
+    $(listevent).html('');
+
+}
+
+function sendEdit(eventId) {
+
+    var noDate;
+    var noTitle;
+    if (language == "NO") {
+        noDate = "Fyll inn dato før du oppdaterer arrangementet";
+        noTitle = "Fyll inn tittel før du oppdaterer arrangementet";
+    } else {
+        noDate = "Fill in the date before you update the event";
+        noTitle = "Fill in the title before you update the event";
+    }
+
+    var eventTitle = $('#newName').val();
+
+    if ((eventTitle == undefined) || (eventTitle == "")) {
+        alert(noTitle);
+    }
+
+    var timepickers = $('#form-time').wickedpicker();
+    var eventTime = timepickers.wickedpicker('time');
+
+    var hours = eventTime.substring(0, 2);
+    var minutes = eventTime.substring(5, 7);
+
+    var ampm = eventTime.substring(8, 10);
+
+    if (ampm == "PM") {
+        hours = parseInt(hours);
+        hours = hours + 12;
+    }
+    minutes = parseInt(minutes);
+
+    var datePicker = $('#form-date').datepicker();
+    var eventDate = datePicker.datepicker('getDate');
+    if (eventDate == null) {
+        alert(noDate);
+    } else {
+        eventDate.setHours(hours);
+        eventDate.setMinutes(minutes);
+    }
+
+    var events = Parse.Object.extend("data_" + klubbID + "_Events");
+    var queryEvents = new Parse.Query(events);
+
+    queryEvents.equalTo("objectId", eventId);
+    queryEvents.find({
+        success: function (results) {
+            var eventObject = results[0];
+            eventObject.set("date", eventDate);
+            eventObject.set("name", eventTitle);
+
+            eventObject.save({
+                success: function () {
+
+                    var listevent = "#event-stats" + eventId;
+                    $(listevent).html('');
+
+                    getAllEvents(0, eventDate);
+
+                }
+            });
+        }
     });
 }

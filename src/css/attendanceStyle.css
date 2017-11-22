@@ -305,3 +305,39 @@ svg[aria-label="A chart."] > g > g:last-child { pointer-events: none }
     margin-left: 5px;
     margin-top: 2px;
 }
+
+#event-link{
+    width: 420px;
+}
+
+#event-box{
+    background-color: white;
+    box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 1); 
+    margin-top: 50px;
+    height: 70px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#event-link i{
+    color: #cf2424;
+    font-size: 40px;
+    margin-left: 50px;
+    margin-top: 15px;
+}
+
+#event-link h1{
+    float: right;
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 15px;
+    margin-top: 24px;
+    color: black;
+}
+
+#event-link h3{
+    color: grey;
+    font-size: 13px;
+    margin-top: 10px;
+    text-align: center;
+}
