@@ -34,9 +34,13 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
-            $('#emptyphone1').addClass('hide');
-            $('#emptyphone3').addClass('hide');
 
+            $('#phoneshell1').addClass('hide');
+            $('#phoneshell2').addClass('hide');
+            $('#phoneshell3').addClass('hide');
+            /*
+            $('#emptyphone3').addClass('hide');
+*/
             $('#fullpage').fullpage({
                 sectionsColor: ['white', '#04151f', 'white', '#183a37', '#3e78b2', 'white'],
                 anchors: ['1', '2', '3', '4', '5', '6'],
@@ -46,9 +50,10 @@
                 afterLoad: function(anchorLink, index) {
 
                     if (index == 2) {
-                        $('#emptyphone1').removeClass('hide');
-                        $('#emptyphone2').addClass('hide');
+                        $('#emptyphone2').removeClass('hide');
                         $('#emptyphone3').addClass('hide');
+                        $('#emptyphone4').addClass('hide');
+
 
                         $('#phoneshell1').removeClass('hide');
                         $('#phoneshell2').addClass('hide');
@@ -56,22 +61,22 @@
 
                     } else if (index == 3) {
 
-                        $('#emptyphone1').removeClass('hide');
                         $('#emptyphone2').addClass('hide');
-                        $('#emptyphone3').addClass('hide');
+                        $('#emptyphone3').removeClass('hide');
+                        $('#emptyphone4').addClass('hide');
 
-                        
+
                         $('#phoneshell1').addClass('hide');
                         $('#phoneshell2').removeClass('hide');
                         $('#phoneshell3').addClass('hide');
 
-                    }/*
+                    }
 
                     if (index == 4) {
 
-                        $('#emptyphone1').addClass('hide');
                         $('#emptyphone2').addClass('hide');
-                        $('#emptyphone3').removeClass('hide');
+                        $('#emptyphone3').addClass('hide');
+                        $('#emptyphone4').removeClass('hide');
 
                         $('#phoneshell1').addClass('hide');
                         $('#phoneshell2').addClass('hide');
@@ -81,28 +86,43 @@
 
                     if (index == 5) {
 
-                        $('#emptyphone1').addClass('hide');
                         $('#emptyphone2').addClass('hide');
                         $('#emptyphone3').removeClass('hide');
 
+
                         $('#phoneshell1').addClass('hide');
                         $('#phoneshell2').addClass('hide');
-                        $('#phoneshell3').removeClass('hide');
+                        $('#phoneshell3').addClass('hide');
 
                     }
-*/
+
 
                 },
                 onLeave: function(nextIndex, direction) {
 
+
                     if (direction == 1) {
-                        $('#emptyphone1').addClass('hide');
-                        $('#emptyphone2').removeClass('hide');
-                    }/*
-                    if (direction == 3) {
+                        $('#phoneshell1').addClass('hide');
+                    }
+                    if (direction == 2) {
                         $('#emptyphone3').addClass('hide');
-                        $('#emptyphone1').removeClass('hide');
-                    }*/
+                    }
+                    if (direction == 3) {
+
+                        $('#emptyphone2').addClass('hide');
+                        $('#emptyphone4').addClass('hide');
+
+                    }
+                    if (direction == 4) {
+                        $('#emptyphone3').addClass('hide');
+                    }
+
+                    if (direction == 5) {
+                        $('#phoneshell1').addClass('hide');
+                        $('#phoneshell2').addClass('hide');
+                        $('#phoneshell3').addClass('hide');
+                    }
+
                 }
             });
 
@@ -204,14 +224,16 @@
             <div class="section-box">
                 <div class="content">
                     <div id="emptyphone2">
-                        <img src="../src/img/Calendar.png" id="phoneshell1">
+                        <img src="../src/img/Calendar.png" id="calendarImg">
                     </div>
                     <div class="smallscreen">
                         <div class="normalphone">
                             <img src="../src/img/News%20Feed.png" class="phoneshell">
                         </div>
-                        <div class="smalltext">
-
+                        <div class="smalltext" id="smallCalendar">
+                            <h2>Enkel oversikt</h2>
+                            <h1>Registrer oppmøte og få statistikk for ditt lag</h1>
+                            <p>Klubben lar utøverne melde fra om de kommer på trening, slik at du som trener får god kontroll over laget.</p>
                         </div>
                     </div>
                     <div class="infobox">
@@ -227,14 +249,18 @@
         <div class="section" id="section2">
             <div class="section-box">
                 <div class="content">
-                    <div id="emptyphone2">
-                        <img src="../src/img/Survey.png" id="phoneshell2">
+                    <div id="emptyphone3">
+                        <img src="../src/img/Survey.png" id="surveyImg">
                     </div>
                     <div class="smallscreen">
                         <div class="normalphone">
                             <img src="../src/img/Survey.png" class="phoneshell">
                         </div>
-                        <div class="smalltext"></div>
+                        <div class="smalltext" id="smallSurvey">
+                            <h2>Raske undersøkelser</h2>
+                            <h1>Forbedre oppfølgingen mellom utøver og trener</h1>
+                            <p>Mange trenere føler at tiden på treningsfeltet ikke strekker til. Lag undersøkelser til dine utøvere og oppretthold en tett og god dialog gjennom Klubben. </p>
+                        </div>
                     </div>
                     <img src="../src/img/sport1.png" id="sportscompilation">
                     <div class="infobox2">
@@ -248,14 +274,18 @@
         <div class="section" id="section3">
             <div class="section-box">
                 <div class="content">
-                    <div id="emptyphone3">
-                        <img src="../src/img/News%20Feed.png" id="phoneshell3">
+                    <div id="emptyphone4">
+                        <img src="../src/img/News%20Feed.png" id="feedImg">
                     </div>
                     <div class="smallscreen">
                         <div class="normalphone">
                             <img src="../src/img/News%20Feed.png" class="phoneshell">
                         </div>
-                        <div class="smalltext"></div>
+                        <div class="smalltext" id="smallFeed">
+                            <h2>Oversiktlig kommunikasjon</h2>
+                            <h1>Gi beskjeder til hele laget</h1>
+                            <p>I nyhetsfeeden blir informasjonen raskt tilgjengelig for både utøvere og trenere. Slipp lange mailinglister og knotete smslogger.</p>
+                        </div>
                     </div>
                     <div class="infobox">
                         <h2>Oversiktlig kommunikasjon</h2>
@@ -292,110 +322,6 @@
                                 <li class="grey"><a href="#" class="button">Sign Up</a></li>
                             </ul>
                         </div>
-                        <!--
-                    <table id="free">
-                        <thead>
-                            <tr>
-                                <th>Standard-lag</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Nyhetsfeed</td>
-                            </tr>
-                            <tr>
-                                <td>Oppmøtestatistikk</td>
-                            </tr>
-                            <tr>
-                                <td>Flere trenere per lag</td>
-                            </tr>
-                            <tr>
-                                <td>Grupper</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td>Gratis</td>
-                            </tr>
-                        </tfoot>
-                        
-                    </table>
-                    <table id="premium">
-                        <thead>
-                            <tr>
-                                <th>Premium-lag</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Nyhetsfeed</td>
-                            </tr>
-                            <tr>
-                                <td>Oppmøtestatistikk</td>
-                            </tr>
-                            <tr>
-                                <td>Flere trenere per lag</td>
-                            </tr>
-                            <tr>
-                                <td>Grupper</td>
-                            </tr>
-                            <tr>
-                                <td>Fri for reklame</td>
-                            </tr>
-                            <tr>
-                                <td>Push-varslinger</td>
-                            </tr>
-                            <tr>
-                                <td>Undersøkelser</td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td>29kr/måned</td>
-                            </tr>
-                        </tfoot>
-                    </table>
--->
-                        <!--
-                          <script
-                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                            data-key="pk_test_D6MICwodyNK6JackKJstv4Oz"
-                            data-image="/images/marketplace.png"
-                            data-name="Emma's Farm CSA"
-                            data-description="Subscription for 1 weekly box"
-                            data-amount="0"
-                            data-label="Sign Me Up!"
-                            data-locale="auto"
-                            data-zip-code="true"
-                            data-currency="nok">
-                          </script> -->
-                        <!--
-                    <h1>Prisliste:</h1>
-                    <div id="features">
-                        <h3>Nyhetsfeed</h3>
-                        <h3>Registrer oppmøte og få statistikk</h3>
-                        <h3>Mulighet for flere trenere i samme lag</h3>
-                        <h3>Opprett grupper innad i laget</h3>
-                        <h3>Reklamefri</h3>
-                        <h3>Send push-varslinger som påminnelser</h3>
-                    </div>
-                    <div id="free">
-                        <h2>Standard-lag</h2>
-                        <p>Gratis</p>
-                    </div>
-                    <div id="premium">
-                    
-                    </div>
--->
                     </div>
                 </div>
             </div>

@@ -121,6 +121,7 @@ q:after {
 html {
     font-family: 'Open Sans', sans-serif;
     width: 100%;
+    overflow-x: hidden;
 }
 
 #dvLoading {
@@ -666,13 +667,12 @@ html {
             margin-left: 10vw;
         }
 
-        #statImg2 {
-            height: 85%;
-            width: auto;
-            margin-top: 40px;
-            z-index: 991;
+        #calendarImg {
             display: block;
-            position: absolute;
+            height: 100%;
+            width: auto;
+            z-index: 998;
+            position: relative;
         }
 
         #phoneshell2 {
@@ -680,7 +680,12 @@ html {
             height: 100%;
             width: auto;
             z-index: 998;
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin-left: 0;
         }
 
     }
@@ -699,13 +704,12 @@ html {
             margin-left: 10vw;
         }
 
-        #statImg2 {
-            height: 85%;
-            width: auto;
-            margin-top: 40px;
-            z-index: 991;
+        #calendarImg {
             display: block;
-            position: absolute;
+            height: 100%;
+            width: auto;
+            z-index: 998;
+            position: relative;
         }
 
         #phoneshell2 {
@@ -713,7 +717,12 @@ html {
             height: 100%;
             width: auto;
             z-index: 998;
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin-left: 0;
         }
 
     }
@@ -743,14 +752,14 @@ html {
         }
     }
 
-    #statImg2 {
-        height: 85%;
-        width: auto;
-        margin-top: 40px;
-        margin-left: 5vw;
-        z-index: 991;
+    #calendarImg {
         display: block;
-        position: absolute;
+        height: 100%;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 998;
+        position: relative;
     }
 
     #phoneshell2 {
@@ -760,7 +769,12 @@ html {
         margin-left: auto;
         margin-right: auto;
         z-index: 998;
-        position: relative;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
     }
 
 }
@@ -789,13 +803,12 @@ html {
             margin-right: auto;
         }
 
-        #statImg3 {
-            height: 85%;
-            width: auto;
-            margin-top: -420px;
-            z-index: 991;
+        #surveyImg {
             display: block;
-            position: absolute;
+            height: 100%;
+            width: auto;
+            z-index: 998;
+            position: relative;
         }
 
         #phoneshell3 {
@@ -803,7 +816,12 @@ html {
             height: 100%;
             width: auto;
             z-index: 998;
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin-left: 0;
         }
     }
 }
@@ -820,13 +838,12 @@ html {
             margin-left: 10vw;
         }
 
-        #statImg3 {
-            height: 85%;
-            width: auto;
-            margin-top: -420px;
-            z-index: 991;
+        #surveyImg {
             display: block;
-            position: absolute;
+            height: 100%;
+            width: auto;
+            z-index: 998;
+            position: relative;
         }
 
         #phoneshell3 {
@@ -834,7 +851,12 @@ html {
             height: 100%;
             width: auto;
             z-index: 998;
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin-left: 0;
         }
     }
 }
@@ -863,17 +885,144 @@ html {
         }
     }
 
-    #statImg3 {
-        height: 85%;
-        width: auto;
-        margin-top: -520px;
-        margin-left: 5vw;
-        z-index: 991;
+    #surveyImg {
         display: block;
-        position: absolute;
+        height: 100%;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 998;
+        position: relative;
     }
 
     #phoneshell3 {
+        display: block;
+        height: 100%;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 998;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+}
+
+.hide {
+    visibility: hidden;
+}
+
+/*=====================*\
+|*      EMPTYPHONE4    *|
+\*=====================*/
+
+@media all and (max-width: 430px) {
+    #emptyphone4 {
+        display: none;
+    }
+
+}
+
+@media all and (min-width: 430px) {
+    @media all and (max-width: 600px) {
+        #emptyphone4 {
+            position: absolute;
+            display: block;
+            z-index: 900;
+            margin-top: 20vh;
+            height: 390px;
+            width: 250px;
+            margin-left: 10vw;
+            margin-right: auto;
+        }
+
+        #feedImg {
+            display: block;
+            height: 100%;
+            width: auto;
+            z-index: 998;
+            position: relative;
+        }
+
+        #phoneshell4 {
+            display: block;
+            height: 100%;
+            width: auto;
+            z-index: 998;
+            position: relative;
+        }
+    }
+}
+
+@media all and (min-width: 600px) {
+    @media all and (max-width: 800px) {
+        #emptyphone4 {
+            position: absolute;
+            display: block;
+            z-index: 900;
+            margin-top: 20vh;
+            height: 460px;
+            width: 400px;
+            margin-left: 10vw;
+        }
+
+        #feedImg {
+            display: block;
+            height: 100%;
+            width: auto;
+            z-index: 998;
+            position: relative;
+        }
+
+        #phoneshell4 {
+            display: block;
+            height: 100%;
+            width: auto;
+            z-index: 998;
+            position: relative;
+        }
+    }
+}
+
+@media all and (min-width: 800px) {
+
+    #emptyphone4 {
+        position: absolute;
+        display: block;
+        z-index: 900;
+        height: 80vh;
+        width: 400px;
+        margin-left: calc(50% - 200px);
+        margin-right: auto;
+    }
+
+    @media all and (min-height: 675px) {
+        #emptyphone4 {
+            margin-top: calc(17vh + 50px);
+        }
+    }
+
+    @media all and (max-height: 675px) {
+        #emptyphone4 {
+            margin-top: 17vh;
+        }
+    }
+
+    #feedImg {
+        display: block;
+        height: 100%;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 998;
+        position: relative;
+    }
+
+    #phoneshell4 {
         display: block;
         height: 100%;
         width: auto;
@@ -889,6 +1038,7 @@ html {
     visibility: hidden;
 }
 
+
 /*=====================*\
 |*     SMALLSCREEN     *|
 \*=====================*/
@@ -897,7 +1047,7 @@ html {
 
     .normalphone {
         display: block;
-        height: 300px;
+        height: 320px;
         width: 150px;
         margin-left: auto;
         margin-right: auto;
@@ -911,7 +1061,7 @@ html {
         margin-top: 10px;
     }
     .phonecontent {
-        height: 85%;
+        height: 100%;
         width: auto;
         margin-top: -600px;
         z-index: 10;
@@ -920,16 +1070,50 @@ html {
     .smalltext {
         width: 90vw;
         height: 30vh;
-        background-color: blue;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 10vh;
+        margin-top: 8vh;
         z-index: 10;
         position: relative;
+        text-align: center;
+        display: block;
+    }
+
+    .smalltext h2 {
+        font-size: 20px;
+        font-weight: 300;
+    }
+
+    .smalltext h1 {
+        font-size: 25px;
+        margin-top: 10px;
+    }
+
+    .smalltext p {
+        font-size: 20px;
+        margin-top: 10px;
+        line-height: 25px;
+    }
+
+    #smallCalendar {
+        color: white;
+    }
+
+    #smallSurvey {
+        margin-top: 20px;
+    }
+
+    #smallFeed {
+        color: white;
+        margin-top: 50px;
     }
 }
 
 @media all and (min-width: 430px) {
+
+    .smalltext {
+        display: none;
+    }
 
     .normalphone {
         display: none;
@@ -1017,7 +1201,7 @@ html {
             border-radius: 3px;
             float: right;
             margin-right: 8vw;
-            margin-top: -350px;
+            margin-top: -320px;
             min-width: 25px;
             z-index: 20;
             position: relative;
@@ -1034,7 +1218,8 @@ html {
         background-color: white;
         box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
         border-radius: 3px;
-        margin-top: -300px;
+        top: 0;
+        margin-top: -320px;
         float: left;
         margin-left: 8vw;
         min-width: 25px;
@@ -1060,12 +1245,14 @@ html {
 }
 
 @media all and (max-width: 1000px) {
+
     #sportscompilation {
-        height: 300px;
-        width: auto;
+        height: auto;
+        width: 100%;
         margin-top: 27vh;
         z-index: 1;
     }
+
 
 }
 
@@ -1073,116 +1260,237 @@ html {
 |*      SECTION4       *|
 \*=====================*/
 
-* {
-    box-sizing: border-box;
-}
+@media all and (max-width: 600px) {
+    
+    * {
+        box-sizing: border-box;
+    }
 
-/* Create three columns of equal width */
-.columns {
-    float: left;
-    width: 50%;
-    padding: 8px;
-}
-
-/* Style the list */
-.price {
-    list-style-type: none;
-    border: 1px solid #eee;
-    margin: 0;
-    padding: 0;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
-    background-color: white;
-}
-
-/* Add shadows on hover */
-.price:hover {
-    box-shadow: 0 10px 14px 0 rgba(0,0,0,0.4)
-}
-
-/* Pricing header */
-.price .header {
-    background-color: #111;
-    color: white;
-    font-size: 25px;
-}
-
-/* List items */
-.price li {
-    border-bottom: 1px solid #eee;
-    padding: 20px;
-    text-align: center;
-}
-
-/* Grey list item */
-.price .grey {
-    background-color: #eee;
-    font-size: 20px;
-}
-
-/* The "Sign Up" button */
-.button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px 25px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-/* Change the width of the three columns to 100%
-(to stack horizontally on small screens) */
-@media only screen and (max-width: 600px) {
+    /* Create three columns of equal width */
     .columns {
-        width: 100%;
+        float: left;
+        width: 50%;
+        padding: 8px;
+    }
+
+    /* Style the list */
+    .price {
+        list-style-type: none;
+        border: 1px solid #eee;
+        margin: 0;
+        padding: 0;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+        background-color: white;
+    }
+
+    /* Add shadows on hover */
+    .price:hover {
+        box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.4)
+    }
+
+    /* Pricing header */
+    .price .header {
+        background-color: #111;
+        color: white;
+        font-size: 20px;
+    }
+
+    /* List items */
+    .price li {
+        border-bottom: 1px solid #eee;
+        padding: 10px;
+        text-align: center;
+    }
+
+    /* Grey list item */
+    .price .grey {
+        background-color: #eee;
+        font-size: 16px;
+    }
+
+    /* The "Sign Up" button */
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 8px 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    /* Change the width of the three columns to 100%
+(to stack horizontally on small screens) */
+    @media only screen and (max-width: 600px) {
+        .columns {
+            width: 100%;
+        }
+    }
+
+    #pricing {
+        color: black;
+        width: 80vw;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #pricing table {
+        width: 40vw;
+        max-width: 300px;
+        float: left;
+        text-align: center;
+        border: 1px solid #01161e;
+        box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
+        background-color: #fff;
+        border-radius: 3px;
+
+        border-collapse: collapse;
+    }
+
+    #pricing table caption {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 25px;
+    }
+
+    #pricing table th {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        height: 70px;
+        text-transform: capitalize;
+        background-color: #598392;
+        border-bottom: 2px solid #01161e;
+    }
+
+    #pricing table td {
+        height: 30px;
+        border-bottom: 1px solid black;
+    }
+
+    #pricing table tfoot td {
+        height: 50px;
+        background-color: #153b50;
     }
 }
 
-#pricing {
-    padding-top: 160px;
-    color: black;
-    width: 80vw;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
+@media all and (min-width: 600px) {
 
-#pricing table {
-    width: 40vw;
-    max-width: 300px;
-    float: left;
-    text-align: center;
-    border: 1px solid #01161e;
-    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
-    background-color: #fff;
-    border-radius: 3px;
+    * {
+        box-sizing: border-box;
+    }
 
-    border-collapse: collapse;
-}
+    /* Create three columns of equal width */
+    .columns {
+        float: left;
+        width: 50%;
+        padding: 8px;
+    }
 
-#pricing table caption {
-    font-size: 30px;
-    font-weight: 500;
-    margin-bottom: 25px;
-}
+    /* Style the list */
+    .price {
+        list-style-type: none;
+        border: 1px solid #eee;
+        margin: 0;
+        padding: 0;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+        background-color: white;
+    }
 
-#pricing table th {
-    padding: 0;
-    border: 0;
-    margin: 0;
-    height: 70px;
-    text-transform: capitalize;
-    background-color: #598392;
-    border-bottom: 2px solid #01161e;
-}
+    /* Add shadows on hover */
+    .price:hover {
+        box-shadow: 0 10px 14px 0 rgba(0, 0, 0, 0.4)
+    }
 
-#pricing table td {
-    height: 30px;
-    border-bottom: 1px solid black;
-}
+    /* Pricing header */
+    .price .header {
+        background-color: #111;
+        color: white;
+        font-size: 25px;
+    }
 
-#pricing table tfoot td {
-    height: 50px;
-    background-color: #153b50;
+    /* List items */
+    .price li {
+        border-bottom: 1px solid #eee;
+        height: 60px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Grey list item */
+    .price .grey {
+        background-color: #eee;
+        font-size: 20px;
+    }
+
+    /* The "Sign Up" button */
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 25px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    /* Change the width of the three columns to 100%
+(to stack horizontally on small screens) */
+    @media only screen and (max-width: 600px) {
+        .columns {
+            width: 100%;
+        }
+    }
+
+    #pricing {
+        padding-top: 30vh;
+        color: black;
+        width: 80vw;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #pricing table {
+        width: 40vw;
+        max-width: 300px;
+        float: left;
+        text-align: center;
+        border: 1px solid #01161e;
+        box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
+        background-color: #fff;
+        border-radius: 3px;
+
+        border-collapse: collapse;
+    }
+
+    #pricing table caption {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 25px;
+    }
+
+    #pricing table th {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        height: 70px;
+        text-transform: capitalize;
+        background-color: #598392;
+        border-bottom: 2px solid #01161e;
+    }
+
+    #pricing table td {
+        height: 30px;
+        border-bottom: 1px solid black;
+    }
+
+    #pricing table tfoot td {
+        height: 50px;
+        background-color: #153b50;
+    }
+    
 }
