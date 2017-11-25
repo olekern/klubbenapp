@@ -168,7 +168,9 @@
         var r = s.replace(/^(.+?)_[^.]+(\.[^\/.]+)$/i, '$1$2');
 
     </script>
-
+    
+    <script type="text/javascript" src="./src/js/regtrainer.js"></script>
+    
     <script type="text/javascript">
         Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
         Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
@@ -329,11 +331,68 @@
         <div class="section" id="section5">
             <div class="section-box">
                 <div class="content">
-                    <div id="aboutUs">
+                    <div id="seventh">
+                        <div id="seventh-header">
+                            <div><i class="fa fa-envelope-o"></i>
+                                <h3>contact@klubbenapp.com</h3>
+                            </div>
+                            <div>
+                                <a href="https://www.facebook.com/klubbenapp/" class="fa fa-facebook"></a>
+                                <a href="https://www.youtube.com/channel/UCGCVwyMl7CeAreC3Osupsdg" class="fa fa-youtube-play"></a>
+                            </div>
+                        </div>
+                        <div id="seventh-form">
+                            <h1>Gratis premiumbruker ut året</h1>
+                            <div id="list-log">
+                            </div>
 
-                    </div>
-                    <div id="aboutOrg">
+                            <div class="left">
+                                <h3>Registrer et nytt lag</h3>
+                                <form name="regteam" id="elements">
+                                    <input type="text" name="teamName" placeholder="Lagnavn" />
+                                </form>
+                            </div>
 
+                            <!--
+            <div class="right">
+                <h3>Faktureringsinformasjon</h3>
+                <form name="invoice">
+                    <input type="text" name="email" placeholder="Mail" />
+                    <input type="text" name="phoneNumber" placeholder="Mobilnummer" />
+                    <input type="text" name="address" placeholder="Adresse" />
+                    <input type="text" name="zip" placeholder="Postnr og sted" /> </form>
+            </div>
+    -->
+                        </div>
+
+                        <div id="seventh-info">
+                            <div class="left">
+                                <h3>Abonnement Klubben</h3>
+                            </div>
+                            <div class="center">
+                                <h3>Gratis
+                                    <!-- <strike style="color: grey;">250kr</strike> --></h3>
+                            </div>
+                            <div class="right">
+                                <div id="subscriptionDate"></div>
+                            </div>
+                        </div>
+
+                        <div id="seventh-register">
+                            <div class="left">
+                                <input id="terms" name="terms" type="checkbox" />
+                                <h4 id="termh">Jeg har lest og godtatt <a href="./no/terms.html">vilk&aringrene for klubben</a></h4>
+                            </div>
+                            <div class="right">
+                                <button id="reg" onclick="getInfo()">Registrer</button>
+                                <img src="./src/loading/Preloader_8.gif">
+                            </div>
+                        </div>
+
+                        <div id="seventh-stores">
+                            <a href="https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8"> <img src="./src/img/Get_AppStore_Black.png" /> </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.lustek.klubben"> <img src="./src/img/Get_GooglePlay_Black.png" /> </a>
+                        </div>
                     </div>
                 </div>
             </div>

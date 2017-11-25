@@ -29,6 +29,24 @@ queryMemb.find({
             }
 
         }
+        
+        if(amountOfPlayers == 0){
+            
+            var noneText;
+            if(language  == "NO"){
+                noneText = "Fant ingen utøvere å vise statistikk for";
+            }else{
+                noneText = "Did not find any athlets in the team";
+            }
+            
+            var outputNone = "";
+            outputNone += '<div id="noPlayers">';
+            outputNone += '<p>' + noneText + '</p>';
+            outputNone += '</div>';
+            
+            
+            $('#list-player-attendance').html(outputNone);
+        }
 
     }
 });
@@ -116,6 +134,8 @@ getAllRecords(0);
 
 
 function attendanceOverview() {
+    
+    $("#list-player-attendance").append('');
 
     var eventsAnswers = amountOfPlayers * amountOfTrainings;
     amountOfNotAnswered = eventsAnswers - amountOfTrueAnswers - amountOfFalseAnswers;

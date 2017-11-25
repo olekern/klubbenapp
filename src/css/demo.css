@@ -1494,3 +1494,249 @@ html {
     }
     
 }
+
+
+/*=====================*\
+|*       SEVENTH       *|
+\*=====================*/
+
+#seventh {
+    display: table;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1000px;
+    padding-top: 150px;
+}
+
+#seventh-header {
+    width: 100%;
+    display: table;
+    border-bottom: 1px solid grey;
+}
+
+#seventh-header div * {
+    float: left;
+    margin: 30px 0px 15px 10px;
+}
+
+#seventh-header i {
+    font-size: 50px;
+}
+
+#seventh-header h3 {
+    margin: 42px 0px 0px 20px;
+}
+
+#seventh-header a {
+    font-size: 50px;
+    text-decoration: none;
+    color: black;
+    float: right;
+    margin: 30px 15px 0px 15px;
+}
+
+#seventh-form {
+    display: table;
+    width: 100%;
+}
+
+#seventh-form h1 {
+    margin-top: 50px;
+    color: #D94842;
+}
+
+#seventh-form h5 {
+    text-decoration: underline;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#seventh-form h5:hover{
+    cursor: pointer;
+}
+
+
+#seventh-form button{
+    font-size: 18px;
+    height: 50px;
+    width: 100px;
+    background-color: #D94842;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-bottom: 3px solid #A0332F;
+    border-radius: 5px;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5); 
+    z-index: 10;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#seventh-form #log-form input {
+    height: 50px;
+    width: 250px;
+    font-size: 18px;
+    margin: 15px auto;
+    padding-left: 10px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    display: block;
+}
+
+#seventh-form #log-form{
+    height: 320px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#seventh-form #log-form h4{
+    margin-top: 15px;
+    text-decoration: underline;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#seventh-form #log-form h4:hover{
+    cursor: pointer;
+}
+
+#seventh-form .form{
+    height: 320px;
+    width: 300px;
+    background-color: white;
+}
+
+#seventh-form #form-input{
+    position: absolute;
+    z-index: 10;
+    margin-top: 0px;
+}
+
+#seventh-form #create-coach{
+    position: relative;
+    z-index: 1;
+}
+
+#seventh-form .left input {
+    height: 50px;
+    width: 80%;
+    font-size: 18px;
+    margin: 15px auto;
+    padding-left: 10px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    display: block;
+}
+
+#seventh-form div {
+    margin-top: 30px;
+}
+
+#seventh-info {
+    display: table;
+    width: 100%;
+    margin: 30px 0px;
+}
+
+#seventh-info .left {
+    width: 40%;
+    text-align: left;
+}
+
+#seventh-info .center {
+    width: 30%;
+}
+
+#seventh-info .center * {
+    text-align: center;
+    color: #D94842;
+}
+
+#seventh-info .right {
+    width: 30%;
+    text-align: right;
+}
+
+#seventh-info .right * {
+    float: right;
+}
+
+#seventh-register {
+    display: table;
+    width: 100%;
+    padding-bottom: 40px;
+    border-bottom: 1px solid grey;
+}
+#seventh-register input {
+    float: left;
+    margin: 5px;
+}
+#seventh-register h4 {
+    float: left;
+}
+
+#seventh-register .right{
+    height: 50px;
+    width: 100px;
+    
+}
+
+#seventh-register button {
+    font-size: 18px;
+    height: 50px;
+    width: 100px;
+    background-color: #D94842;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-bottom: 3px solid #A0332F;
+    border-radius: 5px;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5); 
+    z-index: 10;
+    position: absolute;
+}
+
+#seventh-register img{
+    height: 50px;
+    width: auto;
+    position: relative;
+}
+
+#seventh-stores {
+    display: table;
+    margin: 0 auto;
+    width: 50%;
+    min-width: 320px;
+}
+
+#seventh-stores img {
+    width: 40%;
+    height: auto;
+    margin: 5%;
+    float: left;
+}
+
+@media all and (max-width: 600px) {
+    #seventh-header div {
+        width: 100%;
+        text-align: center;
+    }
+    
+    #seventh-header h3 {
+        margin: 0px;
+    }
+    
+    #seventh-header div * {
+        float: none;
+        margin-bottom: 10px;
+    }
+    
+    #seventh-form div {
+        width: 100%;
+    }
+}

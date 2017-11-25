@@ -4,14 +4,18 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 var savedText;
 var notSavedText;
 var noDate;
+var createText;
+
 if (language == "NO") {
     savedText = "Lagret";
     notSavedText = "Ikke lagret";
     noDate = "Fyll inn dato før du oppretter hendelse";
+    createText = "Opprett nytt arrangement";
 } else {
     savedText = "Saved changes";
     notSavedText = "Changes not saved";
     noDate = "Fill in the date before you create the event";
+    createText = "Create new event";
 }
 
 var members = Parse.Object.extend("data_" + klubbID + "_Members");
@@ -84,11 +88,13 @@ function showNearestEvent() {
                 } else {
                     var dateMonth = date + "th " + month;
                 }
-
+                
                 var hours = eventDate.getHours();
                 var minutes = eventDate.getMinutes();
                 if (minutes == 0) {
                     minutes = '00';
+                }else if(minutes < 10){
+                    minutes = '0' + minutes;
                 }
                 var time = hours + ":" + minutes;
 
@@ -140,12 +146,8 @@ function showNearestEvent() {
                     } else {
                         eventName = "Practice";
                     }
-                } else if (eventType == "competition") {
-                    if (language == "NO") {
-                        eventName = "Konkurranse";
-                    } else {
-                        eventName = "Competition"
-                    }
+                } else if (eventType == "custom") {
+                    eventName = results[i].get("name");
                 }
 
                 var outputEvent = "";
@@ -323,12 +325,14 @@ function showNearestEvent() {
             }
 
             $("#list-nearest-event").html(outputEvent);
-
-            if (role == "trener") {
+            
+            if(role == undefined){
+                showNearestEvent();
+            }else if (role == "trener") {
                 var outputC = "";
                 outputC += '<div id="createbox">';
                 outputC += '<i class="material-icons">add_circle</i>';
-                outputC += '<p id="create" class="createbtn" onclick="showCreator()">' + createEvent + '<p>';
+                outputC += '<p id="create" class="createbtn" onclick="showCreator()">' + createText + '<p>';
                 outputC += '</div>';
             }
 
@@ -723,13 +727,13 @@ function showCreator() {
                 });
 
             } else {
-                var timepickers = $('#time-pick-once').wickedpicker();
+                var timepickers = $('#form-time').wickedpicker();
                 var eventTime = timepickers.wickedpicker('time');
 
                 var hours = eventTime.substring(0, 2);
-                var minutes = eventTime.substring(4, 6);
-
-                var ampm = eventTime.substring(7, 9);
+                var minutes = eventTime.substring(5, 7);
+   
+                var ampm = eventTime.substring(8, 10);
 
                 if (ampm == "PM") {
                     hours = parseInt(hours);
@@ -745,6 +749,8 @@ function showCreator() {
                 } else {
                     eventDate.setHours(hours);
                     eventDate.setMinutes(minutes);
+
+                    
 
                     var newEvent = Parse.Object.extend("data_" + klubbID + "_Events")
                     var createEvent = new newEvent();
@@ -775,6 +781,7 @@ function showCreator() {
                                 }, 1500);
                         }
                     });
+                    
                 }
             }
 
@@ -929,12 +936,18 @@ function chooseTime() {
         document.getElementById('createbox').style = 'margin-top: 80px';
         document.getElementById('date-pick').style.display = 'none';
         document.getElementById('time-pick-once').style.display = 'none';
+        
+        document.getElementById('training').checked = true;
+        document.getElementById('other').disabled = true;
     } else {
 
         document.getElementById('days').style.display = 'none';
         document.getElementById('date-pick').style.display = 'block';
         document.getElementById('time-pick-once').style.display = 'block';
         document.getElementById('createbox').style = 'margin-top: 30px';
+        
+        document.getElementById('other').disabled = false;
+        
 
     }
 }

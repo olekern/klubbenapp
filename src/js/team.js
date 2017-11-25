@@ -754,7 +754,7 @@ function changePassword() {
 
                     var existingTeamPassword = objects[0].get("password");
 
-                    if ((existingTeamPassword != undefined) || (existingTeamPassword != "")) {
+                    if ((existingTeamPassword != undefined) && (existingTeamPassword != "")) {
                         passwordBox += '<h3>' + currentPass + ': <span>' + existingTeamPassword + '</span></h3>';
                     } else {
                         passwordBox += '<h3>' + createPass + '</h3>';

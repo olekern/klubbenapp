@@ -244,6 +244,9 @@ chooseGroup();
                             }
                         }
                         if(confirmation == "yes"){
+                            if(content == undefined){
+                                content = "";
+                            }
                         
                         var likeText;
                         var likesText;

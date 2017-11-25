@@ -341,3 +341,10 @@ svg[aria-label="A chart."] > g > g:last-child { pointer-events: none }
     margin-top: 10px;
     text-align: center;
 }
+
+#noPlayers{
+    padding: 20px 0px 20px 0px;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+}
