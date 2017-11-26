@@ -1500,12 +1500,59 @@ html {
 |*       SEVENTH       *|
 \*=====================*/
 
+#seventh h1{
+    font-size: 35px;
+    font-weight: 400;
+    text-align: center;
+}
+
+#seventh h2 {
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+}
+
+#seventh h3 {
+    font-size: 25px;
+    font-weight: 400;
+    text-align: center;
+}
+
+#seventh h4 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#seventh p {
+    font-weight: 400;
+}
+
+#seventh .left {
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+#seventh .center {
+    width: 33%;
+    height: 100%;
+    float: left;
+}
+
+
+#seventh .right {
+    width: 50%;
+    height: 100%;
+    float: right;
+}
+
+
 #seventh {
     display: table;
     margin: 0 auto;
     width: 90%;
     max-width: 1000px;
-    padding-top: 150px;
+    padding-top: 130px;
 }
 
 #seventh-header {
@@ -1670,7 +1717,6 @@ html {
     display: table;
     width: 100%;
     padding-bottom: 40px;
-    border-bottom: 1px solid grey;
 }
 #seventh-register input {
     float: left;
@@ -1739,4 +1785,23 @@ html {
     #seventh-form div {
         width: 100%;
     }
+}
+
+#section5{
+   
+}
+
+/*=====================*\
+|*       FOOTER        *|
+\*=====================*/
+
+#footer {
+    color:white;
+    background-color: #040916;
+    height: 40px;
+    padding-top: 20px;
+}
+
+#footer * {
+    text-align: center;
 }

@@ -20,7 +20,7 @@
     <meta name="application-name" content="Klubben">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" type="text/css" href="../src/css/style.css" />
-    <link rel="stylesheet" href="../src/html/font-awesome-4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 500, 600" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../src/css/demo.css">
@@ -38,9 +38,7 @@
             $('#phoneshell1').addClass('hide');
             $('#phoneshell2').addClass('hide');
             $('#phoneshell3').addClass('hide');
-            /*
-            $('#emptyphone3').addClass('hide');
-*/
+
             $('#fullpage').fullpage({
                 sectionsColor: ['white', '#04151f', 'white', '#183a37', '#3e78b2', 'white'],
                 anchors: ['1', '2', '3', '4', '5', '6'],
@@ -149,12 +147,17 @@
 <body>
 
     <script>
-        var userLanguage = window.navigator.userLanguage || window.navigator.language;
-        var language = userLanguage.slice(-2);
+        if (localStorage.getItem("language")) {
+            var language = localStorage.getItem("language");
+            if (language == "NO") {} else {
+                location.href = "../index.html";
+            }
 
-        localStorage.setItem("language", language);
+        } else {
+            var userLanguage = window.navigator.userLanguage || window.navigator.language;
+            var language = userLanguage.slice(-2);
 
-        if (language != "NO") {
+            localStorage.setItem("language", language);
 
         }
 
@@ -168,9 +171,8 @@
         var r = s.replace(/^(.+?)_[^.]+(\.[^\/.]+)$/i, '$1$2');
 
     </script>
-    
-    <script type="text/javascript" src="./src/js/regtrainer.js"></script>
-    
+
+
     <script type="text/javascript">
         Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
         Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
@@ -352,22 +354,11 @@
                                     <input type="text" name="teamName" placeholder="Lagnavn" />
                                 </form>
                             </div>
-
-                            <!--
-            <div class="right">
-                <h3>Faktureringsinformasjon</h3>
-                <form name="invoice">
-                    <input type="text" name="email" placeholder="Mail" />
-                    <input type="text" name="phoneNumber" placeholder="Mobilnummer" />
-                    <input type="text" name="address" placeholder="Adresse" />
-                    <input type="text" name="zip" placeholder="Postnr og sted" /> </form>
-            </div>
-    -->
                         </div>
 
                         <div id="seventh-info">
                             <div class="left">
-                                <h3>Abonnement Klubben</h3>
+                                <h3>Premium-lag Klubben</h3>
                             </div>
                             <div class="center">
                                 <h3>Gratis
@@ -381,7 +372,7 @@
                         <div id="seventh-register">
                             <div class="left">
                                 <input id="terms" name="terms" type="checkbox" />
-                                <h4 id="termh">Jeg har lest og godtatt <a href="./no/terms.html">vilk&aringrene for klubben</a></h4>
+                                <h4 id="termh">Jeg har lest og godtatt <a href="terms.html">vilk&aringrene for klubben</a></h4>
                             </div>
                             <div class="right">
                                 <button id="reg" onclick="getInfo()">Registrer</button>
@@ -409,8 +400,48 @@
             <a href="../no/demo.html">NO</a>
         </div>
     </div>
-    -->
-    <script type="text/javascript" src="../src/js/regtrainer.js"></script>
+-->
+    
+    <!--<script type="text/javascript" src="../src/js/regtrainer.js"></script>
+-->
+    <script type="text/javascript">
+        var monthNames = [
+            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ];
+        var daysOfTheWeek = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
+        var date = new Date();
+        var day = date.getDate();
+        var monthIndex = date.getMonth();
+        var daysIndex = date.getMonth();
+        var year = date.getFullYear();
+        if (day < 10) {
+            var idag = monthNames[monthIndex] + " " + "0" + day + " " + year;
+        } else {
+            var idag = monthNames[monthIndex] + " " + day + " " + year;
+        }
+        var future = new Date();
+        future.setDate(future.getDate() + 30);
+        var day2 = future.getDate();
+        var monthIndex2 = future.getMonth();
+        var daysIndex2 = future.getMonth();
+        var year2 = future.getFullYear();
+        if (day < 10) {
+            var future30 = monthNames[monthIndex2] + " " + "0" + day2 + " " + year2;
+        } else {
+            var future30 = monthNames[monthIndex2] + " " + day2 + " " + year2;
+        }
+
+        var august = "Des 31 2017"
+
+        var node = document.getElementById('subscriptionDate');
+        var newNode2 = document.createElement('h4');
+        newNode2.appendChild(document.createTextNode(idag + ' - '));
+        var newNode = document.createElement('h4');
+        newNode2.appendChild(document.createTextNode(august));
+        node.appendChild(newNode);
+        node.appendChild(newNode2);
+
+    </script>
 
 </body>
 

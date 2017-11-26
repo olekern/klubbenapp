@@ -2,7 +2,7 @@
 <!-- Hovedside -->
 <html>
 
-    
+
 <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
@@ -23,49 +23,56 @@
     <link rel="stylesheet" type="text/css" href="./src/css/indexStyle.css" />
     <link rel="stylesheet" href="./src/html/font-awesome-4.6.3/css/font-awesome.min.css">
     <title>Klubben</title>
-    
-    
+
+
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-6125588383347359",
-    enable_page_level_ads: true
-  });
-</script>
-    
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-6125588383347359",
+            enable_page_level_ads: true
+        });
+
+    </script>
+
 </head>
 
 <body>
     <script type="text/javascript">
         Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
         Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
+
         function getLink() {
             var uagent = navigator.userAgent.toLowerCase();
             if (uagent.search("iphone") > -1) {
                 location.href = "https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8";
-            }
-            else if (uagent.indexOf("android") > -1) {
+            } else if (uagent.indexOf("android") > -1) {
                 location.href = "https://play.google.com/store/apps/details?id=com.lustek.klubben";
-            }
-            else {
-                
+            } else {
+
                 var currentuser = Parse.User.current();
                 if (currentuser) {
                     location.href = "home.html";
-                }
-                else {
+                } else {
                     location.href = "registration.html";
                 }
             }
         }
+
     </script>
+
+    <script>
+        var language = localStorage.getItem("language");
+
+    </script>
+
     <div id="nav"> <img src="./src/img/Icon-white.png"> <a id="name" href="index.html">Klubben</a> <a id="app" onclick="getLink()">G&aring til appen</a> </div>
     <div id="first">
         <div class="left"> <img src="./src/img/Website_App_Showcase_Report.png" id="firstShowcase"> </div>
         <div class="right">
             <div id="firstInfo">
                 <h1>F&aring oversikt, ta kontroll, effektiviser</h1>
-                <h3>Lag unders&oslashkelser, f&aring rapporter og styrk kommunikasjonen mellom trener og spiller ved hjelp av Klubben.</h3> </div>
+                <h3>Lag unders&oslashkelser, f&aring rapporter og styrk kommunikasjonen mellom trener og spiller ved hjelp av Klubben.</h3>
+            </div>
             <div id="firstStores">
                 <a href="https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8"> <img src="./src/img/Get_AppStore_Black.png" /> </a>
                 <a href="https://play.google.com/store/apps/details?id=com.lustek.klubben"> <img src="./src/img/Get_GooglePlay_Black.png" /> </a>
@@ -77,29 +84,34 @@
     </div>
     <div id="second">
         <div class="left">
-            <h3>Klubben er den sosiale appen for din klubb, der all informasjon samles p&aring ett sted. Om det er innlegg, unders&oslashkelser eller sp&oslashrsm&aringl kan alt bli gjort over appen.</h3> </div>
+            <h3>Klubben er den sosiale appen for din klubb, der all informasjon samles p&aring ett sted. Om det er innlegg, unders&oslashkelser eller sp&oslashrsm&aringl kan alt bli gjort over appen.</h3>
+        </div>
         <div class="right">
             <iframe src="https://www.youtube.com/embed/3rHRRpxdU9c" allowfullscreen></iframe>
         </div>
     </div>
     <div id="third">
-        <div> 
-            <h3>"Klubben gir meg en bedre dialog med mine spillere, og gj&oslashr dem mer bevisste rundt egen treningshverdag."</h3> </div>
-        <h4>- Ole Johan Aas, trener Ullern Fotball</h4> </div>
+        <div>
+            <h3>"Klubben gir meg en bedre dialog med mine spillere, og gj&oslashr dem mer bevisste rundt egen treningshverdag."</h3>
+        </div>
+        <h4>- Ole Johan Aas, trener Ullern Fotball</h4>
+    </div>
     <div id="fourth">
         <div id="fourthOne">
             <div class="left"> <img src="./src/img/iosstat.png"> </div>
             <div class="right">
                 <div>
                     <h4>Raskt og enkelt</h4>
-                    <h1>Kunnskap er n&oslashkkelen til suksess  </h1>
-                    <h3>Enkelt tilgjengelig hvor enn du er, med mobilen i h&aringnden f&aringr du statistikk som gir deg full kontroll over dine spillere.</h3> </div>
+                    <h1>Kunnskap er n&oslashkkelen til suksess </h1>
+                    <h3>Enkelt tilgjengelig hvor enn du er, med mobilen i h&aringnden f&aringr du statistikk som gir deg full kontroll over dine spillere.</h3>
+                </div>
             </div>
         </div>
         <div id="fourthTwo">
             <div class="right"> <img src="./src/img/macbookpro.png"> </div>
             <div class="left">
-                <h1>Sammenlign resultater</h1> </div>
+                <h1>Sammenlign resultater</h1>
+            </div>
         </div>
     </div>
     <div id="fifth">
@@ -107,11 +119,14 @@
         <div class="right">
             <div id="fifth-img">
                 <div> <i class="fa fa-inbox"></i>
-                    <h2>Samle all kommunikasjon</h2> </div>
+                    <h2>Samle all kommunikasjon</h2>
+                </div>
                 <div> <i class="fa fa-sitemap"></i>
-                    <h2>Organiser ditt lag</h2> </div>
+                    <h2>Organiser ditt lag</h2>
+                </div>
                 <div> <i class="fa fa-sliders"></i>
-                    <h2>Svar enkelt p&aring unders&oslashkelser</h2> </div>
+                    <h2>Svar enkelt p&aring unders&oslashkelser</h2>
+                </div>
             </div>
             <div> </div>
         </div>
@@ -119,14 +134,15 @@
     <div id="sixth">
         <div class="left">
             <h2>Test ut appens funksjonalitet</h2>
-            <h1>Pr&oslashv Klubben gratis i dag</h1> 
+            <h1>Pr&oslashv Klubben gratis i dag</h1>
             <a href="#seventh-form">Registrer ditt lag</a> </div>
         <div class="right"> </div>
     </div>
     <div id="seventh">
         <div id="seventh-header">
             <div><i class="fa fa-envelope-o"></i>
-                <h3>contact@klubbenapp.com</h3> </div>
+                <h3>contact@klubbenapp.com</h3>
+            </div>
             <div>
                 <a href="https://www.facebook.com/klubbenapp/" class="fa fa-facebook"></a>
                 <a href="https://www.youtube.com/channel/UCGCVwyMl7CeAreC3Osupsdg" class="fa fa-youtube-play"></a>
@@ -136,7 +152,7 @@
             <h1>Gratis premiumbruker ut året</h1>
             <div id="list-log">
             </div>
-            
+
             <div class="left">
                 <h3>Registrer et nytt lag</h3>
                 <form name="regteam" id="elements">
@@ -158,18 +174,22 @@
 
         <div id="seventh-info">
             <div class="left">
-                <h3>Abonnement Klubben</h3> </div>
+                <h3>Abonnement Klubben</h3>
+            </div>
             <div class="center">
-                <h3>Gratis <!-- <strike style="color: grey;">250kr</strike> --> </h3> </div>
+                <h3>Gratis
+                    <!-- <strike style="color: grey;">250kr</strike> --></h3>
+            </div>
             <div class="right">
                 <div id="subscriptionDate"></div>
             </div>
         </div>
-        
+
         <div id="seventh-register">
             <div class="left">
                 <input id="terms" name="terms" type="checkbox" />
-                <h4 id="termh">Jeg har lest og godtatt <a href="./no/terms.html">vilk&aringrene for klubben</a></h4> </div>
+                <h4 id="termh">Jeg har lest og godtatt <a href="./no/terms.html">vilk&aringrene for klubben</a></h4>
+            </div>
             <div class="right">
                 <button id="reg" onclick="getInfo()">Registrer</button>
                 <img src="./src/loading/Preloader_8.gif">
@@ -184,18 +204,15 @@
     <div id="footer">
         <p>&copy; 2017 Lustek AS</p>
     </div>
-    
+
     <script type="text/javascript" src="./src/js/regtrainer.js"></script>
-    
+
     <script type="text/javascript">
         Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
-        Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse'; 
+        Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
         var monthNames = [
-                "Jan", "Feb", "Mar"
-                , "Apr", "May", "Jun", "Jul"
-                , "Aug", "Sep", "Oct"
-                , "Nov", "Dec"
-            ];
+            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ];
         var daysOfTheWeek = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
         var date = new Date();
         var day = date.getDate();
@@ -204,8 +221,7 @@
         var year = date.getFullYear();
         if (day < 10) {
             var idag = monthNames[monthIndex] + " " + "0" + day + " " + year;
-        }
-        else {
+        } else {
             var idag = monthNames[monthIndex] + " " + day + " " + year;
         }
         var future = new Date();
@@ -216,11 +232,10 @@
         var year2 = future.getFullYear();
         if (day < 10) {
             var future30 = monthNames[monthIndex2] + " " + "0" + day2 + " " + year2;
-        }
-        else {
+        } else {
             var future30 = monthNames[monthIndex2] + " " + day2 + " " + year2;
         }
-        
+
         var august = "Des 31 2017"
         console.log(future30);
         console.log(idag);
@@ -231,6 +246,7 @@
         newNode2.appendChild(document.createTextNode(august));
         node.appendChild(newNode);
         node.appendChild(newNode2);
+
     </script>
 </body>
 <!--

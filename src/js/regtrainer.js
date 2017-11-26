@@ -65,6 +65,7 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
         }
 
     function logOut() {
+        console.log("#ASF");
             Parse.User.logOut(
                 console.log("Logger ut"));
             window.location.reload();
