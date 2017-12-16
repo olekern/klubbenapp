@@ -21,7 +21,7 @@ if(language == "NO"){
 var outputSM = "";
 
 outputSM += '<div class="nav">';
-outputSM += '<a href="home.html"><img src="./src/img/Icon-white.png" id="logo"></a>';
+outputSM += '<a href="home.html"><img src="./src/img/new-logo.png" id="logo"></a>';
 outputSM += '<ul>';
 outputSM += '<li>';
 outputSM += '<div class="loggut">';

@@ -74,11 +74,11 @@ html{
 }
 
 #logo{
-    height: 50px;
+    height: 75px;
     width: auto;
     float: left;
-    margin-left: 50px;
-    margin-top: 17px;
+    margin-left: 37px;
+    margin-top: 5px;
 }
 .nav ul {
     margin:0;

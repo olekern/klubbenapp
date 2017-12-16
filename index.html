@@ -1,42 +1,209 @@
 <!doctype html>
-<!-- Hovedside -->
+
 <html>
 
-
 <head>
+    <title>EasyCoach</title>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width" />
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="https://npmcdn.com/parse/dist/parse.js"></script>
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
-    <link rel="icon" type="image/png" href="./src/img/blackfavicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="./src/img/blackfavicon-16x16.png" sizes="16x16" />
-    <link rel="manifest" href="/favicons/manifest.json">
-    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#cf2424">
-    <meta name="apple-mobile-web-app-title" content="Klubben">
-    <meta name="application-name" content="Klubben">
+    <link rel="apple-touch-icon" sizes="57x57" href="./favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
+    <link rel="manifest" href="./favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-title" content="EasyCoach">
+    <meta name="application-name" content="EasyCoach">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" type="text/css" href="./src/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="./src/css/indexStyle.css" />
-    <link rel="stylesheet" href="./src/html/font-awesome-4.6.3/css/font-awesome.min.css">
-    <title>Klubben</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 500, 600" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./src/css/index.css">
 
 
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-6125588383347359",
-            enable_page_level_ads: true
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="./src/fullPage.js-master/jquery.fullPage.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+
+            $('#phoneshell1').addClass('hide');
+            $('#phoneshell2').addClass('hide');
+            $('#phoneshell3').addClass('hide');
+
+            $('#fullpage').fullpage({
+                sectionsColor: ['white', '#04151f', 'white', '#183a37', '#3e78b2', 'white'],
+                anchors: ['1', '2', '3', '4', '5', '6'],
+                menu: '#menu',
+                scrollingSpeed: 1000,
+                responsiveWidth: 600,
+                afterLoad: function(anchorLink, index) {
+
+                    if (index == 2) {
+                        $('#emptyphone2').removeClass('hide');
+                        $('#emptyphone3').addClass('hide');
+                        $('#emptyphone4').addClass('hide');
+
+
+                        $('#phoneshell1').removeClass('hide');
+                        $('#phoneshell2').addClass('hide');
+                        $('#phoneshell3').addClass('hide');
+
+                        $('#emptyphone1').removeClass('minimize');
+
+                    } else if (index == 3) {
+
+                        $('#emptyphone2').addClass('hide');
+                        $('#emptyphone3').removeClass('hide');
+                        $('#emptyphone4').addClass('hide');
+
+
+                        $('#phoneshell1').addClass('hide');
+                        $('#phoneshell2').removeClass('hide');
+                        $('#phoneshell3').addClass('hide');
+
+                        $('#emptyphone1').removeClass('minimize');
+
+                    }
+
+                    if (index == 4) {
+
+                        $('#emptyphone2').addClass('hide');
+                        $('#emptyphone3').addClass('hide');
+                        $('#emptyphone4').removeClass('hide');
+
+                        $('#phoneshell1').addClass('hide');
+                        $('#phoneshell2').addClass('hide');
+                        $('#phoneshell3').removeClass('hide');
+
+                        $('#emptyphone1').removeClass('minimize');
+                    }
+
+                    if (index == 5) {
+
+                        $('#emptyphone2').addClass('hide');
+                        $('#emptyphone3').removeClass('hide');
+
+                        $('#phoneshell1').addClass('hide');
+                        $('#phoneshell2').addClass('hide');
+                        $('#phoneshell3').addClass('hide');
+
+                        $('#emptyphone1').addClass('minimize');
+
+                    }
+
+                    if (index == 6) {
+                        $('#emptyphone1').addClass('minimize');
+                    }
+
+
+                },
+                onLeave: function(nextIndex, direction) {
+
+
+                    if (direction == 1) {
+                        $('#phoneshell1').addClass('hide');
+                    }
+                    if (direction == 2) {
+                        $('#emptyphone3').addClass('hide');
+                    }
+                    if (direction == 3) {
+
+                        $('#emptyphone2').addClass('hide');
+                        $('#emptyphone4').addClass('hide');
+
+                    }
+                    if (direction == 4) {
+                        $('#emptyphone3').addClass('hide');
+
+                    }
+
+                    if (direction == 5) {
+
+                        $('#phoneshell1').addClass('hide');
+                        $('#phoneshell2').addClass('hide');
+                        $('#phoneshell3').addClass('hide');
+
+                        $("#list-form").html('');
+                    }
+
+                }
+            });
+
+            //}
         });
+
+        var id;
+        $(window).resize(function() {
+            clearTimeout(id);
+            id = setTimeout(doneResizing, 500);
+
+        });
+
+        function doneResizing() {
+            var height = $(window).innerHeight();
+            //alert(height);   
+        }
 
     </script>
 
+    <script src="./src/garand-sticky-73b0fbe/jquery.sticky.js"></script>
 </head>
 
 <body>
+
+    <script>
+        
+        window.location.replace("https://easycoach-app.com");
+        
+        if (localStorage.getItem("language")) {
+            var language = localStorage.getItem("language");
+            
+            if(language == "NO"){
+                location.href = "./no/index.html";
+            }
+        } else {
+
+            var userLanguage = window.navigator.userLanguage || window.navigator.language;
+            var language = userLanguage.slice(-2);
+
+            localStorage.setItem("language", language);
+
+            if (language == "NO") {
+                location.href = "./no/index.html";
+            }
+        }
+
+    </script>
+
+
+    <div id="nav"> <img src="./src/img/new-logo.png"> <a id="name" href="index.html">EasyCoach</a> <a id="app" onclick="getLink()">Go to the app</a> </div>
+
+    <script>
+        var s = 'file:///C:/Users/h/Desktop/klubbenapp/index.html#secondPage';
+        var r = s.replace(/^(.+?)_[^.]+(\.[^\/.]+)$/i, '$1$2');
+
+    </script>
+
+
     <script type="text/javascript">
         Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
         Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
@@ -51,165 +218,236 @@
 
                 var currentuser = Parse.User.current();
                 if (currentuser) {
-                    location.href = "home.html";
+                    location.href = "./home.html";
                 } else {
-                    location.href = "registration.html";
+                    location.href = "./registration.html";
                 }
             }
         }
 
     </script>
 
+
+    <div id="emptyphone1">
+        <img src="./src/img/Calendar.png" id="phoneshell1">
+        <img src="./src/img/Survey.png" id="phoneshell2">
+        <img src="./src/img/News%20Feed.png" id="phoneshell3">
+
+    </div>
+
+
+    <div id="fullpage">
+        <div class="section" id="section0">
+            <div class="section-box">
+                <div class="content">
+                    <div id="top-content">
+                        <h1 id="klubben">Take your team to new heights!</h1>
+                        <h2>EasyCoach is a new digital platform that makes communication within the team easier than ever before.</h2>
+                        <div id="firstStores">
+                            <a href="https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8"> <img src="./src/img/Get_AppStore_Black.png" /> </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.lustek.klubben"> <img src="./src/img/Get_GooglePlay_Black.png" /> </a>
+                        </div>
+                        <a id="regnt" href="index.html#3rdPage">Register a new team</a>
+                        <div id="arrow">
+                            <a class="bounce" href="index.html#secondPage"><i class="material-icons">keyboard_arrow_down</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section1">
+            <div class="section-box">
+                <div class="content">
+                    <div id="emptyphone2">
+                        <img src="./src/img/Calendar.png" id="calendarImg">
+                    </div>
+                    <div class="smallscreen">
+                        <div class="normalphone">
+                            <img src="./src/img/News%20Feed.png" class="phoneshell">
+                        </div>
+                        <div class="smalltext" id="smallCalendar">
+                            <h2>Full control</h2>
+                            <h1>Register attendance and get statistics from your team</h1>
+                            <p>The atletes can use EasyCoach to notify if they will attend training, giving you as a coach full control over your team.</p>
+                        </div>
+                    </div>
+                    <div class="infobox" id="infobox1">
+                        <h2>Full control</h2>
+                        <h1>Register attendance and get statistics from your team</h1>
+                        <p>The atletes can use EasyCoach to notify if they will attend training, giving you as a coach full control over your team.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="section2">
+            <div class="section-box">
+                <div class="content">
+                    <div id="emptyphone3">
+                        <img src="./src/img/Survey.png" id="surveyImg">
+                    </div>
+                    <div class="smallscreen">
+                        <div class="normalphone">
+                            <img src="./src/img/Survey.png" class="phoneshell">
+                        </div>
+                        <div class="smalltext" id="smallSurvey">
+                            <h2>Smart surveys</h2>
+                            <h1>Improve the communication between athlete and coach.</h1>
+                            <p>The minutes on the field may not be enough to speak properly with each athlete. Create surveys for your athletes and maintain a continous dialogue through EasyCoach.</p>
+                        </div>
+                    </div>
+                    <img src="./src/img/sport1.png" id="sportscompilation">
+                    <div class="infobox2">
+                        <h2>Smart surveys</h2>
+                        <h1>Improve the communication between athlete and coach.</h1>
+                        <p>The minutes on the field may not be enough to speak properly with each athlete. Create surveys for your athletes and maintain a continous dialogue using EasyCoach.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section3">
+            <div class="section-box">
+                <div class="content">
+                    <div id="emptyphone4">
+                        <img src="./src/img/News%20Feed.png" id="feedImg">
+                    </div>
+                    <div class="smallscreen">
+                        <div class="normalphone">
+                            <img src="./src/img/News%20Feed.png" class="phoneshell">
+                        </div>
+                        <div class="smalltext" id="smallFeed">
+                            <h2>Quick access</h2>
+                            <h1>Notify the whole team</h1>
+                            <p>The news feed makes writing messages an ease. No need for long email lists or messy SMS conversations.</p>
+                        </div>
+                    </div>
+                    <div class="infobox" id="infobox3">
+                        <h2>Quick access</h2>
+                        <h1>Notify the whole team</h1>
+                        <p>The news feed makes writing messages an ease. No need for long email lists or messy SMS conversations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section4">
+            <div class="section-box">
+                <div class="content">
+                    <div id="pricing">
+
+                        <div class="columns">
+                            <ul class="price">
+                                <li class="header">Standard Team</li>
+                                <li class="grey">Free</li>
+                                <li>News feed</li>
+                                <li>Attendance statistics</li>
+                                <li>Multiple coaches per team</li>
+                                <li>Groups</li>
+                                <li class="grey"><a href="#6" class="button">Register team</a></li>
+                            </ul>
+                        </div>
+                        <div class="columns">
+                            <ul class="price">
+                                <li class="header">Premium team</li>
+                                <li class="grey">36 $/year</li>
+                                <li>All the functionality from Standard Team</li>
+                                <li>No ads</li>
+                                <li>Send your own push notifications</li>
+                                <li>Create surveys</li>
+                                <li class="grey"><a href="#6" class="button">Register team</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section5">
+            <div class="section-box">
+                <div class="content">
+                    <div id="seventh">
+                        <div id="seventh-header">
+                            <div><i class="fa fa-envelope-o"></i>
+                                <h3>contact@klubbenapp.com</h3>
+                            </div>
+                            <div>
+                                <a href="https://www.facebook.com/klubbenapp/" class="fa fa-facebook"></a>
+                                <a href="https://www.youtube.com/channel/UCGCVwyMl7CeAreC3Osupsdg" class="fa fa-youtube-play"></a>
+                            </div>
+                        </div>
+                        <div id="seventh-form">
+                            <h1>Free premium team rest of the year</h1>
+                            <div id="list-log">
+                            </div>
+
+                            <div class="left">
+                                <h3>Register a new team</h3>
+                                <form name="regteam" id="elements">
+                                    <input type="text" name="teamName" placeholder="Team name" />
+                                </form>
+                            </div>
+                        </div>
+
+                        <div id="seventh-info">
+                            <div class="left">
+                                <h3>Premium team EasyCoach</h3>
+                            </div>
+                            <div class="center">
+                                <h3>Free
+                                    <!-- <strike style="color: grey;">250kr</strike> --></h3>
+                            </div>
+                            <div class="right">
+                                <div id="subscriptionDate"></div>
+                            </div>
+                        </div>
+
+                        <div id="seventh-register">
+                            <div class="left">
+                                <input id="terms" name="terms" type="checkbox" />
+                                <h4 id="termh">I confirm that I have read the <a href="terms.html">terms and conditions of EasyCoach</a></h4>
+                            </div>
+                            <div class="right">
+                                <button id="reg" onclick="getInfo()">Register</button>
+                                <img src="./src/loading/Preloader_8.gif">
+                            </div>
+                        </div>
+                        <!--
+                        <div id="seventh-stores">
+                            <a href="https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8"> <img src="./src/img/Get_AppStore_Black.png" /> </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.lustek.klubben"> <img src="./src/img/Get_GooglePlay_Black.png" /> </a>
+                        </div>
+-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="list-form"></div>
+    <div id="background" style="display: none"></div>
+
     <script>
-        var language = localStorage.getItem("language");
+        function English() {
+
+            localStorage.setItem("language", "EN");
+            location.href = "./index.html";
+        }
+
+        function Norwegian() {
+            localStorage.setItem("language", "NO");
+            location.href = "./no/index.html";
+        }
 
     </script>
 
-    <div id="nav"> <img src="./src/img/Icon-white.png"> <a id="name" href="index.html">Klubben</a> <a id="app" onclick="getLink()">G&aring til appen</a> </div>
-    <div id="first">
-        <div class="left"> <img src="./src/img/Website_App_Showcase_Report.png" id="firstShowcase"> </div>
-        <div class="right">
-            <div id="firstInfo">
-                <h1>F&aring oversikt, ta kontroll, effektiviser</h1>
-                <h3>Lag unders&oslashkelser, f&aring rapporter og styrk kommunikasjonen mellom trener og spiller ved hjelp av Klubben.</h3>
-            </div>
-            <div id="firstStores">
-                <a href="https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8"> <img src="./src/img/Get_AppStore_Black.png" /> </a>
-                <a href="https://play.google.com/store/apps/details?id=com.lustek.klubben"> <img src="./src/img/Get_GooglePlay_Black.png" /> </a>
-            </div>
-            <div id="firstRegister">
-                <a href="#seventh-form">Registrer ditt lag</a>
-            </div>
-        </div>
-    </div>
-    <div id="second">
-        <div class="left">
-            <h3>Klubben er den sosiale appen for din klubb, der all informasjon samles p&aring ett sted. Om det er innlegg, unders&oslashkelser eller sp&oslashrsm&aringl kan alt bli gjort over appen.</h3>
-        </div>
-        <div class="right">
-            <iframe src="https://www.youtube.com/embed/3rHRRpxdU9c" allowfullscreen></iframe>
-        </div>
-    </div>
-    <div id="third">
-        <div>
-            <h3>"Klubben gir meg en bedre dialog med mine spillere, og gj&oslashr dem mer bevisste rundt egen treningshverdag."</h3>
-        </div>
-        <h4>- Ole Johan Aas, trener Ullern Fotball</h4>
-    </div>
-    <div id="fourth">
-        <div id="fourthOne">
-            <div class="left"> <img src="./src/img/iosstat.png"> </div>
-            <div class="right">
-                <div>
-                    <h4>Raskt og enkelt</h4>
-                    <h1>Kunnskap er n&oslashkkelen til suksess </h1>
-                    <h3>Enkelt tilgjengelig hvor enn du er, med mobilen i h&aringnden f&aringr du statistikk som gir deg full kontroll over dine spillere.</h3>
-                </div>
-            </div>
-        </div>
-        <div id="fourthTwo">
-            <div class="right"> <img src="./src/img/macbookpro.png"> </div>
-            <div class="left">
-                <h1>Sammenlign resultater</h1>
-            </div>
-        </div>
-    </div>
-    <div id="fifth">
-        <div class="left"> <img src="./src/img/androidrep.png"> </div>
-        <div class="right">
-            <div id="fifth-img">
-                <div> <i class="fa fa-inbox"></i>
-                    <h2>Samle all kommunikasjon</h2>
-                </div>
-                <div> <i class="fa fa-sitemap"></i>
-                    <h2>Organiser ditt lag</h2>
-                </div>
-                <div> <i class="fa fa-sliders"></i>
-                    <h2>Svar enkelt p&aring unders&oslashkelser</h2>
-                </div>
-            </div>
-            <div> </div>
-        </div>
-    </div>
-    <div id="sixth">
-        <div class="left">
-            <h2>Test ut appens funksjonalitet</h2>
-            <h1>Pr&oslashv Klubben gratis i dag</h1>
-            <a href="#seventh-form">Registrer ditt lag</a> </div>
-        <div class="right"> </div>
-    </div>
-    <div id="seventh">
-        <div id="seventh-header">
-            <div><i class="fa fa-envelope-o"></i>
-                <h3>contact@klubbenapp.com</h3>
-            </div>
-            <div>
-                <a href="https://www.facebook.com/klubbenapp/" class="fa fa-facebook"></a>
-                <a href="https://www.youtube.com/channel/UCGCVwyMl7CeAreC3Osupsdg" class="fa fa-youtube-play"></a>
-            </div>
-        </div>
-        <div id="seventh-form">
-            <h1>Gratis premiumbruker ut året</h1>
-            <div id="list-log">
-            </div>
-
-            <div class="left">
-                <h3>Registrer et nytt lag</h3>
-                <form name="regteam" id="elements">
-                    <input type="text" name="teamName" placeholder="Lagnavn" />
-                </form>
-            </div>
-
-            <!--
-            <div class="right">
-                <h3>Faktureringsinformasjon</h3>
-                <form name="invoice">
-                    <input type="text" name="email" placeholder="Mail" />
-                    <input type="text" name="phoneNumber" placeholder="Mobilnummer" />
-                    <input type="text" name="address" placeholder="Adresse" />
-                    <input type="text" name="zip" placeholder="Postnr og sted" /> </form>
-            </div>
-    -->
-        </div>
-
-        <div id="seventh-info">
-            <div class="left">
-                <h3>Abonnement Klubben</h3>
-            </div>
-            <div class="center">
-                <h3>Gratis
-                    <!-- <strike style="color: grey;">250kr</strike> --></h3>
-            </div>
-            <div class="right">
-                <div id="subscriptionDate"></div>
-            </div>
-        </div>
-
-        <div id="seventh-register">
-            <div class="left">
-                <input id="terms" name="terms" type="checkbox" />
-                <h4 id="termh">Jeg har lest og godtatt <a href="./no/terms.html">vilk&aringrene for klubben</a></h4>
-            </div>
-            <div class="right">
-                <button id="reg" onclick="getInfo()">Registrer</button>
-                <img src="./src/loading/Preloader_8.gif">
-            </div>
-        </div>
-
-        <div id="seventh-stores">
-            <a href="https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8"> <img src="./src/img/Get_AppStore_Black.png" /> </a>
-            <a href="https://play.google.com/store/apps/details?id=com.lustek.klubben"> <img src="./src/img/Get_GooglePlay_Black.png" /> </a>
-        </div>
-    </div>
     <div id="footer">
         <p>&copy; 2017 Lustek AS</p>
+        <a onclick="English()">EN</a>
+        <a onclick="Norwegian()">NO</a>
     </div>
+
 
     <script type="text/javascript" src="./src/js/regtrainer.js"></script>
 
     <script type="text/javascript">
-        Parse.initialize("wSHRpQQxW6jgmxRQV8UXogZcOiRvO8s8VoVmlMYI", "imVCWFzFX4fVRGcqX8ioidD686IPb5ELzHd3WkJw");
-        Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
         var monthNames = [
             "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
         ];
@@ -237,8 +475,7 @@
         }
 
         var august = "Des 31 2017"
-        console.log(future30);
-        console.log(idag);
+
         var node = document.getElementById('subscriptionDate');
         var newNode2 = document.createElement('h4');
         newNode2.appendChild(document.createTextNode(idag + ' - '));
@@ -247,16 +484,20 @@
         node.appendChild(newNode);
         node.appendChild(newNode2);
 
+
+        $(document).click(function(event) {
+            if (!$(event.target).closest('.nohide').length) {
+                if ($('.nohide').is(":visible")) {
+
+                    $("#list-form").html('');
+
+                    document.getElementById('background').style.display = "none";
+                }
+            }
+        });
+
     </script>
+
 </body>
-<!--
-                         <i class="fa fa-globe" id="globe" aria-hidden="true"></i>
-                        <select name="language" class="language" id="changeLanguage">
-                            <option value="EN">English</option>
-                            <option value="FR">French</option>
-                            <option value="NO" selected>Norsk Bokm&aringl</option>
-                        </select>
-                         <i class="fa fa-caret-down" id="triangle" aria-hidden="true"></i>
-                        -->
 
 </html>

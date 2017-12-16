@@ -122,6 +122,7 @@ html {
     font-family: 'Open Sans', sans-serif;
     width: 100%;
     overflow-x: hidden;
+    background-color: black;
 }
 
 #dvLoading {
@@ -174,24 +175,24 @@ html {
 }
 
 #nav img {
-    height: 50px;
+    height: 75px;
     width: auto;
     float: left;
     margin-left: 5%;
-    margin-top: 17px;
+    margin-top: 5px;
 }
 
 #nav a {
     text-decoration: none;
     color: white;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 400;
     cursor: pointer;
 }
 
 #name {
     float: left;
-    margin-left: 5%;
+    margin-left: 3%;
     font-size: 25px;
     margin-top: 27px;
 }
@@ -242,6 +243,10 @@ html {
             margin-right: auto;
             padding-top: 170px;
         }
+
+        #seventh {
+            padding-top: 130px;
+        }
     }
     @media all and (max-height: 675px) {
         .section-box {
@@ -273,8 +278,8 @@ html {
         padding-top: 120px;
     }
 
-}
 
+}
 
 /*=====================*\
 |*      SECTION0       *|
@@ -570,7 +575,7 @@ html {
         }
 
         #phoneshell1 {
-            display: block;
+            display: none;
             height: 100%;
             width: auto;
             z-index: 998;
@@ -1080,17 +1085,17 @@ html {
     }
 
     .smalltext h2 {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 300;
     }
 
     .smalltext h1 {
-        font-size: 25px;
+        font-size: 23px;
         margin-top: 10px;
     }
 
     .smalltext p {
-        font-size: 20px;
+        font-size: 19px;
         margin-top: 10px;
         line-height: 25px;
     }
@@ -1130,26 +1135,163 @@ html {
     text-align: left;
 }
 
-.infobox h1,
-.infobox2 h1 {
-    line-height: 40px;
-    font-size: 35px;
-    font-weight: 500;
+@media all and (max-width: 600px) {
+
+    .infobox h1 {
+        line-height: 30px;
+        font-size: 25px;
+        font-weight: 500;
+    }
+
+    .infobox h2 {
+        line-height: 25px;
+        font-size: 20px;
+        font-weight: 300;
+    }
+
+    .infobox p {
+        line-height: 25px;
+        font-size: 17px;
+        margin-top: 15px;
+        font-weight: 400;
+    }
 }
 
-.infobox h2,
-.infobox2 h2 {
-    line-height: 35px;
-    font-size: 25px;
-    font-weight: 300;
+
+
+@media all and (min-width: 600px) {
+    @media all and (max-height: 420px) {
+        .infobox h1 {
+            line-height: 30px;
+            font-size: 28px;
+            font-weight: 500;
+        }
+
+        .infobox h2 {
+            line-height: 25px;
+            font-size: 23px;
+            font-weight: 300;
+        }
+
+        .infobox p {
+            line-height: 25px;
+            font-size: 20px;
+            margin-top: 15px;
+            font-weight: 400;
+        }
+    }
+    @media all and (min-height: 420px) {
+        .infobox h1 {
+            line-height: 40px;
+            font-size: 35px;
+            font-weight: 500;
+        }
+
+        .infobox h2 {
+            line-height: 35px;
+            font-size: 25px;
+            font-weight: 300;
+        }
+
+        .infobox p {
+            line-height: 30px;
+            font-size: 21px;
+            margin-top: 15px;
+            font-weight: 400;
+        }
+    }
+
 }
 
-.infobox p,
-.infobox2 p {
-    line-height: 30px;
-    font-size: 21px;
-    margin-top: 15px;
-    font-weight: 400;
+@media all and (max-width: 800px) {
+
+    .infobox2 h1 {
+        line-height: 30px;
+        font-size: 25px;
+        font-weight: 500;
+    }
+
+    .infobox2 h2 {
+        line-height: 25px;
+        font-size: 20px;
+        font-weight: 300;
+    }
+
+    .infobox2 p {
+        line-height: 25px;
+        font-size: 17px;
+        margin-top: 15px;
+        font-weight: 400;
+    }
+}
+
+@media all and (min-width: 800px) {
+    @media all and (max-width: 1200px) {
+
+        .infobox2 h1 {
+            line-height: 30px;
+            font-size: 27px;
+            font-weight: 500;
+        }
+
+        .infobox2 h2 {
+            line-height: 25px;
+            font-size: 23px;
+            font-weight: 300;
+        }
+
+        .infobox2 p {
+            line-height: 25px;
+            font-size: 19px;
+            margin-top: 15px;
+            font-weight: 400;
+        }
+    }
+}
+
+
+@media all and (min-width: 1200px) {
+    @media all and (max-height: 560px) {
+        .infobox2 h1 {
+            line-height: 30px;
+            font-size: 27px;
+            font-weight: 500;
+        }
+
+        .infobox2 h2 {
+            line-height: 25px;
+            font-size: 23px;
+            font-weight: 300;
+        }
+
+        .infobox2 p {
+            line-height: 25px;
+            font-size: 19px;
+            margin-top: 15px;
+            font-weight: 400;
+        }
+    }
+    @media all and (min-height: 560px) {
+        .infobox2 h1 {
+            line-height: 40px;
+            font-size: 35px;
+            font-weight: 500;
+        }
+
+        .infobox2 h2 {
+            line-height: 35px;
+            font-size: 25px;
+            font-weight: 300;
+        }
+
+        .infobox2 p {
+            line-height: 30px;
+            font-size: 21px;
+            margin-top: 15px;
+            font-weight: 400;
+        }
+    }
+
 }
 
 @media all and (max-width: 430px) {
@@ -1164,8 +1306,9 @@ html {
             position: absolute;
             right: 0;
             height: 40vh;
+            max-height: 80%;
             width: 35vw;
-            margin-top: 30vh;
+            margin-top: 25vh;
             margin-right: 8vw;
             min-width: 25px;
 
@@ -1174,14 +1317,40 @@ html {
 }
 
 @media all and (min-width: 800px) {
-    .infobox {
-        height: 40vh;
-        width: 25vw;
-        min-width: 400px;
-        margin-top: 30vh;
-        float: right;
-        margin-right: 8vw;
-        min-width: 25px;
+    @media all and (max-height: 420px) {
+        #infobox1 {
+            height: 40vh;
+            max-height: 80%;
+            width: 25vw;
+            min-width: 400px;
+            margin-top: 30vh;
+            float: right;
+            margin-right: 8vw;
+            min-width: 25px;
+        }
+        #infobox3 {
+            height: 40vh;
+            max-height: 80%;
+            width: 25vw;
+            min-width: 400px;
+            margin-top: -10vh;
+            float: right;
+            margin-right: 8vw;
+            min-width: 25px;
+        }
+        
+    }
+    @media all and (min-height: 420px) {
+        .infobox {
+            height: 40vh;
+            max-height: 80%;
+            width: 25vw;
+            min-width: 400px;
+            margin-top: 30vh;
+            float: right;
+            margin-right: 8vw;
+            min-width: 25px;
+        }
     }
 }
 
@@ -1201,7 +1370,7 @@ html {
             border-radius: 3px;
             float: right;
             margin-right: 8vw;
-            margin-top: -320px;
+            margin-top: -220px;
             min-width: 25px;
             z-index: 20;
             position: relative;
@@ -1211,21 +1380,64 @@ html {
 }
 
 @media all and (min-width: 800px) {
-    .infobox2 {
-        height: auto;
-        width: 25vw;
-        min-width: 400px;
-        background-color: white;
-        box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
-        border-radius: 3px;
-        top: 0;
-        margin-top: -320px;
-        float: left;
-        margin-left: 8vw;
-        min-width: 25px;
-        z-index: 20;
-        position: relative;
-        padding: 10px;
+    @media all and (max-width: 1200px) {
+        .infobox2 {
+            height: auto;
+            width: 25vw;
+            min-width: 400px;
+            background-color: white;
+            box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
+            border-radius: 3px;
+            top: 0;
+            margin-top: -300px;
+            float: left;
+            margin-left: 8vw;
+            min-width: 25px;
+            z-index: 20;
+            position: relative;
+            padding: 10px;
+        }
+    }
+}
+
+@media all and (min-width: 1200px) {
+    @media all and (max-height: 560px) {
+        .infobox2 {
+            height: auto;
+            width: 25vw;
+            min-width: 400px;
+            background-color: white;
+            box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
+            border-radius: 3px;
+            top: 0;
+            margin-top: -390px;
+            float: left;
+            margin-left: 8vw;
+            min-width: 25px;
+            z-index: 20;
+            position: relative;
+            padding: 10px;
+        }
+
+    }
+    @media all and (min-height: 560px) {
+
+        .infobox2 {
+            height: auto;
+            width: 25vw;
+            min-width: 400px;
+            background-color: white;
+            box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
+            border-radius: 3px;
+            top: 0;
+            margin-top: -370px;
+            float: left;
+            margin-left: 8vw;
+            min-width: 25px;
+            z-index: 20;
+            position: relative;
+            padding: 10px;
+        }
     }
 }
 
@@ -1261,7 +1473,7 @@ html {
 \*=====================*/
 
 @media all and (max-width: 600px) {
-    
+
     * {
         box-sizing: border-box;
     }
@@ -1492,7 +1704,7 @@ html {
         height: 50px;
         background-color: #153b50;
     }
-    
+
 }
 
 
@@ -1500,7 +1712,7 @@ html {
 |*       SEVENTH       *|
 \*=====================*/
 
-#seventh h1{
+#seventh h1 {
     font-size: 35px;
     font-weight: 400;
     text-align: center;
@@ -1552,7 +1764,6 @@ html {
     margin: 0 auto;
     width: 90%;
     max-width: 1000px;
-    padding-top: 130px;
 }
 
 #seventh-header {
@@ -1599,12 +1810,13 @@ html {
     margin-top: 10px;
 }
 
-#seventh-form h5:hover{
+#seventh-form h5:hover {
     cursor: pointer;
 }
 
 
-#seventh-form button{
+#seventh-form button,
+.form button {
     font-size: 18px;
     height: 50px;
     width: 100px;
@@ -1614,14 +1826,14 @@ html {
     cursor: pointer;
     border-bottom: 3px solid #A0332F;
     border-radius: 5px;
-    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5); 
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
     z-index: 10;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-#seventh-form #log-form input {
+.form input {
     height: 50px;
     width: 250px;
     font-size: 18px;
@@ -1632,14 +1844,46 @@ html {
     display: block;
 }
 
-#seventh-form #log-form{
-    height: 320px;
+.form {
     width: 300px;
-    margin-left: auto;
-    margin-right: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    margin-top: 100px;
+    z-index: 100;
+    background-color: white;
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
 }
 
-#seventh-form #log-form h4{
+#log-form {
+    height: 280px;
+}
+
+#create-coach {
+    height: 320px;
+}
+
+#logToCreate {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#background {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.7;
+    z-index: 80;
+}
+
+.form h4 {
     margin-top: 15px;
     text-decoration: underline;
     width: 250px;
@@ -1648,25 +1892,14 @@ html {
     text-align: center;
 }
 
-#seventh-form #log-form h4:hover{
+.form h4:hover {
     cursor: pointer;
 }
 
-#seventh-form .form{
-    height: 320px;
-    width: 300px;
-    background-color: white;
-}
-
-#seventh-form #form-input{
+#seventh-form #form-input {
     position: absolute;
     z-index: 10;
     margin-top: 0px;
-}
-
-#seventh-form #create-coach{
-    position: relative;
-    z-index: 1;
 }
 
 #seventh-form .left input {
@@ -1718,18 +1951,20 @@ html {
     width: 100%;
     padding-bottom: 40px;
 }
+
 #seventh-register input {
     float: left;
     margin: 5px;
 }
+
 #seventh-register h4 {
     float: left;
 }
 
-#seventh-register .right{
+#seventh-register .right {
     height: 50px;
     width: 100px;
-    
+
 }
 
 #seventh-register button {
@@ -1742,12 +1977,12 @@ html {
     cursor: pointer;
     border-bottom: 3px solid #A0332F;
     border-radius: 5px;
-    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5); 
+    box-shadow: 0px 1px 8px -1px rgba(0, 0, 0, 0.5);
     z-index: 10;
     position: absolute;
 }
 
-#seventh-register img{
+#seventh-register img {
     height: 50px;
     width: auto;
     position: relative;
@@ -1772,23 +2007,19 @@ html {
         width: 100%;
         text-align: center;
     }
-    
+
     #seventh-header h3 {
         margin: 0px;
     }
-    
+
     #seventh-header div * {
         float: none;
         margin-bottom: 10px;
     }
-    
+
     #seventh-form div {
         width: 100%;
     }
-}
-
-#section5{
-   
 }
 
 /*=====================*\
@@ -1796,12 +2027,61 @@ html {
 \*=====================*/
 
 #footer {
-    color:white;
+    color: white;
     background-color: #040916;
     height: 40px;
-    padding-top: 20px;
+    padding-top: 10px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #footer * {
     text-align: center;
 }
+
+#footer p {
+    display: inline-block;
+    margin-right: 38.5%;
+}
+
+#footer a {
+    color: white;
+    bottom: 10px;
+    cursor: pointer;
+    margin-right: 15px;
+    text-decoration: underline;
+}
+
+/*=====================*\
+|*       RANDOM        *|
+\*=====================*/
+
+.minimize {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+    background-color: blue;
+}
+
+@media all and (max-width: 600px) {
+
+    html {
+        background-color: white;
+    }
+
+    #footer {
+        display: none;
+    }
+}
+
+@media all and (min-width: 600px) {
+    html {
+        background-color: black;
+    }
+
+    #footer {
+        display: block;
+    }
+}
+

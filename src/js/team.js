@@ -4,14 +4,45 @@ Parse.serverURL = 'https://klubbenheroku.herokuapp.com/parse';
 var cancel;
 var confirm;
 var athlete;
+var emailText;
+var phoneText;
+var enter;
+var toCancel;
+var newEmail;
+var newPhone;
+
+var validMail;
+var validPhone;
+var playerCreated;
+
 if (language == "NO") {
     cancel = "Avbryt";
     confirm = "Bekreft";
     athlete = "Utøver";
+    emailText = "Email";
+    phoneText = "Mobilnummer";
+    enter = "Trykk enter for å fullføre";
+    toCancel = "eller esc for å avbryte";
+    newEmail = "Skriv inn mailadressen";
+    newPhone = "Skriv inn telefonnummeret";
+
+    validMail = "Fyll inn en gyldig mail-adresse";
+    validPhone = "Fyll inn et gyldig telefonnummer";
+    playerCreated = "En utøverbruker er opprettet og lagt til i laget";
 } else {
     cancel = "Cancel";
     confirm = "Confirm";
     athlete = "Athlete";
+    emailText = "Email";
+    phoneText = "Phone number";
+    enter = "Press enter to submit";
+    toCancel = "or esc to cancel";
+    newEmail = "Fill in the email adress";
+    newPhone = "Fill in the phone number";
+
+    validMail = "Please insert a valid e-mail address";
+    validPhone = "Please insert a valid phone number";
+    playerCreated = "An athlete user has been created and added to the team";
 }
 
 var team = Parse.Object.extend("data_" + klubbID + "_Members");
@@ -38,14 +69,40 @@ function getTeam() {
             var output = "";
             for (var i = 0; i < objects.length; i++) {
                 var user = objects[i].get("user");
+                var objectId = objects[i].id;
+                var userId = user.id;
                 if (user != undefined) {
                     var userRole = objects[i].get("role");
-                    var navn = user.get("name");
-                    var thisRole = "POATOT";
+                    var name = user.get("name");
+                    var email = user.get("username");
+                    if (email == undefined) {
+                        email = "";
+                    } else {
+                        var emailFilter = /^([a-åA-Å0-9_.-])+@(([a-åA-Å0-9-])+.)+([a-åA-Å0-9]{2,4})+$/;
+                        if (!emailFilter.test(email)) {
+                            email = "";
+                        }
+
+                    }
+
+                    var phone = user.get("phone");
+
+                    if (phone == undefined) {
+                        phone = "";
+                    }
+
+                    var thisRole;
+                    var changeUser = "";
                     if (userRole == "trener") {
                         thisRole = coach;
                     } else if (userRole == "spiller") {
                         thisRole = athlete;
+                        
+                        /*
+                        changeUser += '<div class="hide-info' + userId + '">';
+                        changeUser += '<i class="material-icons" id="' + userId + '" onclick="showEdit(id)">create</i>';
+                        changeUser += '</div>';
+                        */
                     } else if (userRole == "admin") {
                         thisRole = "Admin";
                     }
@@ -61,13 +118,25 @@ function getTeam() {
                             userPB = '<img class="pb1" src="./src/img/User_Small.png">';
                         }
 
+
                         output += '<div class="player">';
                         output += pB;
                         output += userPB;
                         output += '<div class="playerbox">';
                         output += '<div class="text">';
-                        output += '<h3>' + navn + '</h3>';
+                        output += '<h3>' + name + '</h3>';
                         output += '<h4>' + thisRole + '</h4>';
+                        output += '<div class="phone-mail">';
+                        output += '<h6 class="hide-info' + userId + '">' + emailText + ': ' + email + '</h4>';
+                        output += '<input type="text" class="edit-user' + userId + '" style="display: none" id="email' + userId + '" placeholder="' + newEmail + '" onkeydown = "if (event.keyCode == 13) validateEdit(id)" value="' + email + '"/>';
+                        output += '<h6 class="hide-info' + userId + '">' + phoneText + ': ' + phone + '</h4>';
+                        output += '<input type="text" class="edit-user' + userId + '" style="display: none" id="phone' + userId + '" placeholder="' + newPhone + '" onkeydown = "if (event.keyCode == 13) validateEdit(id)" value="' + phone + '"/>';
+                        output += '<p class="edit-user' + userId + '" style="display: none">' + enter + '</p>';
+                        output += changeUser;
+                        output += '<div class="edit-user' + userId + '" id="i2" style="display: none">';
+                        output += '<i class="material-icons" id="' + userId + '" onclick="showEdit(id)">cancel</i>';
+                        output += '</div>';
+                        output += '</div>';
                         output += '</div>';
                         if ((role == "admin") || (role == "trener")) {
                             output += '<div class="kickout">';
@@ -97,6 +166,59 @@ function getTeam() {
 
 }
 
+function showEdit(objectId) {
+
+    var hideInfo = ".hide-info" + objectId;
+    var editUser = ".edit-user" + objectId;
+    $(hideInfo).toggle();
+    $(editUser).toggle();
+}
+
+function validateEdit(objectId) {
+    var id = objectId.substring(5, 15);
+    var emailId = "#email" + id;
+    var newEmail = $(emailId).val();
+
+
+    var phoneId = "#phone" + id;
+    var newPhone = $(phoneId).val();
+
+    var emailFilter = /^([a-åA-Å0-9_.-])+@(([a-åA-Å0-9-])+.)+([a-åA-Å0-9]{2,4})+$/;
+    var phoneFilter = /^\d+$/;
+
+    if (newEmail != "") {
+        if (!emailFilter.test(newEmail)) {
+            alert(validMail);
+        } else {
+            if (newPhone != "") {
+                if (!phoneFilter.test(newPhone)) {
+                    alert(validPhone);
+                } else {
+                    saveEdit(id, newPhone, newEmail);
+                }
+            } else {
+                saveEdit(id, newPhone, newEmail);
+            }
+        }
+    } else {
+        if (newPhone != "") {
+            if (!phoneFilter.test(newPhone)) {
+                alert(validPhone);
+            } else {
+                saveEdit(id, newPhone, newEmail);
+            }
+        } else {
+            saveEdit(id, newPhone, newEmail);
+        }
+    }
+}
+
+function saveEdit(userId, phone, email) {
+
+    console.log(userId);
+    console.log(phone);
+    console.log(email);
+}
 
 function acceptPlayersTeam() {
 
@@ -722,17 +844,14 @@ function changePassword() {
     var changePass;
     var currentPass;
     var createPass;
-    var enter;
     if (language == "NO") {
         changePass = "Endre lagpassord";
         currentPass = "Nåværende lagpassord";
         createPass = "Opprett lagpassord";
-        enter = "Trykk enter for å fullføre";
     } else {
         changePass = "Change team password";
         currentPass = "Current team password";
         createPass = "Create a team password";
-        enter = "Press enter to submit";
     }
 
     var teams = Parse.Object.extend("Teams");
@@ -824,18 +943,6 @@ var checked = false;
 
 function createForm(cancel) {
 
-    var validMail;
-    var validPhone;
-    var playerCreated;
-    if (language == "NO") {
-        validMail = "Fyll inn en gyldig mail-adresse";
-        validPhone = "Fyll inn et gyldig telefonnummer";
-        playerCreated = "En utøverbruker er opprettet og lagt til i laget";
-    } else {
-        validMail = "Please insert a valid e-mail address";
-        validPhone = "Please insert a valid phone number";
-        playerCreated = "An athlete user has been created and added to the team";
-    }
 
     if (cancel != undefined) {
         if (cancel == "cancel") {
@@ -867,53 +974,28 @@ function createForm(cancel) {
 
                 var emailFilter = /^([a-åA-Å0-9_.-])+@(([a-åA-Å0-9-])+.)+([a-åA-Å0-9]{2,4})+$/;
                 var phoneFilter = /^\d+$/;
+                /*
+                                if (!emailFilter.test(uMail)) {
+                                    alert(validMail);
+                                }
+                                */
+                Parse.Cloud.run("registerMember", {
+                    role: "spiller",
+                    phone: uPhone,
+                    mail: uMail,
+                    name: uName,
+                    clubID: klubbID
+                }).then(function (response) {
+                    alert(playerCreated);
 
-                if (!emailFilter.test(uMail)) {
-                    alert(validMail);
-                } else {
-                    if (uPhone == "") {
-                        Parse.Cloud.run("registerMember", {
-                            role: "spiller",
-                            phone: "",
-                            mail: uMail,
-                            name: uName,
-                            clubID: klubbID
-                        }).then(function (response) {
-                            alert(playerCreated);
+                    checked = false;
 
-                            checked = false;
+                    createScheme();
+                    groups();
+                    getTeam();
+                    acceptPlayersTeam();
+                });
 
-                            createScheme();
-                            groups();
-                            getTeam();
-                            acceptPlayersTeam();
-                        });
-                    } else {
-                        if (!phoneFilter.test(uPhone)) {
-                            alert(validPhone);
-                        } else {
-
-                            Parse.Cloud.run("registerMember", {
-                                role: "spiller",
-                                phone: uPhone,
-                                mail: uMail,
-                                name: uName,
-                                clubID: klubbID
-                            }).then(function (response) {
-                                alert(playerCreated);
-
-                                checked = false;
-
-                                createScheme();
-                                groups();
-                                getTeam();
-                                acceptPlayersTeam();
-                            });
-
-                        }
-                    }
-
-                }
 
 
             }

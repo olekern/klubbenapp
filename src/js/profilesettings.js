@@ -13,7 +13,7 @@ function profile(){
                     var PBUrl = brukerPB.url();
                     userImg = "<img src='" + PBUrl + "'>";
                 } else{
-                    noUserImg = '<img src="../src/img/User_Big.jpeg">';
+                    noUserImg = '<img src="./src/img/User_Big.jpeg">';
                 }
                 outputImg += "<div id=\"userPB\">";
                 outputImg += userImg;

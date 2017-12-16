@@ -3,27 +3,37 @@
 <html>
 
 <head>
-    <title>Klubben</title>
+    <title>EasyCoach</title>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width" />
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="https://npmcdn.com/parse/dist/parse.js"></script>
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="./favicons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="./favicons/favicon-16x16.png" sizes="16x16">
-    <link rel="icon" type="image/png" href="../src/img/blackfavicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="../src/img/blackfavicon-16x16.png" sizes="16x16" />
-    <link rel="manifest" href="/favicons/manifest.json">
-    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#cf2424">
-    <meta name="apple-mobile-web-app-title" content="Klubben">
-    <meta name="application-name" content="Klubben">
+    <link rel="apple-touch-icon" sizes="57x57" href="../favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicons/favicon-16x16.png">
+    <link rel="manifest" href="../favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="../favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-title" content="EasyCoach">
+    <meta name="application-name" content="EasyCoach">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" type="text/css" href="../src/css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 500, 600" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../src/css/demo.css">
+    <link rel="stylesheet" type="text/css" href="../src/css/index.css">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -44,7 +54,7 @@
                 anchors: ['1', '2', '3', '4', '5', '6'],
                 menu: '#menu',
                 scrollingSpeed: 1000,
-                responsiveWidth: 430,
+                responsiveWidth: 600,
                 afterLoad: function(anchorLink, index) {
 
                     if (index == 2) {
@@ -57,6 +67,8 @@
                         $('#phoneshell2').addClass('hide');
                         $('#phoneshell3').addClass('hide');
 
+                        $('#emptyphone1').removeClass('minimize');
+
                     } else if (index == 3) {
 
                         $('#emptyphone2').addClass('hide');
@@ -67,6 +79,8 @@
                         $('#phoneshell1').addClass('hide');
                         $('#phoneshell2').removeClass('hide');
                         $('#phoneshell3').addClass('hide');
+
+                        $('#emptyphone1').removeClass('minimize');
 
                     }
 
@@ -80,6 +94,7 @@
                         $('#phoneshell2').addClass('hide');
                         $('#phoneshell3').removeClass('hide');
 
+                        $('#emptyphone1').removeClass('minimize');
                     }
 
                     if (index == 5) {
@@ -87,11 +102,16 @@
                         $('#emptyphone2').addClass('hide');
                         $('#emptyphone3').removeClass('hide');
 
-
                         $('#phoneshell1').addClass('hide');
                         $('#phoneshell2').addClass('hide');
                         $('#phoneshell3').addClass('hide');
 
+                        $('#emptyphone1').addClass('minimize');
+
+                    }
+
+                    if (index == 6) {
+                        $('#emptyphone1').addClass('minimize');
                     }
 
 
@@ -113,12 +133,16 @@
                     }
                     if (direction == 4) {
                         $('#emptyphone3').addClass('hide');
+
                     }
 
                     if (direction == 5) {
+
                         $('#phoneshell1').addClass('hide');
                         $('#phoneshell2').addClass('hide');
                         $('#phoneshell3').addClass('hide');
+
+                        $("#list-form").html('');
                     }
 
                 }
@@ -149,25 +173,23 @@
     <script>
         if (localStorage.getItem("language")) {
             var language = localStorage.getItem("language");
-            if (language == "NO") {} else {
+            
+            if (language == "EN") {
                 location.href = "../index.html";
             }
-
+            
         } else {
-            var userLanguage = window.navigator.userLanguage || window.navigator.language;
-            var language = userLanguage.slice(-2);
 
-            localStorage.setItem("language", language);
-
+            var language = "NO";
         }
 
     </script>
 
 
-    <div id="nav"> <img src="../src/img/Icon-white.png"> <a id="name" href="demo.html">Klubben</a> <a id="app" onclick="getLink()">Gå til appen</a> </div>
+    <div id="nav"> <img src="../src/img/new-logo.png"> <a id="name" href="index.html">EasyCoach</a> <a id="app" onclick="getLink()">Gå til appen</a> </div>
 
     <script>
-        var s = 'file:///C:/Users/h/Desktop/klubbenapp/demo.html#secondPage';
+        var s = 'file:///C:/Users/h/Desktop/klubbenapp/index.html#secondPage';
         var r = s.replace(/^(.+?)_[^.]+(\.[^\/.]+)$/i, '$1$2');
 
     </script>
@@ -211,14 +233,14 @@
                 <div class="content">
                     <div id="top-content">
                         <h1 id="klubben">Løft laget ditt til nye høyder!</h1>
-                        <h2>Klubben er en ny digital plattform som hjelper idrettslag med å forbedre utøvernes sportslige prestasjoner.</h2>
+                        <h2>EasyCoach er en ny digital plattform som hjelper idrettslag med å forbedre utøvernes sportslige prestasjoner.</h2>
                         <div id="firstStores">
                             <a href="https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8"> <img src="../src/img/Get_AppStore_Black.png" /> </a>
                             <a href="https://play.google.com/store/apps/details?id=com.lustek.klubben"> <img src="../src/img/Get_GooglePlay_Black.png" /> </a>
                         </div>
-                        <a id="regnt" href="demo.html#3rdPage">Registrer nytt lag</a>
+                        <a id="regnt" href="index.html#3rdPage">Registrer nytt lag</a>
                         <div id="arrow">
-                            <a class="bounce" href="demo.html#secondPage"><i class="material-icons">keyboard_arrow_down</i></a>
+                            <a class="bounce" href="index.html#secondPage"><i class="material-icons">keyboard_arrow_down</i></a>
                         </div>
                     </div>
                 </div>
@@ -237,13 +259,13 @@
                         <div class="smalltext" id="smallCalendar">
                             <h2>Enkel oversikt</h2>
                             <h1>Registrer oppmøte og få statistikk for ditt lag</h1>
-                            <p>Klubben lar utøverne melde fra om de kommer på trening, slik at du som trener får god kontroll over laget.</p>
+                            <p>EasyCoach lar utøverne melde fra om de kommer på trening, slik at du som trener får god kontroll over laget.</p>
                         </div>
                     </div>
-                    <div class="infobox">
+                    <div class="infobox" id="infobox1">
                         <h2>Enkel oversikt</h2>
                         <h1>Registrer oppmøte og få statistikk for ditt lag</h1>
-                        <p>Klubben lar utøverne melde fra om de kommer på trening, slik at du som trener får god kontroll over laget.</p>
+                        <p>EasyCoach lar utøverne melde fra om de kommer på trening, slik at du som trener får god kontroll over laget.</p>
                     </div>
 
                 </div>
@@ -263,14 +285,14 @@
                         <div class="smalltext" id="smallSurvey">
                             <h2>Raske undersøkelser</h2>
                             <h1>Forbedre oppfølgingen mellom utøver og trener</h1>
-                            <p>Mange trenere føler at tiden på treningsfeltet ikke strekker til. Lag undersøkelser til dine utøvere og oppretthold en tett og god dialog gjennom Klubben. </p>
+                            <p>Mange trenere føler at tiden på treningsfeltet ikke strekker til. Lag undersøkelser til dine utøvere og oppretthold en tett og god dialog gjennom EasyCoach. </p>
                         </div>
                     </div>
                     <img src="../src/img/sport1.png" id="sportscompilation">
                     <div class="infobox2">
                         <h2>Raske undersøkelser</h2>
                         <h1>Forbedre oppfølgingen mellom utøver og trener</h1>
-                        <p>Mange trenere føler at tiden på treningsfeltet ikke strekker til. Lag undersøkelser til dine utøvere og oppretthold en tett og god dialog gjennom Klubben. </p>
+                        <p>Mange trenere føler at tiden på treningsfeltet ikke strekker til. Lag undersøkelser til dine utøvere og oppretthold en tett og god dialog gjennom EasyCoach. </p>
                     </div>
                 </div>
             </div>
@@ -291,7 +313,7 @@
                             <p>I nyhetsfeeden blir informasjonen raskt tilgjengelig for både utøvere og trenere. Slipp lange mailinglister og knotete smslogger.</p>
                         </div>
                     </div>
-                    <div class="infobox">
+                    <div class="infobox" id="infobox3">
                         <h2>Oversiktlig kommunikasjon</h2>
                         <h1>Gi beskjeder til hele laget</h1>
                         <p>I nyhetsfeeden blir informasjonen raskt tilgjengelig for både utøvere og trenere. Slipp lange mailinglister og knotete smslogger.</p>
@@ -312,7 +334,7 @@
                                 <li>Oppmøtestatistikk</li>
                                 <li>Flere trenere per lag</li>
                                 <li>Grupper</li>
-                                <li class="grey"><a href="#" class="button">Sign Up</a></li>
+                                <li class="grey"><a href="#6" class="button">Registrer lag</a></li>
                             </ul>
                         </div>
                         <div class="columns">
@@ -323,7 +345,7 @@
                                 <li>Fri for reklame</li>
                                 <li>Send egne push-varslinger</li>
                                 <li>Opprett undersøkelser</li>
-                                <li class="grey"><a href="#" class="button">Sign Up</a></li>
+                                <li class="grey"><a href="#6" class="button">Registrer lag</a></li>
                             </ul>
                         </div>
                     </div>
@@ -358,7 +380,7 @@
 
                         <div id="seventh-info">
                             <div class="left">
-                                <h3>Premium-lag Klubben</h3>
+                                <h3>Premium-lag EasyCoach</h3>
                             </div>
                             <div class="center">
                                 <h3>Gratis
@@ -372,38 +394,50 @@
                         <div id="seventh-register">
                             <div class="left">
                                 <input id="terms" name="terms" type="checkbox" />
-                                <h4 id="termh">Jeg har lest og godtatt <a href="terms.html">vilk&aringrene for klubben</a></h4>
+                                <h4 id="termh">Jeg har lest og godtatt <a href="terms.html">vilk&aringrene for EasyCoach</a></h4>
                             </div>
                             <div class="right">
                                 <button id="reg" onclick="getInfo()">Registrer</button>
                                 <img src="./src/loading/Preloader_8.gif">
                             </div>
                         </div>
-
+                        <!--
                         <div id="seventh-stores">
                             <a href="https://itunes.apple.com/no/app/klubben/id1101856959?l=nb&mt=8"> <img src="./src/img/Get_AppStore_Black.png" /> </a>
                             <a href="https://play.google.com/store/apps/details?id=com.lustek.klubben"> <img src="./src/img/Get_GooglePlay_Black.png" /> </a>
                         </div>
+-->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div id="list-form"></div>
+    <div id="background" style="display: none"></div>
 
-    <!--
+    <script>
+        function English() {
+
+            localStorage.setItem("language", "EN");
+            location.href = "./index.html";
+        }
+
+        function Norwegian() {
+            localStorage.setItem("language", "NO");
+            location.href = "./no/index.html";
+        }
+
+    </script>
+
     <div id="footer">
-        <div id="leftfoot">
-            <p>&copy; 2017 Lustek AS</p>
-        </div>
-        <div id="rightfoot">
-            <a href="../index.html">EN</a>
-            <a href="../no/demo.html">NO</a>
-        </div>
+        <p>&copy; 2017 Lustek AS</p>
+        <a onclick="English()">EN</a>
+        <a onclick="Norwegian()">NO</a>
     </div>
--->
-    
-    <!--<script type="text/javascript" src="../src/js/regtrainer.js"></script>
--->
+
+
+    <script type="text/javascript" src="../src/js/regtrainer.js"></script>
+
     <script type="text/javascript">
         var monthNames = [
             "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -440,6 +474,18 @@
         newNode2.appendChild(document.createTextNode(august));
         node.appendChild(newNode);
         node.appendChild(newNode2);
+
+
+        $(document).click(function(event) {
+            if (!$(event.target).closest('.nohide').length) {
+                if ($('.nohide').is(":visible")) {
+
+                    $("#list-form").html('');
+
+                    document.getElementById('background').style.display = "none";
+                }
+            }
+        });
 
     </script>
 
